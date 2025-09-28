@@ -52,9 +52,17 @@ body {
 section {
   padding: 112px 0;
 }
+/* Add more space for specific sections for better visual rhythm */
+#about, #faq {
+  padding-top: 144px;
+}
 
 @media (max-width: 768px) {
   section { padding: 72px 0; }
+  /* Adjust space for mobile */
+  #about, #faq {
+    padding-top: 96px;
+  }
 }
 
 /* ===== TYPOGRAPHY ===== */
@@ -456,3 +464,4 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 </body>
 </html>
+
