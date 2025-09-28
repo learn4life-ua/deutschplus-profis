@@ -261,14 +261,33 @@ h3 { font-size: 20px; margin-bottom: 8px; }
 
 /* ===== CTA SECTION ===== */
 .cta-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
+  background: linear-gradient(135deg, #00b85c 0%, var(--green) 100%);
+  border: none;
   padding: clamp(32px, 8vw, 64px);
   border-radius: 24px;
   text-align: center;
+  box-shadow: var(--shadow-lg);
 }
-.cta-card h2 { color: var(--green); margin-bottom: 16px; }
-.cta-card p { color: var(--muted); max-width: 500px; margin: 0 auto 32px; }
+.cta-card h2 {
+  color: #fff;
+  margin-bottom: 16px;
+}
+.cta-card p {
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 500px;
+  margin: 0 auto 32px;
+}
+/* Оновлюємо кнопку в CTA блоці */
+.cta-card .d-btn {
+  background: var(--card-bg);
+  color: var(--green);
+  font-weight: 800;
+}
+.cta-card .d-btn:hover {
+  background: #fff;
+  transform: translateY(-3px) scale(1.05);
+}
+
 
 /* ===== FAQ ===== */
 .faq-container { max-width: 768px; margin: 0 auto; }
@@ -471,4 +490,3 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 </body>
 </html>
-
