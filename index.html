@@ -51,9 +51,10 @@ body {
 }
 
 /* Основні блоки сторінки */
-section, .header, .footer {
+section, .header {
   box-sizing: border-box;
-  padding: clamp(90px, 15vh, 140px) 0; /* Уніфіковані вертикальні відступи */
+  /* Збалансовані адаптивні відступи */
+  padding: clamp(40px, 7vw, 60px) 0;
 }
 
 /* Фон для парних секцій */
@@ -308,8 +309,7 @@ details .muted { padding-top: 12px; border-top: 1px solid var(--border-color); m
   text-align: center;
   color: var(--muted);
   font-size: 14px;
-  padding-top: 48px;
-  padding-bottom: 48px;
+  padding: clamp(40px, 7vw, 60px) 0;
 }
 .footer a { color: var(--green); text-decoration: none; font-weight: 500; }
 .footer a:hover { text-decoration: underline; }
@@ -471,3 +471,4 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 </body>
 </html>
+
