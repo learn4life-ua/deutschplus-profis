@@ -258,6 +258,22 @@ h3 {
   border-color: var(--green);
   color: var(--green);
 }
+
+/* --- Footer --- */
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  padding: clamp(40px, 7vw, 60px) 0;
+}
+.footer a {
+  color: var(--green);
+  text-decoration: none;
+  font-weight: 500;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
 </style>
 </head>
 <body>
@@ -384,6 +400,14 @@ h3 {
     </div>
   </section>
 </main>
+
+<footer class="footer">
+    <div class="wrap">
+      <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені.</p>
+      <p><a href="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">Запропонувати ідею</a></p>
+    </div>
+</footer>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const audio = document.getElementById('dialogue-audio');
