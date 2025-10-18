@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практичні вправи — Deutsch+Profis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+          --green: #009846;
+          --green-light: #e6f5f0;
+          --dark: #1f2937;
+          --muted: #6b7280;
+          --bg: #f9fafb;
+          --card-bg: #ffffff;
+          --border-color: #e5e7eb;
+          --radius: 16px;
+          --shadow: 0 4px 6px -1px rgba(0,0,0,.03), 0 2px 4px -2px rgba(0,0,0,.03);
+          --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -4px rgba(0,0,0,.05);
+          --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        body {
+          margin: 0;
+          background: var(--bg);
+          color: #374151;
+          font-family: 'Inter', sans-serif;
+          line-height: 1.6;
+        }
+        .wrap {
+          box-sizing: border-box;
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 0 clamp(16px, 5vw, 24px);
+        }
+        .main-nav {
+          position: sticky;
+          top: 16px;
+          margin: 16px clamp(16px, 5vw, 24px) 0;
+          z-index: 50;
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(10px);
+          border: 1px solid var(--border-color);
+          border-radius: 16px;
+          padding: 12px 24px;
+          box-shadow: var(--shadow-lg);
+        }
+        .main-nav .nav-content {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          max-width: 1100px;
+          margin: 0 auto;
+        }
+        .logo {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-weight: 700;
+          font-size: 18px;
+          color: var(--dark);
+          text-decoration: none;
+        }
+        .logo svg { color: var(--green); }
+
+        .page-header {
+            text-align: center;
+            padding: clamp(40px, 7vw, 60px) 0;
+        }
+        .page-header h1 {
+            font-size: clamp(28px, 4vw, 36px);
+            color: var(--dark);
+            font-weight: 800;
+        }
+        .page-header p {
+            font-size: clamp(16px, 2vw, 18px);
+            color: var(--muted);
+            max-width: 600px;
+            margin: 16px auto 0;
+        }
+
+        .controls-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .controls-card label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        .controls-card select {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg);
+            font-weight: 600;
+        }
+        #overall-score-display {
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .exercise-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: clamp(24px, 5vw, 32px);
+            margin-bottom: 24px;
+        }
+        .exercise-section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 0 0 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .exercise-section h2 .score {
+            font-size: 0.8em;
+            color: var(--muted);
+        }
+        .exercise-section h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            border: none;
+            padding: 0;
+            margin-bottom: 16px;
+        }
+
+        textarea, .inline-input, .vocab-input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg);
+            font-family: inherit;
+            font-size: 1em;
+            transition: var(--transition);
+        }
+        textarea:focus, .inline-input:focus, .vocab-input:focus {
+            outline: none;
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px rgba(0, 152, 70, 0.1);
+        }
+        .inline-input {
+            display: inline-block;
+            width: 160px;
+            text-align: center;
+            font-weight: 600;
+        }
+        @media (max-width: 640px) {
+            .inline-input { display: block; width: 100%; margin: 8px 0; }
+        }
+
+        .d-btn {
+          display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+          cursor: pointer; text-decoration: none;
+          border: 1px solid transparent; padding: 12px 24px;
+          border-radius: 12px; font-weight: 700; font-size: 16px;
+          transition: var(--transition);
+        }
+        .d-btn--primary { background: var(--green); color: #fff; }
+        .d-btn--primary:hover { background: #007a38; }
+        
+        .modal {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+            display: none; align-items: center; justify-content: center;
+            z-index: 100; padding: 16px;
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            background: var(--card-bg); border-radius: var(--radius);
+            width: 100%; max-width: 600px;
+            max-height: 90vh; overflow-y: auto;
+            padding: 24px;
+        }
+        .modal-content h3 { font-size: 20px; color: var(--dark); margin: 0 0 16px; }
+        .modal-content ul { list-style: none; padding: 0; }
+
+        .footer {
+          text-align: center; color: var(--muted); font-size: 14px;
+          padding: clamp(40px, 7vw, 60px) 0;
+        }
+        .footer a { color: var(--green); text-decoration: none; font-weight: 500; }
+        .footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<nav class="main-nav">
+  <div class="nav-content">
+    <a href="index.html" class="logo">
+      <svg width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+      Deutsch<span style="color:var(--green)">+</span>Profis
+    </a>
+  </div>
+</nav>
+
+<main>
+    <div class="wrap">
+        <header class="page-header">
+            <h1>Практичні вправи</h1>
+            <p>Закріпіть свої знання за допомогою інтерактивних завдань. Оберіть варіант, щоб розпочати.</p>
+        </header>
+
+        <div class="controls-card">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <label for="variant-select">Варіант:</label>
+                <select id="variant-select">
+                    <option value="1">1. Система машин для тваринництва</option>
+                    <option value="2">2. Виробництво птиці</option>
+                    <option value="3">3. Виробництво свинини</option>
+                    <option value="4">4. Значення скотарства</option>
+                    <option value="5">5. Завдання тваринництва</option>
+                    <option value="6">6. Селекція рослин</option>
+                    <option value="7">7. Польове кормовиробництво</option>
+                    <option value="8">8. Основа харчування</option>
+                    <option value="9">9. Обробка ґрунту та удобрення</option>
+                    <option value="10">10. Планування сільського господарства</option>
+                    <option value="11">11. Основний засіб виробництва</option>
+                    <option value="12">12. Використання резервів</option>
+                    <option value="13">13. Як посієш, так і пожнеш</option>
+                    <option value="14">14. Сільське господарство як галузь</option>
+                </select>
+            </div>
+            <div id="overall-score-display">Загальний бал: <span id="overall-percentage">0%</span></div>
+        </div>
+
+        <div id="resultModal" class="modal">
+            <div class="modal-content">
+                <h3 id="modalTitle">Результати</h3>
+                <div id="modalContent"></div>
+                <button id="closeModalBtn" class="d-btn d-btn--primary" style="width: 100%; margin-top: 24px;">Закрити</button>
+            </div>
+        </div>
+
+        <section class="exercise-section">
+            <h2>1. Текст для перекладу <span id="translation-score" class="score"></span></h2>
+            <div>
+                <h3 id="germanTextTitle"></h3>
+                <p id="germanTextContent" style="background: var(--bg); padding: 16px; border-radius: 8px;"></p>
+                <p id="textExplanation" style="font-style: italic; color: var(--muted); margin-top: 16px;"></p>
+                <textarea id="translationInput" rows="8" placeholder="Введіть свій переклад тут..."></textarea>
+            </div>
+            <button id="checkTranslationBtn" class="d-btn d-btn--primary" style="margin-top: 16px;">Перевірити переклад</button>
+        </section>
+
+        <section class="exercise-section">
+            <h2>2. Словникові вправи <span id="vocabulary-score" class="score"></span></h2>
+            <p>Введіть українські відповідники для наступних слів.</p>
+            <div id="vocabulary-exercise" style="margin-top: 16px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));"></div>
+            <button id="checkVocabBtn" class="d-btn d-btn--primary" style="margin-top: 16px;">Перевірити словник</button>
+        </section>
+
+        <section class="exercise-section">
+            <h2>3. Вправи на розуміння <span id="comprehension-score" class="score"></span></h2>
+            <h3>3.1. Доповніть речення</h3>
+            <div id="comprehension-exercise-3" style="display: grid; gap: 16px;"></div>
+            <h3 style="margin-top: 24px;">3.2. Дайте відповіді на запитання</h3>
+            <div id="comprehension-exercise-4" style="display: grid; gap: 16px; margin-top: 16px;"></div>
+            <button id="checkComprehensionBtn" class="d-btn d-btn--primary" style="margin-top: 24px;">Перевірити розуміння</button>
+        </section>
+    </div>
+</main>
+<footer class="footer">
+    <div class="wrap">
+      <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені.</p>
+    </div>
+</footer>
+
+<script>
+    const variantsData = {
+        "1": { /* ... */ }, "2": { /* ... */ }, "3": { /* ... */ }, "4": { /* ... */ },
+        "5": { /* ... */ }, "6": { /* ... */ }, "7": { /* ... */ }, "8": { /* ... */ },
+        "9": { /* ... */ }, "10": { /* ... */ }, "11": { /* ... */ }, "12": { /* ... */ },
+        "13": { /* ... */ }, "14": { /* ... */ }
+    };
+    
+    // Full data is injected here for all 14 variants
+    (function populateData() {
+        variantsData["1"]={title:"Das Maschinensystem für die Tierproduktion",germanText:"Zu einem einheitlichen Maschinensystem für Produktionsanlagen der Rinder- und Schweinehaltung gehören die Teilmaschinensysteme für: 1) Fütterung, 2) Entmistung, Reinigung und Desinfektion, 3) Melken.<br><br>Das Teilmaschinensystem der Fütterung umfaßt die Arbeitsgänge von der Entnahme des Futters aus dem Lager bis zur Verabreichung der gewünschten Futterration am Tierplatz. Dazu werden Futteraufbereitungsanlagen, Selbsttränken und andere Einrichtungen angewendet.<br><br>Die mechanisierte Aufbereitung des Futters befaßt sich zum Beispiel mit der Reinigung von Hackfrüchten, dem Zerkleinern von Grünfutter und Hackfrüchten.<br><br>Das Teilmaschinensystem für die Entmistung. Für die Entmistung von Ställen mit Einstreu können stationäre Anlagen und der Traktor mit Frontlader als mobiles technisches Arbeitsmittel eingesetzt werden. Einstreulose Ställe kann man hydromechanisch entmisten.<br><br>Das Teilmaschinensystem für das Melken in industriemäßig produzierenden Anlagen basiert auf Rohrmelkanlage und Karusselmelkstand.<br><br>Die Mechanisierung des Entmistens und des Melkens hat bereits einen hohen Stand erreicht.",explanation:"sich befassen mit (D) - займатися чим-небудь",correctTranslation:"Машинна система для тваринництва\nДо єдиної машинної системи для виробничих установ великої рогатої худоби та свинарства входять часткові машинні системи для:\n\nгодівлі,\nприбирання гною, очищення та дезінфекції,\nдоїння.\nЧасткова машинна система годівлі охоплює всі операції — від вилучення корму зі сховища до подачі необхідної порції корму на місце утримання тварин. Для цього використовуються установки для підготовки кормів, автопоїлки та інше обладнання.\nМеханізована підготовка кормів передбачає, наприклад, очищення коренеплодів, подрібнення зелених кормів та коренеплодів.\nЧасткова машинна система прибирання гною. Для очищення приміщень із підстилкою можуть використовуватись стаціонарні установки або трактор із фронтальним навантажувачем як мобільний технічний засіб. Приміщення без підстилки можна очищувати гідромеханічним способом.\nЧасткова машинна система доїння в промислових умовах базується на трубопровідних доїльних установках та доїльних каруселях.\nМеханізація прибирання гною та доїння вже досягла високого рівня розвитку.",vocabulary:[{word:"sich befassen (mit)",answer:"займатися чим-небудь"},{word:"die Einrichtung",answer:"обладнання, устаткування"},{word:"die Einstreu",answer:"підстилка"},{word:"die Hackfrucht",answer:"просапна культура"},{word:"die Reinigung",answer:"очищення"},{word:"der Stall",answer:"корівник, стайня"},{word:"der Stand",answer:"рівень, стан"},{word:"die Verabreichung",answer:"видача, подача"}],comprehension3_1:[{textParts:["1) Zur Entmistung der ","INPUT"," mit ","INPUT"," wird der Traktor mit Frontlader eingesetzt."],answers:["Ställe","Einstreu"]},{textParts:["2) Die mechanisierte Futteraufbereitung ","INPUT"," mit der Reinigung von Hackfrüchten und dem Zerkleinern von Grünfutter."],answers:["befaßt sich"]},{textParts:["3) Die Mechanisierung solcher Arbeitsgänge wie Entmisten und ","INPUT"," hat einen hohen ","INPUT"," erreicht."],answers:["Melken","Stand"]}],comprehension3_2:[{question:"1) Welche Teilmaschinensysteme gehören zum Maschinensystem für Rinder- und Schweinehaltung?",answer:"Zu einem einheitlichen Maschinensystem für Produktionsanlagen der Rinder- und Schweinehaltung gehören die Teilmaschinensysteme für: 1) Fütterung, 2) Entmistung, Reinigung und Desinfektion, 3) Melken."},{question:"2) Wie kann man einstreulose Ställe entmisten?",answer:"Einstreulose Ställe kann man hydromechanisch entmisten."},{question:"3) Welche Arbeitsgänge haben in der Tierproduktion den höchsten Stand der Mechanisierung?",answer:"Die Mechanisierung des Entmistens und des Melkens hat bereits einen hohen Stand erreicht."}]};
+        variantsData["2"]={title:"Geflügelproduktion",germanText:"Der Pro-Kopf-Verbrauch an Eiern und Geflügelfleisch steigt in der ganzen Welt ständig an. Es werden industriemäßige Anlagen für Geflügelproduktion gebaut, um die Bevölkerung noch besser mit Frischeiern und hochwertigem Geflügelfleisch zu versorgen.<br><br>Durch zweckmäßige Haltung und Fütterung wird kontinuierliche Eier- und Broilerproduktion gewährleistet. Da die Arbeitsgänge weitgehend mechanisiert sind, ist eine hohe Arbeitsproduktivität möglich.<br><br>Unter Broilern versteht man die Masthühnchen oder -hähnchen, die in einem relativ kurzen Zeitraum große Körpermasse mit einem hohen Anteil an wertvollem Fleisch erreichen. Das Fleisch von Broilern ist eiweißreich, fett- und energiearm, schmackhaft sowie leicht verdaulich.<br><br>Die durchschnittliche Endmasse bei der Broilermast beträgt 1 500 g. Dabei sollen nicht mehr als 2 kg Futter je Kilogramm Zunahme verbraucht werden.<br><br>Den Masterfolg beeinflussen solche Faktoren wie Haltung und Fütterung, Züchtung, Alter der Tiere.",explanation:"1. die Masthühnchen oder -hähnchen — курочки чи півники-бройлери",correctTranslation:"Виробництво птиці\nСпоживання яєць та м'яса птиці на душу населення постійно зростає в усьому світі. Будуються промислові комплекси для виробництва птиці, щоб ще краще забезпечувати населення свіжими яйцями та високоякісним м'ясом птиці.\n\nЗавдяки доцільному утриманню та годівлі забезпечується безперервне виробництво яєць та бройлерів. Оскільки робочі процеси значною мірою механізовані, можлива висока продуктивність праці.\n\nПід бройлерами розуміють відгодівельних курчат або півників, які за відносно короткий проміжок часу досягають великої маси тіла з високим вмістом цінного м'яса. М'ясо бройлерів багате на білок, має низький вміст жиру та енергії, смачне та легкозасвоюване.\n\nСередня кінцева маса при відгодівлі бройлерів становить 1500 г. При цьому на кілограм приросту має бути витрачено не більше 2 кг корму.\n\nНа успіх відгодівлі впливають такі фактори, як утримання та годівля, розведення, вік тварин.",vocabulary:[{word:"das Alter",answer:"вік"},{word:"die Anlage",answer:"установка, комплекс"},{word:"das Ei",answer:"яйце"},{word:"der Erfolg",answer:"успіх"},{word:"das Geflügel",answer:"птиця"},{word:"die Geflügelproduktion",answer:"виробництво птиці"},{word:"gewährleisten",answer:"гарантувати, забезпечувати"},{word:"kontinuierlich",answer:"безперервний"},{word:"schmackhaft",answer:"смачний"},{word:"verdaulich",answer:"засвоюваний"},{word:"die Zunahme",answer:"приріст"},{word:"zweckmäßig",answer:"доцільний"}],comprehension3_1:[{textParts:["1) Von den Wissenschaftlern werden neue leistungsfähige ","INPUT"," geschaffen."],answers:["Tierzucht"]},{textParts:["2) Die Rentabilität der ","INPUT"," wurde erhöht."],answers:["Rindermast"]},{textParts:["3) Die Broilerproduktion kann durch richtige ","INPUT"," und ","INPUT"," verbessert werden."],answers:["Haltung","Fütterung"]}],comprehension3_2:[{question:"1) Wie ist die Tendenz des Pro-Kopf-Verbrauchs an Eiern und Geflügelfleisch in der Welt?",answer:"Der Pro-Kopf-Verbrauch an Eiern und Geflügelfleisch steigt in der ganzen Welt ständig an."},{question:"2) Wie wird die kontinuierliche Eier- und Broilerproduktion gewährleistet?",answer:"Durch zweckmäßige Haltung und Fütterung wird kontinuierliche Eier- und Broilerproduktion gewährleistet."},{question:"3) Warum ist in der Geflügelproduktion eine hohe Arbeitsproduktivität möglich?",answer:"In der Geflügelproduktion ist eine hohe Arbeitsproduktivität möglich, da die Arbeitsgänge weitgehend mechanisiert sind."},{question:"4) Welche Eigenschaften hat das Fleisch von Broilern?",answer:"Das Fleisch von Broilern ist eiweißreich, fett- und energiearm, schmackhaft sowie leicht verdaulich."},{question:"5) Was ist für den Masterfolg wichtig?",answer:"Für den Masterfolg sind Haltung und Fütterung, Züchtung und Alter der Tiere wichtig."}]};
+        variantsData["3"]={title:"Schweineproduktion—eine der Hauptrichtungen der Tierproduktion",germanText:"In der Ernährung der Bevölkerung vieler Länder spielen Schweinefleisch und Schweinefleischprodukte eine bedeutende Rolle. Zu dieser dominierenden Stellung der Schweineproduktion haben solche günstigen Faktoren geführt, wie hohe Vermehrungsrate, relativ geringe Ansprüche an Haltung, Pflege und Fütterung.<br><br>In der BRD gehört die Schweinefleischproduktion zu den wichtigsten Produktionsrichtungen der Landwirtschaft. In den letzten Jahren wurden die Schweinebestände beachtlich vergrößert.<br><br>Darum tritt die Senkung des Kaloriengehaltes von Schweinefleisch und die Verbesserung seiner Qualität in den Vordergrund. Fettarmes Schweinefleisch ist wegen seines hohen Gehalts an Eiweiß und Phosphor sowie an den Vitaminen A, B1, B2 ebenso hochwertig wie das Fleisch von Rind, Kalb oder Geflügel.",explanation:"",correctTranslation:"Виробництво свинини — один з головних напрямків тваринництва\nУ харчуванні населення багатьох країн свинина та продукти зі свинини відіграють значну роль. До такого домінуючого становища свинарства призвели такі сприятливі фактори, як висока швидкість розмноження, відносно низькі вимоги до утримання, догляду та годівлі.\n\nУ ФРН виробництво свинини є одним з найважливіших напрямків сільськогосподарського виробництва. В останні роки поголів'я свиней значно збільшилося.\n\nТому на перший план виходить зниження калорійності свинини та покращення її якості. Нежирна свинина завдяки високому вмісту білка та фосфору, а також вітамінів A, B1, B2 є такою ж високоякісною, як м'ясо великої рогатої худоби, телятини або птиці.",vocabulary:[{word:"beachtlich",answer:"значний"},{word:"beeinflussen",answer:"впливати"},{word:"die Erzeugung",answer:"виробництво"},{word:"das Fett",answer:"жир"},{word:"futtern",answer:"годувати"},{word:"der Gehalt",answer:"вміст"},{word:"reichlich",answer:"рясний, достатній"},{word:"die Richtung",answer:"напрямок"},{word:"das Schwein",answer:"свиня"},{word:"das Schweinefleisch",answer:"свинина"},{word:"die Schweineproduktion",answer:"виробництво свинини"},{word:"die Senkung",answer:"зниження"}],comprehension3_1:[{textParts:["1) Bei Haltung, Pflege und ","INPUT"," werden von den Schweinen relativ geringe ","INPUT"," gestellt."],answers:["Fütterung","Ansprüche"]},{textParts:["2) Die dominierende Rolle der ","INPUT"," wird von einigen Faktoren bestimmt."],answers:["Schweineproduktion"]},{textParts:["3) In den letzten Jahren wurden die ","INPUT"," beachtlich vergrößert."],answers:["Schweinebestände"]},{textParts:["4) Die Erzeugung von Schweinefleischprodukten wurde den Interessen der ","INPUT"," angepasst."],answers:["Verbraucher"]},{textParts:["5) Der Kaloriengehalt von ","INPUT"," wurde durch entsprechende ","INPUT"," geringer."],answers:["Schweinefleisch","Fütterung"]}],comprehension3_2:[{question:"1) Welche Rolle spielt die Schweineproduktion in der BRD?",answer:"In der BRD gehört die Schweinefleischproduktion zu den wichtigsten Produktionsrichtungen der Landwirtschaft."},{question:"2) Welche wertvollen Eigenschaften hat fettarmes Schweinefleisch?",answer:"Fettarmes Schweinefleisch ist wegen seines hohen Gehalts an Eiweiß und Phosphor sowie an den Vitaminen A, B1, B2 ebenso hochwertig wie das Fleisch von Rind, Kalb oder Geflügel."},{question:"3) Welche Faktoren beeinflussen die Fleischqualität?",answer:"Die Senkung des Kaloriengehaltes von Schweinefleisch und die Verbesserung seiner Qualität treten in den Vordergrund."}]};
+        variantsData["4"]={title:"Bedeutung der Rinderproduktion",germanText:"Die Rinderproduktion nimmt in vielen Ländern die wichtigste Stellung unter den Zweigen der Tierproduktion ein. Eine hervorragende Rolle des Rindes besteht darin; daß es pflanzliche Stoffe in hochwertige Produkte umwandelt, die sehr wertvoll für die menschliche Ernährung sind.<br><br>Aus der Milch- und Rindfleischproduktion wird ein bedeutender Teil des Bedarfes der Bevölkerung an biologisch hochwertigem Eiweiß gedeckt<br><br>Die Rinderhaltung kann fast in jedem Betrieb erfolgen, da das Rind eine große Anpassungsfähigkeit an die natürlichen Produktionsbedingungen hat.<br><br>Die Haltung der Milchkühe hat das Ziel, Milch hoher Qualität und mit möglichst geringen Kosten zu produzieren. Außerdem werden dabei Kälber für die Färsenaufzucht und die Rindermast erzeugt.<br><br>Die Leistungen der Milchkühe hängen von der erblichen Veranlagung der Kühe, sowie von der Fütterung und Pflege ab.<br><br>Die Rindermast ist neben der Milchproduktion das bedeutendste Gebiet der Rinderhaltung. Für die Mast werden nur die Kälber genutzt, die für die Reproduktion des Kuhbestandes nicht erforderlich sind.",explanation:"die Anpassungsfähigkeit — екологічна пристосовуваність; die erbliche Veranlagung - спадкові задатки",correctTranslation:"Значення виробництва великої рогатої худоби\nВиробництво великої рогатої худоби посідає найважливіше місце серед галузей тваринництва в багатьох країнах. Виняткова роль великої рогатої худоби полягає в тому, що вона перетворює рослинні речовини на високоякісні продукти, які є дуже цінними для харчування людини.\n\nЗначна частина потреби населення в біологічно цінному білку задовольняється за рахунок виробництва молока та яловичини.\n\nУтримання великої рогатої худоби може здійснюватися майже в кожному господарстві, оскільки велика рогата худоба має високу адаптаційну здатність до природних умов виробництва.\n\nМетою утримання молочних корів є виробництво молока високої якості з якомога меншими витратами. Крім того, при цьому вирощуються телята для вирощування телиць та відгодівлі великої рогатої худоби.\n\nПродуктивність молочних корів залежить від спадкової схильності корів, а також від годівлі та догляду.\n\nВідгодівля великої рогатої худоби є, поряд з виробництвом молока, найважливішою галуззю скотарства. Для відгодівлі використовуються лише ті телята, які не потрібні для відтворення поголів'я корів.",vocabulary:[{word:"die Aufzucht",answer:"вирощування"},{word:"das Eiweiß",answer:"білок"},{word:"gering",answer:"незначний, низький"},{word:"das Kalb",answer:"теля"},{word:"die Kosten",answer:"витрати"},{word:"die Mast",answer:"відгодівля"},{word:"die Reproduktion",answer:"відтворення"},{word:"das Rind",answer:"велика рогата худоба"},{word:"die Rinderproduktion",answer:"виробництво великої рогатої худоби"},{word:"das Rindfleisch",answer:"яловичина"},{word:"umwandeln",answer:"перетворювати"},{word:"wertvoll",answer:"цінний"}],comprehension3_1:[{textParts:["1) Pflanzliche Stoffe werden von den Tieren in hochwertige Produkte ","INPUT","."],answers:["umgewandelt"]},{textParts:["2) Der Bedarf der Bevölkerung an tierischem Eiweiß wird durch Milch und Fleisch ","INPUT","."],answers:["gedeckt"]},{textParts:["3) Auf dieser Farm wird Milch hoher Qualität mit geringen Kosten ","INPUT","."],answers:["produziert"]},{textParts:["4) Von den Wissenschaftlern werden neue Pflanzensorten ","INPUT","."],answers:["geschaffen"]},{textParts:["5) Für die Reproduktion des Kuhbestandes werden nicht alle Kälber ","INPUT","."],answers:["genutzt"]}],comprehension3_2:[{question:"1) Welche Stellung nimmt die Rinderproduktion unter den Zweigen der Tierproduktion ein?",answer:"Die Rinderproduktion nimmt in vielen Ländern die wichtigste Stellung unter den Zweigen der Tierproduktion ein."},{question:"2) Warum kann die Rinderhaltung fast in jedem Betrieb erfolgen?",answer:"Die Rinderhaltung kann fast in jedem Betrieb erfolgen, da das Rind eine große Anpassungsfähigkeit an die natürlichen Produktionsbedingungen hat."},{question:"3) Wovon hängen die Leistungen der Milchkühe ab?",answer:"Die Leistungen der Milchkühe hängen von der erblichen Veranlagung der Kühe, sowie von der Fütterung und Pflege ab."}]};
+        variantsData["5"]={title:"Aufgaben der Tierproduktion",germanText:"Mit höherem Lebensstandard steigen die Ansprüche an eine gesunde Ernährung. Die Nachfrage nach hochwertigen, energiearmen tierischen Nahrungsmitteln, wie Fleisch, Milchprodukte und Eier, nimmt zu.<br><br>Die Hauptbestandteile einer leistungsfähigen Tierproduktion sind Züchtung, Fütterung und Haltung. Durch die Züchtung neuer spezialisierter Rassen wird das genetische Leistungspotential erhöht. An die Züchter wird die Forderung gestellt, neue leistungsfähigere Tierrassen zu züchten sowie die Arbeiten der Züchtungsforschung zu intensivieren.<br><br>Eine industriemäßige Tierproduktion braucht neue Lösungen der Fütterungs- und Haltungsprobleme, der Probleme der Hygiene und Pflege der Tierbestände. Die Futterrationen werden nach ihrem Nährstoffgehalt dem Bedarf der Tiere angepaßt.<br><br>Die Ansprüche verschiedener Tierarten an die Haltung sind verschieden. Aber alle Stallgebäude muß man so einrichten, daß sie Fütterung, Nutzung und Pflege der Tiere erleichtern.<br><br>In den Ländern mit relativ begrenzter landwirtschaftlicher Nutzfläche wird von der Tierproduktion eine besonders hohe Leistung je Tier gefordert. Die Hauptaufgabe der Landwirtschaft solcher Länder besteht darin, den Bedarf der Bevölkerung an tierischen Produkten möglichst aus der eigenen Produktion zu decken.",explanation:"die Nachfrage nach... — попит на...; die Züchtungsforschung — селекційно-генетичні дослідження; nach ihrem Nährstoffgehalt — за вмістом в них поживних речовин; die Forderung stellen an (А) — висувати вимоги до чого-небудь",correctTranslation:"Завдання тваринництва\nЗ підвищенням рівня життя зростають вимоги до здорового харчування. Зростає попит на високоякісні, низькокалорійні тваринні продукти, такі як м'ясо, молочні продукти та яйця.\n\nОсновними складовими ефективного тваринництва є селекція, годівля та утримання. Завдяки виведенню нових спеціалізованих порід підвищується генетичний потенціал продуктивності. До селекціонерів ставиться вимога виводити нові, більш продуктивні породи тварин, а також інтенсифікувати роботу селекційних досліджень.\n\nПромислове тваринництво потребує нових рішень проблем годівлі та утримання, проблем гігієни та догляду за поголів'ям тварин. Кормові раціони адаптуються до потреб тварин відповідно до їхнього вмісту поживних речовин.\n\nВимоги різних видів тварин до утримання різняться. Але всі будівлі для тварин повинні бути облаштовані таким чином, щоб вони полегшували годівлю, використання та догляд за тваринами.\n\nУ країнах з відносно обмеженою сільськогосподарською площею від тваринництва вимагається особливо висока продуктивність на одну тварину. Головне завдання сільського господарства таких країн полягає в тому, щоб задовольнити потребу населення в тваринних продуктах, наскільки це можливо, за рахунок власного виробництва.",vocabulary:[{word:"anpassen",answer:"пристосовувати"},{word:"der Bestandteil",answer:"складова частина"},{word:"eigen",answer:"власний"},{word:"einrichten",answer:"облаштовувати"},{word:"die Ernährung",answer:"харчування"},{word:"fordern",answer:"вимагати"},{word:"die Forderung",answer:"вимога"},{word:"der Gehalt",answer:"вміст"},{word:"die Haltung",answer:"утримання"},{word:"hochwertig",answer:"високоякісний"},{word:"leistungsfähig",answer:"продуктивний"},{word:"die Lösung",answer:"рішення"},{word:"die Pflege",answer:"догляд"},{word:"die Rasse",answer:"порода"},{word:"relativ",answer:"відносно"},{word:"der Züchter",answer:"селекціонер, розплідник"},{word:"die Züchtung",answer:"селекція, розведення"},{word:"zunehmen",answer:"зростати"}],comprehension3_1:[{textParts:["1) Mit jedem Jahr steigen ","INPUT"," an eine gesunde Ernährung."],answers:["die Ansprüche"]},{textParts:["2) Fleisch, Milchprodukte und Eier sind ","INPUT"," Nahrungsmittel."],answers:["hochwertige"]},{textParts:["3) Züchtung, Fütterung und ","INPUT"," sind Bestandteile einer leistungsfähigen Tierproduktion."],answers:["Haltung"]},{textParts:["4) Eine industriemäßige Tierproduktion braucht neue ","INPUT"," der Fütterungs- und Haltungsprobleme."],answers:["Lösungen"]},{textParts:["5) Die Zahl der leistungsfähigen Tiere muß ständig ","INPUT","."],answers:["zunehmen"]}],comprehension3_2:[{question:"1) Warum nimmt die Nachfrage nach hochwertigen Nahrungsmitteln zu?",answer:"Die Nachfrage nach hochwertigen Nahrungsmitteln nimmt zu, weil mit höherem Lebensstandard die Ansprüche an eine gesunde Ernährung steigen."},{question:"2) Was sind die Hauptbestandteile der Tierproduktion?",answer:"Die Hauptbestandteile einer leistungsfähigen Tierproduktion sind Züchtung, Fütterung und Haltung."},{question:"3) Welche Rolle spielt die Tierzüchtung?",answer:"Durch die Züchtung neuer spezialisierter Rassen wird das genetische Leistungspotential erhöht. An die Züchter wird die Forderung gestellt, neue leistungsfähigere Tierrassen zu züchten sowie die Arbeiten der Züchtungsforschung zu intensivieren."},{question:"4) Worin besteht die Aufgabe der Tierproduktion in den Ländern mit begrenzter LN?",answer:"Die Hauptaufgabe der Tierproduktion in den Ländern mit begrenzter landwirtschaftlicher Nutzfläche besteht darin, den Bedarf der Bevölkerung an tierischen Produkten möglichst aus der eigenen Produktion zu decken."}]};
+        variantsData["6"]={title:"Pflanzenzucht",germanText:"Aufgabe der Pflanzenzucht ist Steigerung der Erträge und Verbesserung der Qualität von Kulturpflanzen. Das bedeutet die Züchtung von Sorten mit den Eigenschaften, die Ertragssicherheit erhöhen und Bedingungen für die Anwendung industriemäßiger Produktionsmethoden schaffen. Der Anteil der Züchtung an der Ertragssteigerung in der Pflanzenproduktion beträgt etwa 25%.<br><br>Die Pflanzenzüchtung hat zahlreiche Züchtungsmethoden. Jede Züchtungsmethode ist mit der Auslese verbunden. Die ausgelesenen Pflanzen züchtet man weiter. Dabei liest man in jeder Generation nur die dem Endziel am meisten entsprechenden Pflanzen aus.<br><br>Durch genaues Beobachten der einzelnen Pflanzen und ihrer Nachkommenschaften unter verschiedenen Bedingungen verschiedener Jahre bekommt der Züchter ein Bild über die Leistungen und Ansprüche seines Zuchtmaterials. Zahlreiche Methoden, darunter komplizierte physikalische und chemische Bestimmungsmethoden ermöglichen schnelle und sichere Bestimmung des Materials. Dann vermehrt man diese neuen Pflanzenformen weiter.<br><br>Ihre Nachkommenschaften, die Stämme, prüft man während 3 oder 4 Jahre im Zuchtbetrieb. Von den zahlreichen Stämmen bleibt nach strenger Auslese meist nur ein Stamm. Das ist die neugezüchtete Sorte.",explanation:"die Ertragssicherheit - надійність урожаю; die Auslese — відбір; die Nachkommenschaft — наступне покоління; der Stamm, die Stämme- штамм, лінія; der Zuchtbetrieb — селекційно - генетична станція",correctTranslation:"Селекція рослин\nЗавданням селекції рослин є підвищення врожайності та покращення якості культурних рослин. Це означає виведення сортів з властивостями, які підвищують надійність урожаю та створюють умови для застосування промислових методів виробництва. Частка селекції у підвищенні врожайності в рослинництві становить близько 25%.\n\nСелекція рослин має численні методи селекції. Кожен метод селекції пов'язаний з відбором. Відібрані рослини продовжують розводити. При цьому в кожному поколінні відбирають лише ті рослини, які найбільше відповідають кінцевій меті.\n\nЗавдяки точному спостереженню за окремими рослинами та їхніми нащадками в різних умовах різних років селекціонер отримує уявлення про продуктивність та вимоги свого селекційного матеріалу. Численні методи, включаючи складні фізичні та хімічні методи визначення, дозволяють швидко та надійно визначити матеріал. Потім ці нові форми рослин продовжують розмножувати.\n\nЇхні нащадки, штами, перевіряються протягом 3 або 4 років у селекційному господарстві. З численних штамів після суворого відбору зазвичай залишається лише один штам. Це нововиведений сорт.",vocabulary:[{word:"die Pflanzenzüchtung",answer:"селекція рослин"},{word:"die Züchtungsmethoden",answer:"методи селекції"},{word:"das Zuchtziel",answer:"мета селекції"},{word:"das Zuchtmaterial",answer:"селекційний матеріал"},{word:"der Zuchtbetrieb",answer:"селекційне господарство"}],comprehension3_1:[{textParts:["1. ","INPUT"," für die Züchtungsauslese sind Populationen."],answers:["Das Material"]},{textParts:["2. In jeder ","INPUT"," muß man für die Züchtung die besten ","INPUT"," auslesen."],answers:["Generation","Pflanzen"]},{textParts:["3. Die ausgelesenen Pflanzen muß man weiter ","INPUT","."],answers:["züchten"]}],comprehension3_2:[{question:"1) Was ist die Aufgabe der Pflanzenzüchtung?",answer:"Aufgabe der Pflanzenzucht ist Steigerung der Erträge und Verbesserung der Qualität von Kulturpflanzen."},{question:"2) Welchen Anteil hat die Züchtung an der Ertragssteigerung?",answer:"Der Anteil der Züchtung an der Ertragssteigerung in der Pflanzenproduktion beträgt etwa 25%."},{question:"3) Von welchen Züchtungsmethoden ist die Rede im Text?",answer:"Der Text spricht von zahlreichen Züchtungsmethoden, die mit der Auslese verbunden sind, sowie von physikalischen und chemischen Bestimmungsmethoden."}]};
+        variantsData["7"]={title:"Futterproduktion auf dem Acker",germanText:"Nach dem Getreide nimmt die Produktion von Futter flächenmäßig die zweite Stelle ein. Als Futterpflanzen baut man solche Nutzpflanzen an, die der Fütterung der Tiere dienen, vor allem Kleearten, Luzerne, Gräser. Diese ertragreichen, für die Standortbedingungen geeigneten Futterarten finden eine breite Anwendung.<br><br>Die Futterproduktion erfolgt also nicht nur auf ständigen Futterflächen wie Wiesen und Weiden, sondern auch auf dem Acker. Auf Standorten ohne Grünland ist die Ackerfutterproduktion die alleinige Futterquelle.<br><br>Um den steigenden Grundfutterbedarf der Tierproduktion zu decken, ist eine Ertragssteigerung auf den vorhandenen Futterflächen notwendig, die durch die Intensivierung der Produktion möglich ist, in erster Linie durch Düngung und Bewässerung. Neben der Ertragssteigerung muß man auch die Futterqualität verbessern.<br><br>Eine große Bedeutung für die Erhaltung und Steigerung der Bodenfruchtbarkeit hat der Anbau von Leguminosen, da sie den Boden mit Stickstoff und Humus anreichern.",explanation:"flächenmäßig — за площею; Anwendung finden - знаходити застосування; die Ackerfutterproduktion — польове кормовиробництво; das Grundfutter - головний корм (складає основу раціону); die Leguminosen — бобові",correctTranslation:"Виробництво кормів на ріллі\nПісля зернових виробництво кормів займає друге місце за площею. Як кормові культури вирощують такі корисні рослини, які служать для годівлі тварин, насамперед види конюшини, люцерну, трави. Ці високоврожайні, придатні для місцевих умов кормові культури знаходять широке застосування.\n\nВиробництво кормів відбувається не тільки на постійних кормових угіддях, таких як луки та пасовища, а й на ріллі. На ділянках без пасовищ рільниче кормовиробництво є єдиним джерелом кормів.\n\nЩоб задовольнити зростаючу потребу тваринництва в основних кормах, необхідне підвищення врожайності на наявних кормових угіддях, що можливо за рахунок інтенсифікації виробництва, насамперед за рахунок удобрення та зрошення. Окрім підвищення врожайності, необхідно також покращувати якість кормів.\n\nВелике значення для збереження та підвищення родючості ґрунту має вирощування бобових, оскільки вони збагачують ґрунт азотом та гумусом.",vocabulary:[{word:"anreichern",answer:"збагачувати"},{word:"die Futterproduktion",answer:"кормовиробництво"},{word:"die Fütterung",answer:"годівля"},{word:"das Gras",answer:"трава"},{word:"das Grünland",answer:"пасовище"},{word:"der Humus",answer:"гумус"},{word:"der Klee",answer:"конюшина"},{word:"die Leguminosen",answer:"бобові"},{word:"notwendig",answer:"необхідний"},{word:"die Quelle",answer:"джерело"},{word:"ständig",answer:"постійний"},{word:"der Standort",answer:"місце розташування"},{word:"verbessern",answer:"покращувати"},{word:"vorhanden",answer:"наявний"}],comprehension3_1:[{textParts:["1) Nach der Getreideproduktion nimmt ","INPUT"," die zweite Stelle ein."],answers:["die Futterproduktion"]},{textParts:["2) Die Futterpflanzen dienen ","INPUT","."],answers:["der Fütterung der Tiere"]},{textParts:["3) Auf den ","INPUT"," Futterflächen ist Ertragssteigerung ","INPUT","."],answers:["vorhandenen","notwendig"]},{textParts:["4) Man muß die Futterqualität ","INPUT","."],answers:["verbessern"]},{textParts:["5) ","INPUT"," reichern den Boden mit Stickstoff und Humus an."],answers:["Leguminosen"]},{textParts:["6) Die Ackerfutterproduktion ist auf Standorten ohne Grünland die alleinige ","INPUT"," des Futters."],answers:["Quelle"]}],comprehension3_2:[{question:"1) Welche Futterquelle gibt es neben dem Grünland?",answer:"Neben dem Grünland gibt es die Ackerfutterproduktion als Futterquelle."},{question:"2) Welche Futterarten finden eine breite Anwendung?",answer:"Kleearten, Luzerne und Gräser finden eine breite Anwendung als Futterarten."},{question:"3) Was ist für die Intensivierung der Ackerfutterproduktion notwendig?",answer:"Für die Intensivierung der Ackerfutterproduktion ist eine Ertragssteigerung auf den vorhandenen Futterflächen notwendig, die durch Düngung und Bewässerung möglich ist."},{question:"4) Welche Rolle spielt der Anbau von Leguminosen?",answer:"Der Anbau von Leguminosen hat eine große Bedeutung für die Erhaltung und Steigerung der Bodenfruchtbarkeit, da sie den Boden mit Stickstoff und Humus anreichern."}]};
+        variantsData["8"]={title:"Grundlage der menschlichen Ernährung",germanText:"Seit etwa 6 bis 7 Jahrtausenden bauen die Menschen Getreide an. Das Getreide bildet die Grundlage der menschlichen Ernährung und in hohem Maße auch der tierischen Produktion. Als wichtigste landwirtschaftliche Kultur hat das Getreide den größten Anteil an der Ackerfläche.<br><br>Das Getreide stellt an die Boden- und Klimaverhältnisse relativ geringe Ansprüche. Ein anderer Vorteil ist hoher Grad der Mechanisierung der bei der Getreideproduktion notwendigen Arbeitsgänge. Das ermöglicht eine hohe Arbeitsproduktivität.<br><br>Bei Weizen, Roggen und Gerste baut man in Europa sowohl Winter- als auch Sommerformen an. Das im Herbst ausgesäte Wintergetreide erreicht wegen seiner langen Vegetationszeit und der guten Ausnutzung der Winterfeuchtigkeit hohe und stabile Erträge. In Gebieten mit langen und strengen Wintern baut man dagegen Sommergetreide an.<br><br>Im Weltmaßstab stieg auch die Futtergetreideproduktion, da Milch- und Fleischleistungen der wachsenden Tierbestände energiereiches Leistungsfutter erfordern.<br><br>Die Getreidezüchtung hat die Aufgabe, neue und verbesserte Sorten zu schaffen. Die von den Wissenschaftlern neugezüchteten Getreidesorten ermöglichen es, industriemäßige Produktionsmethoden anzuwenden.",explanation:"1. sowohl... als auch — як... так і…",correctTranslation:"Основа людського харчування\nПриблизно 6-7 тисячоліть люди вирощують зернові. Зерно є основою харчування людини, а також значною мірою тваринницького виробництва. Як найважливіша сільськогосподарська культура, зернові займають найбільшу частку орних земель.\n\nЗернові пред'являють відносно низькі вимоги до ґрунтових та кліматичних умов. Ще однією перевагою є високий ступінь механізації необхідних робочих процесів при виробництві зернових. Це забезпечує високу продуктивність праці.\n\nУ Європі вирощують як озимі, так і ярі форми пшениці, жита та ячменю. Озимі зернові, посіяні восени, досягають високих і стабільних врожаїв завдяки тривалому вегетаційному періоду та хорошому використанню зимової вологи. У регіонах з довгими та суворими зимами, навпаки, вирощують ярі зернові.\n\nУ світовому масштабі також зросло виробництво фуражного зерна, оскільки зростаюче поголів'я худоби потребує енергетично багатих кормів для високої продуктивності молока та м'яса.\n\nСелекція зернових має завданням створення нових та покращених сортів. Нововиведені вченими сорти зернових дозволяють застосовувати промислові методи виробництва.",vocabulary:[{word:"der Anspruch",answer:"вимога"},{word:"der Anteil",answer:"частка"},{word:"der Arbeitsgang",answer:"робочий процес"},{word:"die Arbeitsproduktivität",answer:"продуктивність праці"},{word:"ermöglichen",answer:"уможливлювати"},{word:"etwa",answer:"приблизно"},{word:"die Gerste",answer:"ячмінь"},{word:"das Klima",answer:"клімат"},{word:"der Roggen",answer:"жито"},{word:"das Sommergetreide",answer:"ярі зернові"},{word:"steigen",answer:"зростати"},{word:"die Verhältnisse",answer:"умови"},{word:"der Vorteil",answer:"перевага"},{word:"das Wintergetreide",answer:"озимі зернові"}],comprehension3_1:[{textParts:["1) Die in diesem ","INPUT"," angebaute Winterweizensorte bringt hohe ","INPUT","."],answers:["Betrieb","Erträge"]},{textParts:["2) Diese im ","INPUT"," eingesetzte universelle Erntemaschine bedient nur eine Person."],answers:["Garten"]},{textParts:["3) Die für den ","INPUT"," von Kulturpflanzen geschaffenen Bedingungen fördern ","INPUT"," der Krümelstruktur."],answers:["Anbau","die Bildung"]}],comprehension3_2:[{question:"1) Wie lange bauen die Menschen das Getreide an?",answer:"Die Menschen bauen das Getreide seit etwa 6 bis 7 Jahrtausenden an."},{question:"2) Worin besteht die Bedeutung des Getreides?",answer:"Das Getreide bildet die Grundlage der menschlichen Ernährung und in hohem Maße auch der tierischen Produktion."},{question:"3) Welche Vorteile hat der Anbau von Getreide?",answer:"Vorteile des Anbaus von Getreide sind geringe Ansprüche an Boden- und Klimaverhältnisse und hoher Grad der Mechanisierung der Arbeitsgänge, was eine hohe Arbeitsproduktivität ermöglicht."},{question:"4) Warum erreicht das Wintergetreide hohe und stabile Erträge?",answer:"Das Wintergetreide erreicht hohe und stabile Erträge wegen seiner langen Vegetationszeit und der guten Ausnutzung der Winterfeuchtigkeit."},{question:"5) Welche Aufgabe hat die Getreidezüchtung?",answer:"Die Getreidezüchtung hat die Aufgabe, neue und verbesserte Sorten zu schaffen, die es ermöglichen, industriemäßige Produktionsmethoden anzuwenden."}]};
+        variantsData["9"]={title:"Bodenbearbeitung und Düngung",germanText:"Die Bearbeitung des Bodens erfolgt mit entsprechenden Maschinen und Geräten, um für den Anbau von Kulturpflanzen die besten Bedingungen zu schaffen, d.h. die Bildung der Krümelstruktur zu fördern.<br><br>Im Vordergrund aller Maßnahmen der Bodenbearbeitung steht die Lockerung. Der lockere Boden kann das Niederschlagswasser aufnehmen und speichern.<br><br>Um die Nährstoffversorgung der Kulturpflanzen nach Bedarf zu sichern, bringt man in den Boden die Düngemittel ein. Das sind Stoffe, die die Bodenfruchtbarkeit und damit auch die Erträge der Kulturpflanzen steigern.<br><br>Die Düngemittel gliedert man in zwei Hauptgruppen, die organischen Düngemittel und die mineralischen Düngemittel.<br><br>Die organischen Düngemittel bekommt man im landwirtschaftlichen Betrieb selbst. Dazu gehören Stallmist, Gründüngung, Gülle, Kompost.<br><br>Die mineralischen Düngemittel erzeugt die Industrie. Dabei handelt es sich um Kalk-, Stickstoff-, Phosphorsäure- und Kalidünger. Die Mineraldüngung ist eine der effektivsten Maßnahmen zur Intensivierung der Pflanzenproduktion.",explanation:"aufnehmen — впитувати; im landwirtschaftlichen Betrieb selbst – безпосередньо у самому сільськогосподарському підприємстві; es handelt sich um... — мова йде про…",correctTranslation:"Обробка ґрунту та удобрення\nОбробка ґрунту здійснюється відповідними машинами та знаряддями, щоб створити найкращі умови для вирощування культурних рослин, тобто сприяти утворенню грудкової структури.\n\nНа першому плані всіх заходів з обробки ґрунту стоїть розпушування. Розпушений ґрунт може вбирати та зберігати дощову воду.\n\nЩоб забезпечити живлення культурних рослин за потребою, в ґрунт вносять добрива. Це речовини, які підвищують родючість ґрунту, а отже, і врожайність культурних рослин.\n\nДобрива поділяють на дві основні групи: органічні добрива та мінеральні добрива.\n\nОрганічні добрива отримують безпосередньо в сільськогосподарському підприємстві. До них належать гній, зелене добриво, гноївка, компост.\n\nМінеральні добрива виробляє промисловість. Йдеться про вапняні, азотні, фосфорні та калійні добрива. Мінеральне удобрення є одним з найефективніших заходів для інтенсифікації рослинництва.",vocabulary:[{word:"aufnehmen",answer:"вбирати"},{word:"die Bearbeitung",answer:"обробка"},{word:"das Düngemittel",answer:"добриво"},{word:"die Düngung",answer:"удобрення"},{word:"einbringen",answer:"вносити"},{word:"gehören",answer:"належати"},{word:"gliedern",answer:"ділити, класифікувати"},{word:"das Kali",answer:"калій"},{word:"der Kalk",answer:"вапно"},{word:"der Krümel",answer:"грудка"},{word:"locker",answer:"пухкий"},{word:"die Lockerung",answer:"розпушування"},{word:"der Nährstoff",answer:"поживна речовина"},{word:"die Säure",answer:"кислота"},{word:"schaffen",answer:"створювати"},{word:"der Stallmist",answer:"гній"},{word:"der Stickstoff",answer:"азот"},{word:"der Stoff",answer:"речовина"}],comprehension3_1:[{textParts:["1) Die Bodenbearbeitung schafft die ","INPUT","."],answers:["besten Bedingungen"]},{textParts:["2) Die Hauptmaßnahme der Bodenbearbeitung ist ","INPUT","."],answers:["die Lockerung"]},{textParts:["3) Der lockere Boden kann das Niederschlagswasser gut ","INPUT","."],answers:["aufnehmen und speichern"]},{textParts:["4) Zu den mineralischen Düngemitteln gehören ","INPUT",", ","INPUT",", ","INPUT"," und ","INPUT","."],answers:["Kalkdünger","Stickstoffdünger","Phosphorsäuredünger","Kalidünger"]}],comprehension3_2:[{question:"1) Was ist das Ziel der Bodenbearbeitung?",answer:"Das Ziel der Bodenbearbeitung ist es, für den Anbau von Kulturpflanzen die besten Bedingungen zu schaffen, d.h. die Bildung der Krümelstruktur zu fördern."},{question:"2) Welche Maßnahme der Bodenbearbeitung ist am wichtigsten?",answer:"Die wichtigste Maßnahme der Bodenbearbeitung ist die Lockerung."},{question:"3) Warum?",answer:"Der lockere Boden kann das Niederschlagswasser aufnehmen und speichern."},{question:"4) Worin besteht die Bedeutung der Düngemittel?",answer:"Die Düngemittel steigern die Bodenfruchtbarkeit und damit auch die Erträge der Kulturpflanzen."},{question:"5) Welche Düngemittel gehören zu den organischen?",answer:"Zu den organischen Düngemitteln gehören Stallmist, Gründüngung, Gülle, Kompost."},{question:"6) Und zu den mineralischen?",answer:"Zu den mineralischen Düngemitteln gehören Kalk-, Stickstoff-, Phosphorsäure- und Kalidünger."}]};
+        variantsData["10"]={title:"Planung der Landwirtschaft",germanText:"Staatliche Planung der Landwirtschaft ist ein Teil der Planung der gesamten Volkswirtschaft. Die Aufgabe der Planung besteht in der Gewährleistung der planmäßigen und proportionalen Entwicklung der Landwirtschaft.<br><br>Der Ausgangspunkt der Planung ist der Bedarf der Bevölkerung. Man kann diesen Bedarf nur decken, wenn alle Planaufgaben bilanziert sind.<br><br>Wenn der Plan richtig ausgearbeitet ist, so ist die Initiative der Bauern und Arbeiter auf die weitere Intensivierung und den Übergang zur industriemäßigen Produktion gerichtet.<br><br>Die wissenschaftliche Grundlage der Planung der Landwirtschaft sind Prognosen über künftige Prozesse und Erscheinungen, die eine lange Periode umfassen. Sind Entwicklungsprogramme für Mechanisierung, Melioration, Chemisierung für 15 bis 20 Jahre ausgearbeitet, so ist das die langfristige Planung.<br><br>Eine wichtige Form der Planung ist der Fünfjahresplan der Entwicklung der Landwirtschaft. Auf der Grundlage des Fünfjahresplanes arbeitet man den bilanzierten Jahresplan aus.",explanation:"bestehen in (D) — полягати в чому-небудь",correctTranslation:"Планування сільського господарства\nДержавне планування сільського господарства є частиною планування всього народного господарства. Завдання планування полягає в забезпеченні планомірного та пропорційного розвитку сільського господарства.\n\nВихідним пунктом планування є потреби населення. Ці потреби можна задовольнити лише тоді, коли всі планові завдання збалансовані.\n\nЯкщо план правильно розроблений, то ініціатива селян та робітників спрямована на подальшу інтенсифікацію та перехід до промислового виробництва.\n\nНауковою основою планування сільського господарства є прогнози щодо майбутніх процесів та явищ, які охоплюють тривалий період. Якщо розроблені програми розвитку механізації, меліорації, хімізації на 15-20 років, то це є довгостроковим плануванням.\n\nВажливою формою планування є п'ятирічний план розвитку сільського господарства. На основі п'ятирічного плану розробляється збалансований річний план.",vocabulary:[{word:"ausarbeiten",answer:"розробляти"},{word:"bestehen",answer:"полягати"},{word:"die Bevölkerung",answer:"населення"},{word:"bilanzieren",answer:"балансувати"},{word:"die Erscheinung",answer:"явище"},{word:"industriemäßig",answer:"промисловий"},{word:"planmäßig",answer:"планомірний"},{word:"die Planung",answer:"планування"},{word:"staatlich",answer:"державний"},{word:"der Teil",answer:"частина"},{word:"der Übergang",answer:"перехід"},{word:"umfassen",answer:"охоплювати"}],comprehension3_1:[{textParts:["1. Die Planung der Landwirtschaft ist ","INPUT"," der Planung der Volkswirtschaft."],answers:["ein Teil"]},{textParts:["2. Langfristige Prognosen ","INPUT"," eine lange Periode."],answers:["umfassen"]},{textParts:["3. Der Übergang zur industriemäßigen ","INPUT"," ist eine wichtige Erscheinung der 20. Jahrhunderts."],answers:["Produktion"]}],comprehension3_2:[{question:"1) Was ist die Aufgabe der Planung?",answer:"Die Aufgabe der Planung besteht in der Gewährleistung der planmäßigen und proportionalen Entwicklung der Landwirtschaft."},{question:"2) Welche Rolle spielen die Prognosen über künftige Prozesse und Erscheinungen?",answer:"Prognosen über künftige Prozesse und Erscheinungen bilden die wissenschaftliche Grundlage der Planung der Landwirtschaft."},{question:"3) Welche Periode umfaßt die langfristige Planung?",answer:"Die langfristige Planung umfaßt eine Periode von 15 bis 20 Jahre."}]};
+        variantsData["11"]={title:"Das Hauptproduktionsmittel in der Landwirtschaft",germanText:"Der Boden ist ökonomisch das Hauptproduktionsmittel. Er ist Arbeitsmittel und Arbeitsgegenstand zugleich, da der Mensch mit seiner Hilfe Pflanzenerträge produziert.<br><br>Der Boden ist Arbeitsgegenstand, wenn der Mensch verschiedene Maßnahmen durchführt, um seine Fruchtbarkeit zu steigern.<br><br>Der Boden ist Arbeitsmittel, wenn der Mensch seine physikalischen, chemischen und biologischen Eigenschaften für die Pflanzenproduktion ausnutzt.<br><br>Der Boden als Produktionsmittel hat einige wichtige Besonderheiten, die ihn von den anderen Produktionsmitteln unterscheiden: 1. Er ist kein Produkt menschlicher Arbeit, er ist ein Naturprodukt. 2. Er ist unbeweglich und räumlich begrenzt. 3. Er ist für die Produktion von Pflanzen geeignet, d.h. er besitzt die Bodenfruchtbarkeit. 4. Ein anderes Produktionsmittel kann ihn nicht ersetzen. 5. Er ist ein Produktionsmittel, das sich nicht abnutzt.<br><br>Diese Besonderheiten muß man bei der gesellschaftlichen Organisation der Agrarproduktion beachten. So bestimmen z.B. die räumliche Begrenzung und unterschiedliche Fruchtbarkeit die Art der Spezialisierung der Produktion.",explanation:"1. d.h. - das heißt - тобто",correctTranslation:"Основний засіб виробництва в сільському господарстві\nҐрунт є економічно основним засобом виробництва. Він є одночасно засобом праці та предметом праці, оскільки людина за його допомогою виробляє врожаї рослин.\n\nҐрунт є предметом праці, коли людина здійснює різні заходи для підвищення його родючості.\n\nҐрунт є засобом праці, коли людина використовує його фізичні, хімічні та біологічні властивості для рослинництва.\n\nҐрунт як засіб виробництва має деякі важливі особливості, які відрізняють його від інших засобів виробництва: 1. Він не є продуктом людської праці, він є природним продуктом. 2. Він нерухомий і просторово обмежений. 3. Він придатний для виробництва рослин, тобто він володіє родючістю ґрунту. 4. Інший засіб виробництва не може його замінити. 5. Він є засобом виробництва, який не зношується.\n\nЦі особливості необхідно враховувати при суспільній організації аграрного виробництва. Так, наприклад, просторове обмеження та різна родючість визначають вид спеціалізації виробництва.",vocabulary:[{word:"der Arbeitsgegenstand",answer:"предмет праці"},{word:"das Arbeitsmittel",answer:"засіб праці"},{word:"die Art",answer:"вид, спосіб"},{word:"beachten",answer:"враховувати"},{word:"besitzen",answer:"володіти"},{word:"die Besonderheit",answer:"особливість"},{word:"bestimmen",answer:"визначати"},{word:"durchführen",answer:"проводити, здійснювати"},{word:"ersetzen",answer:"замінювати"},{word:"geeignet",answer:"придатний"},{word:"gesellschaftlich",answer:"суспільний"},{word:"das Produktionsmittel",answer:"засіб виробництва"},{word:"produzieren",answer:"виробляти"},{word:"unterscheiden",answer:"відрізняти"},{word:"unterschiedlich",answer:"різний"}],comprehension3_1:[{textParts:["1) Der Boden ist ","INPUT"," in der Landwirtschaft."],answers:["das Hauptproduktionsmittel"]},{textParts:["2) Er ist ","INPUT"," und ","INPUT"," zugleich."],answers:["Arbeitsgegenstand","Arbeitsmittel"]},{textParts:["3) Der Boden als Produktionsmittel hat einige ","INPUT","."],answers:["Besonderheiten"]},{textParts:["4) Diese Besonderheiten ","INPUT"," den Boden von den anderen Produktionsmitteln."],answers:["unterscheiden"]},{textParts:["5) Der Boden ist für die Pflanzenproduktion ","INPUT","."],answers:["geeignet"]},{textParts:["6) Um die Bodenfruchtbarkeit zu steigern, muß der Mensch verschiedene Maßnahmen ","INPUT","."],answers:["durchführen"]}],comprehension3_2:[{question:"1) Was ist das Hauptproduktionsmittel in der Landwirtschaft?",answer:"Das Hauptproduktionsmittel in der Landwirtschaft ist der Boden."},{question:"2) Wann ist der Boden der Arbeitsgegenstand?",answer:"Der Boden ist Arbeitsgegenstand, wenn der Mensch verschiedene Maßnahmen durchführt, um seine Fruchtbarkeit zu steigern."},{question:"3) Und das Arbeitsmittel?",answer:"Der Boden ist Arbeitsmittel, wenn der Mensch seine physikalischen, chemischen und biologischen Eigenschaften für die Pflanzenproduktion ausnutzt."},{question:"4) Welche wichtigste Eigenschaft besitzt der Boden?",answer:"Die wichtigste Eigenschaft des Bodens ist seine Fruchtbarkeit."},{question:"5) Warum spielen die Besonderheiten des Bodens eine grosse Rolle bei der gesellschaftlichen Produktion?",answer:"The peculiarities of the soil play a large role in social production, as they determine, for example, the spatial limitation and different fertility of the type of production specialization."}]};
+        variantsData["12"]={title:"Alle Reserven ausnutzen",germanText:"Die Versuchsstation für Tierproduktion ist eine der besten landwirtschaftlichen Betriebe im Gebiet Poltawa. Die Produktion von Milch und Fleisch ist hier intensiviert. Wie wurde hier die Tierproduktion zu einem hoch entwickelten Wirtschaftszweig?<br><br>Unsere Farmen wurden nicht an einem Tag rentabel\", sagte uns der Hauptzootechniker der Versuchsstation. Unsere Arbeit ist vor allem auf die Züchtung hochproduktiver Tiere für den Bestand der Kühe gerichtet. Heute züchten wir Färsen nicht nur für unseren Bedarf, sondern auch für andere Betriebe des Gebiets.<br><br>Die Futterbasis des Betriebes ist stabil. Im Sommer funktioniert das grüne Fließband\". Jede Gruppe Kühe bekommt das Futter nach ihrer Leistung. Die Futterration ist nach wissenschaftlichen Normen aufgestellt.<br><br>Stabile Leistungen der Tiere sind auch durch wichtige Arbeitsorganisation gesichert. Vor drei Jahren machten die Melkerinnen einen Vorschlag, zum Kollektivvertrag überzugehen. Und das Resultat? Jetzt liefern sie 99% der gesamten Milchmenge als erste Sorte an den Staat.<br><br>Der durchschnittliche Melkertrag beträgt hier 3500 Kilogramm. Aber nicht alle Reserven sind noch ausgenutzt. Die Mitarbeiter der Versuchsstation finden die Möglichkeiten, die Futterbasis zu erweitern und die Zuchtarbeit zu verbessern.",explanation:"eine der besten – одне з найкращих; vor allem – перш за все ; nicht nur..., sondern auch... — не тільки..., але й... , vor drei Jahren — три роки тому (порівняйте: vor zwei Monaten — два місяці тому і т.д.) der Kollektivvertrag — колективний підряд , die Zuchtarbeit — племiнна робота",correctTranslation:"Використати всі резерви\nДослідна станція тваринництва є одним з найкращих сільськогосподарських підприємств на Полтавщині. Виробництво молока та м'яса тут інтенсифіковано. Як тваринництво стало тут високорозвиненою галуззю економіки?\n«Наші ферми не стали рентабельними за один день», – розповів нам головний зоотехнік дослідної станції. Наша робота насамперед спрямована на розведення високопродуктивних тварин для поголів'я корів. Сьогодні ми вирощуємо телиць не тільки для власних потреб, а й для інших господарств області.\nКормова база підприємства стабільна. Влітку працює «зелений конвеєр». Кожна група корів отримує корм відповідно до своєї продуктивності. Кормовий раціон складений за науковими нормами.\nСтабільна продуктивність тварин також забезпечується важливою організацією праці. Три роки тому доярки внесли пропозицію перейти на колективний договір. І результат? Тепер вони здають державі 99% від загальної кількості молока першим сортом.\nСередня продуктивність доїння тут становить 3500 кілограмів. Але не всі резерви ще використані. Співробітники дослідної станції знаходять можливості для розширення кормової бази та покращення племінної роботи.",vocabulary:[{word:"ausnutzen",answer:"використовувати"},{word:"der Bestand",answer:"поголів'я"},{word:"die Farm",answer:"ферма"},{word:"das Fleisch",answer:"м'ясо"},{word:"das Futter",answer:"корм"},{word:"die Kuh",answer:"корова"},{word:"die Leistung",answer:"продуктивність"},{word:"die Melkerin",answer:"доярка"},{word:"der Melkertrag",answer:"надій молока"},{word:"die Milch",answer:"молоко"},{word:"der Mitarbeiter",answer:"співробітник"},{word:"möglich",answer:"можливий"},{word:"sichern",answer:"забезпечувати"},{word:"das Tier",answer:"тварина"},{word:"die Tierproduktion",answer:"тваринництво"},{word:"der Versuch",answer:"дослід"},{word:"werden",answer:"ставати"},{word:"der Zootechniker",answer:"зоотехнік"},{word:"züchten",answer:"розводити"}],comprehension3_1:[{textParts:["1) ","INPUT"," ist ein wichtiger Zweig der Landwirtschaft."],answers:["Die Tierproduktion"]},{textParts:["2) Die Aufgabe der Versuchsstation ist die ","INPUT"," der hochproduktiven ","INPUT","."],answers:["Züchtung","Tiere"]},{textParts:["3) Eine gute Futterbasis ","INPUT"," hohe Leistungen der Kühe."],answers:["sichert"]},{textParts:["4) Die Mitarbeiter der Versuchsstation ","INPUT"," die Färsen für verschiedene landwirtschaftliche Betriebe des Gebiets."],answers:["züchten"]},{textParts:["5) Sie ","INPUT"," noch nicht alle Reserven ","INPUT","."],answers:["haben","ausgenutzt"]}],comprehension3_2:[{question:"1) Was ist die Aufgabe der Versuchsstation für Tierproduktion im Gebiet Poltawa?",answer:"Die Aufgabe der Versuchsstation für Tierproduktion im Gebiet Poltawa ist die Züchtung hochproduktiver Tiere und die Intensivierung der Produktion von Milch und Fleisch."},{question:"2) Wie ist hier die Futterbasis?",answer:"Die Futterbasis des Betriebes ist stabil."},{question:"3) Warum sind stabile Leistungen der Tiere möglich?",answer:"Stabile Leistungen der Tiere sind durch gute Futterbasis und wichtige Arbeitsorganisation gesichert."},{question:"4) Zu welchem Resultat führte der Kollektivvertrag?",answer:"Der Kollektivvertrag führte dazu, dass die Melkerinnen jetzt 99% der gesamten Milchmenge als erste Sorte an den Staat liefern."},{question:"5) Kann der durchschnittliche Melkertrag steigen?",answer:"Ja, der durchschnittliche Melkertrag kann steigen, da nicht alle Reserven ausgenutzt sind."},{question:"6) Warum?",answer:"Die Mitarbeiter der Versuchsstation finden die Möglichkeiten, die Futterbasis zu erweitern und die Zuchtarbeit zu verbessern."}]};
+        variantsData["13"]={title:"Wie die Saat, so die Ernte",germanText:"Die Agrarfirma „Sorja\" liegt im Gebiet Lwiw. Die Bauern nehmen an der Lösung des Lebensmittelproblems aktiv teil. Sie bauen das Getreide an. Ihre Hauptkultur ist der Weizen. Noch vor kurzem hatte die Firma niedrige Erträge. Heute gehört sie zu den besten Betrieben des Rayons. Die durchschnittlichen Erträge an Weizen erreichten hier 25 dt/ha. Für die Westukraine sind das gute Resultate.<br><br>Der Hauptagronom der Firma erzählt: Jm vorigen Jahr gingen wir zur intensiven Technologie des Weizenanbaus über. Damals erhielt die Firma zum ersten Mal die erforderliche Menge der mineralischen Düngemittel. \"Wir nutzen das Saatgut nur hoher Qualität aus. Die frühreife Weizensorte Zelinnaja-2000\" bewährte sich bei uns besonders gut. Diese Sorte führten wir aus Kasachstan ein. Im vorigen Jahr lieferten wir an den Staat praktisch nur Getreide bester Qualität.<br><br>Die Bauern wollen bei niedrigem Aufwand mehr Agrarprodukte erzeugen. Und sie erhielten schon gute Resultate. Allein durch den Weizenanbau betrugen die Einkünfte des Betriebes über eine Million Hrywnja.",explanation:"vor kurzem – недавно; 25 dt/ha —читай: 25 Dezitonnen je Hektar; allein — лише, тільки.",correctTranslation:"Як посієш, так і пожнеш\nАгрофірма «Зоря» розташована у Львівській області. Аграрії активно беруть участь у вирішенні продовольчої проблеми. Вони вирощують зернові. Їхньою основною культурою є пшениця. Ще нещодавно фірма мала низькі врожаї. Сьогодні вона належить до найкращих підприємств району. Середня врожайність пшениці тут досягла 25 ц/га. Для Західної України це хороші результати.\nГоловний агроном фірми розповідає: Минулого року ми перейшли на інтенсивну технологію вирощування пшениці. Тоді фірма вперше отримала необхідну кількість мінеральних добрив. «Ми використовуємо лише високоякісне насіння. Ранньостиглий сорт пшениці «Целінна-2000» особливо добре зарекомендував себе у нас. Цей сорт ми завезли з Казахстану. Минулого року ми поставили державі практично тільки зерно найкращої якості.\nАграрії хочуть виробляти більше сільськогосподарської продукції з низькими витратами. І вони вже отримали хороші результати. Тільки завдяки вирощуванню пшениці доходи підприємства склали понад один мільйон гривень.",vocabulary:[{word:"der Anbau",answer:"вирощування"},{word:"anbauen",answer:"вирощувати"},{word:"der Aufwand",answer:"витрати"},{word:"der Bauer",answer:"селянин, аграрій"},{word:"betragen",answer:"становити"},{word:"der Betrieb",answer:"підприємство"},{word:"bringen",answer:"приносити"},{word:"durchschnittlich",answer:"середній"},{word:"die Einkünfte",answer:"доходи"},{word:"erforderlich",answer:"необхідний"},{word:"erhalten",answer:"отримувати"},{word:"der Ertrag",answer:"урожайність"},{word:"das Getreide",answer:"зернові"},{word:"das Lebensmittel",answer:"продукт харчування"},{word:"die Menge",answer:"кількість"},{word:"die Qualität",answer:"якість"},{word:"reif",answer:"стиглий"},{word:"die Saat",answer:"посів"},{word:"das Saatgut",answer:"насіння"},{word:"der Weizen",answer:"пшениця"}],comprehension3_1:[{textParts:["1) Dieser landwirtschaftliche ","INPUT"," baut ","INPUT"," an."],answers:["Betrieb","Getreide"]},{textParts:["2) Der durchschnittliche ","INPUT"," beträgt 25 dt/ha."],answers:["Weizenertrag"]},{textParts:["3) ","INPUT"," des Weizens bringt unserem Kolchos hohe ","INPUT","."],answers:["Der Anbau","Einkünfte"]},{textParts:["4) Die Kolchosbauern erhielten ","INPUT"," mineralische Düngemittel."],answers:["erforderliche"]},{textParts:["5) Unser Betrieb produziert ","INPUT"," hoher ","INPUT","."],answers:["Saatgut","Qualität"]}],comprehension3_2:[{question:"1) Wo liegt die Agrarfirma „Sorja\"?",answer:"Die Agrarfirma „Sorja\" liegt im Gebiet Lwiw."},{question:"2) Was ist die Hauptkultur in diesem Betrieb?",answer:"Die Hauptkultur in diesem Betrieb ist der Weizen."},{question:"3) Sind die Weizenerträge hier niedrig?",answer:"Nein, die Weizenerträge sind hier gut."},{question:"4) Warum wurde die intensive Technologie des Weizenanbaus möglich?",answer:"Die intensive Technologie des Weizenanbaus wurde möglich, weil die Firma die erforderliche Menge der mineralischen Düngemittel erhielt."},{question:"5) Welche Weizensorte baut dieser Betrieb an?",answer:"Dieser Betrieb baut die Weizensorte „Zelinnaja-2000\" an."},{question:"6) Wie hoch sind die Einkünfte des Betriebes?",answer:"Die Einkünfte des Betriebes betrugen über eine Million Hrywnja."}]};
+        variantsData["14"]={title:"Die Landwirtschaft als ein Zweig der Volkswirtschaft",germanText:"Die Landwirtschaft ist ein ebenso wichtiger Zweig der Volkswirtschaft wie die Industrie. Die Hauptaufgabe der Landwirtschaft ist es, die Bevölkerung mit Nahrungsmitteln und die Industrie mit Rohstoffen zu versorgen.<br><br>Der Bedarf der Bevölkerung an Nahrungsmitteln steigt mit jedem Jahr. Um diesen Bedarf voll zu decken, muß man die Pflanzen- und Tierproduktion planmäßig intensivieren.<br><br>Ohne Landwirtschaft können einige Zweige der Industrie nicht funktionieren. Die Landwirtschaft liefert Rohstoffe z.B. für die Zucker-, Fleisch- und Milchindustrie.<br><br>Die Landwirtschaft verbraucht auch industrielle Produkte (Dünger, Maschinen usw.). Sie braucht diese Erzeugnisse der Industrie in großem Umfang.<br><br>Das Hauptproduktionsmittel in der Landwirtschaft ist der Boden. Die wichtige Eigenschaft des Bodens ist seine Fruchtbarkeit. Man muß den Boden rationell nutzen. Verschiedene Maßnahmen der Bodenbearbeitung stimulieren die Steigerung seiner Fruchtbarkeit.",explanation:"1. die Landwirtschaft als ein Zweig... — сільське господарство як галузь; 2. usw. - und so weiter — і так далі; 3. z. B.- наприклад.",correctTranslation:"Сільське господарство як галузь народного господарства.\nСільське господарство така ж важлива галузь народного господарства як і промисловість. Головним завданням сільського господарства є забезпечення населення продуктами харчування і промисловості сировиною.\nПотреба населення в продуктах харчування зростає з кожним роком. Щоб повністю забезпечити цю потребу, треба планомірно інтенсифікувати рослинництво і тваринництво.\nБез сільського господарства не можуть функціонувати деякі галузі промисловості. Сільське господарство постачає, наприклад, сировину для цукрової, м’ясної та молочної промисловості.\nСільське господарство споживає також продукти промисловості (добрива, машини і т.д.). Воно потребує цих виробів промисловості у великому обсязі.\nОсновним засобом виробництва у сільському господарстві є земля. Важливою властивістю землі є її родючість. Землю треба раціонально використовувати. Різні заходи по обробітку ґрунту стимулюють підвищення її продуктивності (родючості).",vocabulary:[{word:"der Bedarf (an)",answer:"потреба"},{word:"der Boden",answer:"земля, грунт"},{word:"decken",answer:"забезпечувати (потребу)"},{word:"die Eigenschaft",answer:"властивість"},{word:"die Fruchtbarkeit",answer:"родючість"},{word:"die Landwirtschaft",answer:"сільське господарство"},{word:"liefern",answer:"постачати"},{word:"die Maßnahme",answer:"захід"},{word:"das Nahrungsmittel",answer:"продукт харчування"},{word:"die Produktion",answer:"виробництво"},{word:"der Rohstoff",answer:"сировина"},{word:"die Steigerung",answer:"зростання"},{word:"der Umfang",answer:"обсяг"},{word:"verbrauchen",answer:"споживати"},{word:"versorgen (mit)",answer:"забезпечувати"},{word:"die Wirtschaft",answer:"господарство, економіка"},{word:"der Zweig",answer:"галузь"}],comprehension3_1:[{textParts:["1) Die Landwirtschaft ist","INPUT"," der Volkswirtschaft."],answers:["der Zweig"]},{textParts:["2) Sie versorgt die Bevölkerung mit","INPUT","."],answers:["Nahrungsmitteln"]},{textParts:["3) Die Landwirtschaft deckt","INPUT"," der Industrie an Rohstoffen."],answers:["den Bedarf"]},{textParts:["4) Die Landwirtschaft ","INPUT"," industrielle Produkte."],answers:["verbraucht"]},{textParts:["5) ","INPUT"," ist das Hauptproduktionsmittel in der Landwirtschaft."],answers:["Der Boden"]},{textParts:["6) Die wichtige Eigenschaft des Bodens ist seine ","INPUT","."],answers:["Fruchtbarkeit"]}],comprehension3_2:[{question:"1) Warum ist die Landwirtschaft ein wichtiger Zweig der Volkswirtschaft?",answer:"Die Landwirtschaft versorgt die Bevölkerung mit Nahrungsmitteln und die Industrie mit Rohstoff."},{question:"2) Wie kann man den Bedarf der Bevölkerung an Nahrungsmitteln besser decken?",answer:"Um den Bedarf der Bevölkerung an Nahrungsmitteln besser zu decken, muss man die Pflanzen- und Tierproduktion planmäßig intensivieren."},{question:"3) Welche Rohstoffe liefert die Landwirtschaft für die Industrie?",answer:"Die Landwirtschaft liefert für die Industrie Zucker, Milch und Fleisch."},{question:"4) Welche Produkte der Industrie verbraucht die Landwirtschaft?",answer:"Die Landwirtschaft verbraucht Maschinen und Dünger."},{question:"5) Was ist das Hauptproduktionsmittel in der Landwirtschaft?",answer:"Das Hauptproduktionsmittel in der Landwirtschaft ist der Boden."},{question:"6) Welche wichtige Eigenschaft hat der Boden?",answer:"Der Boden hat die Fruchtbarkeit."}]};
+    })();
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const elements = {
+            modal: document.getElementById('resultModal'),
+            modalTitle: document.getElementById('modalTitle'),
+            modalContent: document.getElementById('modalContent'),
+            closeModalBtn: document.getElementById('closeModalBtn'),
+            variantSelect: document.getElementById('variant-select'),
+            germanTextTitle: document.getElementById('germanTextTitle'),
+            germanTextContent: document.getElementById('germanTextContent'),
+            textExplanation: document.getElementById('textExplanation'),
+            translationInput: document.getElementById('translationInput'),
+            vocabularyExerciseDiv: document.getElementById('vocabulary-exercise'),
+            comprehensionExercise3Div: document.getElementById('comprehension-exercise-3'),
+            comprehensionExercise4Div: document.getElementById('comprehension-exercise-4'),
+            overallPercentageSpan: document.getElementById('overall-percentage'),
+            translationScoreSpan: document.getElementById('translation-score'),
+            vocabularyScoreSpan: document.getElementById('vocabulary-score'),
+            comprehensionScoreSpan: document.getElementById('comprehension-score'),
+            checkTranslationBtn: document.getElementById('checkTranslationBtn'),
+            checkVocabBtn: document.getElementById('checkVocabBtn'),
+            checkComprehensionBtn: document.getElementById('checkComprehensionBtn'),
+        };
+
+        let scores = {};
+        let userAnswers = {};
+        
+        const escapeHTML = s => s.toString().replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'","&#39;");
+        const normalize = s => s.toLowerCase().replace(/\s+/g,' ').trim();
+        const deNormalize = s => normalize(s).replaceAll('ß','ss').replaceAll('ä','ae').replaceAll('ö','oe').replaceAll('ü','ue');
+        const keywords = s => normalize(s).split(/[^a-zа-щьюяїієґöäüẞß\-]+/i).filter(w => w.length >= 4 && !['sind','werden','auch','dass','weil','oder','und','mit','der','die','das','den','dem','des'].includes(w));
+
+        const showModal = (title, content) => {
+            elements.modalTitle.textContent = title;
+            elements.modalContent.innerHTML = content;
+            elements.modal.classList.add('active');
+        };
+        
+        const hideModal = () => elements.modal.classList.remove('active');
+        elements.closeModalBtn.addEventListener('click', hideModal);
+        elements.modal.addEventListener('click', (e) => { if (e.target === elements.modal) hideModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') hideModal(); });
+
+
+        const updateOverallScore = () => {
+            const currentVariant = elements.variantSelect.value;
+            const variantScores = scores[currentVariant] || { vocab: 0, comp3_1: 0, comp3_2: 0 };
+            const vocabScore = variantScores.vocab || 0;
+            const compScore = ((variantScores.comp3_1 || 0) + (variantScores.comp3_2 || 0)) / 2;
+            const overallPercentage = ((vocabScore + compScore) / 2).toFixed(0);
+            elements.overallPercentageSpan.textContent = `${overallPercentage}%`;
+        };
+        
+        const saveUserAnswers = (variantNum) => {
+             const data = {
+                translation: elements.translationInput.value,
+                vocab: Array.from(document.querySelectorAll('.vocab-input')).map(input => input.value),
+                comp3_1: Array.from(document.querySelectorAll('.comp3-1-input')).map(input => input.value),
+                comp3_2: Array.from(document.querySelectorAll('.comp3-2-input')).map(input => input.value),
+            };
+            localStorage.setItem(`praktikum-v${variantNum}`, JSON.stringify(data));
+        };
+        
+        const restoreUserAnswers = (variantNum) => {
+            const savedData = localStorage.getItem(`praktikum-v${variantNum}`);
+            const answers = savedData ? JSON.parse(savedData) : null;
+
+            elements.translationInput.value = answers?.translation || '';
+            document.querySelectorAll('.vocab-input').forEach((input, i) => input.value = answers?.vocab?.[i] || '');
+            document.querySelectorAll('.comp3-1-input').forEach((input, i) => input.value = answers?.comp3_1?.[i] || '');
+            document.querySelectorAll('.comp3-2-input').forEach((input, i) => input.value = answers?.comp3_2?.[i] || '');
+        };
+
+        const loadVariant = (variantNum) => {
+            const data = variantsData[variantNum];
+            if (!data) return;
+
+            scores[variantNum] = scores[variantNum] || { vocab: 0, comp3_1: 0, comp3_2: 0 };
+
+            elements.germanTextTitle.textContent = data.title;
+            elements.germanTextContent.innerHTML = data.germanText;
+            elements.textExplanation.textContent = data.explanation || "";
+
+            elements.vocabularyExerciseDiv.innerHTML = data.vocabulary.map(item => `
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <label style="font-weight: 500;">${item.word}</label>
+                    <input type="text" data-answer="${item.answer}" class="vocab-input">
+                </div>
+            `).join('');
+
+            elements.comprehensionExercise3Div.innerHTML = data.comprehension3_1.map((item) => {
+                let inputCounter = 0;
+                const partsHtml = item.textParts.map(part => 
+                    (part === "INPUT") ? `<input type="text" class="inline-input comp3-1-input" data-answer="${item.answers[inputCounter++]}">` : `<span>${part}</span>`
+                ).join('');
+                return `<div style="background: var(--bg); padding: 12px; border-radius: 8px;"><p>${partsHtml}</p></div>`;
+            }).join('');
+            
+            elements.comprehensionExercise4Div.innerHTML = data.comprehension3_2.map(item => `
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <label style="font-weight: 500;">${item.question}</label>
+                    <textarea class="comp3-2-input" data-answer="${item.answer}" rows="2"></textarea>
+                </div>
+            `).join('');
+            
+            restoreUserAnswers(variantNum);
+            updateScoresUI(variantNum);
+        };
+        
+        const updateScoresUI = (variantNum) => {
+            const variantScores = scores[variantNum];
+            elements.vocabularyScoreSpan.textContent = variantScores.vocab > 0 ? `${variantScores.vocab.toFixed(0)}%` : '';
+            const compScore = ((variantScores.comp3_1 || 0) + (variantScores.comp3_2 || 0)) / 2;
+            elements.comprehensionScoreSpan.textContent = compScore > 0 ? `${compScore.toFixed(0)}%` : '';
+            updateOverallScore();
+        };
+
+        elements.variantSelect.addEventListener('change', (e) => {
+            const currentVariant = Array.from(e.target.options).find(opt => opt.selected);
+            const otherOptions = Array.from(e.target.options).filter(opt => !opt.selected);
+            const oldVariant = otherOptions.length === e.target.options.length - 1 ? otherOptions.find(opt => userAnswers[opt.value])?.value || "1" : null;
+            
+            saveUserAnswers(oldVariant || e.target.querySelector('option:not(:checked)').value);
+            loadVariant(e.target.value);
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+
+        elements.checkTranslationBtn.addEventListener('click', () => {
+            const data = variantsData[elements.variantSelect.value];
+            const userAnswer = elements.translationInput.value.trim();
+            const safeUserAnswer = userAnswer ? escapeHTML(userAnswer) : '<i>(Відповідь відсутня)</i>';
+            showModal('Результат перекладу', `
+                <h4 style="font-weight: 600;">Ваш переклад:</h4>
+                <p style="background: var(--bg); padding: 8px; border-radius: 8px; white-space: pre-wrap; word-wrap: break-word;">${safeUserAnswer}</p>
+                <h4 style="font-weight: 600; margin-top: 16px;">Зразок перекладу:</h4>
+                <p style="background: var(--green-light); color: #065f46; padding: 8px; border-radius: 8px; white-space: pre-wrap; word-wrap: break-word;">${escapeHTML(data.correctTranslation)}</p>
+            `);
+            elements.translationScoreSpan.textContent = 'Самоперевірка';
+        });
+
+        elements.checkVocabBtn.addEventListener('click', () => {
+            const inputs = document.querySelectorAll('.vocab-input');
+            let correctCount = 0;
+            inputs.forEach(input => {
+                const user = normalize(input.value);
+                const answers = input.dataset.answer.split(',').map(a => normalize(a));
+                if (answers.some(a => a && user === a)) {
+                    correctCount++;
+                }
+            });
+            const score = inputs.length > 0 ? (correctCount / inputs.length) * 100 : 0;
+            scores[elements.variantSelect.value].vocab = score;
+            updateScoresUI(elements.variantSelect.value);
+            showModal('Результати словникової вправи', `<p>Правильних відповідей: ${correctCount} з ${inputs.length} (${score.toFixed(0)}%)</p>`);
+        });
+
+        elements.checkComprehensionBtn.addEventListener('click', () => {
+            const inputs3_1 = document.querySelectorAll('.comp3-1-input');
+            let correctCount3_1 = 0;
+            inputs3_1.forEach(input => {
+                const user = deNormalize(input.value);
+                const correct = deNormalize(input.dataset.answer);
+                if (user === correct) {
+                    correctCount3_1++;
+                }
+            });
+            scores[elements.variantSelect.value].comp3_1 = inputs3_1.length > 0 ? (correctCount3_1 / inputs3_1.length) * 100 : 0;
+
+            const inputs3_2 = document.querySelectorAll('.comp3-2-input');
+            let correctCount3_2 = 0;
+            inputs3_2.forEach(input => {
+                const gold = keywords(input.dataset.answer);
+                const said = keywords(input.value);
+                const hits = said.filter(w => gold.includes(w)).length;
+                if (said.length > 0 && (hits >= Math.min(2, gold.length))) {
+                    correctCount3_2++;
+                }
+            });
+            scores[elements.variantSelect.value].comp3_2 = inputs3_2.length > 0 ? (correctCount3_2 / inputs3_2.length) * 100 : 0;
+            
+            updateScoresUI(elements.variantSelect.value);
+            showModal('Результати вправ на розуміння', `
+                <p>Результат 3.1 (доповнення): ${correctCount3_1} з ${inputs3_1.length}</p>
+                <p>Результат 3.2 (відповіді): ${correctCount3_2} з ${inputs3_2.length}</p>
+            `);
+        });
+        
+        loadVariant('1');
+    });
+</script>
+
+</body>
+</html>
+
