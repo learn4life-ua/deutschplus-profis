@@ -4,65 +4,333 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Діловий етикет — Deutsch+Profis</title>
-<meta name="description" content="Розділ про культуру спілкування та професійну поведінку в німецькому робочому середовищі." />
+<meta name="description" content="Ключові аспекти німецької бізнес-культури: пунктуальність, комунікація, ієрархія та баланс між роботою та життям." />
+<meta name="theme-color" content="#009846" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
 <style>
 :root {
-  --green:#009846;--dark:#1f2937;--muted:#6b7280;--bg:#f9fafb;--card:#fff;--border:#e5e7eb;
+  --green: #009846;
+  --green-light: #e6f5f0;
+  --dark: #1f2937;
+  --muted: #6b7280;
+  --bg: #f9fafb;
+  --card-bg: #ffffff;
+  --border-color: #e5e7eb;
+  --radius: 16px;
+  --shadow: 0 4px 6px -1px rgba(0,0,0,.03), 0 2px 4px -2px rgba(0,0,0,.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -4px rgba(0,0,0,.05);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
+html { scroll-behavior: smooth; }
 body {
-  margin:0;
-  font-family:Inter,system-ui,sans-serif;
-  background:var(--bg);
-  color:#374151;
-  line-height:1.6;
+  margin: 0;
+  background: var(--bg);
+  color: #374151;
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.7;
 }
-.wrap {max-width:1100px;margin:0 auto;padding:24px;}
-header.site-nav {position:sticky;top:0;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--border);z-index:10;}
-header.site-nav .wrap {display:flex;align-items:center;justify-content:space-between;padding:12px 24px;}
-nav a {color:var(--dark);text-decoration:none;font-weight:600;margin-right:16px;}
-nav a:hover {color:var(--green);}
-h1 {font-size:clamp(26px,4vw,36px);font-weight:800;color:var(--dark);}
-.muted {color:var(--muted);}
-section {margin:48px 0;}
-.pager {display:flex;gap:12px;margin-top:40px;}
-.pager a {display:inline-block;padding:10px 16px;border:1px solid var(--border);border-radius:12px;
-  background:var(--card);text-decoration:none;color:var(--dark);}
-.pager a:hover {border-color:var(--green);}
-footer.site-foot {border-top:1px solid var(--border);margin-top:48px;background:#fff;}
-footer.site-foot .wrap {display:flex;justify-content:space-between;flex-wrap:wrap;align-items:center;color:var(--muted);}
+.wrap {
+  box-sizing: border-box;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 5vw, 24px);
+}
+h2 {
+  font-size: clamp(28px, 4vw, 36px);
+  text-align: center;
+  color: var(--dark);
+  margin-bottom: 16px;
+}
+h3 {
+    font-size: 22px;
+    margin-bottom: 16px;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+h3 svg {
+    color: var(--green);
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+}
+.lead {
+  font-size: clamp(16px, 2vw, 18px);
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+/* --- Navigation --- */
+.main-nav {
+  position: sticky;
+  top: 16px;
+  margin: 16px clamp(16px, 5vw, 24px) 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 12px 24px;
+  box-shadow: var(--shadow-lg);
+}
+.main-nav .nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--dark);
+  text-decoration: none;
+}
+.logo svg { color: var(--green); }
+
+/* --- Content Cards --- */
+.content-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: clamp(24px, 5vw, 32px);
+    margin-bottom: 24px;
+}
+.content-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+}
+.content-card li {
+    padding-left: 28px;
+    position: relative;
+}
+.content-card li::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.content-card li + li {
+    margin-top: 12px;
+}
+.content-card strong {
+    color: var(--dark);
+    font-weight: 600;
+}
+
+/* --- Summary Table --- */
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+.summary-table th, .summary-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+.summary-table th {
+    background: var(--bg);
+    font-weight: 700;
+    color: var(--dark);
+}
+.summary-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* --- Quest Card --- */
+.quest-card {
+    text-align: center;
+    background-color: var(--green-light);
+    border: 1px solid var(--green);
+}
+.quest-card h3 {
+    justify-content: center;
+}
+.quest-card p {
+    color: var(--muted);
+    margin-bottom: 24px;
+}
+.quest-card .d-btn {
+    background: var(--green);
+    color: white;
+    font-weight: 700;
+}
+.quest-card .d-btn:hover {
+    background: #007a3a;
+    color: white;
+}
+
+
+/* --- Navigation Buttons --- */
+.page-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.d-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  transition: var(--transition);
+  background: var(--card-bg);
+  color: var(--dark);
+}
+.d-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--green);
+  color: var(--green);
+}
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  padding: clamp(40px, 7vw, 60px) 0;
+}
+.footer a { color: var(--green); text-decoration: none; font-weight: 500; }
+.footer a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
-<header class="site-nav">
-  <div class="wrap">
-    <a href="index.html" style="font-weight:800;text-decoration:none;color:var(--dark)">Deutsch<span style="color:var(--green)">+</span>Profis</a>
-    <nav>
-      <a href="dialogues.html">Робочі діалоги</a>
-      <a href="etiquette.html">Етикет</a>
-      <a href="index.html#features">Розділи</a>
-    </nav>
+
+<nav class="main-nav">
+  <div class="nav-content">
+    <a href="index.html" class="logo">
+      <svg width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+      Deutsch<span style="color:var(--green)">+</span>Profis
+    </a>
   </div>
-</header>
+</nav>
+
 <main>
-  <div class="wrap">
-    <h1>Діловий етикет</h1>
-    <p class="muted">Розділ про культуру спілкування та професійну поведінку в німецькому робочому середовищі.</p>
-    <section>
-      <p>Тут буде контент про німецький робочий етикет: пунктуальність, ввічливість, ділове листування, культура спілкування та професійні норми.</p>
-      <p>Поступово цей розділ доповнимо прикладами діалогів, завданнями та словничком.</p>
-    </section>
-    <div class="pager">
-      <a href="index.html">← На головну</a>
-      <a href="dialogues.html">До діалогів →</a>
+  <section style="padding: clamp(40px, 7vw, 60px) 0;">
+    <div class="wrap">
+      <h2>Німецький робочий етикет</h2>
+      <p class="lead">Розуміння культурних особливостей є ключовим для успішної кар'єри. Цей посібник допоможе вам почуватися впевнено у німецькомовному робочому середовищі.</p>
+
+      <div class="content-card">
+        <h3>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          Пунктуальність та організованість
+        </h3>
+        <p>Пунктуальність — це не просто ввічливість, а фундаментальна цінність у німецькій культурі праці. Вона демонструє повагу до часу інших та надійність.</p>
+        <ul>
+          <li><strong>Зустрічі та дедлайни:</strong> Завжди приходьте на зустрічі вчасно. Запізнення, навіть на кілька хвилин, вважається ознакою неповаги. Якщо ви все ж запізнюєтеся, обов'язково попередьте про це заздалегідь.</li>
+          <li><strong>Планування:</strong> Німецькі компанії приділяють велику увагу плануванню. Чіткі дедлайни та розклади — це норма. Дотримання встановлених термінів є обов'язковим.</li>
+        </ul>
+      </div>
+
+      <div class="content-card">
+        <h3>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          Пряма та чітка комунікація
+        </h3>
+        <p>У Німеччині цінується прямий, але ввічливий стиль спілкування. Мета — ефективність та уникнення непорозумінь.</p>
+        <ul>
+            <li><strong>Прямота:</strong> Німці зазвичай говорять прямо та по суті, без зайвих емоцій та натяків. Це не означає грубість, а лише прагнення до уникнення двозначності.</li>
+            <li><strong>Фідбек:</strong> Конструктивна критика сприймається як можливість для розвитку. Не сприймайте її особисто, а як допомогу в покращенні результатів роботи.</li>
+        </ul>
+      </div>
+
+      <div class="content-card">
+        <h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            Ієрархія та формальність
+        </h3>
+        <p>Незважаючи на сучасні тенденції, ієрархія та формальні звертання в багатьох компаніях залишаються важливими.</p>
+        <ul>
+            <li><strong>Звертання:</strong> Звертайтеся до колег і керівництва на "Ви" (Sie), якщо не отримали дозволу перейти на "ти" (du). Часто дозвіл переходити на "ти" пропонує старша за посадою або віком особа.</li>
+            <li><strong>Повага:</strong> Проявляйте повагу до досвіду та посади колег. Висловлюйте свої ідеї, але враховуйте думку керівництва.</li>
+        </ul>
+      </div>
+
+      <div class="content-card">
+        <h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 16.5l3-8 3 8"></path><path d="M2 16.5l3-8 3 8"></path><path d="M7 21h10"></path><path d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg>
+            Баланс між роботою та життям
+        </h3>
+        <p>Хоча німці старанно працюють, вони також цінують свій вільний час і поважають його у інших.</p>
+        <ul>
+            <li><strong>Робочі години:</strong> Поза робочим часом очікується, що ви не відповідатимете на робочі листи чи дзвінки. Робочий час чітко відокремлений від особистого.</li>
+            <li><strong>Відпустка:</strong> Відпустка — це час для відпочинку. Колеги та керівництво не будуть турбувати вас під час вашої відпустки.</li>
+        </ul>
+      </div>
+      
+      <div class="content-card">
+        <h3>🧠 Коротке резюме</h3>
+        <table class="summary-table">
+            <thead>
+                <tr>
+                    <th>Ключовий принцип</th>
+                    <th>Пояснення</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Пунктуальність</td>
+                    <td>Завжди приходьте вчасно, запізнення — неприйнятне.</td>
+                </tr>
+                <tr>
+                    <td>Прямота</td>
+                    <td>Говоріть чітко й без натяків.</td>
+                </tr>
+                <tr>
+                    <td>Формальність</td>
+                    <td>Використовуйте звертання на «Sie».</td>
+                </tr>
+                <tr>
+                    <td>Баланс</td>
+                    <td>Поважайте чужий вільний час.</td>
+                </tr>
+                <tr>
+                    <td>Надійність</td>
+                    <td>Завжди виконуйте обіцяне.</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+
+      <div class="content-card quest-card">
+        <h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="12" y2="12"></line><line x1="8" x2="8" y1="10" y2="14"></line><line x1="15" x2="15.01" y1="13" y2="13"></line><line x1="18" x2="18.01" y1="11" y2="11"></line><rect width="20" height="12" x="2" y="6" rx="2"></rect></svg>
+            Перевірте свої знання!
+        </h3>
+        <p>Теорія — це добре, але практика — краще! Пройдіть наш інтерактивний квест і допоможіть Марічці та Тарасу впоратися з викликами під час їхньої практики в Німеччині.</p>
+        <a href="quest.html" class="d-btn">Почати квест</a>
+      </div>
+
+      <div class="page-nav">
+          <a href="index.html" class="d-btn">← На головну сторінку</a>
+      </div>
+
     </div>
-  </div>
-</main>
-<footer class="site-foot">
-  <div class="wrap">
-    <div>© 2025 Deutsch+Profis — навчальні матеріали.</div>
-    <div><a href="index.html" style="color:var(--green);text-decoration:none;font-weight:600">На головну</a></div>
-  </div>
+  </section>
+  
+<footer class="footer">
+    <div class="wrap">
+      <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені.</p>
+      <p><a href="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">Запропонувати ідею</a></p>
+    </div>
 </footer>
+
 </body>
 </html>
+
