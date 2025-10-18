@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Квест: Культура праці — Deutsch+Profis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+          --green: #009846;
+          --green-light: #e6f5f0;
+          --dark: #1f2937;
+          --muted: #6b7280;
+          --bg: #f9fafb;
+          --card-bg: #ffffff;
+          --border-color: #e5e7eb;
+          --radius: 16px;
+          --shadow: 0 4px 6px -1px rgba(0,0,0,.03), 0 2px 4px -2px rgba(0,0,0,.03);
+          --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -4px rgba(0,0,0,.05);
+          --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          --red-light: #fee2e2;
+          --red: #dc2626;
+        }
+        body {
+          margin: 0;
+          background: var(--bg);
+          color: #374151;
+          font-family: 'Inter', system-ui, sans-serif;
+          line-height: 1.6;
+        }
+        .wrap {
+          box-sizing: border-box;
+          max-width: 768px;
+          margin: 0 auto;
+          padding: clamp(16px, 5vw, 24px);
+        }
+        .main-nav {
+          position: sticky;
+          top: 16px;
+          margin: 16px clamp(16px, 5vw, 24px) 0;
+          z-index: 50;
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(10px);
+          border: 1px solid var(--border-color);
+          border-radius: 16px;
+          box-shadow: var(--shadow-lg);
+        }
+        .main-nav .nav-content {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          max-width: 1100px;
+          margin: 0 auto;
+          padding: 12px clamp(16px, 5vw, 24px);
+        }
+        .logo {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-weight: 700;
+          font-size: 18px;
+          color: var(--dark);
+          text-decoration: none;
+        }
+        .logo svg { color: var(--green); }
+        
+        /* --- Quest Styles --- */
+        .quest-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-top: 24px;
+        }
+        .quest-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+        .quest-header h1 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--dark);
+        }
+        .progress-bar-container {
+            background-color: var(--border-color);
+            border-radius: 99px;
+            height: 10px;
+            margin-top: 16px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            background-color: var(--green);
+            height: 100%;
+            border-radius: 99px;
+            transition: width 0.5s ease-in-out;
+        }
+        .quest-body {
+            padding: 24px;
+        }
+        .scene-layout {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        .character-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .scene-text {
+            font-size: 1.1em;
+            color: var(--dark);
+        }
+        .scene-text strong { font-weight: 700; }
+        .choices-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        .choice-btn {
+            width: 100%;
+            text-align: left;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background-color: var(--card-bg);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .choice-btn:hover:not(:disabled) {
+            background-color: var(--green-light);
+            border-color: var(--green);
+            transform: translateY(-2px);
+        }
+        .choice-btn:disabled { cursor: not-allowed; opacity: 0.8; }
+        .choice-btn .icon { display: none; }
+        .choice-btn.correct .icon.check { display: inline; color: var(--green); }
+        .choice-btn.incorrect .icon.cross { display: inline; color: var(--red); }
+        
+        .feedback-container {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 12px;
+            animation: fadeIn 0.5s;
+        }
+        .feedback-correct {
+            background-color: var(--green-light);
+            color: #065f46;
+            border: 1px solid var(--green);
+        }
+        .feedback-incorrect {
+            background-color: var(--red-light);
+            color: #991b1b;
+            border: 1px solid var(--red);
+        }
+        .nav-container { text-align: center; margin-top: 20px; }
+        .d-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            border: 1px solid transparent;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        .d-btn--primary { background: var(--green); color: #fff; }
+        .d-btn--primary:hover { background: #007a38; }
+        .d-btn--secondary { background: var(--border-color); color: var(--dark); }
+
+        .final-summary ul { list-style: none; padding: 0; margin-top: 16px; }
+        .final-summary li { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+        .final-summary li svg { color: var(--green); }
+        .final-summary.review-topics li svg { color: var(--muted); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hidden { display: none; }
+        
+        .footer {
+          text-align: center;
+          color: var(--muted);
+          font-size: 14px;
+          padding: clamp(40px, 7vw, 60px) 0;
+        }
+        .footer a { color: var(--green); text-decoration: none; font-weight: 500; }
+        .footer a:hover { text-decoration: underline; }
+
+    </style>
+</head>
+<body>
+
+<nav class="main-nav">
+  <div class="nav-content">
+    <a href="index.html" class="logo">
+      <svg width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+      Deutsch<span style="color:var(--green)">+</span>Profis
+    </a>
+  </div>
+</nav>
+
+<main>
+    <div class="wrap">
+        <!-- Start Screen -->
+        <div id="start-screen" class="quest-card" style="text-align: center;">
+            <div class="quest-body" style="padding: 32px;">
+                <h1 style="font-size: 28px; font-weight: 800; color: var(--dark); margin-bottom: 16px;">Квест: Культура праці</h1>
+                <p style="font-size: 18px; color: var(--muted); line-height: 1.7; margin-bottom: 24px;">
+                    Допоможіть <strong>Марічці</strong> та <strong>Тарасу</strong> пройти практику в Німеччині, уникнути типових помилок та зрозуміти місцеву ділову культуру.
+                </p>
+                <button id="start-btn" class="d-btn d-btn--primary">Почати квест</button>
+            </div>
+        </div>
+
+        <!-- Quest Container -->
+        <div id="quest-container" class="quest-card hidden">
+            <div class="quest-header">
+                <h1 id="quest-title"></h1>
+                <div class="progress-bar-container">
+                    <div id="progress-bar" class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="quest-body">
+                <div class="scene-layout">
+                    <div id="character-avatar" class="character-avatar"></div>
+                    <div>
+                        <p id="scene-text" class="scene-text"></p>
+                    </div>
+                </div>
+                <div id="choices-container" class="choices-container"></div>
+                <div id="feedback-container" class="feedback-container hidden"></div>
+                <div id="navigation-container" class="nav-container">
+                    <button id="next-btn" class="d-btn d-btn--primary hidden">Далі &rarr;</button>
+                </div>
+                <div id="final-screen" class="hidden" style="text-align: center;">
+                   <h2 id="final-title" style="font-size: 24px; font-weight: 800; color: var(--green);"></h2>
+                   <p id="final-message" style="font-weight: 500; margin-top: 16px;"></p>
+                   <div id="final-summary" class="final-summary" style="text-align: left;"></div>
+                   <div style="display: flex; justify-content: center; gap: 16px; margin-top: 24px;">
+                       <button id="restart-btn" class="d-btn d-btn--primary">Спробувати знову</button>
+                       <a href="etiquette.html" class="d-btn d-btn--secondary">Назад до теорії</a>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="footer">
+    <div class="wrap">
+      <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені.</p>
+      <p><a href="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">Запропонувати ідею</a></p>
+    </div>
+</footer>
+
+    <script>
+        const questData = [
+            {
+                scene: 1,
+                character: "Марічка",
+                avatarId: "marichka-avatar",
+                title: "Pünktlichkeit (Пунктуальність)",
+                text: "9:55 ранку. Ми з Тарасом біля кімнати для нарад. На дверях: <em>„Besprechung: 10:00 Uhr“</em>. Тарас пропонує швидко випити кави. Але ж <strong>Pünktlichkeit</strong> — це святе! Що робити?",
+                choices: [
+                    { text: "☕ Ризикнути й піти по каву.", isCorrect: false, feedback: "<strong>Результат:</strong> Ви заходите о 10:03. Усі вже на місцях. Frau Becker сухо каже: <em>„Sie sind zu spät.“</em> Ви справляєте враження ненадійної людини." },
+                    { text: "🕘 Зайти, зайняти місця і підготуватися.", isCorrect: true, feedback: "<strong>Результат:</strong> Ви заходите вчасно. Frau Becker посміхається: <em>„Sehr gut, Sie sind pünktlich.“</em> Ви демонструєте професіоналізм." }
+                ]
+            },
+            {
+                scene: 2,
+                character: "Тарас",
+                avatarId: "taras-avatar",
+                title: "Direkte Kommunikation (Пряма комунікація)",
+                text: "Я презентую ідею. Колега, пан Шмідт, каже: <em>„Ihre Idee ist nicht durchdacht.“</em> (Ваша ідея непродумана). Марічка шепоче, що це <strong>konstruktive Kritik</strong>. Як мені відреагувати?",
+                choices: [
+                    { text: "😠 Мовчки образитись.", isCorrect: false, feedback: "<strong>Результат:</strong> Ви показуєте невміння працювати з фідбеком. Колеги вважатимуть, що ви не готові до професійного діалогу." },
+                    { text: "💬 Подякувати і попросити пояснити детальніше.", isCorrect: true, feedback: "<strong>Результат:</strong> Ви кажете: <em>„Danke für Ihr ehrliches Feedback. Was genau sollte ich verbessern?“</em>. Пан Шмідт пояснює. Ви демонструєте зрілість." }
+                ]
+            },
+            {
+                scene: 3,
+                character: "Тарас",
+                avatarId: "taras-avatar",
+                title: "Kleiderordnung (Дрес-код)",
+                text: "Перший день! Я думаю вдягти улюблені джинси та футболку, головне ж комфорт. Але Марічка каже, що тут важлива <strong>Kleiderordnung</strong>, і радить стиль business casual. Що обрати?",
+                choices: [
+                    { text: "👕 Вдягти джинси та футболку.", isCorrect: false, feedback: "<strong>Результат:</strong> Ви приходите в занадто повсякденному одязі. Це створює враження, що ви несерйозно ставитеся до роботи. Охайний діловий вигляд — це прояв поваги." },
+                    { text: "👔 Обрати стиль business casual: класичні брюки та сорочку.", isCorrect: true, feedback: "<strong>Результат:</strong> Ви виглядаєте професійно. Ваш зовнішній вигляд демонструє повагу до компанії. Це правильний вибір для більшості німецьких офісів." }
+                ]
+            },
+            {
+                scene: 4,
+                character: "Марічка",
+                avatarId: "marichka-avatar",
+                title: "Formalität und Hierarchie (Формальність та ієрархія)",
+                text: "Я бачу нашого керівника, пана Ланге, у коридорі. Мені треба терміново запитати про звіт. Це порушення <strong>Formalität</strong>, чи нормальна практика?",
+                choices: [
+                    { text: "👋 Гукнути керівника, щоб не втратити момент.", isCorrect: false, feedback: "<strong>Результат:</strong> Звертатись до керівника в коридорі — неповага до його часу. Важливі питання краще обговорювати у призначений час." },
+                    { text: "📩 Написати листа з проханням про коротку зустріч.", isCorrect: true, feedback: "<strong>Результат:</strong> Правильно. Повага до ієрархії та формальних процедур — ключова. Ви отримуєте повагу за свій професійний підхід." }
+                ]
+            },
+            {
+                scene: 5,
+                character: "Марічка",
+                avatarId: "marichka-avatar",
+                title: "Sorgfalt und Qualität (Ретельність та якість)",
+                text: "Ми сортуємо полуницю. Тарас пропонує залишити кілька ягід з ледь помітними плямками. Але ж <strong>Deutsche Qualität</strong> — це не просто слова. Що робити?",
+                choices: [
+                    { text: "🍓 Залишити їх, щоб було швидше.", isCorrect: false, feedback: "<strong>Результат:</strong> Навіть дрібний дефект може вплинути на репутацію компанії. Неуважність до деталей підриває довіру." },
+                    { text: "📦 Відкласти ці ягоди в окрему коробку.", isCorrect: true, feedback: "<strong>Результат:</strong> Чудове рішення! Ви продемонстрували розуміння важливості якості та дбайливе ставлення до продукції." }
+                ]
+            },
+            {
+                scene: 6,
+                character: "Тарас",
+                avatarId: "taras-avatar",
+                title: "Work-Life-Balance (Баланс роботи та життя)",
+                text: "Вже 19:30. Я забув надіслати звіт. Марічка каже, що вже <strong>Feierabend!</strong> (кінець робочого дня) і не варто турбувати колег. Що робити?",
+                choices: [
+                    { text: "📱 Надіслати лист негайно.", isCorrect: false, feedback: "<strong>Результат:</strong> Ваш керівник отримає лист, але це може створити враження, що ви не вмієте планувати свій час." },
+                    { text: "⏰ Підготувати лист, але налаштувати відправку на 8 ранку.", isCorrect: true, feedback: "<strong>Результат:</strong> Ви поважаєте особистий час колег. Це ознака хорошої самоорганізації та поваги до культури балансу." }
+                ]
+            },
+            {
+                scene: 7,
+                character: "Тарас",
+                avatarId: "taras-avatar",
+                title: "Sicherheit am Arbeitsplatz (Безпека на роботі)",
+                text: "Мені треба швидко перевезти ящики навантажувачем. <strong>Sicherheitsvorschriften</strong> (правила безпеки) тут дуже суворі, навіть на хвилину. Чи варто одягати захист?",
+                choices: [
+                    { text: "👍 Не одягати, адже це справді швидко.", isCorrect: false, feedback: "<strong>Результат:</strong> Нехтування правилами безпеки навіть на короткий час може призвести до травм і показує вас як безвідповідального працівника." },
+                    { text: "🦺 Одягти весь необхідний захист.", isCorrect: true, feedback: "<strong>Результат:</strong> Ви кажете: <em>„Sicherheit geht vor!“</em> (Безпека передусім!). Ви демонструєте відповідальність і повагу до правил." }
+                ]
+            },
+            {
+                scene: 8,
+                character: "Марічка",
+                avatarId: "marichka-avatar",
+                title: "Zuverlässigkeit (Надійність)",
+                text: "Нам доручили презентацію до п'ятниці. Ми знаємо, що <strong>Zuverlässigkeit</strong> (надійність) тут дуже цінують. Як нам краще організувати роботу?",
+                choices: [
+                    { text: "👍 Зробити кожен свою частину в четвер.", isCorrect: false, feedback: "<strong>Результат:</strong> Виявляється, що ваші частини не збігаються за стилем. Робота виглядає недбало. Надійність — це і про якість теж." },
+                    { text: "🤝 Скласти спільний план і перевірити роботу разом.", isCorrect: true, feedback: "<strong>Результат:</strong> Frau Becker вражена вашою відповідальністю. Це відкриває двері до нових завдань." }
+                ]
+            }
+        ];
+
+        let currentSceneIndex = 0;
+        let score = 0;
+        let incorrectAnswers = [];
+        
+        const startScreenEl = document.getElementById('start-screen');
+        const startBtnEl = document.getElementById('start-btn');
+        const questContainerEl = document.getElementById('quest-container');
+        const sceneTextEl = document.getElementById('scene-text');
+        const choicesContainerEl = document.getElementById('choices-container');
+        const feedbackContainerEl = document.getElementById('feedback-container');
+        const navigationContainerEl = document.getElementById('navigation-container');
+        const nextBtnEl = document.getElementById('next-btn');
+        const restartBtnEl = document.getElementById('restart-btn');
+        const progressBarEl = document.getElementById('progress-bar');
+        const questTitleEl = document.getElementById('quest-title');
+        const finalScreenEl = document.getElementById('final-screen');
+        const finalTitleEl = document.getElementById('final-title');
+        const finalMessageEl = document.getElementById('final-message');
+        const finalSummaryEl = document.getElementById('final-summary');
+        const characterAvatarEl = document.getElementById('character-avatar');
+
+        const avatars = {
+            "marichka-avatar": `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="#E9D5FF"/><text x="50" y="68" font-family="Inter, sans-serif" font-size="50" font-weight="700" fill="#4C1D95" text-anchor="middle">М</text></svg>`,
+            "taras-avatar": `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="#D1FAE5"/><text x="50" y="68" font-family="Inter, sans-serif" font-size="50" font-weight="700" fill="#065F46" text-anchor="middle">Т</text></svg>`,
+        };
+
+        function startQuest() {
+            startScreenEl.classList.add('hidden');
+            questContainerEl.classList.remove('hidden');
+            renderScene();
+        }
+
+        function renderScene() {
+            feedbackContainerEl.classList.add('hidden');
+            nextBtnEl.classList.add('hidden');
+            choicesContainerEl.innerHTML = '';
+            choicesContainerEl.classList.remove('hidden');
+            document.querySelector('.scene-layout').classList.remove('hidden');
+
+            const scene = questData[currentSceneIndex];
+            questTitleEl.textContent = scene.title;
+            sceneTextEl.innerHTML = scene.text;
+            characterAvatarEl.innerHTML = avatars[scene.avatarId];
+
+            scene.choices.forEach(choice => {
+                const button = document.createElement('button');
+                button.innerHTML = `<span>${choice.text}</span> <span class="icon check hidden">&#10003;</span><span class="icon cross hidden">&#10007;</span>`;
+                button.className = 'choice-btn';
+                button.onclick = () => handleChoice(choice);
+                choicesContainerEl.appendChild(button);
+            });
+            
+            const progress = ((currentSceneIndex) / questData.length) * 100;
+            progressBarEl.style.width = `${progress}%`;
+        }
+
+        function handleChoice(choice) {
+            feedbackContainerEl.innerHTML = choice.feedback;
+            feedbackContainerEl.className = choice.isCorrect ? 'feedback-container feedback-correct' : 'feedback-container feedback-incorrect';
+            feedbackContainerEl.classList.remove('hidden');
+            
+            if (choice.isCorrect) {
+                score++;
+            } else {
+                incorrectAnswers.push(questData[currentSceneIndex]);
+            }
+
+            Array.from(choicesContainerEl.children).forEach((button, index) => {
+                button.disabled = true;
+                const correspondingChoice = questData[currentSceneIndex].choices[index];
+                if (correspondingChoice.isCorrect) {
+                    button.classList.add('correct');
+                } else {
+                    button.classList.add('incorrect');
+                }
+            });
+
+            nextBtnEl.classList.remove('hidden');
+        }
+
+        function nextScene() {
+            currentSceneIndex++;
+            if (currentSceneIndex < questData.length) {
+                renderScene();
+            } else {
+                showFinalScreen();
+            }
+        }
+
+        function showFinalScreen() {
+            document.querySelector('.scene-layout').classList.add('hidden');
+            choicesContainerEl.classList.add('hidden');
+            feedbackContainerEl.classList.add('hidden');
+            navigationContainerEl.classList.add('hidden');
+            
+            questTitleEl.textContent = "Результати квесту";
+            progressBarEl.style.width = '100%';
+            finalScreenEl.classList.remove('hidden');
+            
+            let title, message, summaryList;
+            if (score === questData.length) {
+                title = "Herzlichen Glückwunsch! (Вітаємо!) 🎉";
+                message = "Ви відмінно засвоїли ключові аспекти німецької культури праці.";
+                summaryList = `<ul>
+                    ${questData.map(q => {
+                        const [principle, translation] = q.title.split(' (');
+                        return `<li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><strong>${principle}</strong> (${translation.replace(')', '')})</li>`
+                    }).join('')}
+                </ul>`;
+                finalSummaryEl.className = 'final-summary';
+            } else {
+                 const topicsToReview = `<ul>
+                    ${incorrectAnswers.map(q => {
+                        const [principle, translation] = q.title.split(' (');
+                        return `<li><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg><strong>${principle}</strong> (${translation.replace(')', '')})</li>`
+                    }).join('')}
+                </ul>`;
+
+                if (score >= questData.length / 2) {
+                    title = "Gute Arbeit! (Гарна робота!) 👍";
+                    message = `Ви набрали ${score} з ${questData.length}. Ви добре орієнтуєтесь, але зверніть увагу на помилки. Ось теми, які варто повторити:`;
+                    summaryList = topicsToReview;
+                } else {
+                    title = "Übung macht den Meister (Практика веде до досконалості) 🤔";
+                    message = `Ви набрали ${score} з ${questData.length}. Не засмучуйтесь, культурні відмінності — це складний досвід. Особливу увагу зверніть на:`;
+                    summaryList = topicsToReview;
+                }
+                finalSummaryEl.className = 'final-summary review-topics';
+            }
+
+            finalTitleEl.innerHTML = title;
+            finalMessageEl.textContent = message;
+            finalSummaryEl.innerHTML = summaryList;
+        }
+
+        function restartQuest() {
+            currentSceneIndex = 0;
+            score = 0;
+            incorrectAnswers = [];
+            finalScreenEl.classList.add('hidden');
+            startScreenEl.classList.remove('hidden');
+            questContainerEl.classList.add('hidden');
+            navigationContainerEl.classList.remove('hidden');
+        }
+
+        startBtnEl.addEventListener('click', startQuest);
+        nextBtnEl.addEventListener('click', nextScene);
+        restartBtnEl.addEventListener('click', restartQuest);
+    </script>
+</body>
+</html>
+
