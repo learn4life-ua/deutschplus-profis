@@ -3,59 +3,515 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Епілог — Deutsch+Profis</title>
-<meta name="description" content="Порожня сторінка-шаблон: Епілог" />
+<title>Епілог: Нові горизонти — Deutsch+Profis</title>
+<meta name="description" content="Діалог 8.1: Марічка та Тарас обговорюють свій досвід після повернення додому." />
+<meta name="theme-color" content="#009846" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
 <style>
-:root{
-  --green:#009846;--dark:#1f2937;--muted:#6b7280;--bg:#f9fafb;--card:#fff;--border:#e5e7eb;--radius:16px;
+:root {
+  --green: #009846;
+  --green-light: #e6f5f0;
+  --dark: #1f2937;
+  --muted: #6b7280;
+  --bg: #f9fafb;
+  --card-bg: #ffffff;
+  --border-color: #e5e7eb;
+  --radius: 16px;
+  --shadow: 0 4px 6px -1px rgba(0,0,0,.03), 0 2px 4px -2px rgba(0,0,0,.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -4px rgba(0,0,0,.05);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
-*{box-sizing:border-box}
-body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:var(--bg);color:#374151;line-height:1.6}
-.wrap{max-width:1100px;margin:0 auto;padding:24px}
-header.site-nav{position:sticky;top:0;background:rgba(255,255,255,.9);backdrop-filter:saturate(120%) blur(10px);border-bottom:1px solid var(--border);z-index:10}
-header.site-nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 24px}
-nav a{color:var(--dark);text-decoration:none;font-weight:600;margin-right:16px}
-nav a:hover{color:var(--green)}
-main{padding:32px 0}
-h1{margin:0 0 8px;font-size:clamp(24px,4vw,34px);font-weight:800;color:var(--dark)}
-.muted{color:var(--muted);margin:0 0 24px}
-.pager{display:flex;gap:12px;margin-top:32px}
-.pager a{display:inline-block;padding:10px 16px;border:1px solid var(--border);border-radius:12px;background:var(--card);text-decoration:none;color:var(--dark)}
-.pager a:hover{border-color:var(--green)}
-footer.site-foot{border-top:1px solid var(--border);margin-top:48px;background:#fff}
-footer.site-foot .wrap{display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;align-items:center;color:var(--muted)}
-.code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:#f3f4f6;border:1px solid var(--border);padding:2px 6px;border-radius:6px}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: #374151;
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+}
+.wrap {
+  box-sizing: border-box;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 5vw, 24px);
+}
+h2 {
+  font-size: clamp(28px, 4vw, 36px);
+  text-align: center;
+  color: var(--dark);
+  margin-bottom: 16px;
+}
+h3 {
+  font-size: 22px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--dark);
+}
+.lead {
+  font-size: clamp(16px, 2vw, 18px);
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+
+/* --- Navigation --- */
+.main-nav {
+  position: sticky;
+  top: 16px;
+  margin: 16px clamp(16px, 5vw, 24px) 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 12px 24px;
+  box-shadow: var(--shadow-lg);
+}
+.main-nav .nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--dark);
+  text-decoration: none;
+}
+.logo svg { color: var(--green); }
+
+/* --- Dialogue Styles --- */
+.dialogue-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: clamp(24px, 5vw, 40px);
+  margin-bottom: 32px;
+}
+.dialogue-meta {
+  font-style: italic;
+  color: var(--muted);
+  background: var(--bg);
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+.dialogue-line {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.dialogue-line strong {
+  font-weight: 700;
+  color: var(--dark);
+  flex-shrink: 0;
+  width: 110px;
+}
+.dialogue-line p {
+  margin: 0;
+}
+.dialogue-line .text-block {
+    flex-grow: 1;
+}
+.translation {
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+    padding-left: 12px;
+    border-left: 2px solid var(--border-color);
+    margin-top: 6px !important;
+}
+
+/* --- Audio Player --- */
+.audio-player {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg);
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border-color);
+}
+.audio-player .play-btn {
+  background: var(--green);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.audio-player .play-btn:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow);
+}
+.audio-player .play-btn svg {
+  width: 20px;
+  height: 20px;
+}
+.audio-player .play-icon {
+    position: relative;
+    left: 1px;
+}
+.audio-player .pause-icon { display: none; }
+.audio-player.playing .play-icon { display: none; }
+.audio-player.playing .pause-icon { display: block; }
+.progress-bar-wrapper {
+  flex-grow: 1;
+  background-color: var(--border-color);
+  height: 6px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.progress-bar {
+  width: 0%; 
+  height: 100%;
+  background-color: var(--green);
+  border-radius: 3px;
+  transition: width 0.1s linear;
+}
+.time-display {
+  font-size: 14px;
+  color: var(--muted);
+  font-family: monospace;
+}
+
+/* --- Vocabulary Styles --- */
+.d-vocab {
+  background: var(--green-light);
+  border: 1px solid var(--green);
+  border-radius: var(--radius);
+  padding: clamp(24px, 5vw, 32px);
+}
+.d-vocab h3 {
+  border-bottom: 1px solid rgba(0, 152, 70, 0.2);
+}
+.d-vocab ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.d-vocab li {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 16px;
+  padding: 12px 0;
+}
+.d-vocab li + li {
+  border-top: 1px solid rgba(0, 152, 70, 0.1);
+}
+.d-vocab .term {
+  font-weight: 500;
+  color: var(--dark);
+}
+.d-vocab .def {
+  color: var(--muted);
+}
+
+/* --- Navigation Buttons --- */
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 40px;
+}
+.d-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid transparent;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  transition: var(--transition);
+  background: var(--card-bg);
+  color: var(--dark);
+  border-color: var(--border-color);
+}
+.d-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--green);
+  color: var(--green);
+}
+
+/* --- Footer --- */
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  padding: clamp(40px, 7vw, 60px) 0;
+}
+.footer a {
+  color: var(--green);
+  text-decoration: none;
+  font-weight: 500;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
 </style>
 </head>
 <body>
-<header class="site-nav">
-  <div class="wrap">
-    <a href="index.html" style="font-weight:800;text-decoration:none;color:var(--dark)">Deutsch<span style="color:var(--green)">+</span>Profis</a>
-    <nav>
-      <a href="dialogues.html">Робочі діалоги</a>
-      <a href="application-documents.html">Документи</a>
-      <a href="index.html#features">Розділи</a>
-    </nav>
-  </div>
-</header>
-<main>
-  <div class="wrap">
 
-    <h1>Епілог</h1>
-    <p class="muted">Завершення історії. Повернення до змісту — нижче.</p>
-    <p>Тут будуть: діалог, лексика, аудіо-плеєр, завдання.</p>
-    <div class="pager">
-      <a href='part7-summary.html'>← Назад</a>
+<nav class="main-nav">
+  <div class="nav-content">
+    <a href="index.html" class="logo">
+      <svg width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+      Deutsch<span style="color:var(--green)">+</span>Profis
+    </a>
+  </div>
+</nav>
+
+<main>
+  <section style="padding: clamp(40px, 7vw, 60px) 0;">
+    <div class="wrap">
+      <h2>Епілог: Нові горизонти</h2>
+      <p class="lead">Стажування завершилося. Марічка та Тарас повернулися додому, сповнені нових знань, досвіду та планів на майбутнє.</p>
+
+      <div class="dialogue-card">
+        <h3>8.1. Розмова після повернення</h3>
+        
+        <!-- TODO: Вставте сюди шлях до аудіофайлу (audio/dialogue-8-1.mp3) -->
+        <audio id="dialogue-audio" src="" preload="metadata"></audio>
+        <div class="audio-player" id="dialogue-player-controls">
+            <button class="play-btn" aria-label="Відтворити аудіо">
+                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+                <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
+            </button>
+            <div class="progress-bar-wrapper" id="progress-wrapper">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <span class="time-display" id="time-display">00:00 / 00:00</span>
+        </div>
+
+        <div class="dialogue-meta">
+          <strong>Ситуація:</strong> Марічка та Тарас зустрілися в улюбленому кафе після повернення в Україну.
+        </div>
+
+        <div class="dialogue-line">
+          <strong>Марічка:</strong>
+          <div class="text-block">
+            <p>Taras, ich kann immer noch nicht glauben, dass wir das geschafft haben! Dieses Praktikum war eine unglaubliche Erfahrung.</p>
+            <p class="translation">Тарасе, досі не можу повірити, що ми це зробили! Це стажування було неймовірним досвідом.</p>
+          </div>
+        </div>
+        <div class="dialogue-line">
+          <strong>Тарас:</strong>
+          <div class="text-block">
+            <p>Absolut! Ich habe so viel gelernt – nicht nur fachlich, sondern auch über die deutsche Arbeitskultur. Und mein Deutsch hat sich enorm verbessert.</p>
+            <p class="translation">Абсолютно! Я стільки всього навчився — не лише професійно, а й про німецьку робочу культуру. І моя німецька неймовірно покращилася.</p>
+          </div>
+        </div>
+        <div class="dialogue-line">
+          <strong>Марічка:</strong>
+          <div class="text-block">
+            <p>Ja, bei mir auch. Ich fühle mich jetzt viel sicherer, wenn ich Deutsch spreche. Was hat dir am meisten gefallen?</p>
+            <p class="translation">Так, у мене теж. Тепер я почуваюся набагато впевненіше, коли розмовляю німецькою. Що тобі сподобалося найбільше?</p>
+          </div>
+        </div>
+        <div class="dialogue-line">
+          <strong>Тарас:</strong>
+          <div class="text-block">
+            <p>Die praktische Arbeit mit der modernen Technik – Drohnen, Sensoren, GPS. Das war genau das, was ich wollte. Und bei dir?</p>
+            <p class="translation">Практична робота з сучасною технікою — дрони, сенсори, GPS. Це було саме те, чого я хотів. А в тебе?</p>
+          </div>
+        </div>
+         <div class="dialogue-line">
+          <strong>Марічка:</strong>
+          <div class="text-block">
+            <p>Die Arbeit im Team und die Verantwortung für ein echtes Projekt. Ich weiß jetzt, dass ich nach dem Studium im internationalen Projektmanagement arbeiten möchte.</p>
+            <p class="translation">Робота в команді та відповідальність за справжній проєкт. Тепер я знаю, що після навчання хочу працювати в міжнародному проєктному менеджменті.</p>
+          </div>
+        </div>
+         <div class="dialogue-line">
+          <strong>Тарас:</strong>
+          <div class="text-block">
+            <p>Ich überlege, meinen Master in Deutschland zu machen. Vielleicht sogar in Zusammenarbeit mit Agrar-Innovativ.</p>
+            <p class="translation">Я розмірковую над тим, щоб здобути магістратуру в Німеччині. Можливо, навіть у співпраці з «Аграр-Інноватів».</p>
+          </div>
+        </div>
+         <div class="dialogue-line">
+          <strong>Марічка:</strong>
+          <div class="text-block">
+            <p>Warum nicht? Sie waren sehr zufrieden mit uns. Ich glaube, wir haben dort wirklich Spuren hinterlassen.</p>
+            <p class="translation">Чому б і ні? Вони були нами дуже задоволені. Думаю, ми справді залишили там слід.</p>
+          </div>
+        </div>
+        <div class="dialogue-line">
+          <strong>Тарас:</strong>
+          <div class="text-block">
+            <p>Auf neue Horizonte!</p>
+            <p class="translation">За нові горизонти!</p>
+          </div>
+        </div>
+        <div class="dialogue-line">
+          <strong>Марічка:</strong>
+          <div class="text-block">
+            <p>Und auf uns – das beste Team!</p>
+            <p class="translation">І за нас — найкращу команду!</p>
+          </div>
+        </div>
+      </div>
       
+      <div class="d-vocab">
+          <h3>Ключові фрази та лексика</h3>
+          <ul>
+              <li>
+                  <span class="term">es nicht glauben können</span>
+                  <span class="def">не могти в це повірити</span>
+              </li>
+              <li>
+                  <span class="term">unglaublich</span>
+                  <span class="def">неймовірний</span>
+              </li>
+              <li>
+                  <span class="term">die Erfahrung</span>
+                  <span class="def">досвід</span>
+              </li>
+               <li>
+                  <span class="term">fachlich</span>
+                  <span class="def">професійно, фахово</span>
+              </li>
+              <li>
+                  <span class="term">die Arbeitskultur</span>
+                  <span class="def">робоча культура</span>
+              </li>
+               <li>
+                  <span class="term">sich enorm verbessern</span>
+                  <span class="def">неймовірно покращитися</span>
+              </li>
+              <li>
+                  <span class="term">sich sicher fühlen</span>
+                  <span class="def">почуватися впевнено</span>
+              </li>
+              <li>
+                  <span class="term">die Verantwortung</span>
+                  <span class="def">відповідальність</span>
+              </li>
+              <li>
+                  <span class="term">das Ziel</span>
+                  <span class="def">мета</span>
+              </li>
+              <li>
+                  <span class="term">Spuren hinterlassen</span>
+                  <span class="def">залишити слід</span>
+              </li>
+          </ul>
+      </div>
+
+      <div class="page-nav">
+          <a href="part7-summary.html" class="d-btn">← Назад до підсумків</a>
+          <a href="dialogues.html" class="d-btn">Повернутися до змісту</a>
+      </div>
+
     </div>
-    
-  </div>
-</main>
-<footer class="site-foot">
-  <div class="wrap">
-    <div>© 2025 Deutsch+Profis — навчальні матеріали.</div>
-    <div><a href="index.html" style="color:var(--green);text-decoration:none;font-weight:600">На головну</a></div>
-  </div>
+  </section>
+  
+<footer class="footer">
+    <div class="wrap">
+      <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені.</p>
+      <p><a href="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">Запропонувати ідею</a></p>
+    </div>
 </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const audio = document.getElementById('dialogue-audio');
+    const playerControls = document.getElementById('dialogue-player-controls');
+    
+    if (!audio || !playerControls) return;
+
+    const playBtn = playerControls.querySelector('.play-btn');
+    const progressBar = document.getElementById('progress-bar');
+    const progressWrapper = document.getElementById('progress-wrapper');
+    const timeDisplay = document.getElementById('time-display');
+
+    const formatTime = (seconds) => {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    };
+
+    audio.addEventListener('loadedmetadata', () => {
+        if (audio.duration && !isNaN(audio.duration)) {
+            timeDisplay.textContent = `${formatTime(0)} / ${formatTime(audio.duration)}`;
+        }
+    });
+
+    playBtn.addEventListener('click', () => {
+        if (!audio.src || audio.src.endsWith(window.location.pathname)) {
+            console.warn("Аудіофайл не вказано.");
+            return;
+        }
+
+        const isPlaying = playerControls.classList.contains('playing');
+        if (isPlaying) {
+            audio.pause();
+            playerControls.classList.remove('playing');
+        } else {
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    playerControls.classList.add('playing');
+                }).catch(error => {
+                    console.error("Помилка відтворення аудіо:", error);
+                    playerControls.classList.remove('playing');
+                });
+            }
+        }
+    });
+
+    audio.addEventListener('timeupdate', () => {
+        if (audio.duration && !isNaN(audio.duration)) {
+            const progressPercent = (audio.currentTime / audio.duration) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+            timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+        }
+    });
+
+    progressWrapper.addEventListener('click', (e) => {
+        if (audio.duration && !isNaN(audio.duration)) {
+            const width = progressWrapper.clientWidth;
+            const clickX = e.offsetX;
+            audio.currentTime = (clickX / width) * audio.duration;
+        }
+    });
+    
+    audio.addEventListener('ended', () => {
+        playerControls.classList.remove('playing');
+        progressBar.style.width = '0%';
+        audio.currentTime = 0;
+        if (audio.duration && !isNaN(audio.duration)) {
+           timeDisplay.textContent = `${formatTime(0)} / ${formatTime(audio.duration)}`;
+        }
+    });
+});
+</script>
 </body>
 </html>
+
