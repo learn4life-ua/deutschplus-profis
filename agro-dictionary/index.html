@@ -90,18 +90,39 @@ h3 { font-size: 20px; }
   padding: 0 0.25rem; color: var(--dark);
 }
 
+/* ДОДАНО: Стиль для хештегу */
+.vocab-card .tag {
+  background-color: var(--green-light);
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 9999px; /* робить його "пігулкою" */
+  margin-bottom: 12px;
+  display: inline-block; /* щоб не займав всю ширину */
+}
+
+/* ОНОВЛЕНО: Адаптивна сітка для карток */
 .vocab-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr; /* 1 колонка за замовчуванням */
   gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .vocab-list {
+    grid-template-columns: repeat(2, 1fr); /* 2 колонки на екранах > 768px */
+  }
 }
 
 .vocab-card {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
-  padding: clamp(20px, 4vw, 24px);
+  padding: clamp(16px, 3vw, 20px); /* Зробили відступи компактнішими */
   transition: var(--transition);
+  display: flex;
+  flex-direction: column; /* Важливо для притискання аудіо донизу */
 }
 .vocab-card:hover {
   border-color: var(--green);
@@ -117,6 +138,12 @@ h3 { font-size: 20px; }
   font-weight: 500;
   margin: 2px 0 12px 0;
 }
+/* ДОДАНО: Стиль для слова "Переклад" */
+.vocab-card .translation strong {
+  color: var(--dark);
+  font-weight: 600;
+  margin-right: 6px;
+}
 .vocab-card .sentence {
   font-size: 15px;
   color: var(--muted);
@@ -126,7 +153,8 @@ h3 { font-size: 20px; }
 }
 .vocab-card audio {
   width: 100%;
-  margin-top: 16px;
+  margin-top: auto; /* Притискає аудіо-плеєр до низу картки */
+  padding-top: 16px;
 }
 
 /* --- Навігаційні кнопки --- */
@@ -259,8 +287,9 @@ function renderCards(filter = "") {
     card.className = "vocab-card"; 
     
     card.innerHTML = `
+      <span class="tag">#Агрономія</span>
       <h3>${highlightText(item.german, filter)}</h3>
-      <p class="translation">${highlightText(item.ukrainian, filter)}</p>
+      <p class="translation"><strong>Переклад:</strong> ${highlightText(item.ukrainian, filter)}</p>
       <p class="sentence">${highlightText(item.sentence, filter)}</p>
       ${audioHtml}
     `;
@@ -285,4 +314,5 @@ window.addEventListener('load', () => {
 
 </body>
 </html>
+
 
