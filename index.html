@@ -51,7 +51,7 @@ body {
 }
 
 /* Основні блоки сторінки */
-section, .header {
+section, .header, footer {
   box-sizing: border-box;
   /* Збалансовані адаптивні відступи */
   padding: clamp(40px, 7vw, 60px) 0;
@@ -324,12 +324,6 @@ details[open] summary::after { transform: rotate(45deg); }
 details .muted { padding-top: 12px; border-top: 1px solid var(--border-color); margin-top: 16px; }
 
 /* ===== FOOTER ===== */
-.footer {
-  text-align: center;
-  color: var(--muted);
-  font-size: 14px;
-  padding: clamp(40px, 7vw, 60px) 0;
-}
 .footer a { color: var(--green); text-decoration: none; font-weight: 500; }
 .footer a:hover { text-decoration: underline; }
 
@@ -377,7 +371,6 @@ details .muted { padding-top: 12px; border-top: 1px solid var(--border-color); m
     <div class="wrap">
       <h2>Що ви знайдете на сайті?</h2>
       <div class="d-grid">
-        <!-- ==== NEW ORDER OF CARDS ==== -->
         <a href="#" class="feature-card fade-in">
           <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg></div>
           <h3>Діловий етикет</h3>
@@ -388,12 +381,12 @@ details .muted { padding-top: 12px; border-top: 1px solid var(--border-color); m
           <h3>Фахова лексика</h3>
           <p>Словники для агро, IT, фінансів та інших галузей з прикладами та аудіо.</p>
         </a>
-        <a href="#" class="feature-card fade-in" style="transition-delay: 200ms;">
+        <a href="dialogues.html" class="feature-card fade-in" style="transition-delay: 200ms;">
           <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
           <h3>Робочі діалоги</h3>
           <p>Готові фрази та сценарії для співбесід, дзвінків, листування та зустрічей.</p>
         </a>
-        <a href="dialogues.html" class="feature-card fade-in" style="transition-delay: 300ms;">
+        <a href="#" class="feature-card fade-in" style="transition-delay: 300ms;">
           <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></div>
           <h3>Практичні вправи</h3>
           <p>Інтерактивні завдання та тести з миттєвою перевіркою для закріплення знань.</p>
@@ -491,3 +484,4 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 </body>
 </html>
+
