@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Фахова лексика — Deutsch+Profis</title>
+<meta name="description" content="Тематичні словники для агрономії, менеджменту та загальної ділової комунікації німецькою мовою." />
+<meta name="theme-color" content="#009846" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --green: #009846;
+  --green-light: #e6f5f0;
+  --dark: #1f2937;
+  --muted: #6b7280;
+  --bg: #f9fafb;
+  --card-bg: #ffffff;
+  --border-color: #e5e7eb;
+  --radius: 16px;
+  --shadow: 0 4px 6px -1px rgba(0,0,0,.03), 0 2px 4px -2px rgba(0,0,0,.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -4px rgba(0,0,0,.05);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: #374151;
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+}
+.wrap {
+  box-sizing: border-box;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 5vw, 24px);
+}
+.main-nav {
+  position: sticky;
+  top: 16px;
+  margin: 16px clamp(16px, 5vw, 24px) 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 12px 24px;
+  box-shadow: var(--shadow-lg);
+}
+.main-nav .nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--dark);
+  text-decoration: none;
+}
+.logo svg { color: var(--green); }
+
+.page-header {
+    text-align: center;
+    padding: clamp(40px, 7vw, 60px) 0;
+}
+.page-header h1 {
+    font-size: clamp(28px, 4vw, 36px);
+    color: var(--dark);
+    font-weight: 800;
+}
+.page-header p {
+    font-size: clamp(16px, 2vw, 18px);
+    color: var(--muted);
+    max-width: 600px;
+    margin: 16px auto 0;
+}
+
+.vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    padding-bottom: clamp(40px, 7vw, 60px);
+}
+.vocab-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+.vocab-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--green);
+}
+.vocab-card .icon {
+    display: inline-flex;
+    padding: 12px;
+    background: var(--green-light);
+    color: var(--green);
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+.vocab-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark);
+    margin: 0 0 8px;
+}
+.vocab-card p {
+    color: var(--muted);
+    margin: 0;
+}
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  padding: clamp(40px, 7vw, 60px) 0;
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+}
+.footer a { color: var(--green); text-decoration: none; font-weight: 500; }
+.footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav class="main-nav">
+  <div class="nav-content">
+    <a href="index.html" class="logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+      Deutsch<span style="color:var(--green)">+</span>Profis
+    </a>
+  </div>
+</nav>
+
+<main>
+    <div class="wrap">
+        <header class="page-header">
+            <h1>Фахова лексика</h1>
+            <p>Оберіть тематичний словник, щоб вивчити та повторити ключові терміни для вашої професії.</p>
+        </header>
+
+        <div class="vocab-grid">
+            <a href="economics.html" class="vocab-card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                </div>
+                <h3>Економіка та управління</h3>
+                <p>Терміни для Марічки: економіка, бухгалтерія, управління фермерським господарством.</p>
+            </a>
+            <a href="agronomy.html" class="vocab-card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                </div>
+                <h3>Словник для агрономів</h3>
+                <p>Терміни для Тараса: ґрунти, посів, урожай, сучасні агротехнології та процеси.</p>
+            </a>
+             <a href="business_general.html" class="vocab-card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <h3>Загальна ділова лексика</h3>
+                <p>Ключові слова для спілкування в офісі, на нарадах та в листуванні. Основа для будь-якої професії.</p>
+            </a>
+            <a href="etiquette.html" class="vocab-card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                </div>
+                <h3>Діловий етикет</h3>
+                <p>Ключові фрази, пов'язані з пунктуальністю, формальністю та іншими правилами німецької бізнес-культури.</p>
+            </a>
+             <a href="public_transport.html" class="vocab-card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17H5a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h1v6Zm12 0h1a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-1v6Z"></path><path d="M17 4H7a4 4 0 0 0-4 4v8h18V8a4 4 0 0 0-4-4Z"></path><path d="M12 4v16"></path><circle cx="7.5" cy="18.5" r="1.5"></circle><circle cx="16.5" cy="18.5" r="1.5"></circle></svg>
+                </div>
+                <h3>Громадський транспорт</h3>
+                <p>Лексика для подорожей потягом, автобусом та метро. Квитки, станції та розклади.</p>
+            </a>
+            <a href="shopping.html" class="vocab-card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.16"></path></svg>
+                </div>
+                <h3>Покупки та продукти</h3>
+                <p>Слова та фрази для відвідування супермаркету, ринку та магазинів.</p>
+            </a>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="wrap">
+      <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені.</p>
+    </div>
+</footer>
+
+</body>
+</html>
+
+
