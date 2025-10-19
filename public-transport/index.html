@@ -1,1 +1,418 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TTS • Громадський транспорт</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <div class="max-w-5xl mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-2">Озвучення: «Громадський транспорт»</h1>
+    <p class="text-sm text-slate-600 mb-6">Генерує MP3 по одній репліці, ZIP з усіма або один суцільний MP3. Є попереднє відтворення.</p>
+
+    <!-- Azure creds -->
+    <div class="p-4 bg-white rounded-lg shadow mb-6">
+      <div class="grid gap-3 md:grid-cols-3">
+        <label class="block">
+          <span class="text-sm text-slate-600">Azure Region</span>
+          <input id="azRegion" class="w-full border p-2 rounded mt-1" placeholder="westeurope" value="westeurope" />
+        </label>
+        <label class="block md:col-span-2">
+          <span class="text-sm text-slate-600">Azure Subscription Key</span>
+          <input id="azKey" type="password" class="w-full border p-2 rounded mt-1" placeholder="****************" />
+        </label>
+      </div>
+      <div class="flex items-center mt-2">
+        <input type="checkbox" id="saveCreds" class="mr-2 rounded" />
+        <label for="saveCreds" class="text-xs text-slate-600">Зберегти Region/Key у localStorage (тільки для цього браузера)</label>
+      </div>
+      <p class="text-xs text-slate-500 mt-2">
+        <b>Увага:</b> не використовуйте ключ на публічних комп'ютерах. Для продакшену краще віддавати короткоживучі токени з бекенду.
+      </p>
+    </div>
+
+    <!-- Голоси + параметри -->
+    <div class="p-4 bg-white rounded-lg shadow mb-6">
+      <h2 class="font-semibold mb-3">Голос і параметри</h2>
+      <div class="grid gap-3 md:grid-cols-2">
+        <label class="block">
+          <span class="text-sm text-slate-600">Голос (DE)</span>
+          <select id="voiceSel" class="w-full border p-2 rounded mt-1">
+            <option value="de-DE-KillianNeural" selected>de-DE-KillianNeural</option>
+            <option value="de-DE-ConradNeural">de-DE-ConradNeural</option>
+            <option value="de-AT-JonasNeural">de-AT-JonasNeural</option>
+            <option value="de-DE-AmalaNeural">de-DE-AmalaNeural</option>
+            <option value="de-DE-KatjaNeural">de-DE-KatjaNeural</option>
+            <option value="de-DE-SeraphinaMultilingualNeural">de-DE-SeraphinaMultilingualNeural</option>
+          </select>
+        </label>
+        <div class="grid grid-cols-3 gap-3">
+          <label class="block">
+            <span class="text-sm text-slate-600">Rate</span>
+            <select id="rateSel" class="w-full border p-2 rounded mt-1">
+              <option value="-10%">-10%</option>
+              <option value="-5%" selected>-5%</option>
+              <option value="0%">0%</option>
+              <option value="+5%">+5%</option>
+            </select>
+          </label>
+          <label class="block">
+            <span class="text-sm text-slate-600">Pitch</span>
+            <select id="pitchSel" class="w-full border p-2 rounded mt-1">
+              <option value="-2%">-2%</option>
+              <option value="0%" selected>0%</option>
+              <option value="+2%">+2%</option>
+            </select>
+          </label>
+          <label class="block">
+            <span class="text-sm text-slate-600">Пауза між репліками (мс)</span>
+            <input id="breakMs" type="number" min="0" step="50" value="250" class="w-full border p-2 rounded mt-1" />
+          </label>
+        </div>
+      </div>
+
+      <div class="grid gap-3 md:grid-cols-2 mt-4">
+        <label class="block">
+          <span class="text-sm text-slate-600">Стиль (style)</span>
+          <select id="styleSel" class="w-full border p-2 rounded mt-1">
+            <option value="">(без стилю)</option>
+            <option value="narration-professional" selected>narration-professional</option>
+            <option value="chat">chat</option>
+            <option value="calm">calm</option>
+          </select>
+        </label>
+        <label class="block">
+          <span class="text-sm text-slate-600">Роль (role)</span>
+          <select id="roleSel" class="w-full border p-2 rounded mt-1">
+            <option value="" selected>(без ролі)</option>
+            <option value="YoungAdultMale">YoungAdultMale</option>
+            <option value="YoungAdultFemale">YoungAdultFemale</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <!-- Список речень -->
+    <div id="list" class="grid gap-4 mb-6"></div>
+
+    <!-- Дії -->
+    <div class="p-4 bg-white rounded-lg shadow">
+      <div class="flex flex-wrap gap-3">
+        <button id="genAllZip" class="px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50">
+          Згенерувати всі MP3 в ZIP
+        </button>
+        <button id="genOneMp3" class="px-4 py-2 rounded-lg bg-fuchsia-600 text-white hover:bg-fuchsia-700 disabled:opacity-50">
+          Згенерувати один MP3 (усі речення)
+        </button>
+        <button id="playAll" class="px-4 py-2 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 disabled:opacity-50">
+          ▶️ Відтворити все
+        </button>
+        <button id="stopAll" class="px-4 py-2 rounded-lg bg-slate-600 text-white hover:bg-slate-700">
+          ⏹ Зупинити
+        </button>
+      </div>
+      <div id="globalStatus" class="text-sm text-slate-600 mt-3 h-5"></div>
+      <p class="text-xs text-slate-500 mt-2">
+        Текст редагується прямо в картці. Для внутрішньої паузи вставляй <code>&lt;break time="200ms"/&gt;</code>.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // ====== ДАНІ: тільки речення (DE) ======
+    const sentences = [
+      "Ich möchte eine Fahrkarte nach Berlin kaufen.",
+      "Der Fahrplan hängt an der Haltestelle.",
+      "Der Bus hält an der nächsten Haltestelle.",
+      "In Leipzig müssen wir in die S-Bahn umsteigen.",
+      "Der Zug hat heute zehn Minuten Verspätung.",
+      "Bitte entwerten Sie Ihr Ticket vor der Fahrt.",
+      "Ein Einzelfahrschein ist 90 Minuten gültig.",
+      "Mit der Tageskarte können Sie unbegrenzt fahren.",
+      "Ich kaufe mir eine Monatskarte für die U-Bahn.",
+      "Der Zug nach München fährt von Gleis vier ab.",
+      "Die Abfahrt des Busses ist um 14 Uhr.",
+      "Unsere Ankunft ist für 18:20 Uhr geplant.",
+      "Wir haben in Nürnberg nur zehn Minuten Anschluss.",
+      "Fährt dieser Zug in Richtung Flughafen?",
+      "Die Endstation dieser Linie ist Hauptbahnhof.",
+      "Der Ausgang zum Zentrum ist links.",
+      "Bitte erst aussteigen lassen, dann einsteigen.",
+      "Ich habe einen Sitzplatz im Wagen drei.",
+      "Heute gibt es Kontrolle, halten Sie den Fahrausweis bereit.",
+      "Wir fahren mit der Straßenbahn bis zur Universität."
+    ];
+
+    // ====== DOM ======
+    const listEl = document.getElementById("list");
+    const globalStatusEl = document.getElementById("globalStatus");
+    const actionButtons = [
+      document.getElementById("genAllZip"),
+      document.getElementById("genOneMp3"),
+      document.getElementById("playAll")
+    ];
+
+    // ====== HELPERS ======
+    const sanitizeFile = (s) =>
+      (s || "")
+        .normalize("NFKD")
+        .replace(/[^\p{L}\p{N}\s._-]/gu, "")
+        .trim()
+        .replace(/\s+/g, "_")
+        .slice(0, 80);
+
+    function setUIBusy(b) {
+      actionButtons.forEach(btn => btn.disabled = b);
+      globalStatusEl.textContent = b ? "Обробка…" : "";
+    }
+
+    function showError(msg) {
+      globalStatusEl.textContent = "❌ " + msg;
+      globalStatusEl.classList.add("text-red-600");
+      setTimeout(() => {
+        globalStatusEl.textContent = "";
+        globalStatusEl.classList.remove("text-red-600");
+      }, 5000);
+    }
+
+    // ====== SSML ======
+    function buildLineSSML(text, voice, rate, pitch, style, role, brMs=0) {
+      const styleAttr = style ? ` style="${style}"` : "";
+      const roleAttr  = role  ? ` role="${role}"`   : "";
+      const breakTag  = brMs > 0 ? `<break time="${brMs}ms"/>` : "";
+      return `
+        <voice name="${voice}">
+          <mstts:express-as${styleAttr}${roleAttr}>
+            <prosody rate="${rate}" pitch="${pitch}">
+              ${text}
+              ${breakTag}
+            </prosody>
+          </mstts:express-as>
+        </voice>`;
+    }
+
+    function buildFullSSML(lines) {
+      const rate  = document.getElementById("rateSel").value;
+      const pitch = document.getElementById("pitchSel").value;
+      const style = document.getElementById("styleSel").value;
+      const role  = document.getElementById("roleSel").value;
+      const voice = document.getElementById("voiceSel").value;
+      const gap   = Math.max(0, parseInt(document.getElementById("breakMs").value || "0", 10));
+
+      const parts = lines.map((t, i) => buildLineSSML(t, voice, rate, pitch, style, role, i < lines.length - 1 ? gap : 0));
+      return `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="de-DE">
+        ${parts.join("\n")}
+      </speak>`;
+    }
+
+    // ====== UI ======
+    function renderList() {
+      listEl.innerHTML = "";
+      const voice = document.getElementById("voiceSel").value;
+
+      sentences.forEach((line, idx) => {
+        const card = document.createElement("div");
+        card.className = "bg-white p-4 rounded-lg shadow";
+        card.innerHTML = `
+          <div class="flex items-center justify-between gap-3">
+            <div class="font-semibold">${String(idx+1).padStart(2,"0")}.</div>
+            <div class="text-xs text-slate-500">Voice: ${voice}</div>
+          </div>
+          <textarea class="w-full border p-3 rounded mt-3 min-h-[80px]">${line}</textarea>
+          <div class="mt-3 flex flex-wrap gap-3 items-center">
+            <button class="play-btn px-3 py-2 rounded bg-emerald-600 text-white hover:bg-emerald-700">▶️ Відтворити</button>
+            <button class="mp3-btn px-3 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">Завантажити MP3</button>
+            <span class="status text-sm text-slate-500"></span>
+          </div>
+        `;
+        listEl.appendChild(card);
+      });
+    }
+
+    // ====== AZURE TTS ======
+    let authToken = null, tokenExpiry = 0;
+
+    async function getAzureToken(region, key) {
+      if (Date.now() < tokenExpiry && authToken) return authToken;
+      if (!region || !key) throw new Error("Вкажіть Azure Region і Key.");
+      const url = `https://${region}.api.cognitive.microsoft.com/sts/v1.0/issueToken`;
+      const res = await fetch(url, { method: "POST", headers: { "Ocp-Apim-Subscription-Key": key } });
+      if (!res.ok) throw new Error(`Помилка отримання токена (HTTP ${res.status})`);
+      authToken = await res.text();
+      tokenExpiry = Date.now() + 9*60*1000;
+      return authToken;
+    }
+
+    async function synthesizeAzure(region, key, ssml) {
+      const token = await getAzureToken(region, key);
+      const url = `https://${region}.tts.speech.microsoft.com/cognitiveservices/v1`;
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/ssml+xml",
+          "X-Microsoft-OutputFormat": "audio-24khz-48kbitrate-mono-mp3"
+        },
+        body: ssml
+      });
+      if (!res.ok) {
+        const txt = await res.text();
+        throw new Error(`Помилка синтезу (HTTP ${res.status}): ${txt.slice(0,120)}`);
+      }
+      return res.blob();
+    }
+
+    // ====== EVENTS: картки ======
+    listEl.addEventListener("click", async (e) => {
+      const card = e.target.closest(".bg-white");
+      if (!card) return;
+      const status = card.querySelector(".status");
+      const region = document.getElementById("azRegion").value.trim();
+      const key    = document.getElementById("azKey").value.trim();
+      const text   = card.querySelector("textarea").value;
+
+      const ssml = buildFullSSML([text]);
+
+      if (e.target.classList.contains("play-btn")) {
+        status.textContent = "Відтворення…";
+        try {
+          const blob = await synthesizeAzure(region, key, ssml);
+          const urlObj = URL.createObjectURL(blob);
+          const audio = new Audio(urlObj);
+          audio.play();
+          audio.onended = () => { URL.revokeObjectURL(urlObj); status.textContent = "Готово"; };
+        } catch (err) { status.textContent = `❌ ${err.message}`; }
+      }
+
+      if (e.target.classList.contains("mp3-btn")) {
+        status.textContent = "Генерація…";
+        try {
+          const blob = await synthesizeAzure(region, key, ssml);
+          const i = Array.from(listEl.children).indexOf(card) + 1;
+          const fname = `${String(i).padStart(2,"0")}_${sanitizeFile(text)}.mp3`;
+          saveAs(blob, fname);
+          status.textContent = "✅ Збережено";
+        } catch (err) { status.textContent = `❌ ${err.message}`; }
+      }
+    });
+
+    // ====== Глобальні кнопки ======
+    document.getElementById("genAllZip").addEventListener("click", async () => {
+      setUIBusy(true);
+      try {
+        const region = document.getElementById("azRegion").value.trim();
+        const key    = document.getElementById("azKey").value.trim();
+        const zip = new JSZip();
+        const folder = zip.folder("public_transport_tts");
+        const cards = Array.from(listEl.children);
+
+        for (let i=0; i<cards.length; i++) {
+          const t = cards[i].querySelector("textarea").value;
+          globalStatusEl.textContent = `Обробка ${i+1}/${cards.length}…`;
+          const ssml = buildFullSSML([t]);
+          try {
+            const blob = await synthesizeAzure(region, key, ssml);
+            const fname = `${String(i+1).padStart(2,"0")}_${sanitizeFile(t)}.mp3`;
+            folder.file(fname, await blob.arrayBuffer());
+          } catch (err) {
+            console.warn("Line failed:", i+1, err);
+          }
+          await new Promise(r => setTimeout(r, 120));
+        }
+
+        globalStatusEl.textContent = 'Формую ZIP…';
+        const zipBlob = await zip.generateAsync({ type: "blob" });
+        saveAs(zipBlob, "public_transport_tts.zip");
+        globalStatusEl.textContent = '✅ ZIP-архів готовий';
+      } catch (err) { showError(err.message); }
+      finally { setUIBusy(false); }
+    });
+
+    document.getElementById("genOneMp3").addEventListener("click", async () => {
+      setUIBusy(true);
+      try {
+        const region = document.getElementById("azRegion").value.trim();
+        const key    = document.getElementById("azKey").value.trim();
+        const texts = Array.from(listEl.querySelectorAll("textarea")).map(t => t.value);
+        const ssml = buildFullSSML(texts);
+        const blob = await synthesizeAzure(region, key, ssml);
+        saveAs(blob, "public_transport_full.mp3");
+        globalStatusEl.textContent = '✅ MP3-файл успішно створено';
+      } catch (err) { showError(err.message); }
+      finally { setUIBusy(false); }
+    });
+
+    let stopFlag = false, currentAudio = null;
+    document.getElementById("stopAll").addEventListener("click", () => {
+      stopFlag = true;
+      if (currentAudio) { currentAudio.pause(); currentAudio.src = ""; }
+    });
+
+    document.getElementById("playAll").addEventListener("click", async () => {
+      stopFlag = false;
+      setUIBusy(true);
+      try {
+        const region = document.getElementById("azRegion").value.trim();
+        const key    = document.getElementById("azKey").value.trim();
+        const cards  = Array.from(listEl.children);
+        const gap    = Math.max(0, parseInt(document.getElementById("breakMs").value || "0", 10));
+
+        for (let i=0; i<cards.length; i++) {
+          if (stopFlag) break;
+          globalStatusEl.textContent = `Відтворення ${i+1}/${cards.length}…`;
+          const t = cards[i].querySelector("textarea").value;
+          const ssml = buildFullSSML([t]);
+          try {
+            const blob = await synthesizeAzure(region, key, ssml);
+            const urlObj = URL.createObjectURL(blob);
+            currentAudio = new Audio(urlObj);
+            await new Promise(resolve => {
+              currentAudio.onended = resolve;
+              currentAudio.onerror = resolve;
+              currentAudio.play();
+            });
+            URL.revokeObjectURL(urlObj);
+            if (gap) await new Promise(r => setTimeout(r, gap));
+          } catch {}
+        }
+      } catch (err) { showError(err.message); }
+      finally { setUIBusy(false); stopFlag = false; currentAudio = null; globalStatusEl.textContent = ""; }
+    });
+
+    // ====== Creds storage ======
+    const azRegionEl = document.getElementById("azRegion");
+    const azKeyEl    = document.getElementById("azKey");
+    const saveCredsEl= document.getElementById("saveCreds");
+
+    saveCredsEl.addEventListener("change", () => {
+      if (saveCredsEl.checked) {
+        localStorage.setItem("azureTtsRegion", azRegionEl.value);
+        localStorage.setItem("azureTtsKey", azKeyEl.value);
+      } else {
+        localStorage.removeItem("azureTtsRegion");
+        localStorage.removeItem("azureTtsKey");
+      }
+    });
+
+    function loadCreds(){
+      const r = localStorage.getItem("azureTtsRegion");
+      const k = localStorage.getItem("azureTtsKey");
+      if (r) azRegionEl.value = r;
+      if (k) azKeyEl.value = k;
+      if (r && k) saveCredsEl.checked = true;
+    }
+
+    // ====== Init ======
+    function init(){
+      ["voiceSel"].forEach(id => document.getElementById(id).addEventListener("change", renderList));
+      loadCreds();
+      renderList();
+    }
+    init();
+  </script>
+</body>
+</html>
 
