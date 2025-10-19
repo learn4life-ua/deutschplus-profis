@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Агро-словник | Deutsch+Profis</title>
-<meta name="description" content="Фахова лексика для агрономії: ґрунти, посів, урожай." />
+<title>Словник: Агрономія | Deutsch+Profis</title>
+<meta name="description" content="Словник за темою «Агрономія»: ґрунти, посів, урожай — з прикладами та аудіо. Введіть слово для пошуку українською або німецькою." />
 
 <!-- Мета-теги та шрифти з головного сайту -->
 <meta name="theme-color" content="#009846" />
-<meta property="og:title" content="Deutsch+Profis — Німецька для професії" />
+<meta property="og:title" content="Deutsch+Profis — Агрономія" />
 <meta property="og:description" content="Словники, діалоги, вправи, етикет. Німецька для роботи — просто та практично." />
 <meta property="og:image" content="https://res.cloudinary.com/dsbqtfrkc/image/upload/v1717672358/og-image-d-profis_v2_b1qf8a.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -42,7 +42,7 @@ body {
 }
 .wrap {
   box-sizing: border-box;
-  max-width: 800px; /* Вужчий контейнер, як у діалогах */
+  max-width: 800px;
   margin: 0 auto;
   padding: 0 clamp(16px, 5vw, 24px);
 }
@@ -54,7 +54,7 @@ h3 { font-size: 20px; }
   font-size: clamp(16px, 2vw, 18px);
   color: var(--muted);
   max-width: 600px;
-  margin: 16px auto 56px;
+  margin: 16px auto 40px;
   text-align: center;
 }
 
@@ -75,94 +75,66 @@ h3 { font-size: 20px; }
 }
 .logo svg { color: var(--green); }
 
-/* --- Нові стилі для словника --- */
+/* --- Словник --- */
 .search-input {
-  box-sizing: border-box; width: 100%; margin: 0 auto 32px;
+  box-sizing: border-box; width: 100%; margin: 0 auto 24px;
   padding: 14px 20px; font-size: 16px; border: 1px solid var(--border-color);
   border-radius: 12px; box-shadow: var(--shadow); transition: var(--transition);
 }
 .search-input:focus {
   outline: none; border-color: var(--green); box-shadow: 0 0 0 3px var(--green-light);
 }
-
 .highlight {
   background-color: var(--yellow); border-radius: 4px;
   padding: 0 0.25rem; color: var(--dark);
 }
 
-/* ДОДАНО: Стиль для хештегу */
+/* Хештег */
 .vocab-card .tag {
   background-color: var(--green-light);
   color: var(--green);
   font-size: 12px;
   font-weight: 700;
   padding: 4px 10px;
-  border-radius: 9999px; /* робить його "пігулкою" */
+  border-radius: 9999px;
   margin-bottom: 12px;
-  display: inline-block; /* щоб не займав всю ширину */
+  display: inline-block;
 }
 
-/* ОНОВЛЕНО: Адаптивна сітка для карток */
+/* Адаптивна сітка: 1 → 2 → 3 колонки */
 .vocab-list {
   display: grid;
-  grid-template-columns: 1fr; /* 1 колонка за замовчуванням */
+  grid-template-columns: 1fr;
   gap: 16px;
 }
-
-@media (min-width: 768px) {
-  .vocab-list {
-    grid-template-columns: repeat(2, 1fr); /* 2 колонки на екранах > 768px */
-  }
-}
+@media (min-width: 768px) { .vocab-list { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px){ .vocab-list { grid-template-columns: repeat(3, 1fr); } }
 
 .vocab-card {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
-  padding: clamp(16px, 3vw, 20px); /* Зробили відступи компактнішими */
+  padding: clamp(16px, 3vw, 20px);
   transition: var(--transition);
   display: flex;
-  flex-direction: column; /* Важливо для притискання аудіо донизу */
+  flex-direction: column;
 }
 .vocab-card:hover {
   border-color: var(--green);
   box-shadow: var(--shadow-lg);
   transform: translateY(-3px);
 }
-.vocab-card h3 {
-  color: var(--dark);
-  font-weight: 700;
-}
-.vocab-card .translation {
-  color: var(--green);
-  font-weight: 500;
-  margin: 2px 0 12px 0;
-}
-/* ДОДАНО: Стиль для слова "Переклад" */
-.vocab-card .translation strong {
-  color: var(--dark);
-  font-weight: 600;
-  margin-right: 6px;
-}
+.vocab-card h3 { color: var(--dark); font-weight: 700; }
+.vocab-card .translation { color: var(--green); font-weight: 500; margin: 2px 0 12px 0; }
+.vocab-card .translation strong { color: var(--dark); font-weight: 600; margin-right: 6px; }
 .vocab-card .sentence {
-  font-size: 15px;
-  color: var(--muted);
-  padding-top: 12px;
-  margin-top: 12px;
-  border-top: 1px solid var(--border-color);
+  font-size: 15px; color: var(--muted);
+  padding-top: 12px; margin-top: 12px; border-top: 1px solid var(--border-color);
 }
-.vocab-card audio {
-  width: 100%;
-  margin-top: auto; /* Притискає аудіо-плеєр до низу картки */
-  padding-top: 16px;
-}
+.vocab-card audio { width: 100%; margin-top: auto; padding-top: 16px; }
 
-/* --- Навігаційні кнопки --- */
-.page-nav {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-}
+/* --- Кнопка навігації --- */
+.page-nav { display: flex; justify-content: center; margin-top: 32px; }
 .d-btn {
   display: inline-flex; align-items: center; justify-content: center;
   gap: 8px; cursor: pointer; text-decoration: none;
@@ -182,16 +154,22 @@ h3 { font-size: 20px; }
 }
 .footer a { color: var(--green); text-decoration: none; font-weight: 500; }
 .footer a:hover { text-decoration: underline; }
-
 </style>
 </head>
 <body>
 
+<!-- Верхня навігація -->
 <nav class="main-nav">
   <div class="nav-content">
-    <a href="../" class="logo">
-      <svg width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+    <a href="../" class="logo" title="На головну">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+      </svg>
       Deutsch<span style="color:var(--green)">+</span>Profis
+    </a>
+    <a href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html" class="logo" style="font-size:14px; gap:6px;">
+      ← Усі словники
     </a>
   </div>
 </nav>
@@ -200,16 +178,14 @@ h3 { font-size: 20px; }
   <section style="padding: clamp(40px, 7vw, 60px) 0;">
     <div class="wrap">
       <h2>Словник: Агрономія</h2>
-      <p class="lead">Ключова лексика за темою "Ґрунти, посів, урожай". Введіть слово для пошуку українською або німецькою.</p>
+      <p class="lead">Словник за темою «Агрономія»: ґрунти, посів, урожай — з прикладами та аудіо. Введіть слово для пошуку українською або німецькою.</p>
       
       <input id="searchInput" type="text" placeholder="Пошук слів..." class="search-input">
     
-      <div id="cardsContainer" class="vocab-list">
-        <!-- Картки будуть згенеровані сюди скриптом -->
-      </div>
+      <div id="cardsContainer" class="vocab-list"></div>
 
       <nav class="page-nav">
-        <a href="../" class="d-btn">← Повернутися на головну</a>
+        <a href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html" class="d-btn">← Повернутися до словників</a>
       </nav>
     </div>
   </section>
@@ -217,35 +193,33 @@ h3 { font-size: 20px; }
 
 <footer class="footer">
   <div class="wrap">
-    <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені.</p>
+    <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені. · <a href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html">Усі словники</a></p>
   </div>
 </footer>
 
 <script>
-// --- СКРИПТ СЛОВНИКА ---
-
 // Дані словника
 const dictionaryData = [
-    { german:"der Boden", ukrainian:"ґрунт", sentence:"Der Boden ist fruchtbar.", id:"audio/01_Der_Boden_ist_fruchtbar.mp3" },
-    { german:"die Fruchtbarkeit", ukrainian:"родючість", sentence:"Die Fruchtbarkeit des Bodens ist wichtig.", id:"audio/02_Die_Fruchtbarkeit_des_Bodens_ist_wichtig.mp3" },
-    { german:"der Acker", ukrainian:"рілля", sentence:"Der Acker wurde gepflügt.", id:"audio/03_Der_Acker_wurde_gepflügt.mp3" },
-    { german:"die Aussaat", ukrainian:"посів", sentence:"Die Aussaat beginnt im Frühling.", id:"audio/04_Die_Aussaat_beginnt_im_Frühling.mp3" },
-    { german:"säen", ukrainian:"сіяти", sentence:"Wir säen das Saatgut im April.", id:"audio/05_Wir_säen_das_Saatgut_im_April.mp3" },
-    { german:"das Saatgut", ukrainian:"посівний матеріал", sentence:"Das Saatgut ist zertifiziert.", id:"audio/06_Das_Saatgut_ist_zertifiziert.mp3" },
-    { german:"die Bodenbearbeitung", ukrainian:"обробіток ґрунту", sentence:"Die Bodenbearbeitung verbessert die Erträge.", id:"audio/07_Die_Bodenbearbeitung_verbessert_die_Erträge.mp3" },
-    { german:"pflügen", ukrainian:"орати", sentence:"Wir pflügen das Feld heute.", id:"audio/08_Wir_pflügen_das_Feld_heute.mp3" },
-    { german:"die Krume", ukrainian:"структура ґрунту", sentence:"Die Krume ist gut strukturiert.", id:"audio/09_Die_Krume_ist_gut_strukturiert.mp3" },
-    { german:"der Humus", ukrainian:"гумус", sentence:"Der Boden enthält viel Humus.", id:"audio/10_Der_Boden_enthält_viel_Humus.mp3" },
-    { german:"die Bodenprobe", ukrainian:"аналіз ґрунту", sentence:"Wir machen eine Bodenprobe.", id:"audio/11_Wir_machen_eine_Bodenprobe.mp3" },
-    { german:"das Feld", ukrainian:"поле", sentence:"Das Feld ist bereit zur Aussaat.", id:"audio/12_Das_Feld_ist_bereit_zur_Aussaat.mp3" },
-    { german:"locker", ukrainian:"пухкий", sentence:"Ein lockerer Boden speichert Wasser gut.", id:"audio/13_Ein_lockerer_Boden_speichert_Wasser_gut.mp3" },
-    { german:"der Ertrag", ukrainian:"урожай", sentence:"Der Ertrag war sehr hoch.", id:"audio/14_Der_Ertrag_war_sehr_hoch.mp3" },
-    { german:"die Ertragssteigerung", ukrainian:"підвищення врожайності", sentence:"Die Ertragssteigerung ist ein Ziel.", id:"audio/15_Die_Ertragssteigerung_ist_ein_Ziel.mp3" },
-    { german:"die Kulturpflanze", ukrainian:"культурна рослина", sentence:"Diese Kulturpflanze wächst schnell.", id:"audio/16_Diese_Kulturpflanze_wächst_schnell.mp3" },
-    { german:"anbauen", ukrainian:"вирощувати", sentence:"Wir bauen Weizen an.", id:"audio/17_Wir_bauen_Weizen_an.mp3" },
-    { german:"der Nährstoff", ukrainian:"поживна речовина", sentence:"Pflanzen benötigen Nährstoffe zum Wachsen.", id:"audio/18_Pflanzen_benötigen_Nährstoffe_zum_Wachsen.mp3" },
-    { german:"die Feuchtigkeit", ukrainian:"вологість", sentence:"Wir müssen die Feuchtigkeit des Bodens messen.", id:"audio/19_Wir_müssen_die_Feuchtigkeit_des_Bodens_messen.mp3" },
-    { german:"bewässern", ukrainian:"зрошувати", sentence:"Es ist wichtig, das Feld regelmäßig zu bewässern.", id:"audio/20_Es_ist_wichtig_das_Feld_regelmäßig_zu_bewässern.mp3" }
+  { german:"der Boden", ukrainian:"ґрунт", sentence:"Der Boden ist fruchtbar.", id:"audio/01_Der_Boden_ist_fruchtbar.mp3" },
+  { german:"die Fruchtbarkeit", ukrainian:"родючість", sentence:"Die Fruchtbarkeit des Bodens ist wichtig.", id:"audio/02_Die_Fruchtbarkeit_des_Bodens_ist_wichtig.mp3" },
+  { german:"der Acker", ukrainian:"рілля", sentence:"Der Acker wurde gepflügt.", id:"audio/03_Der_Acker_wurde_gepflügt.mp3" },
+  { german:"die Aussaat", ukrainian:"посів", sentence:"Die Aussaat beginnt im Frühling.", id:"audio/04_Die_Aussaat_beginnt_im_Frühling.mp3" },
+  { german:"säen", ukrainian:"сіяти", sentence:"Wir säen das Saatgut im April.", id:"audio/05_Wir_säen_das_Saatgut_im_April.mp3" },
+  { german:"das Saatgut", ukrainian:"посівний матеріал", sentence:"Das Saatgut ist zertifiziert.", id:"audio/06_Das_Saatgut_ist_zertifiziert.mp3" },
+  { german:"die Bodenbearbeitung", ukrainian:"обробіток ґрунту", sentence:"Die Bodenbearbeitung verbessert die Erträge.", id:"audio/07_Die_Bodenbearbeitung_verbessert_die_Erträge.mp3" },
+  { german:"pflügen", ukrainian:"орати", sentence:"Wir pflügen das Feld heute.", id:"audio/08_Wir_pflügen_das_Feld_heute.mp3" },
+  { german:"die Krume", ukrainian:"структура ґрунту", sentence:"Die Krume ist gut strukturiert.", id:"audio/09_Die_Krume_ist_gut_strukturiert.mp3" },
+  { german:"der Humus", ukrainian:"гумус", sentence:"Der Boden enthält viel Humus.", id:"audio/10_Der_Boden_enthält_viel_Humus.mp3" },
+  { german:"die Bodenprobe", ukrainian:"аналіз ґрунту", sentence:"Wir machen eine Bodenprobe.", id:"audio/11_Wir_machen_eine_Bodenprobe.mp3" },
+  { german:"das Feld", ukrainian:"поле", sentence:"Das Feld ist bereit zur Aussaat.", id:"audio/12_Das_Feld_ist_bereit_zur_Aussaat.mp3" },
+  { german:"locker", ukrainian:"пухкий", sentence:"Ein lockerer Boden speichert Wasser gut.", id:"audio/13_Ein_lockerer_Boden_speichert_Wasser_gut.mp3" },
+  { german:"der Ertrag", ukrainian:"урожай", sentence:"Der Ertrag war sehr hoch.", id:"audio/14_Der_Ertrag_war_sehr_hoch.mp3" },
+  { german:"die Ertragssteigerung", ukrainian:"підвищення врожайності", sentence:"Die Ertragssteigerung ist ein Ziel.", id:"audio/15_Die_Ertragssteigerung_ist_ein_Ziel.mp3" },
+  { german:"die Kulturpflanze", ukrainian:"культурна рослина", sentence:"Diese Kulturpflanze wächst schnell.", id:"audio/16_Diese_Kulturpflanze_wächst_schnell.mp3" },
+  { german:"anbauen", ukrainian:"вирощувати", sentence:"Wir bauen Weizen an.", id:"audio/17_Wir_bauen_Weizen_an.mp3" },
+  { german:"der Nährstoff", ukrainian:"поживна речовина", sentence:"Pflanzen benötigen Nährstoffe zum Wachsen.", id:"audio/18_Pflanzen_benötigen_Nährstoffe_zum_Wachsen.mp3" },
+  { german:"die Feuchtigkeit", ukrainian:"вологість", sentence:"Wir müssen die Feuchtigkeit des Bodens messen.", id:"audio/19_Wir_müssen_die_Feuchtigkeit_des_Bodens_messen.mp3" },
+  { german:"bewässern", ukrainian:"зрошувати", sentence:"Es ist wichtig, das Feld regelmäßig zu bewässern.", id:"audio/20_Es_ist_wichtig_das_Feld_regelmäßig_zu_bewässern.mp3" }
 ];
 
 const escapeHtml = (s='') => s.replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
@@ -267,11 +241,11 @@ function renderCards(filter = "") {
     return searchTerm.includes(filter.toLowerCase());
   });
 
-  if (filteredData.length === 0) {
+  if (!filteredData.length) {
     cardsContainer.innerHTML = `<div class="vocab-card" style="text-align: center;">
-                                  <h3>Нічого не знайдено</h3>
-                                  <p class="translation" style="color: var(--muted);">Спробуйте інший пошуковий запит.</p>
-                                </div>`;
+      <h3>Нічого не знайдено</h3>
+      <p class="translation" style="color: var(--muted);">Спробуйте інший пошуковий запит.</p>
+    </div>`;
     return;
   }
 
@@ -285,7 +259,6 @@ function renderCards(filter = "") {
 
     const card = document.createElement('div');
     card.className = "vocab-card"; 
-    
     card.innerHTML = `
       <span class="tag">#Агрономія</span>
       <h3>${highlightText(item.german, filter)}</h3>
@@ -299,20 +272,15 @@ function renderCards(filter = "") {
 
 function debounce(fn, wait = 250) {
   let timeout;
-  return function(...args) {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => fn.apply(this, args), wait);
-  };
+  return (...args) => { clearTimeout(timeout); timeout = setTimeout(() => fn(), wait); };
 }
 
 window.addEventListener('load', () => {
   renderCards();
   const searchInput = document.getElementById('searchInput');
-  searchInput.addEventListener('input', debounce(() => renderCards(searchInput.value.trim())));
+  searchInput.addEventListener('input', debounce(() => renderCards(searchInput.value.trim()), 250));
 });
 </script>
 
 </body>
 </html>
-
-
