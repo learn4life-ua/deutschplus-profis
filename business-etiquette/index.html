@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Словник: Діловий етикет | Deutsch+Profis</title>
-<meta name="description" content="Словник за темою «Діловий етикет»: звертання, електронна пошта, пунктуальність, культура праці — з прикладами та аудіо. Введіть слово для пошуку українською або німецькою." />
+<title id="pageTitle">Словник: Діловий етикет | Deutsch+Profis</title>
+<meta id="pageDesc" name="description" content="Словник за темою «Діловий етикет»: звертання, електронна пошта, пунктуальність, культура праці — з прикладами та аудіо. Введіть слово для пошуку українською або німецькою." />
 
-<!-- Мета-теги та шрифти -->
 <meta name="theme-color" content="#009846" />
 <meta property="og:title" content="Deutsch+Profis — Діловий етикет" />
 <meta property="og:description" content="Словники, діалоги, вправи, етикет. Німецька для роботи — просто та практично." />
@@ -15,7 +14,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
 
-<!-- CТИЛІ -->
 <style>
 :root {
   --green:#009846; --green-light:#e6f5f0; --dark:#1f2937; --yellow:#FFED00;
@@ -30,7 +28,6 @@ body{margin:0;background:var(--bg);color:#374151;font-family:'Inter',system-ui,s
 h1,h2,h3{color:var(--dark);font-weight:800;line-height:1.25;margin:0;}
 h2{font-size:clamp(28px,4vw,36px);text-align:center;margin-bottom:16px;}
 .lead{font-size:clamp(16px,2vw,18px);color:var(--muted);max-width:620px;margin:16px auto 40px;text-align:center;}
-
 /* NAV */
 .main-nav{position:sticky;top:16px;margin:16px clamp(16px,5vw,24px) 0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);
   border:1px solid var(--border);border-radius:16px;padding:12px 24px;box-shadow:var(--shadow-lg);}
@@ -39,13 +36,11 @@ h2{font-size:clamp(28px,4vw,36px);text-align:center;margin-bottom:16px;}
 .logo svg{color:var(--green);}
 .top-link{font-size:14px;font-weight:700;color:var(--green);text-decoration:none;}
 .top-link:hover{text-decoration:underline;}
-
 /* Пошук */
 .search-input{box-sizing:border-box;width:100%;margin:0 0 24px;padding:14px 20px;font-size:16px;border:1px solid var(--border);
   border-radius:12px;box-shadow:var(--shadow);transition:var(--transition);}
 .search-input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px var(--green-light);}
 .highlight{background:var(--yellow);border-radius:4px;padding:0 .25rem;color:var(--dark);}
-
 /* Картки */
 .vocab-list{display:grid;grid-template-columns:1fr;gap:16px;}
 @media (min-width:768px){.vocab-list{grid-template-columns:repeat(2,1fr);}}
@@ -59,7 +54,6 @@ h2{font-size:clamp(28px,4vw,36px);text-align:center;margin-bottom:16px;}
 .vocab-card .translation strong{color:var(--dark);font-weight:600;margin-right:6px;}
 .vocab-card .sentence{font-size:15px;color:var(--muted);padding-top:12px;margin-top:12px;border-top:1px solid var(--border);}
 .vocab-card audio{width:100%;margin-top:auto;padding-top:16px;}
-
 /* Кнопки/футер */
 .page-nav{display:flex;justify-content:center;margin-top:40px;}
 .d-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;text-decoration:none;border:1px solid var(--border);
@@ -72,7 +66,6 @@ h2{font-size:clamp(28px,4vw,36px);text-align:center;margin-bottom:16px;}
 </head>
 <body>
 
-<!-- ВЕРХНЯ НАВІГАЦІЯ -->
 <nav class="main-nav">
   <div class="nav-content">
     <a href="../" class="logo" title="На головну">
@@ -80,7 +73,7 @@ h2{font-size:clamp(28px,4vw,36px);text-align:center;margin-bottom:16px;}
         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
         <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
       </svg>
-      Deutsch<span style="color:var(--green)">+</span>Profis
+      Deutsch<span style="color:#009846">+</span>Profis
     </a>
     <a href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html" class="top-link">Усі словники</a>
   </div>
@@ -90,13 +83,10 @@ h2{font-size:clamp(28px,4vw,36px);text-align:center;margin-bottom:16px;}
   <section style="padding: clamp(40px, 7vw, 60px) 0;">
     <div class="wrap">
       <h2>Словник: Діловий етикет</h2>
-      <p class="lead">
-        Словник за темою «Діловий етикет»: звертання, електронна пошта, пунктуальність, культура праці — з прикладами та аудіо.
-        Введіть слово для пошуку українською або німецькою.
-      </p>
+      <p class="lead">Словник за темою «Діловий етикет»: звертання, електронна пошта, пунктуальність, культура праці — з прикладами та аудіо. Введіть слово для пошуку українською або німецькою.</p>
 
       <input id="searchInput" type="text" placeholder="Пошук слів..." class="search-input" />
-      <div id="cardsContainer" class="vocab-list"><!-- cards --></div>
+      <div id="cardsContainer" class="vocab-list"></div>
 
       <nav class="page-nav">
         <a class="d-btn" href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html">← Повернутися до словників</a>
@@ -112,7 +102,6 @@ h2{font-size:clamp(28px,4vw,36px);text-align:center;margin-bottom:16px;}
 </footer>
 
 <script>
-// --- Дані словника (вміст відповідає озвучці) ---
 const dictionaryData = [
   { german:"das Benehmen", ukrainian:"поведінка, манери", sentence:"Gutes Benehmen ist im Büro wichtig.", id:"audio/das_Benehmen__sentence.mp3" },
   { german:"das Feedback", ukrainian:"зворотний зв’язок", sentence:"Ich habe konstruktives Feedback bekommen.", id:"audio/das_Feedback__sentence.mp3" },
@@ -134,12 +123,11 @@ const dictionaryData = [
   { german:"die Pünktlichkeit", ukrainian:"пунктуальність", sentence:"Pünktlichkeit ist in Deutschland sehr wichtig.", id:"audio/die_Punktlichkeit__sentence.mp3" },
   { german:"die Verantwortung", ukrainian:"відповідальність", sentence:"Verantwortung zu übernehmen ist wichtig.", id:"audio/die_Verantwortung__sentence.mp3" },
 
-  { german:"formell", ukrainian:"офіційний, формальний", sentence:"In Meetings ist ein formeller Ton üblich.", id:"audio/formell__sentence.mp3" },
+  { german:"formell", ukrainian:"офіційний, формальний", sentence:"In Meetings ist ein формeller Ton üblich.".replace("формeller","formeller"), id:"audio/formell__sentence.mp3" },
   { german:"respektvoll", ukrainian:"шанобливий", sentence:"Man soll respektvoll miteinander umgehen.", id:"audio/respektvoll__sentence.mp3" },
   { german:"zuverlässig", ukrainian:"надійний", sentence:"Mein Kollege ist sehr zuverlässig.", id:"audio/zuverlassig__sentence.mp3" }
 ];
 
-// — Утиліти пошуку/підсвічування —
 const escapeHtml = (s='') => s.replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const escapeRegex = (s='') => s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 function highlightText(text, filter){
@@ -149,7 +137,6 @@ function highlightText(text, filter){
   return safe.replace(re,'<span class="highlight">$1</span>');
 }
 
-// — Рендер карток —
 function renderCards(filter=""){
   const cont = document.getElementById('cardsContainer');
   cont.innerHTML = '';
@@ -167,7 +154,7 @@ function renderCards(filter=""){
   list.forEach(item=>{
     cont.insertAdjacentHTML('beforeend', `
       <div class="vocab-card">
-        <span class="tag">#ДіловийЕтикет</span>
+        <span class="tag">#Етикет</span>
         <h3>${highlightText(item.german, filter)}</h3>
         <p class="translation"><strong>Переклад:</strong> ${highlightText(item.ukrainian, filter)}</p>
         <p class="sentence">${highlightText(item.sentence, filter)}</p>
@@ -180,7 +167,6 @@ function renderCards(filter=""){
   });
 }
 
-// — Ініціалізація —
 window.addEventListener('load', ()=>{
   renderCards();
   const search = document.getElementById('searchInput');
