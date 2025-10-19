@@ -1,1 +1,436 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Вправа 9 — Deutsch+Profis</title>
+<meta name="description" content="Виконайте дев'яту практичну вправу з теми 'Обробіток ґрунту та удобрення'." />
+<meta name="theme-color" content="#009846" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+<style>
+    /* Глобальне правило для легшої верстки */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    :root {
+        --green: #009846;
+        --green-light: #e6f5f0;
+        --dark: #1f2937;
+        --muted: #6b7280;
+        --bg: #f9fafb;
+        --card-bg: #ffffff;
+        --border-color: #e5e7eb;
+        --radius: 16px;
+        --shadow: 0 4px 6px -1px rgba(0,0,0,.03), 0 2px 4px -2px rgba(0,0,0,.03);
+        --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -4px rgba(0,0,0,.05);
+        --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        --red: #ef4444;
+    }
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: #374151;
+        font-family: 'Inter', system-ui, sans-serif;
+        line-height: 1.6;
+    }
+    .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 clamp(16px, 5vw, 24px);
+    }
+    .main-nav {
+        position: sticky;
+        top: 16px;
+        margin: 16px clamp(16px, 5vw, 24px) 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 12px 24px;
+        box-shadow: var(--shadow-lg);
+    }
+    .main-nav .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 18px;
+        color: var(--dark);
+        text-decoration: none;
+    }
+    .logo svg { color: var(--green); }
+
+    .page-header {
+        text-align: center;
+        padding: clamp(40px, 7vw, 60px) 0;
+    }
+    .page-header h1 {
+        font-size: clamp(28px, 4vw, 36px);
+        color: var(--dark);
+        font-weight: 800;
+    }
+    .page-header p {
+        font-size: clamp(16px, 2vw, 18px);
+        color: var(--muted);
+        max-width: 600px;
+        margin: 16px auto 0;
+    }
+
+    .exercise-content {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius);
+        padding: clamp(24px, 5vw, 40px);
+        max-width: 800px;
+        margin: 0 auto clamp(40px, 7vw, 60px);
+        box-shadow: var(--shadow);
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-bottom: 24px;
+        color: var(--green);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .back-link:hover {
+        text-decoration: underline;
+    }
+
+    h2, h3 {
+        color: var(--dark);
+    }
+
+    .task {
+        margin-bottom: 32px;
+    }
+    .task ol, .task ul {
+        padding-left: 20px;
+    }
+     .task ol li {
+        margin-bottom: 16px;
+    }
+
+    .german-text {
+        background-color: var(--bg);
+        border-left: 4px solid var(--green);
+        padding: 16px;
+        border-radius: 8px;
+        margin: 16px 0;
+        font-style: italic;
+    }
+    .word-bank {
+        background-color: var(--green-light);
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 500;
+        color: var(--dark);
+        margin-top: 16px;
+        text-align: center;
+    }
+    .vocab-task-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 16px;
+    }
+    .vocab-item {
+        display: flex;
+        flex-direction: column;
+    }
+    .vocab-item label {
+        font-weight: 500;
+        color: var(--dark);
+        margin-bottom: 6px;
+    }
+
+    /* Interactive elements */
+    .accordion-button {
+        background-color: var(--green-light);
+        color: var(--green);
+        cursor: pointer;
+        padding: 10px 15px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: background-color 0.3s ease;
+        border-radius: 8px;
+        font-weight: 500;
+        margin-top: 10px;
+    }
+    .accordion-button:hover, .accordion-button.active {
+        background-color: #d1e9e2;
+    }
+    .accordion-button::after {
+        content: '+';
+        font-size: 18px;
+        color: var(--green);
+        float: right;
+        margin-left: 5px;
+    }
+    .accordion-button.active::after {
+        content: "−";
+    }
+    .accordion-panel {
+        padding: 0 18px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        border-bottom: 2px solid var(--green-light);
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: 1px solid var(--border-color);
+        font-size: 16px;
+        transition: var(--transition);
+    }
+    input[type="text"]:focus {
+        outline: none;
+        border-color: var(--green);
+        box-shadow: 0 0 0 2px var(--green-light);
+    }
+    input.correct {
+        border-color: var(--green);
+        background-color: #f0fdf4;
+    }
+    input.incorrect {
+        border-color: var(--red);
+        background-color: #fef2f2;
+    }
+    .check-btn {
+        background-color: var(--green);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+        margin-top: 16px;
+    }
+    .check-btn:hover {
+        background-color: #007a38;
+    }
+    .fill-in-sentence input {
+        width: 150px;
+        display: inline-block;
+    }
+    .fill-in-sentence .small-input {
+        width: 120px;
+    }
+
+    .footer {
+        text-align: center;
+        color: var(--muted);
+        font-size: 14px;
+        padding: clamp(40px, 7vw, 60px) 0;
+        background: var(--card-bg);
+        border-top: 1px solid var(--border-color);
+    }
+
+</style>
+</head>
+<body>
+
+<nav class="main-nav">
+    <div class="nav-content">
+        <a href="../index.html" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            Deutsch<span style="color:var(--green)">+</span>Profis
+        </a>
+    </div>
+</nav>
+
+<main>
+    <div class="wrap">
+        <header class="page-header">
+            <h1>Вправа 9</h1>
+            <p>Обробіток ґрунту та удобрення</p>
+        </header>
+
+        <a href="../practice.html" class="back-link">‹ Повернутися до всіх вправ</a>
+        <div class="exercise-content">
+            
+            <div class="task">
+                <h3>1. Ознайомтеся з текстом та передайте його зміст українською мовою:</h3>
+                <div class="german-text">
+                    <p><strong>Bodenbearbeitung und Düngung</strong></p>
+                    <p>Die Bearbeitung des Bodens erfolgt mit entsprechenden Maschinen und Geräten, um für den Anbau von Kulturpflanzen die besten Bedingungen zu schaffen, d.h. die Bildung der Krümelstruktur zu fördern.</p>
+                    <p>Im Vordergrund aller Maßnahmen der Bodenbearbeitung steht die Lockerung. Der lockere Boden kann das Niederschlagswasser aufnehmen und speichern.</p>
+                    <p>Um die Nährstoffversorgung der Kulturpflanzen nach Bedarf zu sichern, bringt man in den Boden die Düngemittel ein. Das sind Stoffe, die die Bodenfruchtbarkeit und damit auch die Erträge der Kulturpflanzen steigern.</p>
+                    <p>Die Düngemittel gliedert man in zwei Hauptgruppen, die organischen Düngemittel und die mineralischen Düngemittel. Die organischen Düngemittel bekommt man im landwirtschaftlichen Betrieb selbst. Dazu gehören Stallmist, Gründüngung, Gülle, Kompost.</p>
+                    <p>Die mineralischen Düngemittel erzeugt die Industrie. Dabei handelt es sich um Kalk-, Stickstoff-, Phosphorsäure- und Kalidünger. Die Mineraldüngung ist eine der effektivsten Maßnahmen zur Intensivierung der Pflanzenproduktion.</p>
+                </div>
+                <p><strong>Пояснення до тексту:</strong><br>
+                1. aufnehmen — впитувати<br>
+                2. im landwirtschaftlichen Betrieb selbst – безпосередньо у самому сільськогосподарському підприємстві<br>
+                3. es handelt sich um... — мова йде про…</p>
+                <button class="accordion-button">Показати переклад</button>
+                <div class="accordion-panel">
+                    <p style="margin-top: 16px;"><strong>Обробіток ґрунту та удобрення</strong></p>
+                    <p>Обробіток ґрунту здійснюється за допомогою відповідних машин та знарядь з метою створення найкращих умов для вирощування культурних рослин, тобто для сприяння утворенню грудкуватої структури.</p>
+                    <p>На першому плані всіх заходів з обробітку ґрунту стоїть розпушування. Розпушений ґрунт може вбирати та утримувати опадову воду.</p>
+                    <p>Щоб забезпечити живлення культурних рослин відповідно до їхніх потреб, у ґрунт вносять добрива. Це речовини, які підвищують родючість ґрунту, а отже, і врожайність культурних рослин.</p>
+                    <p>Добрива поділяють на дві основні групи: органічні та мінеральні. Органічні добрива отримують безпосередньо в сільськогосподарському підприємстві. До них належать гній, зелене добриво, гноївка, компост.</p>
+                    <p>Мінеральні добрива виробляє промисловість. Йдеться про вапняні, азотні, фосфорні та калійні добрива. Мінеральне удобрення є одним з найефективніших заходів для інтенсифікації рослинництва.</p>
+                </div>
+            </div>
+
+            <div class="task">
+                <h3>2. Назвіть українські еквіваленти наступних слів:</h3>
+                <div class="vocab-task-grid">
+                    <div class="vocab-item"><label for="vocab-1">aufnehmen</label><input type="text" id="vocab-1" data-answer="вбирати, впитувати"></div>
+                    <div class="vocab-item"><label for="vocab-2">die Bearbeitung</label><input type="text" id="vocab-2" data-answer="обробіток"></div>
+                    <div class="vocab-item"><label for="vocab-3">das Düngemittel</label><input type="text" id="vocab-3" data-answer="добриво"></div>
+                    <div class="vocab-item"><label for="vocab-4">die Düngung</label><input type="text" id="vocab-4" data-answer="удобрення, внесення добрив"></div>
+                    <div class="vocab-item"><label for="vocab-5">einbringen</label><input type="text" id="vocab-5" data-answer="вносити"></div>
+                    <div class="vocab-item"><label for="vocab-6">gehören</label><input type="text" id="vocab-6" data-answer="належати"></div>
+                    <div class="vocab-item"><label for="vocab-7">gliedern</label><input type="text" id="vocab-7" data-answer="ділити, поділяти"></div>
+                    <div class="vocab-item"><label for="vocab-8">der Kali</label><input type="text" id="vocab-8" data-answer="калій"></div>
+                    <div class="vocab-item"><label for="vocab-9">der Kalk</label><input type="text" id="vocab-9" data-answer="вапно"></div>
+                    <div class="vocab-item"><label for="vocab-10">der Krümel</label><input type="text" id="vocab-10" data-answer="грудка"></div>
+                    <div class="vocab-item"><label for="vocab-11">locker</label><input type="text" id="vocab-11" data-answer="розпушений, пухкий"></div>
+                    <div class="vocab-item"><label for="vocab-12">die Lockerung</label><input type="text" id="vocab-12" data-answer="розпушування"></div>
+                    <div class="vocab-item"><label for="vocab-13">der Nährstoff</label><input type="text" id="vocab-13" data-answer="поживна речовина"></div>
+                    <div class="vocab-item"><label for="vocab-14">die Säure</label><input type="text" id="vocab-14" data-answer="кислота"></div>
+                    <div class="vocab-item"><label for="vocab-15">schaffen</label><input type="text" id="vocab-15" data-answer="створювати"></div>
+                    <div class="vocab-item"><label for="vocab-16">der Stallmist</label><input type="text" id="vocab-16" data-answer="гній"></div>
+                    <div class="vocab-item"><label for="vocab-17">der Stickstoff</label><input type="text" id="vocab-17" data-answer="азот"></div>
+                    <div class="vocab-item"><label for="vocab-18">der Stoff</label><input type="text" id="vocab-18" data-answer="речовина"></div>
+                </div>
+                <button class="check-btn" id="check-task2">Перевірити</button>
+            </div>
+
+            <div class="task">
+                <h3>3. Опираючись на зміст вищевказаного тексту, доповніть речення. Перекладіть їх:</h3>
+                <ol class="fill-in-sentence">
+                    <li>Die Bodenbearbeitung schafft die <input type="text" id="blank-3-1" data-answer="besten Bedingungen">.</li>
+                    <li>Die Hauptmaßnahme der Bodenbearbeitung ist <input type="text" id="blank-3-2" data-answer="die Lockerung">.</li>
+                    <li>Der lockere Boden kann das Niederschlagswasser gut <input type="text" id="blank-3-3" data-answer="aufnehmen">.</li>
+                    <li>Zu den mineralischen Düngemitteln gehören <input type="text" class="small-input" id="blank-3-4" data-answer="Kalkdünger">, <input type="text" class="small-input" id="blank-3-5" data-answer="Stickstoffdünger">, <input type="text" class="small-input" id="blank-3-6" data-answer="Phosphorsäuredünger"> und <input type="text" class="small-input" id="blank-3-7" data-answer="Kalidünger">.</li>
+                </ol>
+                <div class="word-bank">
+                    <p>Слова для довідки: besten Bedingungen, die Lockerung, aufnehmen, Kalkdünger, Stickstoffdünger, Phosphorsäuredünger, Kalidünger</p>
+                </div>
+                <button class="check-btn" id="check-task3">Перевірити</button>
+            </div>
+
+            <div class="task">
+                <h3>4. Дайте відповіді на запитання:</h3>
+                <ol>
+                    <li>
+                        Was ist das Ziel der Bodenbearbeitung?
+                        <button class="accordion-button">Показати відповідь</button>
+                        <div class="accordion-panel">
+                           <p style="margin-top:16px;">Das Ziel ist, für den Anbau von Kulturpflanzen die besten Bedingungen zu schaffen und die Bildung der Krümelstruktur zu fördern.</p>
+                        </div>
+                    </li>
+                    <li>
+                        Welche Maßnahme der Bodenbearbeitung ist am wichtigsten?
+                        <button class="accordion-button">Показати відповідь</button>
+                        <div class="accordion-panel">
+                           <p style="margin-top:16px;">Die Lockerung ist die wichtigste Maßnahme.</p>
+                        </div>
+                    </li>
+                    <li>
+                        Warum?
+                        <button class="accordion-button">Показати відповідь</button>
+                        <div class="accordion-panel">
+                           <p style="margin-top:16px;">Weil der lockere Boden das Niederschlagswasser aufnehmen und speichern kann.</p>
+                        </div>
+                    </li>
+                     <li>
+                        Worin besteht die Bedeutung der Düngemittel?
+                        <button class="accordion-button">Показати відповідь</button>
+                        <div class="accordion-panel">
+                           <p style="margin-top:16px;">Sie steigern die Bodenfruchtbarkeit und damit auch die Erträge der Kulturpflanzen.</p>
+                        </div>
+                    </li>
+                     <li>
+                        Welche Düngemittel gehören zu den organischen?
+                        <button class="accordion-button">Показати відповідь</button>
+                        <div class="accordion-panel">
+                           <p style="margin-top:16px;">Zu den organischen Düngemitteln gehören Stallmist, Gründüngung, Gülle und Kompost.</p>
+                        </div>
+                    </li>
+                     <li>
+                        Und zu den mineralischen?
+                        <button class="accordion-button">Показати відповідь</button>
+                        <div class="accordion-panel">
+                           <p style="margin-top:16px;">Zu den mineralischen Düngemitteln gehören Kalk-, Stickstoff-, Phosphorsäure- und Kalidünger.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="wrap">
+        <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені.</p>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Accordion functionality
+    const accordions = document.querySelectorAll('.accordion-button');
+    accordions.forEach(button => {
+        button.addEventListener('click', () => {
+            button.classList.toggle('active');
+            const panel = button.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    });
+
+    // Function to check answers for inputs with data-answer attribute
+    function checkAnswers(buttonId, inputSelector) {
+        document.getElementById(buttonId).addEventListener('click', () => {
+            const inputs = document.querySelectorAll(inputSelector);
+            inputs.forEach(input => {
+                const userAnswer = input.value.trim().toLowerCase();
+                const correctAnswers = input.dataset.answer.toLowerCase().split(',').map(s => s.trim());
+                
+                if (correctAnswers.includes(userAnswer)) {
+                    input.classList.add('correct');
+                    input.classList.remove('incorrect');
+                } else {
+                    input.classList.add('incorrect');
+                    input.classList.remove('correct');
+                }
+            });
+        });
+    }
+
+    // Initialize checkers
+    checkAnswers('check-task2', '.vocab-task-grid input');
+    checkAnswers('check-task3', '.fill-in-sentence input');
+});
+</script>
+
+</body>
+</html>
 
