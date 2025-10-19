@@ -1,1 +1,41 @@
+01_Ich_mochte_eine_Fahrkarte_nach_Berlin_kaufen..mp3
+Ich möchte eine Fahrkarte nach Berlin kaufen.
+
+02_Der_Fahrplan_hangt_an_der_Haltestelle..mp3
+Der Fahrplan hängt an der Haltestelle.
+
+03_Der_Bus_halt_an_der_nachsten_Haltestelle..mp3
+Der Bus hält an der nächsten Haltestelle.
+
+04_In_Leipzig_mussen_wir_in_die_S-Bahn_umsteigen..mp3
+In Leipzig müssen wir in die S-Bahn umsteigen.
+
+05_Der_Zug_hat_heute_zehn_Minuten_Verspatung..mp3
+Der Zug hat heute zehn Minuten Verspätung.
+
+06_Bitte_entwerten_Sie_Ihr_Ticket_vor_der_Fahrt..mp3
+Bitte entwerten Sie Ihr Ticket vor der Fahrt.
+
+07_Ein_Einzelfahrschein_ist_90_Minuten_gultig..mp3
+Ein Einzelfahrschein ist 90 Minuten gültig.
+
+08_Mit_der_Tageskarte_konnen_Sie_unbegrenzt_fahren..mp3
+Mit der Tageskarte können Sie unbegrenzt fahren.
+
+09_Ich_kaufe_mir_eine_Monatskarte_fur_die_U-Bahn..mp3
+Ich kaufe mir eine Monatskarte für die U-Bahn.
+
+10_Der_Zug_nach_Munchen_fahrt_von_Gleis_vier_ab..mp3
+Der Zug nach München fährt von Gleis vier ab.
+
+11_Die_Abfahrt_des_Busses_ist_um_14_Uhr..mp3
+Die Abfahrt des Busses ist um 14 Uhr.
+
+12_Unsere_Ankunft_ist_fur_1820_Uhr_geplant..mp3
+Unsere Ankunft ist für 18:20 Uhr geplant.
+
+13_Wir_haben_in_Nurnberg_nur_zehn_Minuten_Anschluss..mp3
+Wir haben in Nürnberg nur zehn Minuten Anschluss.
+
+14_Fahrt_dieser_Zug_in_Richtung_Flughafen.mp
 
