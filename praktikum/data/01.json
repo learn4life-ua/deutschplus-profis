@@ -1,0 +1,61 @@
+{
+  "pageTitle": "Варіант 1",
+  "pageSub": "Машинна система для тваринництва",
+  "title": "Das Maschinensystem für die Tierproduktion",
+  "germanText": "Zu einem einheitlichen Maschinensystem für Produktionsanlagen der Rinder- und Schweinehaltung gehören die Teilmaschinensysteme für: 1) Fütterung, 2) Entmistung, Reinigung und Desinfektion, 3) Melken.<br><br>Das Teilmaschinensystem der Fütterung umfasst die Arbeitsgänge von der Entnahme des Futters aus dem Lager bis zur Verabreichung der gewünschten Futterration am Tierplatz.",
+  "explanation": "sich befassen mit (D) — займатися чим-небудь",
+  "correctTranslation": "Машинна система для тваринництва складається з підсистем для годівлі; прибирання гною, очищення й дезінфекції; доїння. Підсистема годівлі охоплює етапи від вилучення корму зі сховища до роздачі потрібної порції на місці тварини.",
+  "vocabulary": [
+    {
+      "word": "sich befassen (mit)",
+      "answer": "займатися чим-небудь"
+    },
+    {
+      "word": "die Einrichtung",
+      "answer": "обладнання, устаткування"
+    },
+    {
+      "word": "die Einstreu",
+      "answer": "підстилка"
+    },
+    {
+      "word": "die Hackfrucht",
+      "answer": "просапна культура"
+    }
+  ],
+  "comprehension3_1": [
+    {
+      "textParts": [
+        "1) Zur Entmistung der ",
+        "INPUT",
+        " mit ",
+        "INPUT",
+        " wird der Traktor mit Frontlader eingesetzt."
+      ],
+      "answers": [
+        "Ställe",
+        "Einstreu"
+      ]
+    },
+    {
+      "textParts": [
+        "2) Die mechanisierte Futteraufbereitung ",
+        "INPUT",
+        " mit der Reinigung von Hackfrüchten."
+      ],
+      "answers": [
+        "befasst sich"
+      ]
+    }
+  ],
+  "comprehension3_2": [
+    {
+      "question": "1) Welche Teilmaschinensysteme gehören zum Maschinensystem?",
+      "answer": "Fütterung; Entmistung, Reinigung, Desinfektion; Melken."
+    },
+    {
+      "question": "2) Wie kann man einstreulose Ställe entmisten?",
+      "answer": "Hydromechanisch."
+    }
+  ]
+}
