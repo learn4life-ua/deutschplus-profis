@@ -1,1 +1,243 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Практичні вправи — Deutsch+Profis</title>
+<meta name="description" content="Інтерактивні вправи для перевірки та закріплення знань з фахової лексики німецькою мовою." />
+<meta name="theme-color" content="#009846" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+<style>
+    /* Глобальне правило для легшої верстки */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    :root {
+        --green: #009846;
+        --green-light: #e6f5f0;
+        --dark: #1f2937;
+        --muted: #6b7280;
+        --bg: #f9fafb;
+        --card-bg: #ffffff;
+        --border-color: #e5e7eb;
+        --radius: 16px;
+        --shadow: 0 4px 6px -1px rgba(0,0,0,.03), 0 2px 4px -2px rgba(0,0,0,.03);
+        --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -4px rgba(0,0,0,.05);
+        --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: #374151;
+        font-family: 'Inter', system-ui, sans-serif;
+        line-height: 1.6;
+    }
+    .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 clamp(16px, 5vw, 24px);
+    }
+    .main-nav {
+        position: sticky;
+        top: 16px;
+        margin: 16px clamp(16px, 5vw, 24px) 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 12px 24px;
+        box-shadow: var(--shadow-lg);
+    }
+    .main-nav .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 18px;
+        color: var(--dark);
+        text-decoration: none;
+    }
+    .logo svg { color: var(--green); }
+
+    .page-header {
+        text-align: center;
+        padding: clamp(40px, 7vw, 60px) 0;
+    }
+    .page-header h1 {
+        font-size: clamp(28px, 4vw, 36px);
+        color: var(--dark);
+        font-weight: 800;
+    }
+    .page-header p {
+        font-size: clamp(16px, 2vw, 18px);
+        color: var(--muted);
+        max-width: 600px;
+        margin: 16px auto 0;
+    }
+
+    .exercise-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+        padding-bottom: clamp(40px, 7vw, 60px);
+    }
+    .exercise-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius);
+        padding: 24px;
+        text-decoration: none;
+        color: inherit;
+        transition: var(--transition);
+    }
+    .exercise-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--green);
+    }
+    .exercise-card .icon {
+        display: inline-flex;
+        padding: 12px;
+        background: var(--green-light);
+        color: var(--green);
+        border-radius: 12px;
+        margin-bottom: 16px;
+    }
+    .exercise-card h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--dark);
+        margin: 0 0 8px;
+    }
+    .exercise-card p {
+        color: var(--muted);
+        margin: 0;
+    }
+    .footer {
+        text-align: center;
+        color: var(--muted);
+        font-size: 14px;
+        padding: clamp(40px, 7vw, 60px) 0;
+        background: var(--card-bg);
+        border-top: 1px solid var(--border-color);
+    }
+    .footer a { color: var(--green); text-decoration: none; font-weight: 500; }
+    .footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav class="main-nav">
+    <div class="nav-content">
+        <a href="index.html" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            Deutsch<span style="color:var(--green)">+</span>Profis
+        </a>
+    </div>
+</nav>
+
+<main>
+    <div class="wrap">
+        <header class="page-header">
+            <h1>Практичні вправи</h1>
+            <p>Перевірте свої знання та закріпіть вивчений матеріал. Оберіть вправу, щоб розпочати.</p>
+        </header>
+
+        <div class="exercise-grid">
+            <a href="exercises/exercise-1.html" class="exercise-card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                </div>
+                <h3>Вправа 1</h3>
+                <p>Короткий опис теми або типу завдання для першої вправи.</p>
+            </a>
+            <a href="exercises/exercise-2.html" class="exercise-card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                </div>
+                <h3>Вправа 2</h3>
+                <p>Короткий опис теми або типу завдання для другої вправи.</p>
+            </a>
+            <a href="exercises/exercise-3.html" class="exercise-card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                </div>
+                <h3>Вправа 3</h3>
+                <p>Короткий опис теми або типу завдання для третьої вправи.</p>
+            </a>
+            <a href="exercises/exercise-4.html" class="exercise-card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                </div>
+                <h3>Вправа 4</h3>
+                <p>Короткий опис теми або типу завдання для четвертої вправи.</p>
+            </a>
+            <a href="exercises/exercise-5.html" class="exercise-card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                </div>
+                <h3>Вправа 5</h3>
+                <p>Короткий опис теми або типу завдання для п'ятої вправи.</p>
+            </a>
+            <a href="exercises/exercise-6.html" class="exercise-card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                </div>
+                <h3>Вправа 6</h3>
+                <p>Короткий опис теми або типу завдання для шостої вправи.</p>
+            </a>
+            <a href="exercises/exercise-7.html" class="exercise-card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                </div>
+                <h3>Вправа 7</h3>
+                <p>Короткий опис теми або типу завдання для сьомої вправи.</p>
+            </a>
+            <a href="exercises/exercise-8.html" class="exercise-card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                </div>
+                <h3>Вправа 8</h3>
+                <p>Короткий опис теми або типу завдання для восьмої вправи.</p>
+            </a>
+            <a href="exercises/exercise-9.html" class="exercise-card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                </div>
+                <h3>Вправа 9</h3>
+                <p>Короткий опис теми або типу завдання для дев'ятої вправи.</p>
+            </a>
+            <a href="exercises/exercise-10.html" class="exercise-card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                </div>
+                <h3>Вправа 10</h3>
+                <p>Короткий опис теми або типу завдання для десятої вправи.</p>
+            </a>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="wrap">
+        <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені.</p>
+    </div>
+</footer>
+
+</body>
+</html>
+
 
