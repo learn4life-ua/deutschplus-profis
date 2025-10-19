@@ -1,1 +1,414 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Вправа 7 — Deutsch+Profis</title>
+<meta name="description" content="Виконайте сьому практичну вправу з теми 'Виробництво кормів на ріллі'." />
+<meta name="theme-color" content="#009846" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+<style>
+    /* Глобальне правило для легшої верстки */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    :root {
+        --green: #009846;
+        --green-light: #e6f5f0;
+        --dark: #1f2937;
+        --muted: #6b7280;
+        --bg: #f9fafb;
+        --card-bg: #ffffff;
+        --border-color: #e5e7eb;
+        --radius: 16px;
+        --shadow: 0 4px 6px -1px rgba(0,0,0,.03), 0 2px 4px -2px rgba(0,0,0,.03);
+        --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -4px rgba(0,0,0,.05);
+        --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        --red: #ef4444;
+    }
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: #374151;
+        font-family: 'Inter', system-ui, sans-serif;
+        line-height: 1.6;
+    }
+    .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 clamp(16px, 5vw, 24px);
+    }
+    .main-nav {
+        position: sticky;
+        top: 16px;
+        margin: 16px clamp(16px, 5vw, 24px) 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 12px 24px;
+        box-shadow: var(--shadow-lg);
+    }
+    .main-nav .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 18px;
+        color: var(--dark);
+        text-decoration: none;
+    }
+    .logo svg { color: var(--green); }
+
+    .page-header {
+        text-align: center;
+        padding: clamp(40px, 7vw, 60px) 0;
+    }
+    .page-header h1 {
+        font-size: clamp(28px, 4vw, 36px);
+        color: var(--dark);
+        font-weight: 800;
+    }
+    .page-header p {
+        font-size: clamp(16px, 2vw, 18px);
+        color: var(--muted);
+        max-width: 600px;
+        margin: 16px auto 0;
+    }
+
+    .exercise-content {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius);
+        padding: clamp(24px, 5vw, 40px);
+        max-width: 800px;
+        margin: 0 auto clamp(40px, 7vw, 60px);
+        box-shadow: var(--shadow);
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-bottom: 24px;
+        color: var(--green);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .back-link:hover {
+        text-decoration: underline;
+    }
+
+    h2, h3 {
+        color: var(--dark);
+    }
+
+    .task {
+        margin-bottom: 32px;
+    }
+    .task ol, .task ul {
+        padding-left: 20px;
+    }
+     .task ol li {
+        margin-bottom: 16px;
+    }
+
+    .german-text {
+        background-color: var(--bg);
+        border-left: 4px solid var(--green);
+        padding: 16px;
+        border-radius: 8px;
+        margin: 16px 0;
+        font-style: italic;
+    }
+    .word-bank {
+        background-color: var(--green-light);
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 500;
+        color: var(--dark);
+        margin-top: 16px;
+        text-align: center;
+    }
+    .vocab-task-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 16px;
+    }
+    .vocab-item {
+        display: flex;
+        flex-direction: column;
+    }
+    .vocab-item label {
+        font-weight: 500;
+        color: var(--dark);
+        margin-bottom: 6px;
+    }
+
+    /* Interactive elements */
+    .accordion-button {
+        background-color: var(--green-light);
+        color: var(--green);
+        cursor: pointer;
+        padding: 10px 15px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: background-color 0.3s ease;
+        border-radius: 8px;
+        font-weight: 500;
+        margin-top: 10px;
+    }
+    .accordion-button:hover, .accordion-button.active {
+        background-color: #d1e9e2;
+    }
+    .accordion-button::after {
+        content: '+';
+        font-size: 18px;
+        color: var(--green);
+        float: right;
+        margin-left: 5px;
+    }
+    .accordion-button.active::after {
+        content: "−";
+    }
+    .accordion-panel {
+        padding: 0 18px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        border-bottom: 2px solid var(--green-light);
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: 1px solid var(--border-color);
+        font-size: 16px;
+        transition: var(--transition);
+    }
+    input[type="text"]:focus {
+        outline: none;
+        border-color: var(--green);
+        box-shadow: 0 0 0 2px var(--green-light);
+    }
+    input.correct {
+        border-color: var(--green);
+        background-color: #f0fdf4;
+    }
+    input.incorrect {
+        border-color: var(--red);
+        background-color: #fef2f2;
+    }
+    .check-btn {
+        background-color: var(--green);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+        margin-top: 16px;
+    }
+    .check-btn:hover {
+        background-color: #007a38;
+    }
+    .fill-in-sentence input {
+        width: 150px;
+        display: inline-block;
+    }
+
+    .footer {
+        text-align: center;
+        color: var(--muted);
+        font-size: 14px;
+        padding: clamp(40px, 7vw, 60px) 0;
+        background: var(--card-bg);
+        border-top: 1px solid var(--border-color);
+    }
+
+</style>
+</head>
+<body>
+
+<nav class="main-nav">
+    <div class="nav-content">
+        <a href="../index.html" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            Deutsch<span style="color:var(--green)">+</span>Profis
+        </a>
+    </div>
+</nav>
+
+<main>
+    <div class="wrap">
+        <header class="page-header">
+            <h1>Вправа 7</h1>
+            <p>Виробництво кормів на ріллі</p>
+        </header>
+
+        <a href="../practice.html" class="back-link">‹ Повернутися до всіх вправ</a>
+        <div class="exercise-content">
+            
+            <div class="task">
+                <h3>1. Ознайомтеся з текстом та передайте його зміст українською мовою:</h3>
+                <div class="german-text">
+                    <p><strong>Futterproduktion auf dem Acker</strong></p>
+                    <p>Nach dem Getreide nimmt die Produktion von Futter flächenmäßig die zweite Stelle ein. Als Futterpflanzen baut man solche Nutzpflanzen an, die der Fütterung der Tiere dienen, vor allem Kleearten, Luzerne, Gräser. Diese ertragreichen, für die Standortbedingungen geeigneten Futterarten finden eine breite Anwendung.</p>
+                    <p>Die Futterproduktion erfolgt also nicht nur auf ständigen Futterflächen wie Wiesen und Weiden, sondern auch auf dem Acker. Auf Standorten ohne Grünland ist die Ackerfutterproduktion die alleinige Futterquelle.</p>
+                    <p>Um den steigenden Grundfutterbedarf der Tierproduktion zu decken, ist eine Ertragssteigerung auf den vorhandenen Futterflächen notwendig, die durch die Intensivierung der Produktion möglich ist, in erster Linie durch Düngung und Bewässerung. Neben der Ertragssteigerung muß man auch die Futterqualität verbessern.</p>
+                    <p>Eine große Bedeutung für die Erhaltung und Steigerung der Bodenfruchtbarkeit hat der Anbau von Leguminosen, da sie den Boden mit Stickstoff und Humus anreichern.</p>
+                </div>
+                <p><strong>Пояснення до тексту:</strong><br>
+                1. flächenmäßig — за площею<br>
+                2. Anwendung finden - знаходити застосування<br>
+                3. die Ackerfutterproduktion — польове кормовиробництво<br>
+                4. das Grundfutter - головний корм (складає основу раціону)<br>
+                5. die Leguminosen — бобові</p>
+                <button class="accordion-button">Показати переклад</button>
+                <div class="accordion-panel">
+                    <p style="margin-top: 16px;"><strong>Виробництво кормів на ріллі</strong></p>
+                    <p>Після зернових виробництво кормів за площею займає друге місце. Як кормові культури вирощують такі рослини, які служать для годівлі тварин, перш за все види конюшини, люцерну, трави. Ці врожайні, придатні до місцевих умов види кормів знаходять широке застосування.</p>
+                    <p>Отже, виробництво кормів відбувається не тільки на постійних кормових угіддях, таких як луки та пасовища, а й на ріллі. У місцевостях без луків польове кормовиробництво є єдиним джерелом кормів.</p>
+                    <p>Щоб задовольнити зростаючу потребу тваринництва в основних кормах, необхідне підвищення врожайності на наявних кормових площах, що можливо завдяки інтенсифікації виробництва, насамперед через внесення добрив та зрошення. Поряд із підвищенням врожайності необхідно також покращувати якість кормів.</p>
+                    <p>Велике значення для збереження та підвищення родючості ґрунту має вирощування бобових, оскільки вони збагачують ґрунт азотом та гумусом.</p>
+                </div>
+            </div>
+
+            <div class="task">
+                <h3>2. Назвіть українські еквіваленти наступних слів:</h3>
+                <div class="vocab-task-grid">
+                    <div class="vocab-item"><label for="vocab-1">anreichern</label><input type="text" id="vocab-1" data-answer="збагачувати"></div>
+                    <div class="vocab-item"><label for="vocab-2">die Futterproduktion</label><input type="text" id="vocab-2" data-answer="кормовиробництво"></div>
+                    <div class="vocab-item"><label for="vocab-3">die Fütterung</label><input type="text" id="vocab-3" data-answer="годівля"></div>
+                    <div class="vocab-item"><label for="vocab-4">das Gras</label><input type="text" id="vocab-4" data-answer="трава"></div>
+                    <div class="vocab-item"><label for="vocab-5">das Grünland</label><input type="text" id="vocab-5" data-answer="луки, пасовища"></div>
+                    <div class="vocab-item"><label for="vocab-6">der Humus</label><input type="text" id="vocab-6" data-answer="гумус, перегній"></div>
+                    <div class="vocab-item"><label for="vocab-7">die Klee</label><input type="text" id="vocab-7" data-answer="конюшина"></div>
+                    <div class="vocab-item"><label for="vocab-8">die Leguminosen</label><input type="text" id="vocab-8" data-answer="бобові"></div>
+                    <div class="vocab-item"><label for="vocab-9">notwendig</label><input type="text" id="vocab-9" data-answer="необхідний"></div>
+                    <div class="vocab-item"><label for="vocab-10">die Quelle</label><input type="text" id="vocab-10" data-answer="джерело"></div>
+                    <div class="vocab-item"><label for="vocab-11">ständig</label><input type="text" id="vocab-11" data-answer="постійний"></div>
+                    <div class="vocab-item"><label for="vocab-12">der Standort</label><input type="text" id="vocab-12" data-answer="місцезнаходження, місцевість"></div>
+                    <div class="vocab-item"><label for="vocab-13">verbessern</label><input type="text" id="vocab-13" data-answer="покращувати"></div>
+                    <div class="vocab-item"><label for="vocab-14">vorhanden</label><input type="text" id="vocab-14" data-answer="наявний"></div>
+                </div>
+                <button class="check-btn" id="check-task2">Перевірити</button>
+            </div>
+
+            <div class="task">
+                <h3>3. Опираючись на зміст вищевказаного тексту, доповніть речення. Перекладіть їх:</h3>
+                <ol class="fill-in-sentence">
+                    <li>Nach der Getreideproduktion nimmt <input type="text" id="blank-3-1" data-answer="die Futterproduktion"> die zweite Stelle ein.</li>
+                    <li>Die Futterpflanzen dienen <input type="text" id="blank-3-2" data-answer="der Fütterung der Tiere">.</li>
+                    <li>Auf den <input type="text" id="blank-3-3" data-answer="vorhandenen"> Futterflächen ist Ertragssteigerung <input type="text" id="blank-3-4" data-answer="notwendig">.</li>
+                    <li>Man muß die Futterqualität <input type="text" id="blank-3-5" data-answer="verbessern">.</li>
+                    <li><input type="text" id="blank-3-6" data-answer="Die Leguminosen"> reichern den Boden mit Stickstoff und Humus an.</li>
+                    <li>Die Ackerfutterproduktion ist auf Standorten ohne Grünland die alleinige <input type="text" id="blank-3-7" data-answer="Quelle"> des Futters.</li>
+                </ol>
+                <button class="check-btn" id="check-task3">Перевірити</button>
+            </div>
+
+            <div class="task">
+                <h3>4. Дайте відповіді на запитання:</h3>
+                <ol>
+                    <li>
+                        Welche Futterquelle gibt es neben dem Grünland?
+                        <button class="accordion-button">Показати відповідь</button>
+                        <div class="accordion-panel">
+                           <p style="margin-top:16px;">Neben dem Grünland gibt es die Ackerfutterproduktion.</p>
+                        </div>
+                    </li>
+                    <li>
+                        Welche Futterarten finden eine breite Anwendung?
+                        <button class="accordion-button">Показати відповідь</button>
+                        <div class="accordion-panel">
+                           <p style="margin-top:16px;">Kleearten, Luzerne und Gräser finden eine breite Anwendung.</p>
+                        </div>
+                    </li>
+                    <li>
+                        Was ist für die Intensivierung der Ackerfutterproduktion notwendig?
+                        <button class="accordion-button">Показати відповідь</button>
+                        <div class="accordion-panel">
+                           <p style="margin-top:16px;">Eine Ertragssteigerung auf den vorhandenen Futterflächen ist notwendig, die durch Düngung und Bewässerung möglich ist.</p>
+                        </div>
+                    </li>
+                    <li>
+                        Welche Rolle spielt der Anbau von Leguminosen?
+                        <button class="accordion-button">Показати відповідь</button>
+                        <div class="accordion-panel">
+                           <p style="margin-top:16px;">Der Anbau von Leguminosen hat eine große Bedeutung für die Erhaltung und Steigerung der Bodenfruchtbarkeit, da sie den Boden mit Stickstoff und Humus anreichern.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="wrap">
+        <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені.</p>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Accordion functionality
+    const accordions = document.querySelectorAll('.accordion-button');
+    accordions.forEach(button => {
+        button.addEventListener('click', () => {
+            button.classList.toggle('active');
+            const panel = button.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    });
+
+    // Function to check answers for inputs with data-answer attribute
+    function checkAnswers(buttonId, inputSelector) {
+        document.getElementById(buttonId).addEventListener('click', () => {
+            const inputs = document.querySelectorAll(inputSelector);
+            inputs.forEach(input => {
+                const userAnswer = input.value.trim().toLowerCase();
+                const correctAnswers = input.dataset.answer.toLowerCase().split(',').map(s => s.trim());
+                
+                if (correctAnswers.includes(userAnswer)) {
+                    input.classList.add('correct');
+                    input.classList.remove('incorrect');
+                } else {
+                    input.classList.add('incorrect');
+                    input.classList.remove('correct');
+                }
+            });
+        });
+    }
+
+    // Initialize checkers
+    checkAnswers('check-task2', '.vocab-task-grid input');
+    checkAnswers('check-task3', '.fill-in-sentence input');
+});
+</script>
+
+</body>
+</html>
 
