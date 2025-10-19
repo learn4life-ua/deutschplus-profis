@@ -1,177 +1,159 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Словник: Економіка та управління | Deutsch+Profis</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title id="pageTitle">Словник: Економіка та управління | Deutsch+Profis</title>
+<meta id="pageDesc" name="description" content="Словник за темою «Економіка та управління»: прибуток, витрати, контракти, інвестиції — з прикладами та аудіо. Введіть слово для пошуку українською або німецькою." />
 
-  <!-- OG + тема -->
-  <meta name="theme-color" content="#009846" />
-  <meta name="description" content="Словник за темою «Економіка та управління»: прибуток, витрати, контракти, інвестиції — з прикладами та аудіо. Введіть слово для пошуку українською або німецькою." />
-  <meta property="og:title" content="Deutsch+Profis — Економіка та управління" />
-  <meta property="og:description" content="Словник за темою «Економіка та управління»: прибуток, витрати, контракти, інвестиції — з прикладами та аудіо." />
-  <meta property="og:image" content="https://res.cloudinary.com/dsbqtfrkc/image/upload/v1717672358/og-image-d-profis_v2_b1qf8a.png" />
+<meta name="theme-color" content="#009846" />
+<meta property="og:title" content="Deutsch+Profis — Економіка та управління" />
+<meta property="og:description" content="Словники, діалоги, вправи, етикет. Німецька для роботи — просто та практично." />
+<meta property="og:image" content="https://res.cloudinary.com/dsbqtfrkc/image/upload/v1717672358/og-image-d-profis_v2_b1qf8a.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Fonts + Tailwind -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-    :root{
-      --green:#009846; --green-light:#e6f5f0; --dark:#1f2937; --muted:#6b7280;
-      --border:#e5e7eb; --shadow: 0 4px 6px -1px rgba(0,0,0,.03), 0 2px 4px -2px rgba(0,0,0,.03);
-      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -4px rgba(0,0,0,.05);
-    }
-    body { font-family: 'Inter', sans-serif; }
-    .highlight { background-color:#fde047; border-radius:.25rem; padding:0 .25rem; }
-    /* Верхня навігація */
-    .main-nav { position: sticky; top: 16px; margin: 16px clamp(16px,5vw,24px) 0;
-      z-index: 50; background: rgba(255,255,255,.85); backdrop-filter: blur(10px);
-      border:1px solid var(--border); border-radius:16px; padding:12px 24px; box-shadow: var(--shadow-lg); }
-    .nav-content { display:flex; justify-content:space-between; align-items:center; max-width:1100px; margin:0 auto; }
-    .logo { display:flex; align-items:center; gap:8px; font-weight:700; font-size:18px; color:var(--dark); text-decoration:none; }
-    .logo svg { color: var(--green); }
-  </style>
+<style>
+/* спільні стилі, як у двох файлах вище */
+:root{--green:#009846;--green-light:#e6f5f0;--dark:#1f2937;--yellow:#FFED00;--muted:#6b7280;--bg:#f9fafb;--card-bg:#fff;--border:#e5e7eb;--radius:16px;--shadow:0 4px 6px -1px rgba(0,0,0,.03),0 2px 4px -2px rgba(0,0,0,.03);--shadow-lg:0 10px 15px -3px rgba(0,0,0,.05),0 4px 6px -4px rgba(0,0,0,.05);--transition:all .25s cubic-bezier(0.4,0,0.2,1);}
+html{scroll-behavior:smooth;}body{margin:0;background:var(--bg);color:#374151;font-family:'Inter',system-ui,sans-serif;line-height:1.6;}
+.wrap{box-sizing:border-box;max-width:800px;margin:0 auto;padding:0 clamp(16px,5vw,24px);}
+h1,h2,h3{color:var(--dark);font-weight:800;line-height:1.25;margin:0;}
+h2{font-size:clamp(28px,4vw,36px);text-align:center;margin-bottom:16px;}
+.lead{font-size:clamp(16px,2vw,18px);color:var(--muted);max-width:620px;margin:16px auto 40px;text-align:center;}
+.main-nav{position:sticky;top:16px;margin:16px clamp(16px,5vw,24px) 0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:16px;padding:12px 24px;box-shadow:var(--shadow-lg);}
+.main-nav .nav-content{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px;color:var(--dark);text-decoration:none;}
+.logo svg{color:var(--green);}
+.top-link{font-size:14px;font-weight:700;color:var(--green);text-decoration:none;}
+.top-link:hover{text-decoration:underline;}
+.search-input{box-sizing:border-box;width:100%;margin:0 0 24px;padding:14px 20px;font-size:16px;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);transition:var(--transition);}
+.search-input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px var(--green-light);}
+.highlight{background:var(--yellow);border-radius:4px;padding:0 .25rem;color:var(--dark);}
+.vocab-list{display:grid;grid-template-columns:1fr;gap:16px;}
+@media (min-width:768px){.vocab-list{grid-template-columns:repeat(2,1fr);}}
+@media (min-width:1100px){.vocab-list{grid-template-columns:repeat(3,1fr);}}
+.vocab-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:clamp(16px,3vw,20px);transition:var(--transition);display:flex;flex-direction:column;}
+.vocab-card:hover{border-color:var(--green);box-shadow:var(--shadow-lg);transform:translateY(-3px);}
+.vocab-card .tag{background:var(--green-light);color:var(--green);font-size:12px;font-weight:700;padding:4px 10px;border-radius:9999px;margin-bottom:12px;display:inline-block;}
+.vocab-card h3{color:var(--dark);font-weight:700;}
+.vocab-card .translation{color:var(--green);font-weight:500;margin:2px 0 12px;}
+.vocab-card .translation strong{color:var(--dark);font-weight:600;margin-right:6px;}
+.vocab-card .sentence{font-size:15px;color:var(--muted);padding-top:12px;margin-top:12px;border-top:1px solid var(--border);}
+.vocab-card audio{width:100%;margin-top:auto;padding-top:16px;}
+.page-nav{display:flex;justify-content:center;margin-top:40px;}
+.d-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;text-decoration:none;border:1px solid var(--border);padding:12px 24px;border-radius:12px;font-weight:700;font-size:16px;transition:var(--transition);background:var(--card-bg);color:var(--dark);}
+.d-btn:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--green);color:var(--green);}
+.footer{text-align:center;color:var(--muted);font-size:14px;padding:clamp(40px,7vw,60px) 0;}
+.footer a{color:var(--green);text-decoration:none;font-weight:500;}
+.footer a:hover{text-decoration:underline;}
+</style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body>
 
-  <!-- Навігація -->
-  <nav class="main-nav bg-white">
-    <div class="nav-content">
-      <a href="../" class="logo" title="На головну">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-        </svg>
-        Deutsch<span style="color:#009846">+</span>Profis
-      </a>
-      <a href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html"
-         class="text-sm font-semibold text-[#009846] hover:underline">Усі словники</a>
-    </div>
-  </nav>
-
-  <div class="container mx-auto p-4 md:p-8 lg:p-12">
-    <!-- Заголовок -->
-    <header class="text-center mb-8">
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 leading-tight text-gray-900">
-        Словник: Економіка та управління
-      </h1>
-      <p class="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-        Словник за темою «Економіка та управління»: прибуток, витрати, контракти, інвестиції — з прикладами та аудіо.
-        Введіть слово для пошуку українською або німецькою.
-      </p>
-    </header>
-
-    <!-- Пошук -->
-    <div class="mb-6">
-      <input id="searchInput" type="text" placeholder="Пошук слів..."
-             class="w-full px-4 py-3 rounded-xl shadow-md border-2 border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300">
-    </div>
-
-    <!-- Контейнер для карток (адаптивний: 1→2→3 колонки) -->
-    <div id="cardsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-
-    <!-- Кнопка повернення -->
-    <div class="mt-10 flex justify-center">
-      <a href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html"
-         class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-300 bg-white font-semibold hover:border-green-600 hover:text-green-600 transition">
-        ← Повернутися до словників
-      </a>
-    </div>
+<nav class="main-nav">
+  <div class="nav-content">
+    <a href="../" class="logo" title="На головну">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+      </svg>
+      Deutsch<span style="color:#009846">+</span>Profis
+    </a>
+    <a href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html" class="top-link">Усі словники</a>
   </div>
+</nav>
 
-  <script>
-    const dictionaryData = [
-      { german:"der Gewinn", ukrainian:"прибуток", sentence:"Der Gewinn des Bauernhofs stieg im letzten Jahr.", id:"audio/01_Der_Gewinn_des_Bauernhofs_stieg_im_letzten_Jahr.mp3" },
-      { german:"die Kosten", ukrainian:"витрати", sentence:"Die Kosten für Futtermittel sind gestiegen.", id:"audio/02_Die_Kosten_fur_Futtermittel_sind_gestiegen.mp3" },
-      { german:"die Buchhaltung", ukrainian:"бухгалтерія", sentence:"Die Buchhaltung wird monatlich aktualisiert.", id:"audio/03_Die_Buchhaltung_wird_monatlich_aktualisiert.mp3" },
-      { german:"der Verkauf", ukrainian:"продаж", sentence:"Der Verkauf der Milchprodukte erfolgt direkt auf dem Markt.", id:"audio/04_Der_Verkauf_der_Milchprodukte_erfolgt_direkt_auf_dem_Markt.mp3" },
-      { german:"der Marktpreis", ukrainian:"ринкова ціна", sentence:"Der Marktpreis für Weizen ist gestiegen.", id:"audio/05_Der_Marktpreis_fur_Weizen_ist_gestiegen.mp3" },
-      { german:"das Management", ukrainian:"управління", sentence:"Gutes Management ist entscheidend für den Erfolg.", id:"audio/06_Gutes_Management_ist_entscheidend_fur_den_Erfolg.mp3" },
-      { german:"die Einnahmen", ukrainian:"доходи", sentence:"Die Einnahmen überstiegen die Ausgaben.", id:"audio/07_Die_Einnahmen_uberstiegen_die_Ausgaben.mp3" },
-      { german:"der Verlust", ukrainian:"збиток", sentence:"Ein plötzlicher Frost führte zu erheblichem Verlust.", id:"audio/08_Ein_plotzlicher_Frost_fuhrte_zu_erheblichem_Verlust.mp3" },
-      { german:"der Vertrag", ukrainian:"договір", sentence:"Der Vertrag wurde für ein Jahr abgeschlossen.", id:"audio/09_Der_Vertrag_wurde_fur_ein_Jahr_abgeschlossen.mp3" },
-      { german:"die Investition", ukrainian:"інвестиція", sentence:"Die Investition in neue Maschinen lohnt sich.", id:"audio/10_Die_Investition_in_neue_Maschinen_lohnt_sich.mp3" },
-      { german:"der Kredit", ukrainian:"кредит", sentence:"Der Landwirt benötigte einen Kredit для neue Geräte.".replace("для","für"), id:"audio/11_Der_Landwirt_benotigte_einen_Kredit_fur_neue_Gerate.mp3" },
-      { german:"die Subvention", ukrainian:"субсидія", sentence:"Die Subventionen unterstützen die Bauern.", id:"audio/12_Die_Subventionen_unterstutzen_die_Bauern.mp3" },
-      { german:"die Ernte", ukrainian:"врожай (процес збирання)", sentence:"Die Ernte beginnt im Spätsommer.", id:"audio/13_Die_Ernte_beginnt_im_Spatsommer.mp3" },
-      { german:"der Ertrag", ukrainian:"урожай (кількість)", sentence:"Der Ertrag an Getreide war hoch.", id:"audio/14_Der_Ertrag_an_Getreide_war_hoch.mp3" },
-      { german:"die Produktion", ukrainian:"виробництво", sentence:"Die Milchproduktion wurde gesteigert.", id:"audio/15_Die_Milchproduktion_wurde_gesteigert.mp3" },
-      { german:"der Lagerbestand", ukrainian:"складські запаси", sentence:"Der Lagerbestand an Heu ist ausreichend.", id:"audio/16_Der_Lagerbestand_an_Heu_ist_ausreichend.mp3" },
-      { german:"die Qualität", ukrainian:"якість", sentence:"Die Qualität der Produkte ist entscheidend.", id:"audio/17_Die_Qualitat_der_Produkte_ist_entscheidend.mp3" },
-      { german:"die Vermarktung", ukrainian:"маркетинг", sentence:"Eine gute Vermarktung erhöht den Umsatz.", id:"audio/18_Eine_gute_Vermarktung_erhoht_den_Umsatz.mp3" },
-      { german:"die Nachhaltigkeit", ukrainian:"сталість", sentence:"Nachhaltigkeit ist wichtig für die Zukunft der Landwirtschaft.", id:"audio/19_Nachhaltigkeit_ist_wichtig_fur_die_Zukunft_der_Landwirtschaft.mp3" },
-      { german:"der Betrieb", ukrainian:"господарство, підприємство", sentence:"Der landwirtschaftliche Betrieb ist modern ausgestattet.", id:"audio/20_Der_landwirtschaftliche_Betrieb_ist_modern_ausgestattet.mp3" }
-    ];
+<main>
+  <section style="padding: clamp(40px, 7vw, 60px) 0;">
+    <div class="wrap">
+      <h2>Словник: Економіка та управління</h2>
+      <p class="lead">Словник за темою «Економіка та управління»: прибуток, витрати, контракти, інвестиції — з прикладами та аудіо. Введіть слово для пошуку українською або німецькою.</p>
+      <input id="searchInput" type="text" placeholder="Пошук слів..." class="search-input" />
+      <div id="cardsContainer" class="vocab-list"></div>
+      <nav class="page-nav">
+        <a class="d-btn" href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html">← Повернутися до словників</a>
+      </nav>
+    </div>
+  </section>
+</main>
 
-    const escapeHtml = (s='') => s.replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-    const escapeRegex = (s='') => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені. · <a href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html">Усі словники</a></p>
+  </div>
+</footer>
 
-    function highlightText(text, filter) {
-      if (!filter) return escapeHtml(text);
-      const safeFilter = escapeRegex(filter);
-      const re = new RegExp(`(${safeFilter})`, 'gi');
-      return escapeHtml(text).replace(re, '<span class="highlight">$1</span>');
-    }
+<script>
+const dictionaryData = [
+  { german:"der Gewinn", ukrainian:"прибуток", sentence:"Der Gewinn des Bauernhofs stieg im letzten Jahr.", id:"audio/01_Der_Gewinn_des_Bauernhofs_stieg_im_letzten_Jahr.mp3" },
+  { german:"die Kosten", ukrainian:"витрати", sentence:"Die Kosten für Futtermittel sind gestiegen.", id:"audio/02_Die_Kosten_fur_Futtermittel_sind_gestiegen.mp3" },
+  { german:"die Buchhaltung", ukrainian:"бухгалтерія", sentence:"Die Buchhaltung wird monatlich aktualisiert.", id:"audio/03_Die_Buchhaltung_wird_monatlich_aktualisiert.mp3" },
+  { german:"der Verkauf", ukrainian:"продаж", sentence:"Der Verkauf der Milchprodukte erfolgt direkt auf dem Markt.", id:"audio/04_Der_Verkauf_der_Milchprodukte_erfolgt_direkt_auf_dem_Markt.mp3" },
+  { german:"der Marktpreis", ukrainian:"ринкова ціна", sentence:"Der Marktpreis für Weizen ist gestiegen.", id:"audio/05_Der_Marktpreis_fur_Weizen_ist_gestiegen.mp3" },
+  { german:"das Management", ukrainian:"управління", sentence:"Gutes Management ist entscheidend для den Erfolg.".replace("для","für"), id:"audio/06_Gutes_Management_ist_entscheidend_fur_den_Erfolg.mp3" },
+  { german:"die Einnahmen", ukrainian:"доходи", sentence:"Die Einnahmen überstiegen die Ausgaben.", id:"audio/07_Die_Einnahmen_uberstiegen_die_Ausgaben.mp3" },
+  { german:"der Verlust", ukrainian:"збиток", sentence:"Ein plötzlicher Frost führte zu erheblichem Verlust.", id:"audio/08_Ein_plotzlicher_Frost_fuhrte_zu_erheblichem_Verlust.mp3" },
+  { german:"der Vertrag", ukrainian:"договір", sentence:"Der Vertrag wurde für ein Jahr abgeschlossen.", id:"audio/09_Der_Vertrag_wurde_fur_ein_Jahr_abgeschlossen.mp3" },
+  { german:"die Investition", ukrainian:"інвестиція", sentence:"Die Investition in neue Maschinen lohnt sich.", id:"audio/10_Die_Investition_in_neue_Maschinen_lohnt_sich.mp3" },
+  { german:"der Kredit", ukrainian:"кредит", sentence:"Der Landwirt benötigte einen Kredit für neue Geräte.", id:"audio/11_Der_Landwirt_benotigte_einen_Kredit_fur_neue_Gerate.mp3" },
+  { german:"die Subvention", ukrainian:"субсидія", sentence:"Die Subventionen unterstützen die Bauern.", id:"audio/12_Die_Subventionen_unterstutzen_die_Bauern.mp3" },
+  { german:"die Ernte", ukrainian:"врожай (процес збирання)", sentence:"Die Ernte beginnt im Spätsommer.", id:"audio/13_Die_Ernte_beginnt_im_Spatsommer.mp3" },
+  { german:"der Ertrag", ukrainian:"урожай (кількість)", sentence:"Der Ertrag an Getreide war hoch.", id:"audio/14_Der_Ertrag_an_Getreide_war_hoch.mp3" },
+  { german:"die Produktion", ukrainian:"виробництво", sentence:"Die Milchproduktion wurde gesteigert.", id:"audio/15_Die_Milchproduktion_wurde_gesteigert.mp3" },
+  { german:"der Lagerbestand", ukrainian:"складські запаси", sentence:"Der Lagerbestand an Heu ist ausreichend.", id:"audio/16_Der_Lagerbestand_an_Heu_ist_ausreichend.mp3" },
+  { german:"die Qualität", ukrainian:"якість", sentence:"Die Qualität der Produkte ist entscheidend.", id:"audio/17_Die_Qualitat_der_Produkte_ist_entscheidend.mp3" },
+  { german:"die Vermarktung", ukrainian:"маркетинг", sentence:"Eine gute Vermarktung erhöht den Umsatz.", id:"audio/18_Eine_gute_Vermarktung_erhoht_den_Umsatz.mp3" },
+  { german:"die Nachhaltigkeit", ukrainian:"сталість", sentence:"Nachhaltigkeit ist wichtig für die Zukunft der Landwirtschaft.", id:"audio/19_Nachhaltigkeit_ist_wichtig_fur_die_Zukunft_der_Landwirtschaft.mp3" },
+  { german:"der Betrieb", ukrainian:"господарство, підприємство", sentence:"Der landwirtschaftliche Betrieb ist modern ausgestattet.", id:"audio/20_Der_landwirtschaftliche_Betrieb_ist_modern_ausgestattet.mp3" }
+];
 
-    function renderCards(filter = "") {
-      const cards = document.getElementById('cardsContainer');
-      cards.innerHTML = '';
+const escapeHtml = (s='') => s.replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const escapeRegex = (s='') => s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+function highlightText(text, filter){
+  const safe = escapeHtml(text);
+  if(!filter) return safe;
+  const re = new RegExp(`(${escapeRegex(filter)})`,'gi');
+  return safe.replace(re,'<span class="highlight">$1</span>');
+}
 
-      const filtered = dictionaryData.filter(item => {
-        const search = `${item.german} ${item.ukrainian} ${item.sentence}`.toLowerCase();
-        return search.includes(filter.toLowerCase());
-      });
+function renderCards(filter=""){
+  const cont = document.getElementById('cardsContainer');
+  cont.innerHTML = '';
+  const list = dictionaryData.filter(item=>{
+    const hay = `${item.german} ${item.ukrainian} ${item.sentence}`.toLowerCase();
+    return hay.includes(filter.toLowerCase());
+  });
+  if(!list.length){
+    cont.innerHTML = `<div class="vocab-card" style="text-align:center">
+      <h3>Нічого не знайдено</h3>
+      <p class="translation" style="color:var(--muted)">Спробуйте інший запит.</p>
+    </div>`;
+    return;
+  }
+  list.forEach(item=>{
+    cont.insertAdjacentHTML('beforeend', `
+      <div class="vocab-card">
+        <span class="tag">#Економіка</span>
+        <h3>${highlightText(item.german, filter)}</h3>
+        <p class="translation"><strong>Переклад:</strong> ${highlightText(item.ukrainian, filter)}</p>
+        <p class="sentence">${highlightText(item.sentence, filter)}</p>
+        <audio controls preload="none">
+          <source src="${item.id}" type="audio/mpeg">
+          Ваш браузер не підтримує аудіо.
+        </audio>
+      </div>
+    `);
+  });
+}
 
-      filtered.forEach(item => {
-        const audioHtml = item.id
-          ? `<div class="rounded-xl overflow-hidden shadow-inner w-full">
-               <audio controls preload="none" class="w-full">
-                 <source src="${item.id}" type="audio/mpeg">
-                 Ваш браузер не підтримує аудіо елемент.
-               </audio>
-             </div>`
-          : `<p class="text-gray-400 text-sm italic">Аудіо відсутнє</p>`;
+window.addEventListener('load', ()=>{
+  renderCards();
+  const search = document.getElementById('searchInput');
+  search.addEventListener('input', ()=>renderCards(search.value.trim()));
+});
+</script>
 
-        const card = document.createElement('div');
-        card.className = "bg-white rounded-2xl p-6 flex flex-col gap-2 transition-all duration-300 hover:shadow-lg hover:scale-[1.01]";
-        card.innerHTML = `
-          <span class="block text-center bg-green-100 text-green-700 text-xs sm:text-sm font-semibold px-3 py-1 rounded-full w-fit mx-auto mb-2">#Економіка_та_управління</span>
-          <h2 class="text-xl sm:text-2xl font-bold text-green-800 text-center">${highlightText(item.german, filter)}</h2>
-          <p class="text-gray-600 text-sm"><strong>Переклад:</strong> ${highlightText(item.ukrainian, filter)}</p>
-          <p class="text-gray-700 text-center mt-2"><strong>Приклад:</strong> ${highlightText(item.sentence, filter)}</p>
-          ${audioHtml}
-        `;
-        cards.appendChild(card);
-      });
-
-      if (!filtered.length) {
-        const empty = document.createElement('div');
-        empty.className = "col-span-full text-center text-gray-500 italic";
-        empty.textContent = "Нічого не знайдено. Спробуйте інший запит.";
-        cards.appendChild(empty);
-      }
-    }
-
-    function debounce(fn, wait=200) {
-      let t; return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), wait); };
-    }
-
-    window.addEventListener('load', () => {
-      renderCards();
-      const search = document.getElementById('searchInput');
-      search.addEventListener('input', debounce(() => renderCards(search.value.trim()), 200));
-    });
-  </script>
-
-  <!-- Футер -->
-  <footer class="text-center text-gray-500 text-sm mt-12 mb-6">
-    <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені. ·
-      <a class="text-[#009846] hover:underline" href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html">Усі словники</a>
-    </p>
-  </footer>
 </body>
 </html>
