@@ -1,1 +1,421 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Вправа 5 — Deutsch+Profis</title>
+<meta name="description" content="Виконайте п'яту практичну вправу з теми 'Завдання тваринництва'." />
+<meta name="theme-color" content="#009846" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+<style>
+    /* Глобальне правило для легшої верстки */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    :root {
+        --green: #009846;
+        --green-light: #e6f5f0;
+        --dark: #1f2937;
+        --muted: #6b7280;
+        --bg: #f9fafb;
+        --card-bg: #ffffff;
+        --border-color: #e5e7eb;
+        --radius: 16px;
+        --shadow: 0 4px 6px -1px rgba(0,0,0,.03), 0 2px 4px -2px rgba(0,0,0,.03);
+        --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -4px rgba(0,0,0,.05);
+        --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        --red: #ef4444;
+    }
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: #374151;
+        font-family: 'Inter', system-ui, sans-serif;
+        line-height: 1.6;
+    }
+    .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 clamp(16px, 5vw, 24px);
+    }
+    .main-nav {
+        position: sticky;
+        top: 16px;
+        margin: 16px clamp(16px, 5vw, 24px) 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 12px 24px;
+        box-shadow: var(--shadow-lg);
+    }
+    .main-nav .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 18px;
+        color: var(--dark);
+        text-decoration: none;
+    }
+    .logo svg { color: var(--green); }
+
+    .page-header {
+        text-align: center;
+        padding: clamp(40px, 7vw, 60px) 0;
+    }
+    .page-header h1 {
+        font-size: clamp(28px, 4vw, 36px);
+        color: var(--dark);
+        font-weight: 800;
+    }
+    .page-header p {
+        font-size: clamp(16px, 2vw, 18px);
+        color: var(--muted);
+        max-width: 600px;
+        margin: 16px auto 0;
+    }
+
+    .exercise-content {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius);
+        padding: clamp(24px, 5vw, 40px);
+        max-width: 800px;
+        margin: 0 auto clamp(40px, 7vw, 60px);
+        box-shadow: var(--shadow);
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-bottom: 24px;
+        color: var(--green);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .back-link:hover {
+        text-decoration: underline;
+    }
+
+    h2, h3 {
+        color: var(--dark);
+    }
+
+    .task {
+        margin-bottom: 32px;
+    }
+    .task ol, .task ul {
+        padding-left: 20px;
+    }
+     .task ol li {
+        margin-bottom: 16px;
+    }
+
+    .german-text {
+        background-color: var(--bg);
+        border-left: 4px solid var(--green);
+        padding: 16px;
+        border-radius: 8px;
+        margin: 16px 0;
+        font-style: italic;
+    }
+    .word-bank {
+        background-color: var(--green-light);
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 500;
+        color: var(--dark);
+        margin-top: 16px;
+        text-align: center;
+    }
+    .vocab-task-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 16px;
+    }
+    .vocab-item {
+        display: flex;
+        flex-direction: column;
+    }
+    .vocab-item label {
+        font-weight: 500;
+        color: var(--dark);
+        margin-bottom: 6px;
+    }
+
+    /* Interactive elements */
+    .accordion-button {
+        background-color: var(--green-light);
+        color: var(--green);
+        cursor: pointer;
+        padding: 10px 15px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: background-color 0.3s ease;
+        border-radius: 8px;
+        font-weight: 500;
+        margin-top: 10px;
+    }
+    .accordion-button:hover, .accordion-button.active {
+        background-color: #d1e9e2;
+    }
+    .accordion-button::after {
+        content: '+';
+        font-size: 18px;
+        color: var(--green);
+        float: right;
+        margin-left: 5px;
+    }
+    .accordion-button.active::after {
+        content: "−";
+    }
+    .accordion-panel {
+        padding: 0 18px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        border-bottom: 2px solid var(--green-light);
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: 1px solid var(--border-color);
+        font-size: 16px;
+        transition: var(--transition);
+    }
+    input[type="text"]:focus {
+        outline: none;
+        border-color: var(--green);
+        box-shadow: 0 0 0 2px var(--green-light);
+    }
+    input.correct {
+        border-color: var(--green);
+        background-color: #f0fdf4;
+    }
+    input.incorrect {
+        border-color: var(--red);
+        background-color: #fef2f2;
+    }
+    .check-btn {
+        background-color: var(--green);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+        margin-top: 16px;
+    }
+    .check-btn:hover {
+        background-color: #007a38;
+    }
+    .fill-in-sentence input {
+        width: 150px;
+        display: inline-block;
+    }
+
+    .footer {
+        text-align: center;
+        color: var(--muted);
+        font-size: 14px;
+        padding: clamp(40px, 7vw, 60px) 0;
+        background: var(--card-bg);
+        border-top: 1px solid var(--border-color);
+    }
+
+</style>
+</head>
+<body>
+
+<nav class="main-nav">
+    <div class="nav-content">
+        <a href="../index.html" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            Deutsch<span style="color:var(--green)">+</span>Profis
+        </a>
+    </div>
+</nav>
+
+<main>
+    <div class="wrap">
+        <header class="page-header">
+            <h1>Вправа 5</h1>
+            <p>Завдання тваринництва</p>
+        </header>
+
+        <a href="../practice.html" class="back-link">‹ Повернутися до всіх вправ</a>
+        <div class="exercise-content">
+            
+            <div class="task">
+                <h3>1. Ознайомтеся з текстом та передайте його зміст українською мовою:</h3>
+                <div class="german-text">
+                    <p><strong>Aufgaben der Tierproduktion</strong></p>
+                    <p>Mit höherem Lebensstandard steigen die Ansprüche an eine gesunde Ernährung. Die Nachfrage nach hochwertigen, energiearmen tierischen Nahrungsmitteln, wie Fleisch, Milchprodukte und Eier, nimmt zu.</p>
+                    <p>Die Hauptbestandteile einer leistungsfähigen Tierproduktion sind Züchtung, Fütterung und Haltung. Durch die Züchtung neuer spezialisierter Rassen wird das genetische Leistungspotential erhöht. An die Züchter wird die Forderung gestellt, neue leistungsfähigere Tierrassen zu züchten sowie die Arbeiten der Züchtungsforschung zu intensivieren.</p>
+                    <p>Eine industriemäßige Tierproduktion braucht neue Lösungen der Fütterungs- und Haltungsprobleme, der Probleme der Hygiene und Pflege der Tierbestände. Die Futterrationen werden nach ihrem Nährstoffgehalt dem Bedarf der Tiere angepaßt.</p>
+                    <p>Die Ansprüche verschiedener Tierarten an die Haltung sind verschieden. Aber alle Stallgebäude muß man so einrichten, daß sie Fütterung, Nutzung und Pflege der Tiere erleichtern.</p>
+                    <p>In den Ländern mit relativ begrenzter landwirtschaftlicher Nutzfläche wird von der Tierproduktion eine besonders hohe Leistung je Tier gefordert. Die Hauptaufgabe der Landwirtschaft solcher Länder besteht darin, den Bedarf der Bevölkerung an tierischen Produkten möglichst aus der eigenen Produktion zu decken.</p>
+                </div>
+                <p><strong>Пояснення до тексту:</strong><br>
+                1. die Nachfrage nach... — попит на...<br>
+                2. die Züchtungsforschung — селекційно-генетичні дослідження<br>
+                3. nach ihrem Nährstoffgehalt — за вмістом в них поживних речовин<br>
+                4. die Forderung stellen an (А) — висувати вимоги до чого-небудь</p>
+                <button class="accordion-button">Показати переклад</button>
+                <div class="accordion-panel">
+                    <p style="margin-top: 16px;"><strong>Завдання тваринництва</strong></p>
+                    <p>З підвищенням рівня життя зростають вимоги до здорового харчування. Попит на високоякісні, низькокалорійні тваринні продукти, такі як м'ясо, молочні продукти та яйця, збільшується.</p>
+                    <p>Основними складовими ефективного тваринництва є селекція, годівля та утримання. Завдяки виведенню нових спеціалізованих порід підвищується генетичний потенціал продуктивності. Перед селекціонерами стоїть вимога виводити нові, більш продуктивні породи тварин, а також інтенсифікувати роботу в галузі селекційно-генетичних досліджень.</p>
+                    <p>Промислове тваринництво потребує нових рішень проблем годівлі та утримання, проблем гігієни та догляду за поголів'ям. Раціони кормів пристосовуються до потреб тварин за вмістом поживних речовин.</p>
+                    <p>Вимоги різних видів тварин до утримання є різними. Але всі приміщення для тварин потрібно облаштовувати так, щоб вони полегшували годівлю, використання та догляд за тваринами.</p>
+                    <p>У країнах з відносно обмеженою площею сільськогосподарських угідь від тваринництва вимагається особливо висока продуктивність на одну тварину. Головне завдання сільського господарства таких країн полягає в тому, щоб якомога повніше задовольнити потреби населення в продуктах тваринництва за рахунок власного виробництва.</p>
+                </div>
+            </div>
+
+            <div class="task">
+                <h3>2. Назвіть українські еквіваленти наступних слів:</h3>
+                <div class="vocab-task-grid">
+                    <div class="vocab-item"><label for="vocab-1">anpassen</label><input type="text" id="vocab-1" data-answer="пристосовувати"></div>
+                    <div class="vocab-item"><label for="vocab-2">der Bestandteil</label><input type="text" id="vocab-2" data-answer="складова частина"></div>
+                    <div class="vocab-item"><label for="vocab-3">eigen</label><input type="text" id="vocab-3" data-answer="власний"></div>
+                    <div class="vocab-item"><label for="vocab-4">einrichten</label><input type="text" id="vocab-4" data-answer="облаштовувати"></div>
+                    <div class="vocab-item"><label for="vocab-5">die Ernährung</label><input type="text" id="vocab-5" data-answer="харчування"></div>
+                    <div class="vocab-item"><label for="vocab-6">fordern</label><input type="text" id="vocab-6" data-answer="вимагати"></div>
+                    <div class="vocab-item"><label for="vocab-7">die Forderung</label><input type="text" id="vocab-7" data-answer="вимога"></div>
+                    <div class="vocab-item"><label for="vocab-8">der Gehalt</label><input type="text" id="vocab-8" data-answer="вміст"></div>
+                    <div class="vocab-item"><label for="vocab-9">die Haltung</label><input type="text" id="vocab-9" data-answer="утримання"></div>
+                    <div class="vocab-item"><label for="vocab-10">hochwertig</label><input type="text" id="vocab-10" data-answer="високоякісний"></div>
+                    <div class="vocab-item"><label for="vocab-11">leistungsfähig</label><input type="text" id="vocab-11" data-answer="продуктивний"></div>
+                    <div class="vocab-item"><label for="vocab-12">die Lösung</label><input type="text" id="vocab-12" data-answer="рішення"></div>
+                    <div class="vocab-item"><label for="vocab-13">die Pflege</label><input type="text" id="vocab-13" data-answer="догляд"></div>
+                    <div class="vocab-item"><label for="vocab-14">die Rasse</label><input type="text" id="vocab-14" data-answer="порода"></div>
+                    <div class="vocab-item"><label for="vocab-15">relativ</label><input type="text" id="vocab-15" data-answer="відносно"></div>
+                    <div class="vocab-item"><label for="vocab-16">der Züchter</label><input type="text" id="vocab-16" data-answer="селекціонер"></div>
+                    <div class="vocab-item"><label for="vocab-17">die Züchtung</label><input type="text" id="vocab-17" data-answer="селекція, розведення"></div>
+                    <div class="vocab-item"><label for="vocab-18">zunehmen</label><input type="text" id="vocab-18" data-answer="зростати, збільшуватися"></div>
+                </div>
+                <button class="check-btn" id="check-task2">Перевірити</button>
+            </div>
+
+            <div class="task">
+                <h3>3. Опираючись на зміст вищевказаного тексту, доповніть речення. Перекладіть їх:</h3>
+                <ol class="fill-in-sentence">
+                    <li>Mit jedem Jahr steigen <input type="text" id="blank-3-1" data-answer="die Ansprüche"> an eine gesunde Ernährung.</li>
+                    <li>Fleisch, Milchprodukte und Eier sind <input type="text" id="blank-3-2" data-answer="hochwertige"> Nahrungsmittel.</li>
+                    <li>Züchtung, Fütterung und <input type="text" id="blank-3-3" data-answer="Haltung"> sind Bestandteile einer leistungsfähigen Tierproduktion.</li>
+                    <li>Eine industriemäßige Tierproduktion braucht neue <input type="text" id="blank-3-4" data-answer="Lösungen"> der Fütterungs- und Haltungsprobleme.</li>
+                    <li>Die Zahl der leistungsfähigen Tiere muß ständig <input type="text" id="blank-3-5" data-answer="zunehmen">.</li>
+                </ol>
+                 <div class="word-bank">
+                    <p>Слова для довідки: zunehmen, Lösungen, Haltung, hochwertige, die Ansprüche</p>
+                </div>
+                <button class="check-btn" id="check-task3">Перевірити</button>
+            </div>
+
+            <div class="task">
+                <h3>4. Дайте відповіді на запитання:</h3>
+                <ol>
+                    <li>
+                        Warum nimmt die Nachfrage nach hochwertigen Nahrungsmitteln zu?
+                        <button class="accordion-button">Показати відповідь</button>
+                        <div class="accordion-panel">
+                           <p style="margin-top:16px;">Mit höherem Lebensstandard steigen die Ansprüche an eine gesunde Ernährung.</p>
+                        </div>
+                    </li>
+                    <li>
+                        Was sind die Hauptbestandteile der Tierproduktion?
+                        <button class="accordion-button">Показати відповідь</button>
+                        <div class="accordion-panel">
+                           <p style="margin-top:16px;">Die Hauptbestandteile der Tierproduktion sind Züchtung, Fütterung und Haltung.</p>
+                        </div>
+                    </li>
+                    <li>
+                        Welche Rolle spielt die Tierzüchtung?
+                        <button class="accordion-button">Показати відповідь</button>
+                        <div class="accordion-panel">
+                           <p style="margin-top:16px;">Durch die Züchtung neuer spezialisierter Rassen wird das genetische Leistungspotential erhöht.</p>
+                        </div>
+                    </li>
+                    <li>
+                        Worin besteht die Aufgabe der Tierproduktion in den Ländern mit begrenzter LN?
+                        <button class="accordion-button">Показати відповідь</button>
+                        <div class="accordion-panel">
+                           <p style="margin-top:16px;">Die Hauptaufgabe besteht darin, den Bedarf der Bevölkerung an tierischen Produkten möglichst aus der eigenen Produktion zu decken.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="wrap">
+        <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені.</p>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Accordion functionality
+    const accordions = document.querySelectorAll('.accordion-button');
+    accordions.forEach(button => {
+        button.addEventListener('click', () => {
+            button.classList.toggle('active');
+            const panel = button.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    });
+
+    // Function to check answers for inputs with data-answer attribute
+    function checkAnswers(buttonId, inputSelector) {
+        document.getElementById(buttonId).addEventListener('click', () => {
+            const inputs = document.querySelectorAll(inputSelector);
+            inputs.forEach(input => {
+                const userAnswer = input.value.trim().toLowerCase();
+                const correctAnswers = input.dataset.answer.toLowerCase().split(',').map(s => s.trim());
+                
+                if (correctAnswers.includes(userAnswer)) {
+                    input.classList.add('correct');
+                    input.classList.remove('incorrect');
+                } else {
+                    input.classList.add('incorrect');
+                    input.classList.remove('correct');
+                }
+            });
+        });
+    }
+
+    // Initialize checkers
+    checkAnswers('check-task2', '.vocab-task-grid input');
+    checkAnswers('check-task3', '.fill-in-sentence input');
+});
+</script>
+
+</body>
+</html>
 
