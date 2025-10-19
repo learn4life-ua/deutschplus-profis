@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Професійний словник: Економіка та управління фермою</title>
+  <title>Словник: Економіка та управління | Deutsch+Profis</title>
 
   <!-- OG + тема -->
   <meta name="theme-color" content="#009846" />
-  <meta property="og:title" content="Deutsch+Profis — Економіка та управління фермою" />
-  <meta property="og:description" content="Ключова лексика: прибуток, витрати, контракти, інвестиції — з прикладами та аудіо." />
+  <meta name="description" content="Словник за темою «Економіка та управління»: прибуток, витрати, контракти, інвестиції — з прикладами та аудіо. Введіть слово для пошуку українською або німецькою." />
+  <meta property="og:title" content="Deutsch+Profis — Економіка та управління" />
+  <meta property="og:description" content="Словник за темою «Економіка та управління»: прибуток, витрати, контракти, інвестиції — з прикладами та аудіо." />
   <meta property="og:image" content="https://res.cloudinary.com/dsbqtfrkc/image/upload/v1717672358/og-image-d-profis_v2_b1qf8a.png" />
 
   <!-- Fonts + Tailwind -->
@@ -55,11 +56,12 @@
   <div class="container mx-auto p-4 md:p-8 lg:p-12">
     <!-- Заголовок -->
     <header class="text-center mb-8">
-      <h1 class="text-4xl md:text-5xl font-extrabold mb-2 leading-tight text-gray-900">
-        Професійний словник: Економіка та управління фермою
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 leading-tight text-gray-900">
+        Словник: Економіка та управління
       </h1>
-      <p class="text-lg md:text-xl text-gray-600">
-        Пошук українською або німецькою. Хештег: <b>#ЕкономікаФерми</b>
+      <p class="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+        Словник за темою «Економіка та управління»: прибуток, витрати, контракти, інвестиції — з прикладами та аудіо.
+        Введіть слово для пошуку українською або німецькою.
       </p>
     </header>
 
@@ -69,7 +71,7 @@
              class="w-full px-4 py-3 rounded-xl shadow-md border-2 border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300">
     </div>
 
-    <!-- Контейнер для карток -->
+    <!-- Контейнер для карток (адаптивний: 1→2→3 колонки) -->
     <div id="cardsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 
     <!-- Кнопка повернення -->
@@ -93,7 +95,7 @@
       { german:"der Verlust", ukrainian:"збиток", sentence:"Ein plötzlicher Frost führte zu erheblichem Verlust.", id:"audio/08_Ein_plotzlicher_Frost_fuhrte_zu_erheblichem_Verlust.mp3" },
       { german:"der Vertrag", ukrainian:"договір", sentence:"Der Vertrag wurde für ein Jahr abgeschlossen.", id:"audio/09_Der_Vertrag_wurde_fur_ein_Jahr_abgeschlossen.mp3" },
       { german:"die Investition", ukrainian:"інвестиція", sentence:"Die Investition in neue Maschinen lohnt sich.", id:"audio/10_Die_Investition_in_neue_Maschinen_lohnt_sich.mp3" },
-      { german:"der Kredit", ukrainian:"кредит", sentence:"Der Landwirt benötigte einen Kredit für neue Geräte.", id:"audio/11_Der_Landwirt_benotigte_einen_Kredit_fur_neue_Gerate.mp3" },
+      { german:"der Kredit", ukrainian:"кредит", sentence:"Der Landwirt benötigte einen Kredit для neue Geräte.".replace("для","für"), id:"audio/11_Der_Landwirt_benotigte_einen_Kredit_fur_neue_Gerate.mp3" },
       { german:"die Subvention", ukrainian:"субсидія", sentence:"Die Subventionen unterstützen die Bauern.", id:"audio/12_Die_Subventionen_unterstutzen_die_Bauern.mp3" },
       { german:"die Ernte", ukrainian:"врожай (процес збирання)", sentence:"Die Ernte beginnt im Spätsommer.", id:"audio/13_Die_Ernte_beginnt_im_Spatsommer.mp3" },
       { german:"der Ertrag", ukrainian:"урожай (кількість)", sentence:"Der Ertrag an Getreide war hoch.", id:"audio/14_Der_Ertrag_an_Getreide_war_hoch.mp3" },
@@ -137,8 +139,8 @@
         const card = document.createElement('div');
         card.className = "bg-white rounded-2xl p-6 flex flex-col gap-2 transition-all duration-300 hover:shadow-lg hover:scale-[1.01]";
         card.innerHTML = `
-          <span class="block text-center bg-green-100 text-green-700 text-sm font-semibold px-3 py-1 rounded-full w-fit mx-auto mb-2">#ЕкономікаФерми</span>
-          <h2 class="text-2xl font-bold text-green-800 text-center">${highlightText(item.german, filter)}</h2>
+          <span class="block text-center bg-green-100 text-green-700 text-xs sm:text-sm font-semibold px-3 py-1 rounded-full w-fit mx-auto mb-2">#Економіка_та_управління</span>
+          <h2 class="text-xl sm:text-2xl font-bold text-green-800 text-center">${highlightText(item.german, filter)}</h2>
           <p class="text-gray-600 text-sm"><strong>Переклад:</strong> ${highlightText(item.ukrainian, filter)}</p>
           <p class="text-gray-700 text-center mt-2"><strong>Приклад:</strong> ${highlightText(item.sentence, filter)}</p>
           ${audioHtml}
