@@ -132,6 +132,15 @@
         margin: 16px 0;
         font-style: italic;
     }
+    .word-bank {
+        background-color: var(--green-light);
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 500;
+        color: var(--dark);
+        margin-top: 16px;
+        text-align: center;
+    }
 
     .vocab-task-grid {
         display: grid;
@@ -221,6 +230,13 @@
     .check-btn:hover {
         background-color: #007a38;
     }
+     .fill-in-sentence li {
+        margin-bottom: 12px;
+    }
+    .fill-in-sentence input {
+        width: 120px;
+        display: inline-block;
+    }
 
     .footer {
         text-align: center;
@@ -296,30 +312,16 @@
             </div>
 
             <div class="task">
-                <h3>3. Опираючись на зміст вищевказаного тексту, перекладіть речення:</h3>
-                 <ol>
-                    <li>
-                        Von den Wissenschaftlern werden neue leistungsfähige Tierrassen geschaffen.
-                        <button class="accordion-button">Показати переклад</button>
-                        <div class="accordion-panel">
-                           <p style="margin-top:16px;">Вченими створюються нові високопродуктивні породи тварин.</p>
-                        </div>
-                    </li>
-                    <li>
-                        Die Rentabilität der Rindermast wurde erhöht.
-                        <button class="accordion-button">Показати переклад</button>
-                        <div class="accordion-panel">
-                           <p style="margin-top:16px;">Рентабельність відгодівлі великої рогатої худоби була підвищена.</p>
-                        </div>
-                    </li>
-                    <li>
-                       Die Broilerproduktion kann durch richtige Haltung und Fütterung verbessert werden.
-                        <button class="accordion-button">Показати переклад</button>
-                        <div class="accordion-panel">
-                           <p style="margin-top:16px;">Виробництво бройлерів можна покращити завдяки правильному утриманню та годівлі.</p>
-                        </div>
-                    </li>
+                <h3>3. Опираючись на зміст вищевказаного тексту, доповніть речення. Перекладіть їх:</h3>
+                <ol class="fill-in-sentence">
+                    <li>Von den Wissenschaftlern werden neue leistungsfähige Tierrassen <input type="text" id="blank-3-1" data-answer="geschaffen">.</li>
+                    <li>Die <input type="text" id="blank-3-2" data-answer="Rentabilität"> der Rindermast wurde erhöht.</li>
+                    <li>Die Broilerproduktion kann durch richtige Haltung und Fütterung <input type="text" id="blank-3-3" data-answer="verbessert"> werden.</li>
                 </ol>
+                <div class="word-bank">
+                    <p>Слова для довідки: geschaffen, Rentabilität, verbessert</p>
+                </div>
+                <button class="check-btn" id="check-task3">Перевірити</button>
             </div>
 
             <div class="task">
@@ -329,35 +331,35 @@
                         Wie ist die Tendenz des Pro-Kopf-Verbrauchs an Eiern und Geflügelfleisch in der Welt?
                         <button class="accordion-button">Показати відповідь</button>
                         <div class="accordion-panel">
-                           <p style="margin-top:16px;">Der Pro-Kopf-Verbrauch an Eiern und Geflügelfleisch steigt ständig an.</p>
+                            <p style="margin-top:16px;">Der Pro-Kopf-Verbrauch an Eiern und Geflügelfleisch steigt ständig an.</p>
                         </div>
                     </li>
                     <li>
                         Wie wird die kontinuierliche Eier- und Broilerproduktion gewährleistet?
                         <button class="accordion-button">Показати відповідь</button>
                         <div class="accordion-panel">
-                           <p style="margin-top:16px;">Sie wird durch zweckmäßige Haltung und Fütterung gewährleistet.</p>
+                            <p style="margin-top:16px;">Sie wird durch zweckmäßige Haltung und Fütterung gewährleistet.</p>
                         </div>
                     </li>
                     <li>
                         Warum ist in der Geflügelproduktion eine hohe Arbeitsproduktivität möglich?
                         <button class="accordion-button">Показати відповідь</button>
                         <div class="accordion-panel">
-                           <p style="margin-top:16px;">Eine hohe Arbeitsproduktivität ist möglich, da die Arbeitsgänge weitgehend mechanisiert sind.</p>
+                            <p style="margin-top:16px;">Eine hohe Arbeitsproduktivität ist möglich, da die Arbeitsgänge weitgehend mechanisiert sind.</p>
                         </div>
                     </li>
                      <li>
                         Welche Eigenschaften hat das Fleisch von Broilern?
                         <button class="accordion-button">Показати відповідь</button>
                         <div class="accordion-panel">
-                           <p style="margin-top:16px;">Das Fleisch von Broilern ist eiweißreich, fett- und energiearm, schmackhaft sowie leicht verdaulich.</p>
+                            <p style="margin-top:16px;">Das Fleisch von Broilern ist eiweißreich, fett- und energiearm, schmackhaft sowie leicht verdaulich.</p>
                         </div>
                     </li>
                      <li>
                         Was ist für den Masterfolg wichtig?
                         <button class="accordion-button">Показати відповідь</button>
                         <div class="accordion-panel">
-                           <p style="margin-top:16px;">Für den Masterfolg sind solche Faktoren wie Haltung und Fütterung, Züchtung, Alter der Tiere wichtig.</p>
+                            <p style="margin-top:16px;">Für den Masterfolg sind solche Faktoren wie Haltung und Fütterung, Züchtung, Alter der Tiere wichtig.</p>
                         </div>
                     </li>
                 </ol>
@@ -409,6 +411,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize checkers
     checkAnswers('check-task2', '.vocab-task-grid input');
+    checkAnswers('check-task3', '.fill-in-sentence input');
 });
 </script>
 
