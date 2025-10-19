@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Словник: Агрономія | Deutsch+Profis</title>
-<meta name="description" content="Словник за темою «Агрономія»: ґрунти, посів, урожай — з прикладами та аудіо. Введіть слово для пошуку українською або німецькою." />
+<title id="pageTitle">Словник: Агрономія | Deutsch+Profis</title>
+<meta id="pageDesc" name="description" content="Словник за темою «Агрономія»: ґрунти, посів, урожай — з прикладами та аудіо. Введіть слово для пошуку українською або німецькою." />
 
-<!-- Мета-теги та шрифти з головного сайту -->
 <meta name="theme-color" content="#009846" />
 <meta property="og:title" content="Deutsch+Profis — Агрономія" />
 <meta property="og:description" content="Словники, діалоги, вправи, етикет. Німецька для роботи — просто та практично." />
@@ -15,150 +14,44 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
 
-<!-- ОСНОВНІ СТИЛІ САЙТУ -->
 <style>
-:root {
-  --green: #009846;
-  --green-light: #e6f5f0;
-  --dark: #1f2937;
-  --yellow: #FFED00;
-  --muted: #6b7280;
-  --bg: #f9fafb;
-  --card-bg: #ffffff;
-  --border-color: #e5e7eb;
-  --radius: 16px;
-  --shadow: 0 4px 6px -1px rgba(0,0,0,.03), 0 2px 4px -2px rgba(0,0,0,.03);
-  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -4px rgba(0,0,0,.05);
-  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: #374151;
-  font-family: 'Inter', system-ui, sans-serif;
-  line-height: 1.6;
-}
-.wrap {
-  box-sizing: border-box;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 clamp(16px, 5vw, 24px);
-}
-h1, h2, h3 { color: var(--dark); font-weight: 800; line-height: 1.25; margin: 0; }
-h1 { font-size: clamp(32px, 5vw, 42px); text-align: center; }
-h2 { font-size: clamp(28px, 4vw, 36px); text-align: center; margin-bottom: 16px; }
-h3 { font-size: 20px; }
-.lead {
-  font-size: clamp(16px, 2vw, 18px);
-  color: var(--muted);
-  max-width: 600px;
-  margin: 16px auto 40px;
-  text-align: center;
-}
-
-/* --- Навігація --- */
-.main-nav {
-  position: sticky; top: 16px; margin: 16px clamp(16px, 5vw, 24px) 0;
-  z-index: 50; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px);
-  border: 1px solid var(--border-color); border-radius: 16px;
-  padding: 12px 24px; box-shadow: var(--shadow-lg);
-}
-.main-nav .nav-content {
-  display: flex; justify-content: space-between; align-items: center;
-  max-width: 1100px; margin: 0 auto;
-}
-.logo {
-  display: flex; align-items: center; gap: 8px; font-weight: 700;
-  font-size: 18px; color: var(--dark); text-decoration: none;
-}
-.logo svg { color: var(--green); }
-
-/* --- Словник --- */
-.search-input {
-  box-sizing: border-box; width: 100%; margin: 0 auto 24px;
-  padding: 14px 20px; font-size: 16px; border: 1px solid var(--border-color);
-  border-radius: 12px; box-shadow: var(--shadow); transition: var(--transition);
-}
-.search-input:focus {
-  outline: none; border-color: var(--green); box-shadow: 0 0 0 3px var(--green-light);
-}
-.highlight {
-  background-color: var(--yellow); border-radius: 4px;
-  padding: 0 0.25rem; color: var(--dark);
-}
-
-/* Хештег */
-.vocab-card .tag {
-  background-color: var(--green-light);
-  color: var(--green);
-  font-size: 12px;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 9999px;
-  margin-bottom: 12px;
-  display: inline-block;
-}
-
-/* Адаптивна сітка: 1 → 2 → 3 колонки */
-.vocab-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-}
-@media (min-width: 768px) { .vocab-list { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1100px){ .vocab-list { grid-template-columns: repeat(3, 1fr); } }
-
-.vocab-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius);
-  padding: clamp(16px, 3vw, 20px);
-  transition: var(--transition);
-  display: flex;
-  flex-direction: column;
-}
-.vocab-card:hover {
-  border-color: var(--green);
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-3px);
-}
-.vocab-card h3 { color: var(--dark); font-weight: 700; }
-.vocab-card .translation { color: var(--green); font-weight: 500; margin: 2px 0 12px 0; }
-.vocab-card .translation strong { color: var(--dark); font-weight: 600; margin-right: 6px; }
-.vocab-card .sentence {
-  font-size: 15px; color: var(--muted);
-  padding-top: 12px; margin-top: 12px; border-top: 1px solid var(--border-color);
-}
-.vocab-card audio { width: 100%; margin-top: auto; padding-top: 16px; }
-
-/* --- Кнопка навігації --- */
-.page-nav { display: flex; justify-content: center; margin-top: 32px; }
-.d-btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  gap: 8px; cursor: pointer; text-decoration: none;
-  border: 1px solid var(--border-color); padding: 12px 24px;
-  border-radius: 12px; font-weight: 700; font-size: 16px;
-  transition: var(--transition); background: var(--card-bg); color: var(--dark);
-}
-.d-btn:hover {
-  transform: translateY(-3px); box-shadow: var(--shadow-lg);
-  border-color: var(--green); color: var(--green);
-}
-
-/* --- Футер --- */
-.footer {
-  text-align: center; color: var(--muted); font-size: 14px;
-  padding: clamp(40px, 7vw, 60px) 0;
-}
-.footer a { color: var(--green); text-decoration: none; font-weight: 500; }
-.footer a:hover { text-decoration: underline; }
+/* той самий набір змінних/класів, як у першому файлі */
+:root{--green:#009846;--green-light:#e6f5f0;--dark:#1f2937;--yellow:#FFED00;--muted:#6b7280;--bg:#f9fafb;--card-bg:#fff;--border:#e5e7eb;--radius:16px;--shadow:0 4px 6px -1px rgba(0,0,0,.03),0 2px 4px -2px rgba(0,0,0,.03);--shadow-lg:0 10px 15px -3px rgba(0,0,0,.05),0 4px 6px -4px rgba(0,0,0,.05);--transition:all .25s cubic-bezier(0.4,0,0.2,1);}
+html{scroll-behavior:smooth;}body{margin:0;background:var(--bg);color:#374151;font-family:'Inter',system-ui,sans-serif;line-height:1.6;}
+.wrap{box-sizing:border-box;max-width:800px;margin:0 auto;padding:0 clamp(16px,5vw,24px);}
+h1,h2,h3{color:var(--dark);font-weight:800;line-height:1.25;margin:0;}
+h2{font-size:clamp(28px,4vw,36px);text-align:center;margin-bottom:16px;}
+.lead{font-size:clamp(16px,2vw,18px);color:var(--muted);max-width:620px;margin:16px auto 40px;text-align:center;}
+.main-nav{position:sticky;top:16px;margin:16px clamp(16px,5vw,24px) 0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:16px;padding:12px 24px;box-shadow:var(--shadow-lg);}
+.main-nav .nav-content{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px;color:var(--dark);text-decoration:none;}
+.logo svg{color:var(--green);}
+.top-link{font-size:14px;font-weight:700;color:var(--green);text-decoration:none;}
+.top-link:hover{text-decoration:underline;}
+.search-input{box-sizing:border-box;width:100%;margin:0 0 24px;padding:14px 20px;font-size:16px;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);transition:var(--transition);}
+.search-input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px var(--green-light);}
+.highlight{background:var(--yellow);border-radius:4px;padding:0 .25rem;color:var(--dark);}
+.vocab-list{display:grid;grid-template-columns:1fr;gap:16px;}
+@media (min-width:768px){.vocab-list{grid-template-columns:repeat(2,1fr);}}
+@media (min-width:1100px){.vocab-list{grid-template-columns:repeat(3,1fr);}}
+.vocab-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:clamp(16px,3vw,20px);transition:var(--transition);display:flex;flex-direction:column;}
+.vocab-card:hover{border-color:var(--green);box-shadow:var(--shadow-lg);transform:translateY(-3px);}
+.vocab-card .tag{background:var(--green-light);color:var(--green);font-size:12px;font-weight:700;padding:4px 10px;border-radius:9999px;margin-bottom:12px;display:inline-block;}
+.vocab-card h3{color:var(--dark);font-weight:700;}
+.vocab-card .translation{color:var(--green);font-weight:500;margin:2px 0 12px;}
+.vocab-card .translation strong{color:var(--dark);font-weight:600;margin-right:6px;}
+.vocab-card .sentence{font-size:15px;color:var(--muted);padding-top:12px;margin-top:12px;border-top:1px solid var(--border);}
+.vocab-card audio{width:100%;margin-top:auto;padding-top:16px;}
+.page-nav{display:flex;justify-content:center;margin-top:40px;}
+.d-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;text-decoration:none;border:1px solid var(--border);padding:12px 24px;border-radius:12px;font-weight:700;font-size:16px;transition:var(--transition);background:var(--card-bg);color:var(--dark);}
+.d-btn:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--green);color:var(--green);}
+.footer{text-align:center;color:var(--muted);font-size:14px;padding:clamp(40px,7vw,60px) 0;}
+.footer a{color:var(--green);text-decoration:none;font-weight:500;}
+.footer a:hover{text-decoration:underline;}
 </style>
 </head>
 <body>
 
-<!-- Верхня навігація -->
 <nav class="main-nav">
   <div class="nav-content">
     <a href="../" class="logo" title="На головну">
@@ -166,11 +59,9 @@ h3 { font-size: 20px; }
         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
         <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
       </svg>
-      Deutsch<span style="color:var(--green)">+</span>Profis
+      Deutsch<span style="color:#009846">+</span>Profis
     </a>
-    <a href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html" class="logo" style="font-size:14px; gap:6px;">
-      ← Усі словники
-    </a>
+    <a href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html" class="top-link">Усі словники</a>
   </div>
 </nav>
 
@@ -179,13 +70,10 @@ h3 { font-size: 20px; }
     <div class="wrap">
       <h2>Словник: Агрономія</h2>
       <p class="lead">Словник за темою «Агрономія»: ґрунти, посів, урожай — з прикладами та аудіо. Введіть слово для пошуку українською або німецькою.</p>
-      
-      <input id="searchInput" type="text" placeholder="Пошук слів..." class="search-input">
-    
+      <input id="searchInput" type="text" placeholder="Пошук слів..." class="search-input" />
       <div id="cardsContainer" class="vocab-list"></div>
-
       <nav class="page-nav">
-        <a href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html" class="d-btn">← Повернутися до словників</a>
+        <a class="d-btn" href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html">← Повернутися до словників</a>
       </nav>
     </div>
   </section>
@@ -198,7 +86,6 @@ h3 { font-size: 20px; }
 </footer>
 
 <script>
-// Дані словника
 const dictionaryData = [
   { german:"der Boden", ukrainian:"ґрунт", sentence:"Der Boden ist fruchtbar.", id:"audio/01_Der_Boden_ist_fruchtbar.mp3" },
   { german:"die Fruchtbarkeit", ukrainian:"родючість", sentence:"Die Fruchtbarkeit des Bodens ist wichtig.", id:"audio/02_Die_Fruchtbarkeit_des_Bodens_ist_wichtig.mp3" },
@@ -223,62 +110,48 @@ const dictionaryData = [
 ];
 
 const escapeHtml = (s='') => s.replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-const escapeRegex = (s='') => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-
-function highlightText(text, filter) {
-  if (!filter) return escapeHtml(text);
-  const safeFilter = escapeRegex(filter);
-  const re = new RegExp(`(${safeFilter})`, 'gi');
-  return escapeHtml(text).replace(re, '<span class="highlight">$1</span>');
+const escapeRegex = (s='') => s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+function highlightText(text, filter){
+  const safe = escapeHtml(text);
+  if(!filter) return safe;
+  const re = new RegExp(`(${escapeRegex(filter)})`,'gi');
+  return safe.replace(re,'<span class="highlight">$1</span>');
 }
 
-function renderCards(filter = "") {
-  const cardsContainer = document.getElementById('cardsContainer');
-  cardsContainer.innerHTML = '';
-
-  const filteredData = dictionaryData.filter(item => {
-    const searchTerm = `${item.german} ${item.ukrainian} ${item.sentence}`.toLowerCase();
-    return searchTerm.includes(filter.toLowerCase());
+function renderCards(filter=""){
+  const cont = document.getElementById('cardsContainer');
+  cont.innerHTML = '';
+  const list = dictionaryData.filter(item=>{
+    const hay = `${item.german} ${item.ukrainian} ${item.sentence}`.toLowerCase();
+    return hay.includes(filter.toLowerCase());
   });
-
-  if (!filteredData.length) {
-    cardsContainer.innerHTML = `<div class="vocab-card" style="text-align: center;">
+  if(!list.length){
+    cont.innerHTML = `<div class="vocab-card" style="text-align:center">
       <h3>Нічого не знайдено</h3>
-      <p class="translation" style="color: var(--muted);">Спробуйте інший пошуковий запит.</p>
+      <p class="translation" style="color:var(--muted)">Спробуйте інший запит.</p>
     </div>`;
     return;
   }
-
-  filteredData.forEach(item => {
-    const audioHtml = item.id
-      ? `<audio controls preload="none">
-           <source src="${item.id}" type="audio/mpeg">
-           Ваш браузер не підтримує аудіо.
-         </audio>`
-      : '';
-
-    const card = document.createElement('div');
-    card.className = "vocab-card"; 
-    card.innerHTML = `
-      <span class="tag">#Агрономія</span>
-      <h3>${highlightText(item.german, filter)}</h3>
-      <p class="translation"><strong>Переклад:</strong> ${highlightText(item.ukrainian, filter)}</p>
-      <p class="sentence">${highlightText(item.sentence, filter)}</p>
-      ${audioHtml}
-    `;
-    cardsContainer.appendChild(card);
+  list.forEach(item=>{
+    cont.insertAdjacentHTML('beforeend', `
+      <div class="vocab-card">
+        <span class="tag">#Агрономія</span>
+        <h3>${highlightText(item.german, filter)}</h3>
+        <p class="translation"><strong>Переклад:</strong> ${highlightText(item.ukrainian, filter)}</p>
+        <p class="sentence">${highlightText(item.sentence, filter)}</p>
+        <audio controls preload="none">
+          <source src="${item.id}" type="audio/mpeg">
+          Ваш браузер не підтримує аудіо.
+        </audio>
+      </div>
+    `);
   });
 }
 
-function debounce(fn, wait = 250) {
-  let timeout;
-  return (...args) => { clearTimeout(timeout); timeout = setTimeout(() => fn(), wait); };
-}
-
-window.addEventListener('load', () => {
+window.addEventListener('load', ()=>{
   renderCards();
-  const searchInput = document.getElementById('searchInput');
-  searchInput.addEventListener('input', debounce(() => renderCards(searchInput.value.trim()), 250));
+  const search = document.getElementById('searchInput');
+  search.addEventListener('input', ()=>renderCards(search.value.trim()));
 });
 </script>
 
