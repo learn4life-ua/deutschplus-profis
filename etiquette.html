@@ -128,7 +128,7 @@ h3 svg {
     font-weight: 600;
 }
 
-/* --- Summary Table --- */
+/* --- Summary & Dictionary Table --- */
 .summary-table {
     width: 100%;
     border-collapse: collapse;
@@ -146,6 +146,10 @@ h3 svg {
 }
 .summary-table tr:last-child td {
     border-bottom: none;
+}
+.summary-table td:first-child {
+    font-weight: 600;
+    color: var(--dark);
 }
 
 /* --- Quest Card --- */
@@ -240,7 +244,7 @@ h3 svg {
 
       <div class="content-card">
         <h3>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
           Пряма та чітка комунікація
         </h3>
         <p>У Німеччині цінується прямий, але ввічливий стиль спілкування. Мета — ефективність та уникнення непорозумінь.</p>
@@ -264,7 +268,7 @@ h3 svg {
 
       <div class="content-card">
         <h3>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 16.5l3-8 3 8"></path><path d="M2 16.5l3-8 3 8"></path><path d="M7 21h10"></path><path d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 16.5l3-8 3 8"></path><path d="M2 16.5l3-8 3 8"></path><path d="M7 21h10"></path><path d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg>
             Баланс між роботою та життям
         </h3>
         <p>Хоча німці старанно працюють, вони також цінують свій вільний час і поважають його у інших.</p>
@@ -274,6 +278,54 @@ h3 svg {
         </ul>
       </div>
       
+      <!-- New Dictionary Block -->
+      <div class="content-card">
+        <h3>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
+          Ключовий словник
+        </h3>
+        <table class="summary-table">
+            <thead>
+                <tr>
+                    <th>Термін (Німецька)</th>
+                    <th>Пояснення</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sie / du</td>
+                    <td>Формальне «Ви» / Неформальне «ти». Важливо розрізняти.</td>
+                </tr>
+                <tr>
+                    <td>Die Pünktlichkeit</td>
+                    <td>Пунктуальність, вчасність.</td>
+                </tr>
+                <tr>
+                    <td>Der Termin</td>
+                    <td>Призначена зустріч, дедлайн.</td>
+                </tr>
+                <tr>
+                    <td>Das Feedback</td>
+                    <td>Зворотний зв'язок, конструктивна критика.</td>
+                </tr>
+                <tr>
+                    <td>Der Feierabend</td>
+                    <td>Кінець робочого дня, вільний час після роботи.</td>
+                </tr>
+                 <tr>
+                    <td>Die Besprechung</td>
+                    <td>Нарада, обговорення робочих питань.</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="text-align: center; margin-top: 24px;">
+            <a href="audio-dictionary.html" class="d-btn" style="background-color: transparent; border-width: 2px;">
+               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+               <span>аудіо словник</span>
+            </a>
+       </div>
+      </div>
+
       <div class="content-card">
         <h3>🧠 Коротке резюме</h3>
         <table class="summary-table">
@@ -333,4 +385,5 @@ h3 svg {
 
 </body>
 </html>
+
 
