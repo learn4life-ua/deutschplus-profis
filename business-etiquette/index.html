@@ -4,132 +4,119 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Діловий етикет | Deutsch+Profis</title>
-<meta name="description" content="Словник за темою «Діловий етикет»: звертання, email-культура, зустрічі, дедлайни — з прикладами речень та аудіо." />
+<meta name="description" content="Словник за темою «Діловий етикет»: звертання, електронна пошта, пунктуальність, культура праці — з прикладами та аудіо." />
 <meta name="theme-color" content="#009846" />
-<meta property="og:title" content="Deutsch+Profis — Діловий етикет" />
-<meta property="og:description" content="Ключова лексика з прикладами: звертання, email-культура, зустрічі, дедлайни." />
-<meta property="og:image" content="https://res.cloudinary.com/dsbqtfrkc/image/upload/v1717672358/og-image-d-profis_v2_b1qf8a.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
 
 <style>
-:root{
-  --green:#009846; --green-light:#e6f5f0; --dark:#1f2937; --yellow:#FFED00;
-  --muted:#6b7280; --bg:#f9fafb; --card-bg:#fff; --border:#e5e7eb;
-  --radius:16px; --shadow-lg:0 10px 15px -3px rgba(0,0,0,.05),0 4px 6px -4px rgba(0,0,0,.05);
+:root {
+  --green:#009846; --green-light:#e6f5f0; --dark:#1f2937;
+  --muted:#6b7280; --bg:#f9fafb; --border:#e5e7eb;
+  --radius:16px; --shadow:0 10px 15px -3px rgba(0,0,0,.05),0 4px 6px -4px rgba(0,0,0,.05);
 }
 body{margin:0;background:var(--bg);color:#374151;font-family:'Inter',system-ui,sans-serif;line-height:1.6;}
 .wrap{max-width:800px;margin:0 auto;padding:0 clamp(16px,5vw,24px);}
-h2{color:var(--dark);font-weight:800;line-height:1.25;margin:0 0 16px;text-align:center;font-size:clamp(28px,4vw,36px);}
+h2{text-align:center;color:var(--dark);font-weight:800;margin:0 0 16px;font-size:clamp(28px,4vw,36px);}
 .lead{text-align:center;color:var(--muted);margin:16px auto 40px;max-width:640px;}
-.search-input{box-sizing:border-box;width:100%;margin:0 0 24px;padding:14px 20px;font-size:16px;border:1px solid var(--border);border-radius:12px;box-shadow:0 2px 5px rgba(0,0,0,.03);}
+.search-input{width:100%;padding:14px 20px;font-size:16px;border:1px solid var(--border);border-radius:12px;margin-bottom:24px;box-shadow:0 2px 5px rgba(0,0,0,.03);}
 .search-input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px var(--green-light);}
 .vocab-list{display:grid;grid-template-columns:1fr;gap:16px;}
 @media(min-width:768px){.vocab-list{grid-template-columns:repeat(2,1fr);}}
-.vocab-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;transition:.25s;}
-.vocab-card:hover{border-color:var(--green);box-shadow:var(--shadow-lg);transform:translateY(-3px);}
-.vocab-card .tag{background:var(--green-light);color:var(--green);font-size:12px;font-weight:700;padding:4px 10px;border-radius:9999px;display:inline-block;margin-bottom:10px;}
-.vocab-card h3{margin:0;color:var(--dark);font-weight:700;}
+.vocab-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+  padding:20px;display:flex;flex-direction:column;transition:.25s;}
+.vocab-card:hover{border-color:var(--green);box-shadow:var(--shadow);transform:translateY(-3px);}
+.vocab-card .tag{background:var(--green-light);color:var(--green);font-size:12px;font-weight:700;
+  padding:4px 10px;border-radius:9999px;display:inline-block;margin-bottom:10px;}
+.vocab-card h3{margin:0;color:var(--dark);}
 .translation{color:var(--green);font-weight:500;margin:4px 0 12px;}
 .translation strong{color:var(--dark);}
-.sentence{font-size:15px;color:var(--muted);border-top:1px solid var(--border);padding-top:12px;margin-top:12px;}
+.sentence{font-size:15px;color:var(--muted);border-top:1px solid var(--border);
+  padding-top:12px;margin-top:12px;}
 audio{width:100%;margin-top:auto;padding-top:10px;}
-.highlight{background:var(--yellow);border-radius:4px;padding:0 .25rem;color:var(--dark);}
+.highlight{background:#ffed00;border-radius:4px;padding:0 .25rem;color:var(--dark);}
 </style>
 </head>
 <body>
 
 <main>
-  <section style="padding:60px 0;">
-    <div class="wrap">
-      <h2>Словник: Діловий етикет</h2>
-      <p class="lead">Пошук українською або німецькою. Аудіо — прикладні речення для тренування вимови. Хештег: <b>#ДіловийЕтикет</b>.</p>
+<section style="padding:60px 0;">
+<div class="wrap">
+  <h2>Словник: Діловий етикет</h2>
+  <p class="lead">Основні німецькі слова з прикладами речень та аудіо 🎧<br/>Хештег: <b>#ДіловийЕтикет</b></p>
 
-      <input id="searchInput" type="text" placeholder="Пошук слів..." class="search-input" />
-
-      <div id="cardsContainer" class="vocab-list"><!-- cards here --></div>
-    </div>
-  </section>
+  <input id="searchInput" type="text" placeholder="Пошук слів..." class="search-input" />
+  <div id="cardsContainer" class="vocab-list"></div>
+</div>
+</section>
 </main>
 
 <script>
-// === Дані: перші 20 файлів з твоїми точними назвами ===
 const dictionaryData = [
-  // Перша партія
-  { german:"das Benehmen", ukrainian:"поведінка, манери", sentence:"Gutes Benehmen ist im Beruf sehr wichtig.", id:"audio/das_Benehmen__sentence.mp3" },
-  { german:"das Feedback", ukrainian:"зворотний зв’язок", sentence:"Konstruktives Feedback hilft, sich zu verbessern.", id:"audio/das_Feedback__sentence.mp3" },
-  { german:"das Siezen/Duzen", ukrainian:"звертання на Ви/ти", sentence:"In Deutschland ist das Siezen im Beruf üblich.", id:"audio/das_Siezen_Duzen__sentence.mp3" },
-  { german:"das Verhalten", ukrainian:"поведінка", sentence:"Professionelles Verhalten schafft Vertrauen.", id:"audio/das_Verhalten__sentence.mp3" },
-  { german:"das Zeitmanagement", ukrainian:"управління часом", sentence:"Gutes Zeitmanagement ist im Büro entscheidend.", id:"audio/das_Zeitmanagement__sentence.mp3" },
-  { german:"der Chef / die Chefin", ukrainian:"керівник / керівниця", sentence:"Der Chef erwartet Pünktlichkeit und Zuverlässigkeit.", id:"audio/der_Chef_die_Chefin__sentence.mp3" },
-  { german:"der Kollege / die Kollegin", ukrainian:"колега (чол./жін.)", sentence:"Gute Kollegen unterstützen sich gegenseitig.", id:"audio/der_Kollege_die_Kollegin__sentence.mp3" },
-  { german:"der Termin", ukrainian:"зустріч, домовленість", sentence:"Der Termin wurde auf nächste Woche verschoben.", id:"audio/der_Termin__sentence.mp3" },
-  { german:"die Arbeitsкultur", ukrainian:"культура праці", sentence:"Die Arbeitskultur beeinflusst die Motivation.", id:"audio/die_Arbeitskultur__sentence.mp3" },
-  { german:"die Arbeitszeit", ukrainian:"робочий час", sentence:"Die Arbeitszeit endet um 17 Uhr.", id:"audio/die_Arbeitszeit__sentence.mp3" },
+  { german:"das Benehmen", ukrainian:"поведінка, манери", sentence:"Gutes Benehmen ist im Büro wichtig.", id:"audio/das_Benehmen__sentence.mp3" },
+  { german:"das Feedback", ukrainian:"зворотний зв’язок", sentence:"Ich habe konstruktives Feedback bekommen.", id:"audio/das_Feedback__sentence.mp3" },
+  { german:"das Siezen / Duzen", ukrainian:"звертання на Ви / на ти", sentence:"In der Firma ist das Siezen üblich.", id:"audio/das_Siezen_Duzen__sentence.mp3" },
+  { german:"das Verhalten", ukrainian:"поведінка", sentence:"Sein Verhalten war vorbildlich.", id:"audio/das_Verhalten__sentence.mp3" },
+  { german:"das Zeitmanagement", ukrainian:"управління часом", sentence:"Gutes Zeitmanagement ist im Beruf entscheidend.", id:"audio/das_Zeitmanagement__sentence.mp3" },
 
-  // Друга партія
-  { german:"die E-Mail-Kultur", ukrainian:"культура електронного листування", sentence:"Eine gute E-Mail-Kultur spart Zeit und Missverständnisse.", id:"audio/die_E-Mail-Kultur__sentence.mp3" },
-  { german:"die Freizeit", ukrainian:"вільний час", sentence:"Ein respektvoller Arbeitgeber achtet auf die Freizeit seiner Mitarbeiter.", id:"audio/die_Freizeit__sentence.mp3" },
-  { german:"die Hierarchie", ukrainian:"ієрархія", sentence:"In großen Firmen ist die Hierarchie klar geregelt.", id:"audio/die_Hierarchie__sentence.mp3" },
-  { german:"die Höflichkeit", ukrainian:"ввічливість", sentence:"Höflichkeit ist ein Zeichen von Professionalität.", id:"audio/die_Hoflichkeit__sentence.mp3" },
-  { german:"die Kritik", ukrainian:"критика", sentence:"Kritik sollte immer konstruktiv und respektvoll sein.", id:"audio/die_Kritik__sentence.mp3" },
-  { german:"die Pünktlichkeit", ukrainian:"пунктуальність", sentence:"Pünktlichkeit gilt als Zeichen von Zuverlässigkeit.", id:"audio/die_Punktlichkeit__sentence.mp3" },
-  { german:"die Verantwortung", ukrainian:"відповідальність", sentence:"Verantwortung zu übernehmen zeigt Reife und Vertrauen.", id:"audio/die_Verantwortung__sentence.mp3" },
-  { german:"formell", ukrainian:"офіційний, формальний", sentence:"In geschäftlichen Situationen ist ein formeller Ton angebracht.", id:"audio/formell__sentence.mp3" },
-  { german:"respektvoll", ukrainian:"поважний", sentence:"Man sollte in jeder Diskussion respektvoll bleiben.", id:"audio/respektvoll__sentence.mp3" },
-  { german:"zuverlässig", ukrainian:"надійний", sentence:"Ein zuverlässiger Mitarbeiter ist in jedem Team geschätzt.", id:"audio/zuverlassig__sentence.mp3" }
+  { german:"der Chef / die Chefin", ukrainian:"керівник / керівниця", sentence:"Mein Chef ist sehr fair.", id:"audio/der_Chef_die_Chefin__sentence.mp3" },
+  { german:"der Kollege / die Kollegin", ukrainian:"колега (чол./жін.)", sentence:"Meine Kollegin hilft mir oft.", id:"audio/der_Kollege_die_Kollegin__sentence.mp3" },
+  { german:"der Termin", ukrainian:"зустріч, термін", sentence:"Ich habe um 10 Uhr einen Termin.", id:"audio/der_Termin__sentence.mp3" },
+
+  { german:"die Arbeitskultur", ukrainian:"культура праці", sentence:"Die deutsche Arbeitskultur ist sehr strukturiert.", id:"audio/die_Arbeitskultur__sentence.mp3" },
+  { german:"die Arbeitszeit", ukrainian:"робочий час", sentence:"Meine Arbeitszeit beginnt um 8 Uhr.", id:"audio/die_Arbeitszeit__sentence.mp3" },
+  { german:"die E-Mail-Kultur", ukrainian:"культура електронного листування", sentence:"Die E-Mail-Kultur ist in der Firma sehr professionell.", id:"audio/die_E-Mail-Kultur__sentence.mp3" },
+  { german:"die Freizeit", ukrainian:"вільний час", sentence:"In meiner Freizeit lese ich gern.", id:"audio/die_Freizeit__sentence.mp3" },
+  { german:"die Hierarchie", ukrainian:"ієрархія", sentence:"Die Hierarchie ist in der Firma flach.", id:"audio/die_Hierarchie__sentence.mp3" },
+  { german:"die Höflichkeit", ukrainian:"ввічливість", sentence:"Höflichkeit öffnet viele Türen.", id:"audio/die_Hoflichkeit__sentence.mp3" },
+  { german:"die Kritik", ukrainian:"критика", sentence:"Kritik kann hilfreich sein.", id:"audio/die_Kritik__sentence.mp3" },
+  { german:"die Pünktlichkeit", ukrainian:"пунктуальність", sentence:"Pünktlichkeit ist in Deutschland sehr wichtig.", id:"audio/die_Punktlichkeit__sentence.mp3" },
+  { german:"die Verantwortung", ukrainian:"відповідальність", sentence:"Verantwortung zu übernehmen ist wichtig.", id:"audio/die_Verantwortung__sentence.mp3" },
+
+  { german:"formell", ukrainian:"офіційний, формальний", sentence:"In Meetings ist ein formeller Ton üblich.", id:"audio/formell__sentence.mp3" },
+  { german:"respektvoll", ukrainian:"шанобливий", sentence:"Man soll respektvoll miteinander umgehen.", id:"audio/respektvoll__sentence.mp3" },
+  { german:"zuverlässig", ukrainian:"надійний", sentence:"Mein Kollege ist sehr zuverlässig.", id:"audio/zuverlassig__sentence.mp3" }
 ];
 
-// ——— Утиліти ———
-const escapeHtml = (s='') => s.replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-const escapeRegex = (s='') => s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-function highlightText(text, filter){
-  const safe = escapeHtml(text);
-  if(!filter) return safe;
-  const re = new RegExp(`(${escapeRegex(filter)})`, 'gi');
-  return safe.replace(re,'<span class="highlight">$1</span>');
+// ---- пошук і відображення ----
+const escapeHtml=s=>s.replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const escapeRegex=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+function highlightText(text,filter){
+  if(!filter) return escapeHtml(text);
+  const re=new RegExp(`(${escapeRegex(filter)})`,'gi');
+  return escapeHtml(text).replace(re,'<span class="highlight">$1</span>');
 }
-
-// ——— Рендер ———
 function renderCards(filter=""){
-  const cont = document.getElementById('cardsContainer');
-  cont.innerHTML = "";
-  const list = dictionaryData.filter(item=>{
-    const hay = `${item.german} ${item.ukrainian} ${item.sentence}`.toLowerCase();
-    return hay.includes((filter||"").toLowerCase());
+  const cont=document.getElementById('cardsContainer');
+  cont.innerHTML="";
+  const found=dictionaryData.filter(d=>{
+    const s=(d.german+" "+d.ukrainian+" "+d.sentence).toLowerCase();
+    return s.includes(filter.toLowerCase());
   });
-  if(!list.length){
-    cont.innerHTML = `<div class="vocab-card" style="text-align:center">
-      <h3>Нічого не знайдено</h3>
-      <p class="translation" style="color:var(--muted)">Спробуйте інший запит.</p>
-    </div>`;
+  if(!found.length){
+    cont.innerHTML="<p style='text-align:center;color:var(--muted)'>Нічого не знайдено.</p>";
     return;
   }
-  list.forEach(item=>{
-    const card = document.createElement('div');
-    card.className = "vocab-card";
-    card.innerHTML = `
-      <span class="tag">#ДіловийЕтикет</span>
-      <h3>${highlightText(item.german, filter)}</h3>
-      <p class="translation"><strong>Переклад:</strong> ${highlightText(item.ukrainian, filter)}</p>
-      <p class="sentence">${highlightText(item.sentence, filter)}</p>
-      ${item.id ? `
+  for(const d of found){
+    cont.insertAdjacentHTML("beforeend",`
+      <div class="vocab-card">
+        <span class="tag">#ДіловийЕтикет</span>
+        <h3>${highlightText(d.german,filter)}</h3>
+        <p class="translation"><strong>Переклад:</strong> ${highlightText(d.ukrainian,filter)}</p>
+        <p class="sentence">${highlightText(d.sentence,filter)}</p>
         <audio controls preload="none">
-          <source src="${item.id}" type="audio/mpeg" />
-          Ваш браузер не підтримує аудіо.
-        </audio>` : ``}
-    `;
-    cont.appendChild(card);
-  });
+          <source src="${d.id}" type="audio/mpeg"/>
+        </audio>
+      </div>
+    `);
+  }
 }
-
-// ——— Події ———
-window.addEventListener('load', ()=>{
+window.addEventListener('load',()=>{
   renderCards();
-  const search = document.getElementById('searchInput');
-  search.addEventListener('input', ()=> renderCards(search.value.trim()));
+  const input=document.getElementById('searchInput');
+  input.addEventListener('input',()=>renderCards(input.value.trim()));
 });
 </script>
 
