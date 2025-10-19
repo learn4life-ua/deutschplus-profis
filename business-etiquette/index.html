@@ -1,1 +1,218 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Діловий етикет | Deutsch+Profis</title>
+<meta name="description" content="Словник за темою «Діловий етикет»: звертання, email-культура, зустрічі, дедлайни — з прикладами речень та аудіо." />
+
+<!-- Мета-теги та шрифти з головного сайту -->
+<meta name="theme-color" content="#009846" />
+<meta property="og:title" content="Deutsch+Profis — Діловий етикет" />
+<meta property="og:description" content="Ключова лексика з прикладами: звертання, email-культура, зустрічі, дедлайни." />
+<meta property="og:image" content="https://res.cloudinary.com/dsbqtfrkc/image/upload/v1717672358/og-image-d-profis_v2_b1qf8a.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
+<style>
+:root {
+  --green: #009846;
+  --green-light: #e6f5f0;
+  --dark: #1f2937;
+  --yellow: #FFED00;
+  --muted: #6b7280;
+  --bg: #f9fafb;
+  --card-bg: #ffffff;
+  --border-color: #e5e7eb;
+  --radius: 16px;
+  --shadow: 0 4px 6px -1px rgba(0,0,0,.03), 0 2px 4px -2px rgba(0,0,0,.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -4px rgba(0,0,0,.05);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: #374151; font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; }
+.wrap { box-sizing: border-box; max-width: 800px; margin: 0 auto; padding: 0 clamp(16px, 5vw, 24px); }
+h1, h2, h3 { color: var(--dark); font-weight: 800; line-height: 1.25; margin: 0; }
+h1 { font-size: clamp(32px, 5vw, 42px); text-align: center; }
+h2 { font-size: clamp(28px, 4vw, 36px); text-align: center; margin-bottom: 16px; }
+h3 { font-size: 20px; }
+.lead { font-size: clamp(16px, 2vw, 18px); color: var(--muted); max-width: 600px; margin: 16px auto 56px; text-align: center; }
+
+/* Навігація */
+.main-nav { position: sticky; top: 16px; margin: 16px clamp(16px, 5vw, 24px) 0; z-index: 50; background: rgba(255,255,255,.85); backdrop-filter: blur(10px); border: 1px solid var(--border-color); border-radius: 16px; padding: 12px 24px; box-shadow: var(--shadow-lg); }
+.main-nav .nav-content { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; }
+.logo { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 18px; color: var(--dark); text-decoration: none; }
+.logo svg { color: var(--green); }
+
+/* Пошук */
+.search-input { box-sizing: border-box; width: 100%; margin: 0 auto 32px; padding: 14px 20px; font-size: 16px; border: 1px solid var(--border-color); border-radius: 12px; box-shadow: var(--shadow); transition: var(--transition); }
+.search-input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px var(--green-light); }
+.highlight { background-color: var(--yellow); border-radius: 4px; padding: 0 0.25rem; color: var(--dark); }
+
+/* Словник */
+.vocab-list { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 768px) { .vocab-list { grid-template-columns: repeat(2, 1fr); } }
+
+.vocab-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius);
+  padding: clamp(16px, 3vw, 20px); transition: var(--transition); display: flex; flex-direction: column; }
+.vocab-card:hover { border-color: var(--green); box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.vocab-card h3 { color: var(--dark); font-weight: 700; }
+.vocab-card .translation { color: var(--green); font-weight: 500; margin: 2px 0 12px 0; }
+.vocab-card .translation strong { color: var(--dark); font-weight: 600; margin-right: 6px; }
+.vocab-card .sentence { font-size: 15px; color: var(--muted); padding-top: 12px; margin-top: 12px; border-top: 1px solid var(--border-color); }
+.vocab-card audio { width: 100%; margin-top: auto; padding-top: 16px; }
+
+/* Хештег */
+.vocab-card .tag { background: var(--green-light); color: var(--green); font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 9999px; margin-bottom: 12px; display: inline-block; }
+
+/* Кнопки */
+.page-nav { display: flex; justify-content: center; margin-top: 40px; }
+.d-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; text-decoration: none; border: 1px solid var(--border-color); padding: 12px 24px; border-radius: 12px; font-weight: 700; font-size: 16px; transition: var(--transition); background: var(--card-bg); color: var(--dark); }
+.d-btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--green); color: var(--green); }
+
+/* Футер */
+.footer { text-align: center; color: var(--muted); font-size: 14px; padding: clamp(40px, 7vw, 60px) 0; }
+.footer a { color: var(--green); text-decoration: none; font-weight: 500; }
+.footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav class="main-nav">
+  <div class="nav-content">
+    <a href="../" class="logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+      Deutsch<span style="color:var(--green)">+</span>Profis
+    </a>
+  </div>
+</nav>
+
+<main>
+  <section style="padding: clamp(40px, 7vw, 60px) 0;">
+    <div class="wrap">
+      <h2>Словник: Діловий етикет</h2>
+      <p class="lead">Пошук українською або німецькою. Аудіо — речення для прикладу й тренування вимови.</p>
+
+      <input id="searchInput" type="text" placeholder="Пошук слів..." class="search-input">
+
+      <div id="cardsContainer" class="vocab-list"><!-- Cards here --></div>
+
+      <nav class="page-nav">
+        <a href="../" class="d-btn">← Повернутися на головну</a>
+      </nav>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені.</p>
+  </div>
+</footer>
+
+<script>
+// === СЛОВНИК: Діловий етикет (без транскрипцій) ===
+// Підстав свої mp3 у папку ./audio/ або заміни id на абсолютні URL.
+const dictionaryData = [
+  { german:"die Begrüßung", ukrainian:"привітання", sentence:"Eine höfliche Begrüßung schafft Vertrauen.", id:"audio/01_Begruessung.mp3" },
+  { german:"die Anrede", ukrainian:"звертання", sentence:"In formellen E-Mails ist die Anrede entscheidend.", id:"audio/02_Anrede.mp3" },
+  { german:"das Siezen", ukrainian:"звертання на Ви", sentence:"Am Anfang ist das Siezen meist der Standard.", id:"audio/03_Siezen.mp3" },
+  { german:"das Duzen", ukrainian:"звертання на ти", sentence:"Duzen erfolgt erst nach einem klaren Angebot.", id:"audio/04_Duzen.mp3" },
+  { german:"die Pünktlichkeit", ukrainian:"пунктуальність", sentence:"Pünktlichkeit zeigt Respekt und Zuverlässigkeit.", id:"audio/05_Puenktlichkeit.mp3" },
+  { german:"der Dresscode", ukrainian:"дрес-код", sentence:"Ein passender Dresscode unterstützt Professionalität.", id:"audio/06_Dresscode.mp3" },
+  { german:"die Visitenkarte", ukrainian:"візитівка", sentence:"Beim Austausch von Visitenkarten bedankt man sich kurz.", id:"audio/07_Visitenkarte.mp3" },
+  { german:"die Agenda", ukrainian:"порядок денний", sentence:"Eine klare Agenda macht das Meeting effizient.", id:"audio/08_Agenda.mp3" },
+  { german:"das Protokoll", ukrainian:"протокол", sentence:"Das Protokoll hält die Ergebnisse transparent fest.", id:"audio/09_Protokoll.mp3" },
+  { german:"die E-Mail-Kultur", ukrainian:"культура листування", sentence:"Eine präzise Betreffzeile verbessert die E-Mail-Kultur.", id:"audio/10_Email_Kultur.mp3" },
+  { german:"die Betreffzeile", ukrainian:"тема листа", sentence:"Formuliere die Betreffzeile konkret und knapp.", id:"audio/11_Betreffzeile.mp3" },
+  { german:"die Grußformel", ukrainian:"форма прощання в листі", sentence:"Eine passende Grußformel rundet die Nachricht ab.", id:"audio/12_Grussformel.mp3" },
+  { german:"die Terminbestätigung", ukrainian:"підтвердження зустрічі", sentence:"Eine kurze Terminbestätigung verhindert Missverständnisse.", id:"audio/13_Terminbestaetigung.mp3" },
+  { german:"die Absage", ukrainian:"відмова/скасування", sentence:"Bei einer Absage schlage einen Alternativtermin vor.", id:"audio/14_Absage.mp3" },
+  { german:"die Telefonkonferenz", ukrainian:"телефонна нарада", sentence:"In Telefonkonferenzen spricht man nacheinander.", id:"audio/15_Telefonkonferenz.mp3" },
+  { german:"die Videokonferenz", ukrainian:"відеоконференція", sentence:"In Videokonferenzen bleibt die Kamera nach Möglichkeit an.", id:"audio/16_Videokonferenz.mp3" },
+  { german:"die Stummschaltung", ukrainian:"вимкнення мікрофона", sentence:"Die Stummschaltung verhindert Störgeräusche.", id:"audio/17_Stummschaltung.mp3" },
+  { german:"der Small Talk", ukrainian:"світська розмова", sentence:"Kurzer Small Talk lockert den Einstieg.", id:"audio/18_Small_Talk.mp3" },
+  { german:"das Feedback", ukrainian:"зворотний зв’язок", sentence:"Konstruktives Feedback ist konkret und respektvoll.", id:"audio/19_Feedback.mp3" },
+  { german:"das Kritikgespräch", ukrainian:"розмова про зауваження", sentence:"Kritikgespräche bleiben sachlich und lösungsorientiert.", id:"audio/20_Kritikgespraech.mp3" },
+  { german:"die Zuständigkeit", ukrainian:"зона відповідальності", sentence:"Klare Zuständigkeiten beschleunigen Entscheidungen.", id:"audio/21_Zustaendigkeit.mp3" },
+  { german:"die Verantwortung", ukrainian:"відповідальність", sentence:"Verantwortung übernehmen heißt zuverlässig handeln.", id:"audio/22_Verantwortung.mp3" },
+  { german:"die Vertraulichkeit", ukrainian:"конфіденційність", sentence:"Vertraulichkeit ist bei sensiblen Projekten Pflicht.", id:"audio/23_Vertraulichkeit.mp3" },
+  { german:"der Datenschutz", ukrainian:"захист даних", sentence:"Datenschutzregeln werden strikt eingehalten.", id:"audio/24_Datenschutz.mp3" },
+  { german:"die Deadline", ukrainian:"дедлайн", sentence:"Realistische Deadlines erleichtern die Planung.", id:"audio/25_Deadline.mp3" },
+  { german:"die Teamarbeit", ukrainian:"командна робота", sentence:"Gute Teamarbeit beruht auf Respekt und Offenheit.", id:"audio/26_Teamarbeit.mp3" },
+  { german:"das Zeitmanagement", ukrainian:"управління часом", sentence:"Effizientes Zeitmanagement verhindert Überstunden.", id:"audio/27_Zeitmanagement.mp3" },
+  { german:"die Priorität", ukrainian:"пріоритет", sentence:"Klare Prioritäten helfen fokussiert zu bleiben.", id:"audio/28_Prioritaet.mp3" },
+  { german:"das Geschäftsessen", ukrainian:"діловий обід", sentence:"Beim Geschäftsessen bleiben Themen professionell.", id:"audio/29_Geschaeftsessen.mp3" },
+  { german:"die Höflichkeit", ukrainian:"ввічливість", sentence:"Höflichkeit stärkt berufliche Beziehungen.", id:"audio/30_Hoeflichkeit.mp3" },
+  { german:"die Konfliktlösung", ukrainian:"вирішення конфліктів", sentence:"Konfliktlösung beginnt mit Fakten und Respekt.", id:"audio/31_Konfliktloesung.mp3" },
+  { german:"die Erreichbarkeit", ukrainian:"доступність на зв’язку", sentence:"Klare Regeln zur Erreichbarkeit schützen Freizeit.", id:"audio/32_Erreichbarkeit.mp3" },
+  { german:"das Homeoffice", ukrainian:"віддалена робота", sentence:"Im Homeoffice gelten die gleichen Etikette-Regeln.", id:"audio/33_Homeoffice.mp3" },
+  { german:"die Pausenregelung", ukrainian:"правила перерв", sentence:"Faire Pausenregelungen fördern Produktivität.", id:"audio/34_Pausenregelung.mp3" },
+  { german:"die Titelform", ukrainian:"використання титулів", sentence:"In formellen Kontexten achtet man auf Titelformen.", id:"audio/35_Titelform.mp3" },
+  { german:"die Zustimmung", ukrainian:"згода", sentence:"Zustimmung wird kurz und klar bestätigt.", id:"audio/36_Zustimmung.mp3" },
+  { german:"die Ablehnung", ukrainian:"відхилення", sentence:"Eine Ablehnung formuliert man höflich und begründet.", id:"audio/37_Ablehnung.mp3" }
+];
+
+const escapeHtml = (s='') => s.replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const escapeRegex = (s='') => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+function highlightText(text, filter) {
+  if (!filter) return escapeHtml(text);
+  const safe = escapeRegex(filter);
+  const re = new RegExp(`(${safe})`, 'gi');
+  return escapeHtml(text).replace(re, '<span class="highlight">$1</span>');
+}
+
+function renderCards(filter = "") {
+  const cardsContainer = document.getElementById('cardsContainer');
+  cardsContainer.innerHTML = '';
+
+  const data = dictionaryData.filter(item => {
+    const hay = `${item.german} ${item.ukrainian} ${item.sentence}`.toLowerCase();
+    return hay.includes(filter.toLowerCase());
+  });
+
+  if (data.length === 0) {
+    cardsContainer.innerHTML = `<div class="vocab-card" style="text-align:center">
+      <h3>Нічого не знайдено</h3>
+      <p class="translation" style="color:var(--muted)">Спробуйте інший запит.</p>
+    </div>`;
+    return;
+  }
+
+  data.forEach(item => {
+    const audioHtml = item.id ? `
+      <audio controls preload="none">
+        <source src="${item.id}" type="audio/mpeg">
+        Ваш браузер не підтримує аудіо.
+      </audio>` : '';
+
+    const card = document.createElement('div');
+    card.className = "vocab-card";
+    card.innerHTML = `
+      <span class="tag">#ДіловийЕтикет</span>
+      <h3>${highlightText(item.german, filter)}</h3>
+      <p class="translation"><strong>Переклад:</strong> ${highlightText(item.ukrainian, filter)}</p>
+      <p class="sentence">${highlightText(item.sentence, filter)}</p>
+      ${audioHtml}
+    `;
+    cardsContainer.appendChild(card);
+  });
+}
+
+function debounce(fn, wait = 250) {
+  let t; return (...args) => { clearTimeout(t); t = setTimeout(() => fn.apply(null,args), wait); };
+}
+
+window.addEventListener('load', () => {
+  renderCards();
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', debounce(() => renderCards(searchInput.value.trim())));
+});
+</script>
+
+</body>
+</html>
 
