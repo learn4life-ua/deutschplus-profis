@@ -1,1 +1,202 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Словник: Покупки та продукти | Deutsch+Profis</title>
+<meta name="description" content="Словник за темою «Покупки та продукти»: супермаркет, ринок, оплата, пакування — з прикладами та аудіо. Введіть слово для пошуку українською або німецькою." />
+
+<!-- Мета-теги та шрифти -->
+<meta name="theme-color" content="#009846" />
+<meta property="og:title" content="Deutsch+Profis — Покупки та продукти" />
+<meta property="og:description" content="Словники, діалоги, вправи — німецька для життя просто й практично." />
+<meta property="og:image" content="https://res.cloudinary.com/dsbqtfrkc/image/upload/v1717672358/og-image-d-profis_v2_b1qf8a.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
+<!-- CТИЛІ -->
+<style>
+:root {
+  --green:#009846; --green-light:#e6f5f0; --dark:#1f2937; --yellow:#FFED00;
+  --muted:#6b7280; --bg:#f9fafb; --card-bg:#fff; --border:#e5e7eb;
+  --radius:16px; --shadow:0 4px 6px -1px rgba(0,0,0,.03),0 2px 4px -2px rgba(0,0,0,.03);
+  --shadow-lg:0 10px 15px -3px rgba(0,0,0,.05),0 4px 6px -4px rgba(0,0,0,.05);
+  --transition:all .25s cubic-bezier(0.4,0,0.2,1);
+}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--bg);color:#374151;font-family:'Inter',system-ui,sans-serif;line-height:1.6;}
+.wrap{box-sizing:border-box;max-width:800px;margin:0 auto;padding:0 clamp(16px,5vw,24px);}
+h1,h2,h3{color:var(--dark);font-weight:800;line-height:1.25;margin:0;}
+h2{font-size:clamp(28px,4vw,36px);text-align:center;margin-bottom:16px;}
+.lead{font-size:clamp(16px,2vw,18px);color:var(--muted);max-width:620px;margin:16px auto 40px;text-align:center;}
+
+/* NAV */
+.main-nav{position:sticky;top:16px;margin:16px clamp(16px,5vw,24px) 0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);
+  border:1px solid var(--border);border-radius:16px;padding:12px 24px;box-shadow:var(--shadow-lg);}
+.main-nav .nav-content{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px;color:var(--dark);text-decoration:none;}
+.logo svg{color:var(--green);}
+.top-link{font-size:14px;font-weight:700;color:var(--green);text-decoration:none;}
+.top-link:hover{text-decoration:underline;}
+
+/* Бейдж-індикатор "Словник" */
+.badge{width:fit-content;margin:0 auto 10px; padding:4px 10px; font-size:12px; font-weight:700;
+  color:var(--green); background:var(--green-light); border-radius:9999px;}
+
+/* Пошук */
+.search-input{box-sizing:border-box;width:100%;margin:0 0 24px;padding:14px 20px;font-size:16px;border:1px solid var(--border);
+  border-radius:12px;box-shadow:var(--shadow);transition:var(--transition);}
+.search-input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px var(--green-light);}
+.highlight{background:var(--yellow);border-radius:4px;padding:0 .25rem;color:var(--dark);}
+
+/* Картки */
+.vocab-list{display:grid;grid-template-columns:1fr;gap:16px;}
+@media (min-width:768px){.vocab-list{grid-template-columns:repeat(2,1fr);}}
+@media (min-width:1100px){.vocab-list{grid-template-columns:repeat(3,1fr);}}
+.vocab-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);
+  padding:clamp(16px,3vw,20px);transition:var(--transition);display:flex;flex-direction:column;}
+.vocab-card:hover{border-color:var(--green);box-shadow:var(--shadow-lg);transform:translateY(-3px);}
+.vocab-card .tag{background:var(--green-light);color:var(--green);font-size:12px;font-weight:700;padding:4px 10px;border-radius:9999px;margin-bottom:12px;display:inline-block;}
+.vocab-card h3{color:var(--dark);font-weight:700;}
+.vocab-card .translation{color:var(--green);font-weight:500;margin:2px 0 12px;}
+.vocab-card .translation strong{color:var(--dark);font-weight:600;margin-right:6px;}
+.vocab-card .sentence{font-size:15px;color:var(--muted);padding-top:12px;margin-top:12px;border-top:1px solid var(--border);}
+.vocab-card audio{width:100%;margin-top:auto;padding-top:16px;}
+
+/* Кнопки/футер */
+.page-nav{display:flex;justify-content:center;margin-top:40px;}
+.d-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;text-decoration:none;border:1px solid var(--border);
+  padding:12px 24px;border-radius:12px;font-weight:700;font-size:16px;transition:var(--transition);background:var(--card-bg);color:var(--dark);}
+.d-btn:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--green);color:var(--green);}
+.footer{text-align:center;color:var(--muted);font-size:14px;padding:clamp(40px,7vw,60px) 0;}
+.footer a{color:var(--green);text-decoration:none;font-weight:500;}
+.footer a:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<!-- ВЕРХНЯ НАВІГАЦІЯ -->
+<nav class="main-nav">
+  <div class="nav-content">
+    <a href="../" class="logo" title="На головну">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+      </svg>
+      Deutsch<span style="color:#009846">+</span>Profis
+    </a>
+    <a href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html" class="top-link">Усі словники</a>
+  </div>
+</nav>
+
+<main>
+  <section style="padding: clamp(40px, 7vw, 60px) 0;">
+    <div class="wrap">
+      <div class="badge">Словник</div>
+      <h2>Покупки та продукти</h2>
+      <p class="lead">Словник за темою «Покупки та продукти»: супермаркет, ринок, оплата, пакування — з прикладами та аудіо. Введіть слово для пошуку українською або німецькою.</p>
+
+      <input id="searchInput" type="text" placeholder="Пошук слів..." class="search-input" />
+      <div id="cardsContainer" class="vocab-list"><!-- cards --></div>
+
+      <nav class="page-nav">
+        <a class="d-btn" href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html">← Повернутися до словників</a>
+      </nav>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені. · <a href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html">Усі словники</a></p>
+  </div>
+</footer>
+
+<script>
+// --- Дані словника (Покупки та продукти) ---
+const dictionaryData = [
+  { german:"der Einkauf", ukrainian:"закупи, купівля", sentence:"Ich mache heute den Einkauf im Supermarkt.", id:"audio/01_Ich_mache_heute_den_Einkauf_im_Supermarkt..mp3" },
+  { german:"der Supermarkt", ukrainian:"супермаркет", sentence:"Im Supermarkt gibt es ein gutes Angebot.", id:"audio/02_Im_Supermarkt_gibt_es_ein_gutes_Angebot..mp3" },
+  { german:"der Markt", ukrainian:"ринок", sentence:"Auf dem Markt kaufe ich frisches Gemüse.", id:"audio/03_Auf_dem_Markt_kaufe_ich_frisches_Gemuse..mp3" },
+  { german:"das Sonderangebot", ukrainian:"акційна пропозиція", sentence:"Diese Woche ist Kaffee im Sonderangebot.", id:"audio/04_Diese_Woche_ist_Kaffee_im_Sonderangebot..mp3" },
+  { german:"die Kasse", ukrainian:"каса", sentence:"Bitte zahlen Sie an der Kasse.", id:"audio/05_Bitte_zahlen_Sie_an_der_Kasse..mp3" },
+  { german:"der Kassenzettel / die Quittung", ukrainian:"чек / квитанція", sentence:"Ich brauche den Kassenzettel für die Garantie.", id:"audio/06_Ich_brauche_den_Kassenzettel_fur_die_Garantie..mp3" },
+  { german:"bar zahlen / mit Karte zahlen", ukrainian:"платити готівкою / карткою", sentence:"Kann ich hier mit Karte zahlen?", id:"audio/07_Kann_ich_hier_mit_Karte_zahlen.mp3" },
+  { german:"die Tüte", ukrainian:"пакет", sentence:"Brauchen Sie eine Tüte?", id:"audio/08_Brauchen_Sie_eine_Tute.mp3" },
+  { german:"die Waage", ukrainian:"ваги", sentence:"Bitte wiegen Sie das Obst an der Waage.", id:"audio/09_Bitte_wiegen_Sie_das_Obst_an_der_Waage..mp3" },
+  { german:"das Gemüse", ukrainian:"овочі", sentence:"Ich nehme ein Kilo frisches Gemüse.", id:"audio/10_Ich_nehme_ein_Kilo_frisches_Gemuse..mp3" },
+  { german:"das Obst", ukrainian:"фрукти", sentence:"Gibt es heute frisches Obst?", id:"audio/11_Gibt_es_heute_frisches_Obst.mp3" },
+  { german:"das Brot / die Brötchen", ukrainian:"хліб / булочки", sentence:"Ich hätte gern ein dunkles Brot und zwei Brötchen.", id:"audio/12_Ich_hatte_gern_ein_dunkles_Brot_und_zwei_Brotchen..mp3" },
+  { german:"die Wurst / der Käse", ukrainian:"ковбаса / сир", sentence:"An der Theke bestelle ich Wurst und Käse.", id:"audio/13_An_der_Theke_bestelle_ich_Wurst_und_Kase..mp3" },
+  { german:"die Milch / der Joghurt", ukrainian:"молоко / йогурт", sentence:"Ich brauche noch Milch und Joghurt.", id:"audio/14_Ich_brauche_noch_Milch_und_Joghurt..mp3" },
+  { german:"die Kasse geschlossen / geöffnet", ukrainian:"каса зачинена / відчинена", sentence:"Kasse drei ist geschlossen.", id:"audio/15_Kasse_drei_ist_geschlossen..mp3" },
+  { german:"die Rückgabe / umtauschen", ukrainian:"повернення / обмін", sentence:"Kann ich die Ware umtauschen?", id:"audio/16_Kann_ich_die_Ware_umtauschen.mp3" },
+  { german:"die Größe / die Nummer", ukrainian:"розмір (одягу/взуття)", sentence:"Welche Größe brauchen Sie?", id:"audio/17_Welche_Große_brauchen_Sie.mp3" },
+  { german:"anprobieren", ukrainian:"приміряти", sentence:"Wo kann ich das anprobieren?", id:"audio/18_Wo_kann_ich_das_anprobieren.mp3" },
+  { german:"die Öffnungszeiten", ukrainian:"години роботи", sentence:"Wie sind Ihre Öffnungszeiten am Samstag?", id:"audio/19_Wie_sind_Ihre_Offnungszeiten_am_Samstag.mp3" },
+  { german:"die Beratung", ukrainian:"консультація", sentence:"Ich brauche eine Beratung für einen Mixer.", id:"audio/20_Ich_brauche_eine_Beratung_fur_einen_Mixer..mp3" }
+];
+
+// — Утиліти —
+const escapeHtml = (s='') => s.replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const escapeRegex = (s='') => s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+function highlightText(text, filter){
+  const safe = escapeHtml(text);
+  if(!filter) return safe;
+  const re = new RegExp(`(${escapeRegex(filter)})`,'gi');
+  return safe.replace(re,'<span class="highlight">$1</span>');
+}
+
+// — Рендер карток —
+function renderCards(filter=""){
+  const cont = document.getElementById('cardsContainer');
+  cont.innerHTML = '';
+
+  const list = dictionaryData.filter(item=>{
+    const hay = `${item.german} ${item.ukrainian} ${item.sentence}`.toLowerCase();
+    return hay.includes((filter||'').toLowerCase());
+  });
+
+  if(!list.length){
+    cont.innerHTML = `<div class="vocab-card" style="text-align:center">
+      <h3>Нічого не знайдено</h3>
+      <p class="translation" style="color:var(--muted)">Спробуйте інший запит.</p>
+    </div>`;
+    return;
+  }
+
+  list.forEach(item=>{
+    const audioHtml = item.id
+      ? `<audio controls preload="none">
+           <source src="${item.id}" type="audio/mpeg">
+           Ваш браузер не підтримує аудіо.
+         </audio>`
+      : `<p class="text-sm italic" style="color:var(--muted)">Аудіо буде додано пізніше</p>`;
+
+    cont.insertAdjacentHTML('beforeend', `
+      <div class="vocab-card">
+        <span class="tag">#ПокупкиТаПродукти</span>
+        <h3>${highlightText(item.german, filter)}</h3>
+        <p class="translation"><strong>Переклад:</strong> ${highlightText(item.ukrainian, filter)}</p>
+        <p class="sentence">${highlightText(item.sentence, filter)}</p>
+        ${audioHtml}
+      </div>
+    `);
+  });
+}
+
+// — Debounce для вводу —
+function debounce(fn, wait=250){ let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a), wait); }; }
+
+// — Ініціалізація —
+window.addEventListener('load', ()=>{
+  renderCards();
+  const search = document.getElementById('searchInput');
+  search.addEventListener('input', debounce(()=>renderCards(search.value.trim()), 200));
+});
+</script>
+
+</body>
+</html>
 
