@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Діловий етикет | Deutsch+Profis</title>
-<meta name="description" content="Словник за темою «Діловий етикет»: звертання, електронна пошта, пунктуальність, культура праці — з прикладами та аудіо." />
+<title>Словник: Діловий етикет | Deutsch+Profis</title>
+<meta name="description" content="Словник за темою «Діловий етикет»: звертання, електронна пошта, пунктуальність, культура праці — з прикладами та аудіо. Введіть слово для пошуку українською або німецькою." />
 
 <!-- Мета-теги та шрифти -->
 <meta name="theme-color" content="#009846" />
@@ -37,6 +37,8 @@ h2{font-size:clamp(28px,4vw,36px);text-align:center;margin-bottom:16px;}
 .main-nav .nav-content{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;}
 .logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px;color:var(--dark);text-decoration:none;}
 .logo svg{color:var(--green);}
+.top-link{font-size:14px;font-weight:700;color:var(--green);text-decoration:none;}
+.top-link:hover{text-decoration:underline;}
 
 /* Пошук */
 .search-input{box-sizing:border-box;width:100%;margin:0 0 24px;padding:14px 20px;font-size:16px;border:1px solid var(--border);
@@ -47,6 +49,7 @@ h2{font-size:clamp(28px,4vw,36px);text-align:center;margin-bottom:16px;}
 /* Картки */
 .vocab-list{display:grid;grid-template-columns:1fr;gap:16px;}
 @media (min-width:768px){.vocab-list{grid-template-columns:repeat(2,1fr);}}
+@media (min-width:1100px){.vocab-list{grid-template-columns:repeat(3,1fr);}}
 .vocab-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);
   padding:clamp(16px,3vw,20px);transition:var(--transition);display:flex;flex-direction:column;}
 .vocab-card:hover{border-color:var(--green);box-shadow:var(--shadow-lg);transform:translateY(-3px);}
@@ -79,6 +82,7 @@ h2{font-size:clamp(28px,4vw,36px);text-align:center;margin-bottom:16px;}
       </svg>
       Deutsch<span style="color:var(--green)">+</span>Profis
     </a>
+    <a href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html" class="top-link">Усі словники</a>
   </div>
 </nav>
 
@@ -86,7 +90,10 @@ h2{font-size:clamp(28px,4vw,36px);text-align:center;margin-bottom:16px;}
   <section style="padding: clamp(40px, 7vw, 60px) 0;">
     <div class="wrap">
       <h2>Словник: Діловий етикет</h2>
-      <p class="lead">Словник за темою «Діловий етикет»: звертання, електронна пошта, пунктуальність, культура праці — з прикладами та аудіо. Введіть слово для пошуку українською або німецькою.</b>.</p>
+      <p class="lead">
+        Словник за темою «Діловий етикет»: звертання, електронна пошта, пунктуальність, культура праці — з прикладами та аудіо.
+        Введіть слово для пошуку українською або німецькою.
+      </p>
 
       <input id="searchInput" type="text" placeholder="Пошук слів..." class="search-input" />
       <div id="cardsContainer" class="vocab-list"><!-- cards --></div>
