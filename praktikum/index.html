@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Практичні вправи — Deutsch+Profis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --green:#009846;--green-light:#e6f5f0;--dark:#1f2937;--muted:#6b7280;
+  --bg:#f9fafb;--card-bg:#fff;--border-color:#e5e7eb;--radius:16px;
+  --shadow:0 4px 6px -1px rgba(0,0,0,.03),0 2px 4px -2px rgba(0,0,0,.03);
+  --shadow-lg:0 10px 15px -3px rgba(0,0,0,.05),0 4px 6px -4px rgba(0,0,0,.05);
+  --transition:all .25s cubic-bezier(.4,0,.2,1)
+}
+body{margin:0;background:var(--bg);color:#374151;font-family:'Inter',system-ui,sans-serif;line-height:1.6}
+.wrap{box-sizing:border-box;max-width:900px;margin:0 auto;padding:0 clamp(16px,5vw,24px)}
+.main-nav{position:sticky;top:16px;margin:16px clamp(16px,5vw,24px) 0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border:1px solid var(--border-color);border-radius:16px;padding:12px 24px;box-shadow:var(--shadow-lg)}
+.main-nav .nav-content{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px;color:var(--dark);text-decoration:none}
+.logo svg{color:var(--green)}
+h1{text-align:center;font-size:clamp(28px,4vw,36px);color:var(--dark);margin:32px 0 8px}
+.lead{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 28px}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));margin:28px 0 40px}
+.card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:14px;padding:20px;box-shadow:var(--shadow);transition:var(--transition);text-decoration:none;color:inherit;display:block}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--green)}
+.card h2{margin:0;color:var(--green);font-size:18px}
+.card p{margin:.4rem 0 0;color:var(--muted);font-size:14px}
+.footer{color:var(--muted);text-align:center;font-size:14px;padding:40px 0}
+.footer a{color:var(--green);text-decoration:none}
+.footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<nav class="main-nav">
+  <div class="nav-content">
+    <a href="../index.html" class="logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+      Deutsch<span style="color:var(--green)">+</span>Profis
+    </a>
+  </div>
+</nav>
+
+<main>
+  <section style="padding: clamp(40px,7vw,60px) 0;">
+    <div class="wrap">
+      <h1>Практичні вправи</h1>
+      <p class="lead">Оберіть тему — кожна вправа відкриється окремо та завантажить лише свої дані.</p>
+
+      <div class="grid">
+        <a class="card" href="exercise.html?v=01"><h2>1. Das Maschinensystem für die Tierproduktion</h2><p>Машинна система для тваринництва</p></a>
+        <a class="card" href="exercise.html?v=02"><h2>2. Geflügelproduktion</h2><p>Виробництво птиці</p></a>
+        <a class="card" href="exercise.html?v=03"><h2>3. Schweineproduktion</h2><p>Виробництво свинини</p></a>
+        <a class="card" href="exercise.html?v=04"><h2>4. Bedeutung der Rinderproduktion</h2><p>Значення скотарства</p></a>
+        <a class="card" href="exercise.html?v=05"><h2>5. Aufgaben der Tierproduktion</h2><p>Завдання тваринництва</p></a>
+        <a class="card" href="exercise.html?v=06"><h2>6. Pflanzenzucht</h2><p>Селекція рослин</p></a>
+        <a class="card" href="exercise.html?v=07"><h2>7. Futterproduktion auf dem Acker</h2><p>Польове кормовиробництво</p></a>
+        <a class="card" href="exercise.html?v=08"><h2>8. Grundlage der menschlichen Ernährung</h2><p>Основа харчування</p></a>
+        <a class="card" href="exercise.html?v=09"><h2>9. Bodenbearbeitung und Düngung</h2><p>Обробка ґрунту та удобрення</p></a>
+        <a class="card" href="exercise.html?v=10"><h2>10. Planung der Landwirtschaft</h2><p>Планування сільського господарства</p></a>
+        <a class="card" href="exercise.html?v=11"><h2>11. Das Hauptproduktionsmittel</h2><p>Основний засіб виробництва</p></a>
+        <a class="card" href="exercise.html?v=12"><h2>12. Alle Reserven ausnutzen</h2><p>Використання резервів</p></a>
+        <a class="card" href="exercise.html?v=13"><h2>13. Wie die Saat, so die Ernte</h2><p>Як посієш, так і пожнеш</p></a>
+        <a class="card" href="exercise.html?v=14"><h2>14. Die Landwirtschaft als Zweig</h2><p>Сільське господарство як галузь</p></a>
+      </div>
+
+      <div class="footer">© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ»</div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
