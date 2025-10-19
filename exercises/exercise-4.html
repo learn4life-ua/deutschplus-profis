@@ -1,1 +1,407 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Вправа 4 — Deutsch+Profis</title>
+<meta name="description" content="Виконайте четверту практичну вправу з теми 'Значення скотарства'." />
+<meta name="theme-color" content="#009846" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+<style>
+    /* Глобальне правило для легшої верстки */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    :root {
+        --green: #009846;
+        --green-light: #e6f5f0;
+        --dark: #1f2937;
+        --muted: #6b7280;
+        --bg: #f9fafb;
+        --card-bg: #ffffff;
+        --border-color: #e5e7eb;
+        --radius: 16px;
+        --shadow: 0 4px 6px -1px rgba(0,0,0,.03), 0 2px 4px -2px rgba(0,0,0,.03);
+        --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -4px rgba(0,0,0,.05);
+        --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        --red: #ef4444;
+    }
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: #374151;
+        font-family: 'Inter', system-ui, sans-serif;
+        line-height: 1.6;
+    }
+    .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 clamp(16px, 5vw, 24px);
+    }
+    .main-nav {
+        position: sticky;
+        top: 16px;
+        margin: 16px clamp(16px, 5vw, 24px) 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 12px 24px;
+        box-shadow: var(--shadow-lg);
+    }
+    .main-nav .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 18px;
+        color: var(--dark);
+        text-decoration: none;
+    }
+    .logo svg { color: var(--green); }
+
+    .page-header {
+        text-align: center;
+        padding: clamp(40px, 7vw, 60px) 0;
+    }
+    .page-header h1 {
+        font-size: clamp(28px, 4vw, 36px);
+        color: var(--dark);
+        font-weight: 800;
+    }
+    .page-header p {
+        font-size: clamp(16px, 2vw, 18px);
+        color: var(--muted);
+        max-width: 600px;
+        margin: 16px auto 0;
+    }
+
+    .exercise-content {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius);
+        padding: clamp(24px, 5vw, 40px);
+        max-width: 800px;
+        margin: 0 auto clamp(40px, 7vw, 60px);
+        box-shadow: var(--shadow);
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-bottom: 24px;
+        color: var(--green);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .back-link:hover {
+        text-decoration: underline;
+    }
+
+    h2, h3 {
+        color: var(--dark);
+    }
+
+    .task {
+        margin-bottom: 32px;
+    }
+    .task ol, .task ul {
+        padding-left: 20px;
+    }
+     .task ol li {
+        margin-bottom: 16px;
+    }
+
+    .german-text {
+        background-color: var(--bg);
+        border-left: 4px solid var(--green);
+        padding: 16px;
+        border-radius: 8px;
+        margin: 16px 0;
+        font-style: italic;
+    }
+    .word-bank {
+        background-color: var(--green-light);
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 500;
+        color: var(--dark);
+        margin-top: 16px;
+        text-align: center;
+    }
+    .vocab-task-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 16px;
+    }
+    .vocab-item {
+        display: flex;
+        flex-direction: column;
+    }
+    .vocab-item label {
+        font-weight: 500;
+        color: var(--dark);
+        margin-bottom: 6px;
+    }
+
+    /* Interactive elements */
+    .accordion-button {
+        background-color: var(--green-light);
+        color: var(--green);
+        cursor: pointer;
+        padding: 10px 15px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: background-color 0.3s ease;
+        border-radius: 8px;
+        font-weight: 500;
+        margin-top: 10px;
+    }
+    .accordion-button:hover, .accordion-button.active {
+        background-color: #d1e9e2;
+    }
+    .accordion-button::after {
+        content: '+';
+        font-size: 18px;
+        color: var(--green);
+        float: right;
+        margin-left: 5px;
+    }
+    .accordion-button.active::after {
+        content: "−";
+    }
+    .accordion-panel {
+        padding: 0 18px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        border-bottom: 2px solid var(--green-light);
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: 1px solid var(--border-color);
+        font-size: 16px;
+        transition: var(--transition);
+    }
+    input[type="text"]:focus {
+        outline: none;
+        border-color: var(--green);
+        box-shadow: 0 0 0 2px var(--green-light);
+    }
+    input.correct {
+        border-color: var(--green);
+        background-color: #f0fdf4;
+    }
+    input.incorrect {
+        border-color: var(--red);
+        background-color: #fef2f2;
+    }
+    .check-btn {
+        background-color: var(--green);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+        margin-top: 16px;
+    }
+    .check-btn:hover {
+        background-color: #007a38;
+    }
+    .fill-in-sentence input {
+        width: 150px;
+        display: inline-block;
+    }
+
+    .footer {
+        text-align: center;
+        color: var(--muted);
+        font-size: 14px;
+        padding: clamp(40px, 7vw, 60px) 0;
+        background: var(--card-bg);
+        border-top: 1px solid var(--border-color);
+    }
+
+</style>
+</head>
+<body>
+
+<nav class="main-nav">
+    <div class="nav-content">
+        <a href="../index.html" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            Deutsch<span style="color:var(--green)">+</span>Profis
+        </a>
+    </div>
+</nav>
+
+<main>
+    <div class="wrap">
+        <header class="page-header">
+            <h1>Вправа 4</h1>
+            <p>Значення скотарства</p>
+        </header>
+
+        <a href="../practice.html" class="back-link">‹ Повернутися до всіх вправ</a>
+        <div class="exercise-content">
+            
+            <div class="task">
+                <h3>1. Ознайомтеся з текстом та передайте його зміст українською мовою:</h3>
+                <div class="german-text">
+                    <p><strong>Bedeutung der Rinderproduktion</strong></p>
+                    <p>Die Rinderproduktion nimmt in vielen Ländern die wichtigste Stellung unter den Zweigen der Tierproduktion ein. Eine hervorragende Rolle des Rindes besteht darin; daß es pflanzliche Stoffe in hochwertige Produkte umwandelt, die sehr wertvoll für die menschliche Ernährung sind.</p>
+                    <p>Aus der Milch- und Rindfleischproduktion wird ein bedeutender Teil des Bedarfes der Bevölkerung an biologisch hochwertigem Eiweiß gedeckt.</p>
+                    <p>Die Rinderhaltung kann fast in jedem Betrieb erfolgen, da das Rind eine große Anpassungsfähigkeit an die natürlichen Produktionsbedingungen hat.</p>
+                    <p>Die Haltung der Milchkühe hat das Ziel, Milch hoher Qualität und mit möglichst geringen Kosten zu produzieren. Außerdem werden dabei Kälber für die Färsenaufzucht und die Rindermast erzeugt.</p>
+                    <p>Die Leistungen der Milchkühe hängen von der erblichen Veranlagung der Kühe, sowie von der Fütterung und Pflege ab.</p>
+                    <p>Die Rindermast ist neben der Milchproduktion das bedeutendste Gebiet der Rinderhaltung. Für die Mast werden nur die Kälber genutzt, die für die Reproduktion des Kuhbestandes nicht erforderlich sind.</p>
+                </div>
+                 <p><strong>Пояснення до тексту:</strong><br>
+                1. die Anpassungsfähigkeit — екологічна пристосовуваність<br>
+                2. die erbliche Veranlagung - спадкові задатки</p>
+                <button class="accordion-button">Показати переклад</button>
+                <div class="accordion-panel">
+                    <p style="margin-top: 16px;"><strong>Значення скотарства</strong></p>
+                    <p>Скотарство займає найважливіше місце серед галузей тваринництва в багатьох країнах. Видатна роль великої рогатої худоби полягає в тому, що вона перетворює рослинні речовини на високоякісні продукти, які є дуже цінними для харчування людини.</p>
+                    <p>За рахунок виробництва молока та яловичини покривається значна частина потреби населення в біологічно високоякісному білку.</p>
+                    <p>Розведення великої рогатої худоби може здійснюватися практично в кожному господарстві, оскільки худоба має високу здатність до адаптації до природних умов виробництва.</p>
+                    <p>Метою утримання молочних корів є виробництво молока високої якості з якомога меншими витратами. Крім того, при цьому отримують телят для вирощування телиць та відгодівлі великої рогатої худоби.</p>
+                    <p>Продуктивність молочних корів залежить від спадкових задатків корів, а також від годівлі та догляду.</p>
+                    <p>Відгодівля великої рогатої худоби є, поряд з виробництвом молока, найважливішою сферою скотарства. Для відгодівлі використовуються лише ті телята, які не потрібні для відтворення поголів'я корів.</p>
+                </div>
+            </div>
+
+            <div class="task">
+                <h3>2. Назвіть українські еквіваленти наступних слів:</h3>
+                <div class="vocab-task-grid">
+                    <div class="vocab-item"><label for="vocab-1">die Aufzucht</label><input type="text" id="vocab-1" data-answer="вирощування"></div>
+                    <div class="vocab-item"><label for="vocab-2">der Eiweiß</label><input type="text" id="vocab-2" data-answer="білок"></div>
+                    <div class="vocab-item"><label for="vocab-3">gering</label><input type="text" id="vocab-3" data-answer="незначний, малий"></div>
+                    <div class="vocab-item"><label for="vocab-4">das Kalb</label><input type="text" id="vocab-4" data-answer="теля"></div>
+                    <div class="vocab-item"><label for="vocab-5">die Коsten</label><input type="text" id="vocab-5" data-answer="витрати"></div>
+                    <div class="vocab-item"><label for="vocab-6">die Mast</label><input type="text" id="vocab-6" data-answer="відгодівля"></div>
+                    <div class="vocab-item"><label for="vocab-7">die Reproduktion</label><input type="text" id="vocab-7" data-answer="відтворення, репродукція"></div>
+                    <div class="vocab-item"><label for="vocab-8">das Rind</label><input type="text" id="vocab-8" data-answer="велика рогата худоба"></div>
+                    <div class="vocab-item"><label for="vocab-9">die Rinderproduktion</label><input type="text" id="vocab-9" data-answer="скотарство"></div>
+                    <div class="vocab-item"><label for="vocab-10">das Rindfleisch</label><input type="text" id="vocab-10" data-answer="яловичина"></div>
+                    <div class="vocab-item"><label for="vocab-11">umwandeln</label><input type="text" id="vocab-11" data-answer="перетворювати"></div>
+                    <div class="vocab-item"><label for="vocab-12">wertvoll</label><input type="text" id="vocab-12" data-answer="цінний"></div>
+                </div>
+                <button class="check-btn" id="check-task2">Перевірити</button>
+            </div>
+
+            <div class="task">
+                <h3>3. Опираючись на зміст вищевказаного тексту, доповніть речення. Перекладіть їх:</h3>
+                <ol class="fill-in-sentence">
+                    <li>Pflanzliche Stoffe werden von den Tieren in hochwertige Produkte <input type="text" id="blank-3-1" data-answer="umgewandelt">.</li>
+                    <li>Der Bedarf der Bevölkerung an tierischem Eiweiß wird durch Milch und Fleisch <input type="text" id="blank-3-2" data-answer="gedeckt">.</li>
+                    <li>Auf dieser Farm wird Milch hoher Qualität mit geringen Kosten <input type="text" id="blank-3-3" data-answer="produziert">.</li>
+                    <li>Für die Reproduktion des Kuhbestandes werden nicht alle Kälber <input type="text" id="blank-3-4" data-answer="genutzt">.</li>
+                </ol>
+                 <div class="word-bank">
+                    <p>Слова для довідки: genutzt, produziert, gedeckt, umgewandelt</p>
+                </div>
+                <button class="check-btn" id="check-task3">Перевірити</button>
+            </div>
+
+            <div class="task">
+                <h3>4. Дайте відповіді на запитання:</h3>
+                <ol>
+                    <li>
+                        Welche Stellung nimmt die Rinderproduktion unter den Zweigen der Tierproduktion ein?
+                        <button class="accordion-button">Показати відповідь</button>
+                        <div class="accordion-panel">
+                           <p style="margin-top:16px;">Die Rinderproduktion nimmt die wichtigste Stellung ein.</p>
+                        </div>
+                    </li>
+                    <li>
+                        Warum kann die Rinderhaltung fast in jedem Betrieb erfolgen?
+                        <button class="accordion-button">Показати відповідь</button>
+                        <div class="accordion-panel">
+                           <p style="margin-top:16px;">Die Rinderhaltung kann fast in jedem Betrieb erfolgen, da das Rind eine große Anpassungsfähigkeit an die natürlichen Produktionsbedingungen hat.</p>
+                        </div>
+                    </li>
+                    <li>
+                        Wovon hängen die Leistungen der Milchkühe ab?
+                        <button class="accordion-button">Показати відповідь</button>
+                        <div class="accordion-panel">
+                           <p style="margin-top:16px;">Die Leistungen der Milchkühe hängen von der erblichen Veranlagung der Kühe, sowie von der Fütterung und Pflege ab.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="wrap">
+        <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені.</p>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Accordion functionality
+    const accordions = document.querySelectorAll('.accordion-button');
+    accordions.forEach(button => {
+        button.addEventListener('click', () => {
+            button.classList.toggle('active');
+            const panel = button.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    });
+
+    // Function to check answers for inputs with data-answer attribute
+    function checkAnswers(buttonId, inputSelector) {
+        document.getElementById(buttonId).addEventListener('click', () => {
+            const inputs = document.querySelectorAll(inputSelector);
+            inputs.forEach(input => {
+                const userAnswer = input.value.trim().toLowerCase();
+                const correctAnswers = input.dataset.answer.toLowerCase().split(',').map(s => s.trim());
+                
+                if (correctAnswers.includes(userAnswer)) {
+                    input.classList.add('correct');
+                    input.classList.remove('incorrect');
+                } else {
+                    input.classList.add('incorrect');
+                    input.classList.remove('correct');
+                }
+            });
+        });
+    }
+
+    // Initialize checkers
+    checkAnswers('check-task2', '.vocab-task-grid input');
+    checkAnswers('check-task3', '.fill-in-sentence input');
+});
+</script>
+
+</body>
+</html>
 
