@@ -1,180 +1,58 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Посібник: Практичні вправи - Deutsch+Profis</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --green: #009846;
-            --green-light: #e6f5f0;
-            --dark: #1f2937;
-            --muted: #6b7280;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9fafb;
-        }
-        .main-nav {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-        }
-        .vocab-card {
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-        }
-        .vocab-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -4px rgba(0,0,0,.05);
-            border-color: var(--green);
-        }
-        .icon {
-            background: var(--green-light);
-            color: var(--green);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Вправа №1 — Deutsch+Profis</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root{ --green:#009846; --green-light:#e6f5f0; --dark:#1f2937; --muted:#6b7280; }
+    body{ font-family:'Inter',sans-serif; background:#f9fafb; color:#374151; }
+    .main-nav{ background:rgba(255,255,255,.9); backdrop-filter:blur(10px); }
+    .btn{ display:inline-flex; align-items:center; gap:.5rem; padding:.6rem 1rem; border:1px solid #e5e7eb; border-radius:.75rem; background:#fff; transition:.2s; }
+    .btn:hover{ transform:translateY(-1px); box-shadow:0 8px 12px -6px rgba(0,0,0,.08); border-color:var(--green);}
+  </style>
 </head>
-<body class="text-gray-700">
+<body>
 
-    <!-- Sticky Navigation -->
-    <nav class="main-nav">
-  <div class="nav-content">
-    <a href="index.html" class="logo">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-      Deutsch<span style="color:var(--green)">+</span>Profis
-    </a>
-  </div>
-</nav>
+  <!-- Шапка -->
+  <nav class="main-nav sticky top-0 z-50 border-b border-gray-200">
+    <div class="container mx-auto px-4 md:px-8 h-14 flex items-center">
+      <a href="./index.html" class="flex items-center gap-2 font-extrabold tracking-tight text-[--dark]">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="opacity-90">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+        Deutsch<span style="color:var(--green)">+</span>Profis
+      </a>
+    </div>
+  </nav>
 
-    <main class="container mx-auto px-4 md:px-8">
-        <div id="main-menu">
-            <header class="text-center py-10 md:py-16">
-                <h1 class="text-3xl md:text-4xl font-extrabold text-[--dark]">Практичні вправи</h1>
-                <p class="text-lg text-[--muted] max-w-2xl mx-auto mt-4">Виконайте вправи для закріплення знань з ключових тем. Оберіть розділ, щоб розпочати тренування.</p>
-            </header>
-            
-            <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-16">
-                <!-- Exercise 1 Card -->
-                <a href="exercise-1.html" class="vocab-card bg-white border border-gray-200 rounded-2xl p-6 cursor-pointer">
-                    <div class="icon inline-flex p-3 rounded-xl mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[--dark] mb-2">Вправа №1</h3>
-                    <p class="text-[--muted]">Системи машин у тваринництві.</p>
-                </a>
-                
-                <!-- Exercise 2 Card -->
-                <a href="exercise-2.html" class="vocab-card bg-white border border-gray-200 rounded-2xl p-6 cursor-pointer">
-                    <div class="icon inline-flex p-3 rounded-xl mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[--dark] mb-2">Вправа №2</h3>
-                    <p class="text-[--muted]">Тема для наступної вправи.</p>
-                </a>
+  <main class="container mx-auto px-4 md:px-8 py-8 md:py-10">
+    <div class="mb-6">
+      <a href="./index.html" class="btn">
+        <span>←</span> <span>Повернутися до меню</span>
+      </a>
+    </div>
 
-                <!-- Exercise 3 Card -->
-                <a href="exercise-3.html" class="vocab-card bg-white border border-gray-200 rounded-2xl p-6 cursor-pointer">
-                    <div class="icon inline-flex p-3 rounded-xl mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[--dark] mb-2">Вправа №3</h3>
-                    <p class="text-[--muted]">Тема для наступної вправи.</p>
-                </a>
+    <header class="mb-6">
+      <h1 class="text-2xl md:text-3xl font-extrabold text-[--dark]">Вправа №1</h1>
+      <p class="text-[--muted] mt-2">Системи машин у тваринництві.</p>
+    </header>
 
-                <!-- Exercise 4 Card -->
-                <a href="exercise-4.html" class="vocab-card bg-white border border-gray-200 rounded-2xl p-6 cursor-pointer">
-                    <div class="icon inline-flex p-3 rounded-xl mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[--dark] mb-2">Вправа №4</h3>
-                    <p class="text-[--muted]">Тема для наступної вправи.</p>
-                </a>
+    <!-- Твій контент вправи тут -->
+    <div class="bg-white border border-gray-200 rounded-2xl p-6">
+      <p class="text-[--muted]">Контент вправи…</p>
+    </div>
+  </main>
 
-                <!-- Exercise 5 Card -->
-                <a href="exercise-5.html" class="vocab-card bg-white border border-gray-200 rounded-2xl p-6 cursor-pointer">
-                    <div class="icon inline-flex p-3 rounded-xl mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[--dark] mb-2">Вправа №5</h3>
-                    <p class="text-[--muted]">Тема для наступної вправи.</p>
-                </a>
-
-                <!-- Exercise 6 Card -->
-                <a href="exercise-6.html" class="vocab-card bg-white border border-gray-200 rounded-2xl p-6 cursor-pointer">
-                    <div class="icon inline-flex p-3 rounded-xl mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[--dark] mb-2">Вправа №6</h3>
-                    <p class="text-[--muted]">Тема для наступної вправи.</p>
-                </a>
-
-                <!-- Exercise 7 Card -->
-                <a href="exercises/exercise-7.html" class="vocab-card bg-white border border-gray-200 rounded-2xl p-6 cursor-pointer">
-                    <div class="icon inline-flex p-3 rounded-xl mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[--dark] mb-2">Вправа №7</h3>
-                    <p class="text-[--muted]">Тема для наступної вправи.</p>
-                </a>
-
-                <!-- Exercise 8 Card -->
-                <a href="exercises/exercise-8.html" class="vocab-card bg-white border border-gray-200 rounded-2xl p-6 cursor-pointer">
-                    <div class="icon inline-flex p-3 rounded-xl mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[--dark] mb-2">Вправа №8</h3>
-                    <p class="text-[--muted]">Тема для наступної вправи.</p>
-                </a>
-
-                <!-- Exercise 9 Card -->
-                <a href="exercises/exercise-9.html" class="vocab-card bg-white border border-gray-200 rounded-2xl p-6 cursor-pointer">
-                    <div class="icon inline-flex p-3 rounded-xl mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[--dark] mb-2">Вправа №9</h3>
-                    <p class="text-[--muted]">Тема для наступної вправи.</p>
-                </a>
-
-                <!-- Exercise 10 Card -->
-                <a href="exercises/exercise-10.html" class="vocab-card bg-white border border-gray-200 rounded-2xl p-6 cursor-pointer">
-                    <div class="icon inline-flex p-3 rounded-xl mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[--dark] mb-2">Вправа №10</h3>
-                    <p class="text-[--muted]">Тема для наступної вправи.</p>
-                </a>
-
-                <!-- Exercise 11 Card -->
-                <a href="exercises/exercise-11.html" class="vocab-card bg-white border border-gray-200 rounded-2xl p-6 cursor-pointer">
-                    <div class="icon inline-flex p-3 rounded-xl mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[--dark] mb-2">Вправа №11</h3>
-                    <p class="text-[--muted]">Тема для наступної вправи.</p>
-                </a>
-
-                <!-- Exercise 12 Card -->
-                <a href="exercises/exercise-12.html" class="vocab-card bg-white border border-gray-200 rounded-2xl p-6 cursor-pointer">
-                    <div class="icon inline-flex p-3 rounded-xl mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[--dark] mb-2">Вправа №12</h3>
-                    <p class="text-[--muted]">Тема для наступної вправи.</p>
-                </a>
-            </div>
-        </div>
-    </main>
-
-    <footer class="text-center text-[--muted] text-sm py-10 bg-white border-t border-gray-200">
-        <div class="container mx-auto px-4">
-            <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені.</p>
-        </div>
-    </footer>
-
+  <footer class="text-center text-[--muted] text-sm py-10 bg-white border-t border-gray-200">
+    <div class="container mx-auto px-4">
+      <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені.</p>
+    </div>
+  </footer>
 </body>
 </html>
-
