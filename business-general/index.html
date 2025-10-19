@@ -1,1 +1,186 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Словник: Загальна ділова лексика | Deutsch+Profis</title>
+<meta name="description" content="Ключові слова для спілкування в офісі, на нарадах та в листуванні. Основа для будь-якої професії. З прикладами та аудіо." />
+
+<!-- Прев’ю та шрифти -->
+<meta name="theme-color" content="#009846" />
+<meta property="og:title" content="Deutsch+Profis — Загальна ділова лексика" />
+<meta property="og:description" content="Словники, діалоги, вправи, етикет. Німецька для роботи — просто та практично." />
+<meta property="og:image" content="https://res.cloudinary.com/dsbqtfrkc/image/upload/v1717672358/og-image-d-profis_v2_b1qf8a.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --green:#009846; --green-light:#e6f5f0; --dark:#1f2937; --yellow:#FFED00;
+  --muted:#6b7280; --bg:#f9fafb; --card-bg:#fff; --border:#e5e7eb;
+  --radius:16px; --shadow:0 4px 6px -1px rgba(0,0,0,.03),0 2px 4px -2px rgba(0,0,0,.03);
+  --shadow-lg:0 10px 15px -3px rgba(0,0,0,.05),0 4px 6px -4px rgba(0,0,0,.05);
+  --transition:all .25s cubic-bezier(0.4,0,0.2,1);
+}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--bg);color:#374151;font-family:'Inter',system-ui,sans-serif;line-height:1.6;}
+.wrap{box-sizing:border-box;max-width:800px;margin:0 auto;padding:0 clamp(16px,5vw,24px);}
+h1,h2,h3{color:var(--dark);font-weight:800;line-height:1.25;margin:0;}
+h2{font-size:clamp(28px,4vw,36px);text-align:center;margin-bottom:16px;}
+.lead{font-size:clamp(16px,2vw,18px);color:var(--muted);max-width:620px;margin:16px auto 40px;text-align:center;}
+
+/* NAV */
+.main-nav{position:sticky;top:16px;margin:16px clamp(16px,5vw,24px) 0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);
+  border:1px solid var(--border);border-radius:16px;padding:12px 24px;box-shadow:var(--shadow-lg);}
+.main-nav .nav-content{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px;color:var(--dark);text-decoration:none;}
+.logo svg{color:var(--green);}
+.top-link{font-size:14px;font-weight:700;color:var(--green);text-decoration:none;}
+.top-link:hover{text-decoration:underline;}
+
+/* Пошук */
+.search-input{box-sizing:border-box;width:100%;margin:0 0 24px;padding:14px 20px;font-size:16px;border:1px solid var(--border);
+  border-radius:12px;box-shadow:var(--shadow);transition:var(--transition);}
+.search-input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px var(--green-light);}
+.highlight{background:var(--yellow);border-radius:4px;padding:0 .25rem;color:var(--dark);}
+
+/* Картки */
+.vocab-list{display:grid;grid-template-columns:1fr;gap:16px;}
+@media (min-width:768px){.vocab-list{grid-template-columns:repeat(2,1fr);}}
+@media (min-width:1100px){.vocab-list{grid-template-columns:repeat(3,1fr);}}
+.vocab-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);
+  padding:clamp(16px,3vw,20px);transition:var(--transition);display:flex;flex-direction:column;}
+.vocab-card:hover{border-color:var(--green);box-shadow:var(--shadow-lg);transform:translateY(-3px);}
+.vocab-card .tag{background:var(--green-light);color:var(--green);font-size:12px;font-weight:700;padding:4px 10px;border-radius:9999px;margin-bottom:12px;display:inline-block;}
+.vocab-card h3{color:var(--dark);font-weight:700;}
+.vocab-card .translation{color:var(--green);font-weight:500;margin:2px 0 12px;}
+.vocab-card .translation strong{color:var(--dark);font-weight:600;margin-right:6px;}
+.vocab-card .sentence{font-size:15px;color:var(--muted);padding-top:12px;margin-top:12px;border-top:1px solid var(--border);}
+.vocab-card audio{width:100%;margin-top:auto;padding-top:16px;}
+
+/* Кнопки/футер */
+.page-nav{display:flex;justify-content:center;margin-top:40px;}
+.d-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;text-decoration:none;border:1px solid var(--border);
+  padding:12px 24px;border-radius:12px;font-weight:700;font-size:16px;transition:var(--transition);background:var(--card-bg);color:var(--dark);}
+.d-btn:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--green);color:var(--green);}
+.footer{text-align:center;color:var(--muted);font-size:14px;padding:clamp(40px,7vw,60px) 0;}
+.footer a{color:var(--green);text-decoration:none;font-weight:500;}
+.footer a:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<!-- ВЕРХНЯ НАВІГАЦІЯ -->
+<nav class="main-nav">
+  <div class="nav-content">
+    <a href="../" class="logo" title="На головну">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+      </svg>
+      Deutsch<span style="color:#009846">+</span>Profis
+    </a>
+    <a href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html" class="top-link">Усі словники</a>
+  </div>
+</nav>
+
+<main>
+  <section style="padding: clamp(40px, 7vw, 60px) 0;">
+    <div class="wrap">
+      <h2>Словник: Загальна ділова лексика</h2>
+      <p class="lead">Ключові слова для спілкування в офісі, на нарадах та в листуванні. Основа для будь-якої професії. Введіть слово для пошуку українською або німецькою.</p>
+
+      <input id="searchInput" type="text" placeholder="Пошук слів..." class="search-input" />
+      <div id="cardsContainer" class="vocab-list"></div>
+
+      <nav class="page-nav">
+        <a class="d-btn" href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html">← Повернутися до словників</a>
+      </nav>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені. · <a href="https://learn4life-ua.github.io/deutschplus-profis/dictionary.html">Усі словники</a></p>
+  </div>
+</footer>
+
+<script>
+// ——— Дані словника (речення 1:1 з вашими MP3) ———
+const dictionaryData = [
+  { german:"der Termin", ukrainian:"зустріч; домовлений час", sentence:"Ich bestätige den Termin für morgen um 10 Uhr.", id:"audio/01_Ich_bestätige_den_Termin_für_morgen_um_10_Uhr..mp3" },
+  { german:"die Besprechung", ukrainian:"нарада", sentence:"Die Besprechung beginnt pünktlich um neun.", id:"audio/02_Die_Besprechung_beginnt_pünktlich_um_neun..mp3" },
+  { german:"die Agenda", ukrainian:"порядок денний", sentence:"Die Agenda wurde vorab per E-Mail verschickt.", id:"audio/03_Die_Agenda_wurde_vorab_per_E-Mail_verschickt..mp3" },
+  { german:"die Frist / Deadline", ukrainian:"термін здачі", sentence:"Bitte halten Sie die Frist bis Freitag ein.", id:"audio/04_Bitte_halten_Sie_die_Frist_bis_Freitag_ein..mp3" },
+  { german:"der Bericht", ukrainian:"звіт", sentence:"Der Monatsbericht liegt im Anhang.", id:"audio/05_Der_Monatsbericht_liegt_im_Anhang..mp3" },
+  { german:"die Zuständigkeit", ukrainian:"зона відповідальності", sentence:"Für dieses Thema ist das Team Vertrieb zuständig.", id:"audio/06_Für_dieses_Thema_ist_das_Team_Vertrieb_zuständig..mp3" },
+  { german:"die Genehmigung", ukrainian:"затвердження", sentence:"Wir brauchen noch die Genehmigung der Leitung.", id:"audio/07_Wir_brauchen_noch_die_Genehmigung_der_Leitung..mp3" },
+  { german:"die Rückmeldung", ukrainian:"зворотний зв’язок", sentence:"Vielen Dank für Ihre schnelle Rückmeldung.", id:"audio/08_Vielen_Dank_für_Ihre_schnelle_Rückmeldung..mp3" },
+  { german:"die Klärung", ukrainian:"уточнення", sentence:"Zur Klärung rufe ich Sie kurz an.", id:"audio/09_Zur_Klärung_rufe_ich_Sie_kurz_an..mp3" },
+  { german:"die Anlage / der Anhang", ukrainian:"додаток (до листа)", sentence:"Die Datei finden Sie im Anhang.", id:"audio/10_Die_Datei_finden_Sie_im_Anhang..mp3" },
+  { german:"weiterleiten", ukrainian:"пересилати (лист/повідомлення)", sentence:"Können Sie die E-Mail an das Team weiterleiten?", id:"audio/11_Können_Sie_die_E-Mail_an_das_Team_weiterleiten.mp3" },
+  { german:"die Unterschrift", ukrainian:"підпис", sentence:"Die Unterschrift der Chefin fehlt noch.", id:"audio/12_Die_Unterschrift_der_Chefin_fehlt_noch..mp3" },
+  { german:"verschieben", ukrainian:"переносити", sentence:"Wir müssen den Termin auf nächste Woche verschieben.", id:"audio/13_Wir_müssen_den_Termin_auf_nächste_Woche_verschieben..mp3" },
+  { german:"bestätigen", ukrainian:"підтвердити", sentence:"Bitte bestätigen Sie den Eingang der Unterlagen.", id:"audio/14_Bitte_bestätigen_Sie_den_Eingang_der_Unterlagen..mp3" },
+  { german:"zusammenarbeiten", ukrainian:"співпрацювати", sentence:"Wir arbeiten eng mit dem Partnerunternehmen zusammen.", id:"audio/15_Wir_arbeiten_eng_mit_dem_Partnerunternehmen_zusammen..mp3" },
+  { german:"der Kollege / die Kollegin", ukrainian:"колега", sentence:"Ich bespreche es mit meiner Kollegin.", id:"audio/16_Ich_bespreche_es_mit_meiner_Kollegin..mp3" },
+  { german:"die Abteilung", ukrainian:"відділ", sentence:"Die Anfrage geht an die Abteilung Einkauf.", id:"audio/17_Die_Anfrage_geht_an_die_Abteilung_Einkauf..mp3" },
+  { german:"die Geschäftsführung", ukrainian:"керівництво компанії", sentence:"Die Geschäftsführung hat die Strategie vorgestellt.", id:"audio/18_Die_Geschäftsführung_hat_die_Strategie_vorgestellt..mp3" },
+  { german:"die Priorität", ukrainian:"пріоритет", sentence:"Dieses Ticket hat hohe Priorität.", id:"audio/19_Dieses_Ticket_hat_hohe_Priorität..mp3" },
+  { german:"die Aufgabe", ukrainian:"завдання", sentence:"Meine Aufgabe ist die Erstellung des Protokolls.", id:"audio/20_Meine_Aufgabe_ist_die_Erstellung_des_Protokolls..mp3" }
+];
+
+// ——— Утиліти ———
+const escapeHtml = (s='') => s.replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const escapeRegex = (s='') => s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+function highlightText(text, filter){
+  const safe = escapeHtml(text);
+  if(!filter) return safe;
+  const re = new RegExp(`(${escapeRegex(filter)})`,'gi');
+  return safe.replace(re,'<span class="highlight">$1</span>');
+}
+
+// ——— Рендер ———
+function renderCards(filter=""){
+  const cont = document.getElementById('cardsContainer');
+  cont.innerHTML = '';
+  const list = dictionaryData.filter(item=>{
+    const hay = `${item.german} ${item.ukrainian} ${item.sentence}`.toLowerCase();
+    return hay.includes(filter.toLowerCase());
+  });
+  if(!list.length){
+    cont.innerHTML = `<div class="vocab-card" style="text-align:center">
+      <h3>Нічого не знайдено</h3>
+      <p class="translation" style="color:var(--muted)">Спробуйте інший запит.</p>
+    </div>`;
+    return;
+  }
+  list.forEach(item=>{
+    const audioHtml = item.id
+      ? `<audio controls preload="none"><source src="${item.id}" type="audio/mpeg">Ваш браузер не підтримує аудіо.</audio>`
+      : ``;
+    cont.insertAdjacentHTML('beforeend', `
+      <div class="vocab-card">
+        <span class="tag">#ДіловаЛексика</span>
+        <h3>${highlightText(item.german, filter)}</h3>
+        <p class="translation"><strong>Переклад:</strong> ${highlightText(item.ukrainian, filter)}</p>
+        <p class="sentence">${highlightText(item.sentence, filter)}</p>
+        ${audioHtml}
+      </div>
+    `);
+  });
+}
+
+// ——— Ініціалізація ———
+window.addEventListener('load', ()=>{
+  renderCards();
+  const search = document.getElementById('searchInput');
+  search.addEventListener('input', ()=>renderCards(search.value.trim()));
+});
+</script>
+
+</body>
+</html>
 
