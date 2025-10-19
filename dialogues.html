@@ -11,182 +11,182 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
 <style>
 :root {
-  --green: #009846;
-  --green-light: #e6f5f0;
-  --dark: #1f2937;
-  --muted: #6b7280;
-  --bg: #f9fafb;
-  --card-bg: #ffffff;
-  --border-color: #e5e7eb;
-  --radius: 16px;
-  --shadow: 0 4px 6px -1px rgba(0,0,0,.03), 0 2px 4px -2px rgba(0,0,0,.03);
-  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -4px rgba(0,0,0,.05);
-  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --green: #009846;
+  --green-light: #e6f5f0;
+  --dark: #1f2937;
+  --muted: #6b7280;
+  --bg: #f9fafb;
+  --card-bg: #ffffff;
+  --border-color: #e5e7eb;
+  --radius: 16px;
+  --shadow: 0 4px 6px -1px rgba(0,0,0,.03), 0 2px 4px -2px rgba(0,0,0,.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -4px rgba(0,0,0,.05);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 html { scroll-behavior: smooth; }
 body {
-  margin: 0;
-  background: var(--bg);
-  color: #374151;
-  font-family: 'Inter', system-ui, sans-serif;
-  line-height: 1.6;
+  margin: 0;
+  background: var(--bg);
+  color: #374151;
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
 }
 .wrap {
-  box-sizing: border-box;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 clamp(16px, 5vw, 24px);
+  box-sizing: border-box;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 5vw, 24px);
 }
 h2 {
-  font-size: clamp(28px, 4vw, 36px);
-  text-align: center;
-  color: var(--dark);
-  margin-bottom: 16px;
+  font-size: clamp(28px, 4vw, 36px);
+  text-align: center;
+  color: var(--dark);
+  margin-bottom: 16px;
 }
 .lead {
-  font-size: clamp(16px, 2vw, 18px);
-  color: var(--muted);
-  max-width: 600px;
-  margin: 0 auto 56px;
-  text-align: center;
+  font-size: clamp(16px, 2vw, 18px);
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 56px;
+  text-align: center;
 }
 .main-nav {
-  position: sticky;
-  top: 16px;
-  margin: 16px clamp(16px, 5vw, 24px) 0;
-  z-index: 50;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  padding: 12px 24px;
-  box-shadow: var(--shadow-lg);
+  position: sticky;
+  top: 16px;
+  margin: 16px clamp(16px, 5vw, 24px) 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 12px 24px;
+  box-shadow: var(--shadow-lg);
 }
 .main-nav .nav-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1100px;
-  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 700;
-  font-size: 18px;
-  color: var(--dark);
-  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--dark);
+  text-decoration: none;
 }
 .logo svg { color: var(--green); }
 
 /* --- Timeline Styles --- */
 .timeline {
-    position: relative;
-    padding: 24px 0;
+    position: relative;
+    padding: 24px 0;
 }
 .timeline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 19px;
-    height: 100%;
-    width: 2px;
-    background: var(--border-color);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 19px;
+    height: 100%;
+    width: 2px;
+    background: var(--border-color);
 }
 .timeline-item {
-    position: relative;
-    margin-bottom: 24px;
-    padding-left: 56px;
+    position: relative;
+    margin-bottom: 24px;
+    padding-left: 56px;
 }
 .timeline-dot {
-    position: absolute;
-    left: 8px;
-    top: 5px;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--green-light);
-    border: 3px solid var(--green);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--green);
-    font-weight: 700;
-    font-size: 12px;
+    position: absolute;
+    left: 8px;
+    top: 5px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--green-light);
+    border: 3px solid var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green);
+    font-weight: 700;
+    font-size: 12px;
 }
 .timeline-content h3 {
-    font-size: 20px;
-    margin: 0 0 4px;
-    color: var(--dark);
-    border-bottom: none;
-    padding-bottom: 0;
+    font-size: 20px;
+    margin: 0 0 4px;
+    color: var(--dark);
+    border-bottom: none;
+    padding-bottom: 0;
 }
 .timeline-content p {
-    margin: 0 0 16px;
-    color: var(--muted);
-    font-size: 15px;
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-size: 15px;
 }
 .timeline-content ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 .timeline-content li a {
-    display: block;
-    text-decoration: none;
-    color: var(--dark);
-    font-weight: 500;
-    padding: 10px 16px;
-    border-radius: 12px;
-    transition: var(--transition);
-    border: 1px solid var(--border-color);
-    background: var(--card-bg);
+    display: block;
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    padding: 10px 16px;
+    border-radius: 12px;
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
 }
 .timeline-content li a:hover {
-    background-color: var(--green-light);
-    border-color: var(--green);
-    color: var(--green);
-    transform: translateX(4px);
+    background-color: var(--green-light);
+    border-color: var(--green);
+    color: var(--green);
+    transform: translateX(4px);
 }
 .timeline-content li + li {
-    margin-top: 8px;
+    margin-top: 8px;
 }
 
 /* --- Navigation Buttons --- */
 .page-nav {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }
 .d-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  text-decoration: none;
-  border: 1px solid var(--border-color);
-  padding: 12px 24px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 16px;
-  transition: var(--transition);
-  background: var(--card-bg);
-  color: var(--dark);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  transition: var(--transition);
+  background: var(--card-bg);
+  color: var(--dark);
 }
 .d-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--green);
-  color: var(--green);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--green);
+  color: var(--green);
 }
 
 /* --- Footer --- */
 .footer {
-  text-align: center;
-  color: var(--muted);
-  font-size: 14px;
-  padding: clamp(40px, 7vw, 60px) 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  padding: clamp(40px, 7vw, 60px) 0;
 }
 .footer a { color: var(--green); text-decoration: none; font-weight: 500; }
 .footer a:hover { text-decoration: underline; }
@@ -195,108 +195,108 @@ h2 {
 <body>
 
 <nav class="main-nav">
-  <div class="nav-content">
-    <a href="index.html" class="logo">
-      <svg width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-      Deutsch<span style="color:var(--green)">+</span>Profis
-    </a>
-  </div>
+  <div class="nav-content">
+    <a href="index.html" class="logo">
+      <svg width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+      Deutsch<span style="color:var(--green)">+</span>Profis
+    </a>
+  </div>
 </nav>
 
 <main>
-  <section style="padding: clamp(40px, 7vw, 60px) 0;">
-    <div class="wrap">
-      <h2>Історія стажування</h2>
-      <p class="lead">Пройдіть шлях Марічки та Тараса від першої ідеї до фінальних вражень. Кожен етап — це новий діалог та корисна лексика.</p>
-      
-      <div class="timeline">
+  <section style="padding: clamp(40px, 7vw, 60px) 0;">
+    <div class="wrap">
+      <h2>Історія стажування</h2>
+      <p class="lead">Пройдіть шлях Марічки та Тараса від першої ідеї до фінальних вражень. Кожен етап — це новий діалог та корисна лексика.</p>
+      
+      <div class="timeline">
 
-        <div class="timeline-item">
-            <div class="timeline-dot">1</div>
-            <div class="timeline-content">
-                <h3>Частина 1: Перші кроки</h3>
-                <p>Все починається з ідеї. Пролог та перша комунікація з компанією.</p>
-                <ul>
-                    <li><a href="prologue.html">1.0. Розмова перед початком</a></li>
-                    <li><a href="part1-application.html">1.1. E-Mail до компанії</a></li>
-                </ul>
-            </div>
-        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot">1</div>
+            <div class="timeline-content">
+                <h3>Частина 1: Перші кроки</h3>
+                <p>Все починається з ідеї. Пролог та перша комунікація з компанією.</p>
+                <ul>
+                    <li><a href="prologue.html">1.0. Розмова перед початком</a></li>
+                    <li><a href="part1-application.html">1.1. E-Mail до компанії</a></li>
+                </ul>
+            </div>
+        </div>
 
-        <div class="timeline-item">
-            <div class="timeline-dot">2</div>
-            <div class="timeline-content">
-                <h3>Частина 2: Контакт з HR</h3>
-                <p>Перший успіх: компанія виходить на зв'язок.</p>
-                <ul>
-                    <li><a href="part1-call.html">2.1. Дзвінок від HR</a></li>
-                </ul>
-            </div>
-        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot">2</div>
+            <div class="timeline-content">
+                <h3>Частина 2: Контакт з HR</h3>
+                <p>Перший успіх: компанія виходить на зв'язок.</p>
+                <ul>
+                    <li><a href="part1-call.html">2.1. Дзвінок від HR</a></li>
+                </ul>
+            </div>
+        </div>
 
-        <div class="timeline-item">
-            <div class="timeline-dot">3</div>
-            <div class="timeline-content">
-                <h3>Частина 3: Співбесіда</h3>
-                <p>Найважливіший етап: онлайн-інтерв'ю.</p>
-                <ul>
-                    <li><a href="part2-interview.html">3.1. Співбесіда Марічки</a></li>
-                    <li><a href="part2-interview-taras.html">3.2. Співбесіда Тараса</a></li>
-                </ul>
-            </div>
-        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot">3</div>
+            <div class="timeline-content">
+                <h3>Частина 3: Співбесіда</h3>
+                <p>Найважливіший етап: онлайн-інтерв'ю.</p>
+                <ul>
+                    <li><a href="part2-interview.html">3.1. Співбесіда Марічки</a></li>
+                    <li><a href="part2-interview-taras.html">3.2. Співбесіда Тараса</a></li>
+                </ul>
+            </div>
+        </div>
 
-        <div class="timeline-item">
-            <div class="timeline-dot">4</div>
-            <div class="timeline-content">
-                <h3>Частина 4: Результати та підготовка</h3>
-                <p>Довгоочікувана відповідь та організаційні питання.</p>
-                <ul>
-          _         <li><a href="part3-results.html">4.1. Листи-підтвердження</a></li>
-                    <li><a href="part4-preparation.html">4.2. Дзвінок щодо житла</a></li>
-                </ul>
-            </div>
-        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot">4</div>
+            <div class="timeline-content">
+                <h3>Частина 4: Результати та підготовка</h3>
+                <p>Довгоочікувана відповідь та організаційні питання.</p>
+                <ul>
+                    <li><a href="part3-results.html">4.1. Листи-підтвердження</a></li>
+                    <li><a href="part4-preparation.html">4.2. Дзвінок щодо житла</a></li>
+                </ul>
+            </div>
+        </div>
 
-        <div class="timeline-item">
-            <div class="timeline-dot">5</div>
-            <div class="timeline-content">
-                <h3>Частина 5: Робочі будні</h3>
-                <p>Перші дні, знайомство з командою та перші завдання.</p>
-                <ul>
-                    <li><a href="part5-first-day.html">5.1. Знайомство з командою</a></li>
-                    <li><a href="part6-work-marichka.html">5.2. Завдання Марічки</a></li>
-                    <li><a href="part6-work-taras.html">5.3. Завдання Тараса</a></li>
-                </ul>
-            </div>
-        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot">5</div>
+            <div class="timeline-content">
+                <h3>Частина 5: Робочі будні</h3>
+                <p>Перші дні, знайомство з командою та перші завдання.</p>
+                <ul>
+                    <li><a href="part5-first-day.html">5.1. Знайомство з командою</a></li>
+                    <li><a href="part6-work-marichka.html">5.2. Завдання Марічки</a></li>
+                    <li><a href="part6-work-taras.html">5.3. Завдання Тараса</a></li>
+                </ul>
+            </div>
+        </div>
 
-        <div class="timeline-item">
-            <div class="timeline-dot">6</div>
-            <div class="timeline-content">
-                <h3>Частина 6: Завершення</h3>
-                <p>Підсумки стажування та плани на майбутнє.</p>
-                <ul>
-                    <li><a href="part7-summary.html">6.1. Огляд виконаних завдань</a></li>
-                    <li><a href="epilogue.html">6.2. Розмова після повернення</a></li>
-                </ul>
-            </div>
-        </div>
-      </div>
-        
-      <div class="page-nav">
-          <a href="index.html" class="d-btn">← На головну сторінку</a>
-      </div>
+        <div class="timeline-item">
+            <div class="timeline-dot">6</div>
+            <div class="timeline-content">
+                <h3>Частина 6: Завершення</h3>
+                <p>Підсумки стажування та плани на майбутнє.</p>
+                <ul>
+                    <li><a href="part7-summary.html">6.1. Огляд виконаних завдань</a></li>
+                    <li><a href="epilogue.html">6.2. Розмова після повернення</a></li>
+                </ul>
+            </div>
+        </div>
+      </div>
+      
+      <div class="page-nav">
+          <a href="index.html" class="d-btn">← На головну сторінку</a>
+      </div>
 
-    </div>
-  </section>
+    </div>
+  </section>
 </main>
 
 <footer class="footer">
-    <div class="wrap">
-      <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені.</p>
-      <p><a href="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">Запропонувати ідею</a></p>
-    </div>
+    <div class="wrap">
+      <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені.</p>
+      <p><a href="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">Запропонувати ідею</a></p>
+    </div>
 </footer>
 
 </body>
