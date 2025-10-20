@@ -172,7 +172,7 @@ h2 {
 }
 .d-btn--primary {
   background: var(--green);
-  color: #fff;
+  color: #fff !important; /* Ensure text is always white */
 }
 .d-btn:hover {
   transform: translateY(-3px);
@@ -212,8 +212,15 @@ details[open] summary { color: var(--green); }
 .details-body p, .details-body ul, .details-body ol { margin-bottom: 12px; }
 .details-body ul, .details-body ol { padding-left: 24px; }
 .details-body li { margin-bottom: 8px; }
-.details-body a { color: var(--green); text-decoration: underline; text-decoration-color: #a7f3d0; font-weight: 500; }
-.details-body a:hover { text-decoration-color: var(--green); }
+/* Apply green color to links, but NOT to buttons */
+.details-body a:not(.d-btn) { 
+  color: var(--green); 
+  text-decoration: underline; 
+  text-decoration-color: #a7f3d0; 
+  font-weight: 500; 
+}
+.details-body a:not(.d-btn):hover { text-decoration-color: var(--green); }
+
 
 /* ===== FOOTER ===== */
 .footer { border-top: 1px solid var(--border-color); }
@@ -263,7 +270,7 @@ details[open] summary { color: var(--green); }
   <section>
     <div class="wrap">
       <header style="text-align: center; margin-bottom: 48px;">
-        <h1 style="color: var(--green);">Корисна інформація</h1>
+        <h1>Корисна інформація</h1>
         <p class="lead">Все про укладачів, роботу з посібником, джерела, базову фонетику, вхідний тест і форму пропозицій.</p>
       </header>
 
@@ -328,17 +335,18 @@ details[open] summary { color: var(--green); }
         <details>
           <summary>
             <svg class="chev-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 5l7 7-7 7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Використана література
+            Інформаційне забезпечення
           </summary>
           <div class="details-body">
             <ol>
               <li><strong>Agrarwirtschaft: Fachstufe Landwirt</strong> / H. Lochner, J. Breker, C. Beckmann et al. – 12., überarb. Aufl. – Stuttgart : Ulmer Eugen, 2024. – 704 S. – ISBN 978-3-8186-1939-8.</li>
+              <li><strong>Kern M.</strong> <em>Deutsch für Agrarberufe.</em> – Clenze : Agrimedia, 2018. – 180 S. – ISBN 978-3-86263-146-4.</li>
               <li><strong>AgroTerm : Das landwirtschaftliche Fachwörterbuch</strong> / Agroscope. – URL: <a href="https://www.agroscope.admin.ch/agroscope/de/home/services/apps/agroterm.html" target="_blank" rel="noopener">https://www.agroscope.admin.ch/agroterm</a>.</li>
-              <li><strong>Buscha A., Szita S., Raven S.</strong> <em>Berufswege B2: Kurs- und Übungsbuch.</em> – Leipzig : Schubert-Verlag, 2021. – 348 S. – ISBN 978-3-96915-092-4.</li>
+              <li><strong>Buscha A., Szita S., Raven S.</strong> <em>Berufswege B2: Kurs- und Üбungsbuch.</em> – Leipzig : Schubert-Verlag, 2021. – 348 S. – ISBN 978-3-96915-092-4.</li>
               <li><strong>Im Beruf NEU B1+/B2: Kursbuch</strong> / L. M. Kopp, A. Schümann. – München : Hueber Verlag, 2017. – 208 S. – ISBN 978-3-19-201190-0.</li>
-              <li><strong>Хоменко О. В.</strong> Підручник німецької мови для студентів економічних університетів / факультетів. – 3-тє вид., випр. і доп. – Київ : ЦУЛ, 2018. – 464 с. – ISBN 978-617-673-192-3.</li>
+              <li><strong>Пасічна Л. С., Мокренюк Ю. І.</strong> Deutsch für Wirtschaft und Beruf / Німецька мова для економіки та професії : навчальний посібник. – Київ : ЦУЛ, 2022. – 320 с. – ISBN 978-617-673-987-5.</li>
             </ol>
-             <p style="font-size: 14px; color: var(--muted); margin-top: 16px; font-style: italic;">Усі використані джерела — українські або європейські видання; відсутні посилання на ресурси держави-агресора.</p>
+             <p style="font-size: 14px; color: var(--muted); margin-top: 16px; font-style: italic;">Усі джерела — українські або європейські видання; відсутні посилання на ресурси держави-агресора.</p>
           </div>
         </details>
 
@@ -418,5 +426,4 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 </body>
 </html>
-
 
