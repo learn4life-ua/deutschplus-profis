@@ -89,7 +89,7 @@ h3 { font-size: 20px; margin-bottom: 8px; }
   position: sticky;
   top: 16px;
   margin: 16px clamp(16px, 5vw, 24px) 0; /* Синхронізуємо відступи з .wrap */
-  z-index: 50;
+  z-index: 100;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-color);
@@ -147,6 +147,7 @@ h3 { font-size: 20px; margin-bottom: 8px; }
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--border-color);
     gap: 16px;
+    z-index: 200;
   }
   .nav-links.active { display: flex; }
   .nav-toggle {
@@ -156,6 +157,24 @@ h3 { font-size: 20px; margin-bottom: 8px; }
     border: none;
     padding: 0;
   }
+}
+
+/* overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease;
+  z-index: 150;
+}
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* ===== HEADER ===== */
@@ -324,8 +343,27 @@ details[open] summary::after { transform: rotate(45deg); }
 details .muted { padding-top: 12px; border-top: 1px solid var(--border-color); margin-top: 16px; }
 
 /* ===== FOOTER ===== */
+.footer .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.footer p {
+    margin: 0;
+}
 .footer a { color: var(--green); text-decoration: none; font-weight: 500; }
 .footer a:hover { text-decoration: underline; }
+
+@media (max-width: 640px) {
+    .footer .wrap {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
 
 /* ===== ANIMATIONS ===== */
 .fade-in {
@@ -338,6 +376,8 @@ details .muted { padding-top: 12px; border-top: 1px solid var(--border-color); m
 </head>
 <body>
 
+<div class="overlay" id="overlay"></div>
+
 <nav class="main-nav">
   <div class="nav-content">
     <a href="#top" class="logo">
@@ -348,8 +388,9 @@ details .muted { padding-top: 12px; border-top: 1px solid var(--border-color); m
       <li><a href="#features">Розділи</a></li>
       <li><a href="#about">Про проєкт</a></li>
       <li><a href="#faq">FAQ</a></li>
+      <li><a href="useful.html">Корисна інформація</a></li>
     </ul>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Меню">
+    <button class="nav-toggle" id="nav-toggle" aria-label="Меню" aria-controls="nav-links" aria-expanded="false">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
   </div>
@@ -465,9 +506,7 @@ document.addEventListener("DOMContentLoaded", function() {
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.1
-  });
+  }, { threshold: 0.1 });
   sections.forEach(section => {
     observer.observe(section);
   });
@@ -475,9 +514,32 @@ document.addEventListener("DOMContentLoaded", function() {
   // --- Mobile navigation toggle ---
   const navToggle = document.getElementById('nav-toggle');
   const navLinks = document.getElementById('nav-links');
+  const overlay = document.getElementById('overlay');
+  const isMobileView = () => window.getComputedStyle(navToggle).display !== 'none';
+
   if (navToggle && navLinks) {
+    const closeMenu = () => {
+      navLinks.classList.remove('active');
+      overlay.classList.remove('active');
+      navToggle.setAttribute('aria-expanded', 'false');
+    };
+
     navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
+      const nowActive = !navLinks.classList.contains('active');
+      navLinks.classList.toggle('active', nowActive);
+      overlay.classList.toggle('active', nowActive);
+      navToggle.setAttribute('aria-expanded', String(nowActive));
+    });
+
+    navLinks.addEventListener('click', e => {
+      const link = e.target.closest('a');
+      if (link && isMobileView()) closeMenu();
+    });
+
+    overlay.addEventListener('click', closeMenu);
+
+    window.addEventListener('resize', () => {
+      if (!isMobileView()) closeMenu();
     });
   }
 });
