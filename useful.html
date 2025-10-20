@@ -1,1 +1,220 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Корисна інформація — Deutsch+Profis</title>
+  <meta name="description" content="Корисна інформація для користувачів електронного навчального посібника Deutsch+Profis: укладачі, як користуватися, література, німецький алфавіт, вхідний тест і форма пропозицій."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --green:#009846; --yellow:#FFED00; --navy:#152731; --bg:#f9fafb; --muted:#6b7280; --border:#e5e7eb;
+    }
+    body{font-family:'Inter',sans-serif;background:var(--bg);}
+    /* Акордеон (details/summary) */
+    details{border:1px solid var(--border);border-radius:16px;background:#fff}
+    details+details{margin-top:12px}
+    summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:10px}
+    summary::-webkit-details-marker{display:none}
+    .chev{transition:transform .2s ease}
+    details[open] .chev{transform:rotate(90deg)}
+    .acc-body{padding:0 20px 20px}
+    .badge{background:var(--yellow); color:#111827; font-weight:600; font-size:12px; padding:2px 8px; border-radius:999px;}
+    a.link{color:var(--green); text-decoration:underline; text-decoration-color:#a7f3d0;}
+  </style>
+</head>
+<body class="py-10">
+  <main class="max-w-4xl mx-auto px-6">
+    <!-- Шапка сторінки -->
+    <header class="mb-6 text-center">
+      <div class="inline-flex items-center gap-2 mb-3">
+        <span class="badge">Корисно знати</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-[var(--green)]">Корисна інформація</h1>
+      <p class="text-[var(--muted)] mt-2">В одному місці — про укладачів, роботу з посібником, джерела, базову фонетику німецької, вхідний тест і форму пропозицій.</p>
+    </header>
+
+    <!-- Акордеон -->
+    <section class="space-y-3">
+
+      <!-- Укладачі -->
+      <details>
+        <summary class="text-lg md:text-xl font-semibold text-[var(--navy)]">
+          <svg class="chev w-4 h-4 text-[var(--green)]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M9 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Укладачі
+        </summary>
+        <div class="acc-body text-gray-800 leading-relaxed">
+          <ul class="space-y-3">
+            <li>
+              <p><strong>Губарь Наталія Леонідівна</strong></p>
+              <p class="text-[var(--muted)] text-sm">
+                спеціаліст вищої кваліфікаційної категорії, викладач-методист;<br>
+                ВСП «Аграрно-економічний фаховий коледж Полтавського державного аграрного університету».
+              </p>
+            </li>
+            <li>
+              <p><strong>Кононенко Наталія Олексіївна</strong></p>
+              <p class="text-[var(--muted)] text-sm">
+                спеціаліст вищої кваліфікаційної категорії, викладач-методист;<br>
+                ВСП «Аграрно-економічний фаховий коледж Полтавського державного аграрного університету».
+              </p>
+            </li>
+            <li>
+              <p><strong>Сувальська Олена Вікторівна</strong></p>
+              <p class="text-[var(--muted)] text-sm">
+                спеціаліст вищої кваліфікаційної категорії, викладач-методист;<br>
+                ВСП «Аграрно-економічний фаховий коледж Полтавського державного аграрного університету».
+              </p>
+            </li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Як користуватися -->
+      <details open>
+        <summary class="text-lg md:text-xl font-semibold text-[var(--navy)]">
+          <svg class="chev w-4 h-4 text-[var(--green)]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M9 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Як користуватися посібником
+        </summary>
+        <div class="acc-body text-gray-800 leading-relaxed">
+          <ol class="list-decimal ml-5 space-y-2">
+            <li><strong>Обери розділ:</strong> «Діловий етикет», «Фахова лексика», «Робочі діалоги», «Практичні вправи».</li>
+            <li><strong>Слухай та повторюй:</strong> у діалогах є озвучка; використовуйте навушники для кращої вимови.</li>
+            <li><strong>Працюй зі словником:</strong> ключова лексика подана блоками; додавай власні нотатки.</li>
+            <li><strong>Виконуй завдання:</strong> тести та інтерактиви допоможуть закріпити матеріал.</li>
+            <li><strong>QR та посилання:</strong> переходь до аудіо/відео з телефону або ПК.</li>
+          </ol>
+          <div class="mt-4 p-4 rounded-xl bg-[#e6f5f0] border border-[#c7ebdd]">
+            <p class="font-medium">Не знайшли словник для своєї професії?</p>
+            <p class="text-sm text-[var(--muted)]">
+              Заповніть <a class="link" href="#suggest" onclick="document.getElementById('suggest').scrollIntoView({behavior:'smooth'})">форму пропозицій</a> — ми постійно доповнюємо розділи.
+            </p>
+          </div>
+        </div>
+      </details>
+
+      <!-- Вхідний тест -->
+      <details>
+        <summary class="text-lg md:text-xl font-semibold text-[var(--navy)]">
+          <svg class="chev w-4 h-4 text-[var(--green)]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M9 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Вхідний тест (перевірка базових знань)
+        </summary>
+        <div class="acc-body text-gray-800 leading-relaxed">
+          <p class="mb-3">
+            Короткий тест допоможе визначити ваш орієнтовний рівень (A1–B2) та підкаже, з яких розділів варто почати.
+          </p>
+          <div class="flex flex-wrap items-center gap-10">
+            <a href="test-entry.html" class="inline-block bg-[var(--green)] hover:bg-[#007a38] text-white font-semibold px-6 py-3 rounded-xl transition">
+              ▶ Пройти вхідний тест
+            </a>
+            <p class="text-sm text-[var(--muted)]">Тривалість: ~10–12 хвилин • 20 запитань</p>
+          </div>
+        </div>
+      </details>
+
+      <!-- Використана література -->
+      <details>
+        <summary class="text-lg md:text-xl font-semibold text-[var(--navy)]">
+          <svg class="chev w-4 h-4 text-[var(--green)]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M9 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Використана література
+        </summary>
+        <div class="acc-body text-gray-800 leading-relaxed">
+          <ol class="list-decimal ml-5 space-y-2">
+            <li><strong>Agrarwirtschaft: Fachstufe Landwirt</strong> / H. Lochner, J. Breker, C. Beckmann et al. – 12., überarb. Aufl. – Stuttgart : Ulmer Eugen, 2024. – 704 S. – ISBN 978-3-8186-1939-8.</li>
+            <li><strong>AgroTerm : Das landwirtschaftliche Fachwörterbuch</strong> / Agroscope. – URL:
+              <a class="link" href="https://www.agroscope.admin.ch/agroscope/de/home/services/apps/agroterm.html" target="_blank" rel="noopener">https://www.agroscope.admin.ch/agroterm</a>
+              (дата звернення: 20.10.2025).
+            </li>
+            <li><strong>Buscha A., Szita S., Raven S.</strong> <em>Berufswege B2: Kurs- und Übungsbuch.</em> – Leipzig : Schubert-Verlag, 2021. – 348 S. – ISBN 978-3-96915-092-4.</li>
+            <li><strong>Im Beruf NEU B1+/B2: Kursbuch</strong> / L. M. Kopp, A. Schümann. – München : Hueber Verlag, 2017. – 208 S. – ISBN 978-3-19-201190-0.</li>
+            <li><strong>Хоменко О. В.</strong> Підручник німецької мови для студентів економічних університетів / факультетів. – 3-тє вид., випр. і доп. – Київ : ЦУЛ, 2018. – 464 с. – ISBN 978-617-673-192-3.</li>
+            <li><strong>Kern M.</strong> <em>Deutsch für Agrarberufe.</em> – Clenze : Agrimedia, 2018. – 180 S.</li>
+            <li><strong>Weers D.</strong> <em>Wirtschaftskommunikation Deutsch.</em> – Berlin : Langenscheidt, 2017. – 240 S.</li>
+            <li><strong>Koch I., Olszewski E.</strong> <em>Deutsch im Beruf.</em> – München : Hueber Verlag, 2019. – 192 S.</li>
+            <li><strong>Goethe-Institut.</strong> <em>Berufssprachliche Konzepte B1–C1.</em> – Berlin, 2020.</li>
+            <li><strong>Deutsche Welle.</strong> <em>Deutsch Lernen – Beruf & Alltag.</em> – URL:
+              <a class="link" href="https://www.dw.com/de/deutsch-lernen/s-2055" target="_blank" rel="noopener">https://www.dw.com/de/deutsch-lernen/s-2055</a>.
+            </li>
+          </ol>
+          <p class="text-sm text-[var(--muted)] mt-4 italic">
+            Усі використані джерела — українські або європейські видання; відсутні посилання на ресурси держави-агресора.
+          </p>
+        </div>
+      </details>
+
+      <!-- Німецький алфавіт -->
+      <details>
+        <summary class="text-lg md:text-xl font-semibold text-[var(--navy)]">
+          <svg class="chev w-4 h-4 text-[var(--green)]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M9 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Німецький алфавіт (Grundlagen)
+        </summary>
+        <div class="acc-body text-gray-800 leading-relaxed">
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="p-4 bg-[#fffbea] border border-[#fde68a] rounded-xl">
+              <p class="font-semibold mb-2">Букви та назви</p>
+              <p class="text-sm">
+                A (A), B (Be), C (Ce), D (De), E (E), F (Ef), G (Ge), H (Ha), I (I), J (Jot),
+                K (Ka), L (El), M (Em), N (En), O (O), P (Pe), Q (Qu), R (Er), S (Es/„ß“ Eszett),
+                T (Te), U (U), V (Fau), W (We), X (Ix), Y (Ypsilon), Z (Zet), Ä (Ä), Ö (Ö), Ü (Ü).
+              </p>
+            </div>
+            <div class="p-4 bg-[#e6f5f0] border border-[#c7ebdd] rounded-xl">
+              <p class="font-semibold mb-2">Часті диграфи</p>
+              <ul class="list-disc ml-5 text-sm space-y-1">
+                <li><strong>sch</strong> ≈ «ш», <strong>ch</strong> ≈ «х/хь» (залежить від позиції)</li>
+                <li><strong>sp, st</strong> на початку слова ≈ «шп», «шт»</li>
+                <li><strong>ei</strong> ≈ «ай», <strong>ie</strong> ≈ довге «і», <strong>eu/äu</strong> ≈ «ой»</li>
+                <li><strong>ß</strong> = подовжене «s» (тільки після довгих голосних/дифтонгів)</li>
+              </ul>
+            </div>
+          </div>
+          <p class="text-sm text-[var(--muted)] mt-3">
+            Порада: слухайте озвучку на сторінках «Діалоги» та повторюйте вголос — це швидко ставить вимову.
+          </p>
+        </div>
+      </details>
+
+      <!-- Форма пропозицій (якір) -->
+      <details id="suggest">
+        <summary class="text-lg md:text-xl font-semibold text-[var(--navy)]">
+          <svg class="chev w-4 h-4 text-[var(--green)]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M9 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Запропонувати новий словник / тему (і залишити відгук)
+        </summary>
+        <div class="acc-body">
+          <!-- Замініть URL нижче на ваш код вбудування Google Форми -->
+          <iframe src="YOUR_GOOGLE_FORM_EMBED_URL" width="100%" height="720" frameborder="0" marginheight="0" marginwidth="0">
+            Завантаження форми…
+          </iframe>
+          <p class="text-sm text-[var(--muted)] mt-2">
+            Поле «Відгуки про проєкт Deutsch+Profis» — необов’язкове.
+          </p>
+        </div>
+      </details>
+
+    </section>
+
+    <!-- Навігація -->
+    <div class="text-center mt-8">
+      <a href="index.html" class="inline-block bg-[var(--green)] hover:bg-[#007a38] text-white font-semibold px-6 py-3 rounded-xl transition">
+        ⬅ Повернутися на головну
+      </a>
+    </div>
+  </main>
+</body>
+</html>
 
