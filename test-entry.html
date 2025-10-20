@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Вхідний тест з німецької мови — Deutsch+Profis</title>
+    <meta name="description" content="Визначте свій рівень володіння німецькою мовою за допомогою нашого вхідного тесту." />
+    <meta name="theme-color" content="#009846" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --green: #009846;
+            --green-light: #e6f5f0;
+            --dark: #1f2937;
+            --muted: #6b7280;
+            --bg: #f9fafb;
+            --card-bg: #ffffff;
+            --border-color: #e5e7eb;
+            --radius: 16px;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,.03), 0 2px 4px -2px rgba(0,0,0,.03);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -4px rgba(0,0,0,.05);
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: #374151;
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.6;
+        }
+        .wrap {
+            box-sizing: border-box;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 5vw, 24px);
+        }
+        .main-nav {
+            position: sticky;
+            top: 16px;
+            margin: 16px clamp(16px, 5vw, 24px) 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 12px 24px;
+            box-shadow: var(--shadow-lg);
+        }
+        .main-nav .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--dark);
+            text-decoration: none;
+        }
+        .logo svg { color: var(--green); }
+
+        .page-header {
+            text-align: center;
+            padding: clamp(40px, 7vw, 60px) 0 32px;
+        }
+        .page-header h1 {
+            font-size: clamp(28px, 4vw, 36px);
+            color: var(--dark);
+            font-weight: 800;
+        }
+        .page-header p {
+            font-size: clamp(16px, 2vw, 18px);
+            color: var(--muted);
+            max-width: 600px;
+            margin: 16px auto 0;
+        }
+
+        .quiz-form, #results {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: clamp(24px, 5vw, 40px);
+            box-shadow: var(--shadow);
+            margin-bottom: 32px;
+        }
+        .quiz-form h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 0 0 24px 0;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .question-container {
+            padding: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+        .question-container p {
+            font-weight: 500;
+            font-size: 16px;
+            margin: 0 0 12px;
+        }
+        .options-wrapper {
+             display: flex;
+             flex-direction: column;
+             gap: 8px;
+        }
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .option-label:hover {
+            background-color: var(--bg);
+        }
+        .option-radio {
+            margin-right: 12px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--green);
+        }
+        
+        .btn {
+            display: inline-block;
+            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 16px;
+        }
+        .btn-primary {
+            background-color: var(--green);
+            color: white;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        .btn-secondary {
+            background-color: var(--border-color);
+            color: var(--dark);
+        }
+        .btn-secondary:hover {
+            background-color: #d1d5db;
+        }
+
+        .correct { background-color: var(--green-light); border-color: var(--green); }
+        .incorrect { background-color: #fee2e2; border-color: #ef4444; }
+        .correct-answer-text { color: #b91c1c; font-weight: 500; margin-top: 12px; }
+
+        #results { text-align: center; }
+        #results h2 { font-size: clamp(28px, 4vw, 36px); color: var(--dark); font-weight: 800; margin: 0; }
+        #results #result-score { font-size: 52px; font-weight: 800; color: var(--dark); margin: 8px 0; }
+        #results #result-level { font-size: 20px; font-weight: 700; color: var(--green); margin-bottom: 16px; }
+        #results #result-description { color: var(--muted); }
+
+        .footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+            padding: clamp(40px, 7vw, 60px) 0;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+        }
+        .footer a { color: var(--green); text-decoration: none; font-weight: 500; }
+        .footer a:hover { text-decoration: underline; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<nav class="main-nav">
+  <div class="nav-content">
+    <a href="index.html" class="logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+      Deutsch<span style="color:var(--green)">+</span>Profis
+    </a>
+  </div>
+</nav>
+
+<main>
+    <div class="wrap">
+        <header class="page-header">
+            <h1>Вхідний тест з німецької мови</h1>
+            <p>Цей тест допоможе визначити ваш приблизний рівень володіння німецькою. Успіхів!</p>
+        </header>
+
+        <form id="quizForm" class="quiz-form" style="display: flex; flex-direction: column; gap: 32px;">
+            <div>
+                <h2>Частина 1: Граматика (Grammatik)</h2>
+                <div id="grammatik-questions" style="display: flex; flex-direction: column; gap: 16px;">
+                    <!-- Questions will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <div>
+                <h2>Частина 2: Лексика (Wortschatz)</h2>
+                <div id="wortschatz-questions" style="display: flex; flex-direction: column; gap: 16px;">
+                    <!-- Questions will be dynamically inserted here -->
+                </div>
+            </div>
+            
+            <div>
+                <h2>Частина 3: Читання (Leseverstehen)</h2>
+                <div style="background: var(--bg); padding: 16px; border-radius: 12px; margin-bottom: 16px;">
+                    <h3 style="font-weight: 700; margin: 0 0 8px;">Прочитайте текст:</h3>
+                    <p style="margin: 0; line-height: 1.5;">
+                        Anna ist Studentin und wohnt in Berlin. Sie studiert Medizin an der Humboldt-Universität. Ihr Tag beginnt normalerweise um 7 Uhr. Nach dem Frühstück fährt sie mit dem Fahrrad zur Universität. Die Vorlesungen dauern oft bis zum späten Nachmittag. Abends lernt sie für ihre Prüfungen oder trifft sich mit Freunden. Am Wochenende macht sie gerne Sport oder besucht ihre Familie, die in Potsdam wohnt. Sie mag Berlin sehr, weil die Stadt so international und lebendig ist.
+                    </p>
+                </div>
+                <div id="leseverstehen-questions" style="display: flex; flex-direction: column; gap: 16px;">
+                    <!-- Questions will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <div style="text-align: center; padding-top: 16px;">
+                <button type="button" id="submitBtn" class="btn btn-primary">
+                    Перевірити результати
+                </button>
+            </div>
+        </form>
+        
+        <div id="results" class="hidden">
+            <h2 id="result-title">Ваш результат</h2>
+            <p id="result-score"></p>
+            <p id="result-level"></p>
+            <p id="result-description"></p>
+            <button type="button" id="restartBtn" class="btn btn-secondary" style="margin-top: 24px;">
+                Спробувати ще раз
+            </button>
+            <div style="margin-top:16px">
+                <a href="index.html" class="btn btn-primary" style="text-decoration:none">⬅ На головну</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="wrap">
+      <p>© 2025 Deutsch+Profis • ВСП «АЕФК ПДАУ». Усі права захищені.</p>
+    </div>
+</footer>
+
+<script>
+    const quizData = {
+        grammatik: [
+            { question: "Hallo, wie ___ du?", options: ["heiße", "heißt", "heißen"], answer: "heißt" },
+            { question: "Ich komme ___ der Ukraine.", options: ["aus", "in", "von"], answer: "aus" },
+            { question: "Was ist ___ Beruf?", options: ["dein", "deine", "deinen"], answer: "dein" },
+            { question: "Er ___ einen Hund.", options: ["habe", "hast", "hat"], answer: "hat" },
+            { question: "Wir gehen ___ Kino.", options: ["ins", "im", "in"], answer: "ins" },
+            { question: "Ich kann sehr gut Deutsch ___.", options: ["spreche", "sprichst", "sprechen"], answer: "sprechen" },
+            { question: "Gestern ___ ich meine Hausaufgaben gemacht.", options: ["habe", "bin", "werde"], answer: "habe" },
+            { question: "Wenn ich Zeit hätte, ___ ich mehr reisen.", options: ["würde", "wäre", "hätte"], answer: "würde" },
+            { question: "Das ist der Mann, ___ ich gestern geholfen habe.", options: ["der", "dem", "den"], answer: "dem" },
+            { question: "Er interessiert sich ___ alte Bücher.", options: ["für", "an", "über"], answer: "für" },
+        ],
+        wortschatz: [
+            { question: "Das Gegenteil von 'kalt' ist ___.", options: ["heiß", "warm", "kühl"], answer: "warm" },
+            { question: "Ein anderes Wort für 'sprechen' ist ___.", options: ["sagen", "reden", "fragen"], answer: "reden" },
+            { question: "Wo kann man Bücher kaufen?", options: ["In der Apotheke", "In der Bäckerei", "In der Buchhandlung"], answer: "In der Buchhandlung" },
+            { question: "Was braucht man zum Schreiben?", options: ["Einen Löffel", "Einen Stift", "Eine Gabel"], answer: "Einen Stift" },
+            { question: "Der Monat nach dem Juni ist der ___.", options: ["Mai", "Juli", "August"], answer: "Juli" },
+        ],
+        leseverstehen: [
+            { question: "Was studiert Anna?", options: ["Jura", "Medizin", "Geschichte"], answer: "Medizin" },
+            { question: "Wie kommt Anna zur Universität?", options: ["Mit dem Bus", "Mit dem Fahrrad", "Zu Fuß"], answer: "Mit dem Fahrrad" },
+            { question: "Was macht Anna abends oft?", options: ["Sie geht ins Kino", "Sie kocht", "Sie lernt oder trifft Freunde"], answer: "Sie lernt oder trifft Freunde" },
+            { question: "Wo wohnt Annas Familie?", options: ["In Berlin", "In Hamburg", "In Potsdam"], answer: "In Potsdam" },
+            { question: "Warum mag Anna Berlin?", options: ["Weil es dort ruhig ist", "Weil die Stadt international und lebendig ist", "Weil ihre Universität dort ist"], answer: "Weil die Stadt international und lebendig ist" },
+        ]
+    };
+
+    const questions = [
+        ...quizData.grammatik.map(q => ({ ...q, category: 'grammatik' })),
+        ...quizData.wortschatz.map(q => ({ ...q, category: 'wortschatz' })),
+        ...quizData.leseverstehen.map(q => ({ ...q, category: 'leseverstehen' }))
+    ];
+
+    function createQuestionElement(question, index) {
+        const questionContainer = document.createElement('div');
+        questionContainer.id = `question-${index}`;
+        questionContainer.className = 'question-container';
+
+        const questionText = document.createElement('p');
+        questionText.textContent = `${index + 1}. ${question.question}`;
+        questionContainer.appendChild(questionText);
+        
+        const optionsContainer = document.createElement('div');
+        optionsContainer.className = 'options-wrapper';
+
+        question.options.forEach(option => {
+            const label = document.createElement('label');
+            label.className = 'option-label';
+            
+            const radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = `question${index}`;
+            radio.value = option;
+            radio.className = 'option-radio';
+
+            label.appendChild(radio);
+            label.append(option);
+            optionsContainer.appendChild(label);
+        });
+        
+        questionContainer.appendChild(optionsContainer);
+
+        const feedback = document.createElement('div');
+        feedback.id = `feedback-${index}`;
+        feedback.className = 'correct-answer-text hidden';
+        questionContainer.appendChild(feedback);
+        
+        return questionContainer;
+    }
+
+    function renderQuestions() {
+        const grammatikContainer = document.getElementById('grammatik-questions');
+        const wortschatzContainer = document.getElementById('wortschatz-questions');
+        const leseverstehenContainer = document.getElementById('leseverstehen-questions');
+        
+        grammatikContainer.innerHTML = '';
+        wortschatzContainer.innerHTML = '';
+        leseverstehenContainer.innerHTML = '';
+
+        questions.forEach((q, index) => {
+            const el = createQuestionElement(q, index);
+            if (q.category === 'grammatik') grammatikContainer.appendChild(el);
+            else if (q.category === 'wortschatz') wortschatzContainer.appendChild(el);
+            else leseverstehenContainer.appendChild(el);
+        });
+    }
+    
+    const submitBtn = document.getElementById('submitBtn');
+    const resultsContainer = document.getElementById('results');
+    const quizForm = document.getElementById('quizForm');
+    
+    submitBtn.addEventListener('click', () => {
+        let score = 0;
+        const totalQuestions = questions.length;
+
+        questions.forEach((question, index) => {
+            const questionContainer = document.getElementById(`question-${index}`);
+            const feedbackEl = document.getElementById(`feedback-${index}`);
+            const selectedOption = quizForm.querySelector(`input[name="question${index}"]:checked`);
+            
+            questionContainer.classList.remove('correct', 'incorrect');
+            feedbackEl.classList.add('hidden');
+
+            if (selectedOption) {
+                if (selectedOption.value === question.answer) {
+                    score++;
+                    questionContainer.classList.add('correct');
+                } else {
+                    questionContainer.classList.add('incorrect');
+                    feedbackEl.textContent = `Правильна відповідь: ${question.answer}`;
+                    feedbackEl.classList.remove('hidden');
+                }
+            } else {
+                questionContainer.classList.add('incorrect');
+                feedbackEl.textContent = `Ви не обрали відповідь. Правильна: ${question.answer}`;
+                feedbackEl.classList.remove('hidden');
+            }
+
+            const radios = questionContainer.querySelectorAll('input[type="radio"]');
+            radios.forEach(radio => radio.disabled = true);
+        });
+
+        displayResults(score, totalQuestions);
+    });
+    
+    function displayResults(score, total) {
+        const percentage = (score / total) * 100;
+        let level = '';
+        let description = '';
+
+        if (percentage >= 90) {
+            level = 'B2 (Вище середнього)';
+            description = 'Відмінний результат! У вас міцні знання німецької мови.';
+        } else if (percentage >= 75) {
+            level = 'B1 (Середній)';
+            description = 'Дуже добре! Ви впевнено володієте мовою і можете вільно спілкуватися на знайомі теми.';
+        } else if (percentage >= 50) {
+            level = 'A2 (Базовий)';
+            description = 'Хороший результат! У вас є міцна база для побудови простих діалогів та розуміння повсякденних фраз.';
+        } else if (percentage >= 25) {
+            level = 'A1 (Початківець)';
+            description = 'Ви вже знаєте основи! Продовжуйте вивчати базову граматику та лексику, і скоро побачите прогрес.';
+        } else if (score > 0) {
+            level = 'A1 (Початківець)';
+            description = 'Ви робите перші кроки, і це чудово! Кожна правильна відповідь — це вже маленька перемога.';
+        } else {
+            level = 'A1 (Початківець)';
+            description = 'Схоже, ви тільки починаєте свій шлях. Не хвилюйтесь, кожен з чогось починав! Цей курс ідеально вам підійде.';
+        }
+        
+        document.getElementById('result-score').textContent = `${score} / ${total}`;
+        document.getElementById('result-level').textContent = `Ваш орієнтовний рівень: ${level}`;
+        document.getElementById('result-description').textContent = description;
+        
+        quizForm.style.display = 'none';
+        resultsContainer.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    const restartBtn = document.getElementById('restartBtn');
+    restartBtn.addEventListener('click', () => {
+        resultsContainer.classList.add('hidden');
+        quizForm.style.display = 'flex';
+        renderQuestions();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    window.onload = renderQuestions;
+</script>
+
+</body>
+</html>
+
